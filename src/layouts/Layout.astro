@@ -23,7 +23,7 @@ const site = settings.story.content
         image={ pageThumbnail || '/og-image.webp' }
     />
 	<body
-        class="text-slate-700 dark:text-white/80 bg-white dark:bg-neutral-900 flex min-h-dvh flex-col"
+        class="text-slate-700 bg-surface-50 flex min-h-dvh flex-col"
         data-body-exit>
         <Header title={ site.title }/>
 		<main
@@ -47,7 +47,6 @@ const site = settings.story.content
 	[astro-icon] {
 		@apply flex-shrink-0 pointer-events-none;
 	}
-	[data-body-exit] { @apply opacity-0 scale-105 transition duration-500; }
 </style>
 
 <script>
