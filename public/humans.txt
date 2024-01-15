@@ -1,6 +1,4 @@
-Sayings of Kabolobari (Sayings) was built by Kabolobari Benakole, a human, sayist, and web developer.
-
-As a web application (web app), Sayings is developed with Astro, a static site generator and fullstack application development framework [https://astro.build/]. The web app itself follows the principles of what might be called "AHA" stack as outlined on the website [https://ahastack.dev/].
+Komponents & Solutions Rack Ltd was built by Kabolobari Benakole, a human, sayist, and web developer.
 
 /* TECHNOLOGIES */
 Design: Figma
@@ -12,10 +10,7 @@ State Managament: Alpinejs
 Page Transitions: Swupjs
 Hosting: Netlify
 IDE: VS Code
+Code Repository: Github
 Web: HTML, CSS, & JS
 
 /* THANKS */
-In-page Search:
-[https://css-tricks.com/in-page-filtered-search-with-vanilla-javascript/
-https://codepen.io/GreenSock/pen/NWRxarv?editors=0010
-https://gsap.com/docs/v3/Plugins/Flip/]
