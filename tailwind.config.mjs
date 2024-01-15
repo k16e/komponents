@@ -12,7 +12,19 @@ export default {
                 display: 'Plus Jakarta Sans Variable, sans-serif'
             },
             colors: {
-                accent: colors.fuchsia
+                punch: {
+                    '50': '#fef3f2',
+                    '100': '#fee4e2',
+                    '200': '#fececa',
+                    '300': '#fcaba5',
+                    '400': '#f87a71',
+                    '500': '#ef5044',
+                    '600': '#de3d31',
+                    '700': '#b9271c',
+                    '800': '#99241b',
+                    '900': '#7f241d',
+                    '950': '#450e0a',
+                }
             }
         }
 	},
