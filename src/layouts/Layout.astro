@@ -1,0 +1,73 @@
+---
+import '@fontsource/plus-jakarta-sans'
+import '@fontsource/kumbh-sans'
+import Head from '../globals/Head.astro'
+import Header from '../globals/Header.astro'
+import Footer from '../globals/Footer.astro'
+import { useStoryblokApi } from '@storyblok/astro'
+import Wrapper from './Wrapper.astro'
+import TitleHidden from '../components/TitleHidden.astro'
+
+const { pageTitle, pageDescription, pageThumbnail } = Astro.props
+const storyblokApi = useStoryblokApi()
+const { data: settings } = await storyblokApi.get('cdn/stories/settings', {
+    version: import.meta.env.DEV ? 'draft' : 'published'
+})
+const site = settings.story.content
+---
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<Head
+        title={ `${ pageTitle } | ${ site.title }` }
+        description={ pageDescription || site.description }
+        image={ pageThumbnail || '/og-image.webp' }
+    />
+	<body
+        class="text-slate-700 dark:text-white/80 bg-white dark:bg-neutral-900 flex min-h-dvh flex-col"
+        data-body-exit>
+        <Header title={ site.title }/>
+		<main
+            class="flex-1 swup-in"
+            id="swup"
+            tabindex="-1">
+            <TitleHidden title={ pageTitle }/>
+            <Wrapper data-wrapper class:list="py-5">
+                <slot/>
+            </Wrapper>
+        </main>
+        <Footer preferredName={ site.preferredName }/>
+	</body>
+</html>
+
+<style is:global>
+	html.is-changing .swup-in { @apply opacity-100 duration-[.4s] ease-[cubic-bezier(0,0.16,0,1)]; }
+	html.is-animating .swup-in { @apply opacity-0 scale-[.9999] translate-y-3 ease-in; }
+	.swup-progress-bar { @apply h-0.5 bg-fuchsia-600 dark:bg-fuchsia-300; }
+	main:focus { outline: none; }
+	[astro-icon] {
+		@apply flex-shrink-0 pointer-events-none;
+	}
+	[data-body-exit] { @apply opacity-0 scale-105 transition duration-500; }
+</style>
+
+<script>
+	import Swup from 'swup'
+	import Astrolog from '../js/astrolog'
+
+	const swup = new Swup({
+		animationSelector: '[class*="swup-"]'
+	})
+
+	document.addEventListener('DOMContentLoaded', () => {
+		once()
+	})
+	swup.hooks.on('page:view', () => init())
+
+	function init() {
+		console.log('init() ran')
+	}
+
+	function once() {
+		Astrolog()
+	}
+</script>

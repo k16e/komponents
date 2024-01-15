@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { useStoryblokApi, renderRichText } from '@storyblok/astro'
+
+const storyblokApi = useStoryblokApi()
+const { data: settings } = await storyblokApi.get('cdn/stories/settings', {
+    version: import.meta.env.DEV ? 'draft' : 'published'
+})
+const error = settings.story.content.error[0]
+---
+<Layout
+    pageTitle={ error.title }
+    pageDescription={ error.description }>
+    Error
+</Layout>

@@ -1,0 +1,15 @@
+---
+import Wrapper from '../layouts/Wrapper.astro'
+
+const { title, class: classes, ...attrs } = Astro.props
+---
+<header
+    class:list={[ classes, 'z-50' ]}
+    data-main-header
+    { ...attrs }>
+    <Wrapper class:list="flex flex-col space-y-5 lg:space-y-7 items-center justify-center py-5 lg:py-7">
+        <a href="/" class="inline-flex justify-center">
+            Komponents
+        </a>
+    </Wrapper>
+</header>

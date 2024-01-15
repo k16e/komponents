@@ -1,0 +1,29 @@
+---
+import { useStoryblokApi } from '@storyblok/astro'
+import Layout from '../layouts/Layout.astro'
+
+const
+    storyblokApi = useStoryblokApi(),
+    { data: pageData } = await storyblokApi.get('cdn/stories/home', {
+	    version: import.meta.env.DEV ? 'draft' : 'published'
+    }),
+    page = pageData.story,
+    meta = page.content.meta[0],
+    { data: collection } = await storyblokApi.get('cdn/stories/', {
+        version: import.meta.env.DEV ? 'draft' : 'published',
+        starts_with: `${page.content.list}/`,
+        sort_by: 'content.position:desc'
+    }),
+    collectionAll = collection.stories.map((c: any) => {
+        return {
+            slug: c.full_slug,
+            content: c.content
+        }
+    })
+---
+<Layout
+	pageTitle={ meta.title }
+	pageDescription={ meta.description }
+    pageThumbnail={ meta.image.filename }>
+	Home
+</Layout>
