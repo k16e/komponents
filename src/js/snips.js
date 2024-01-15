@@ -59,20 +59,6 @@ const isEmpty = obj => {
 }
 
 
-const _mobile = (ctx) => {
-    if (import.meta.env.SSR) return
-    const mql = ctx.matchMedia('(max-width: 1023px)')
-    const checkMobile = () => {
-        const screen = mql.matches ? true : false
-        return screen
-    }
-
-    mql.addEventListener('change', checkMobile)
-
-    return checkMobile()
-}
-
-
 const clearSearch = (input, arr, obj) => {
     input.value = ''
     arr.map(a => hidePiece(a))
@@ -82,5 +68,5 @@ const clearSearch = (input, arr, obj) => {
 
 // Exports
 export {
-    body, slugify, $, $$, slideOut, slideIn, enter, leave, translateIn, translateOut, hidden, splitFirstOccurrenceOnly, isEmpty, scrollToTopOffset, _mobile, dimOn, dimOff, invisible, visible, clearSearch
+    body, slugify, $, $$, slideOut, slideIn, enter, leave, translateIn, translateOut, hidden, splitFirstOccurrenceOnly, isEmpty, dimOn, dimOff, invisible, visible, clearSearch
 }
