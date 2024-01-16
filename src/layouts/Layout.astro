@@ -1,6 +1,6 @@
 ---
-import '@fontsource/plus-jakarta-sans'
-import '@fontsource/kumbh-sans'
+import '@fontsource-variable/plus-jakarta-sans'
+import '@fontsource-variable/kumbh-sans'
 import Head from '../globals/Head.astro'
 import Header from '../globals/Header.astro'
 import Footer from '../globals/Footer.astro'
@@ -50,7 +50,7 @@ const site = settings.story.content
 	.swup-progress-bar { @apply h-0.5 bg-punch-600 dark:bg-punch-300; }
 	main:focus { outline: none; }
 	[astro-icon] {
-		@apply flex-shrink-0 pointer-events-none;
+		@apply flex-shrink-0 pointer-events-none fill-current;
 	}
 </style>
 
