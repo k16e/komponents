@@ -1,15 +1,19 @@
 ---
+import { _transition } from '../js/snips'
+
 const {
-    href, hover
+    href, hover, ...attrs
 } = Astro.props
 ---
 <a
     href={ href }
     class:list={[
-        'flex items-center transition duration-300 ease-out',
+        'flex items-center',
         (hover === 'accent') && 'group-hover:text-punch-600',
         (hover === 'white') && 'group-hover:text-white/100',
-        (hover === 'shadow') && 'group-hover:shadow-xl'
-    ]}>
+        (hover === 'shadow') && 'group-hover:shadow-xl',
+        _transition()
+    ]}
+    { ...attrs }>
     <slot/>
 </a>
