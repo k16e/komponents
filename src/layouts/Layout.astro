@@ -55,6 +55,7 @@ const site = settings.story.content
 </style>
 
 <script>
+    import runAlpine from '../js/alpine'
 	import Swup from 'swup'
 	import Astrolog from '../js/astrolog'
 
@@ -72,6 +73,7 @@ const site = settings.story.content
 	}
 
 	function once() {
+        runAlpine()
 		Astrolog()
 	}
 </script>
