@@ -5,7 +5,7 @@ const { icon, iconPosition, label, color } = Astro.props
 ---
 <div
     class:list={[
-        'h-12 px-4 justify-center items-center gap-3 inline-flex',
+        'h-12 px-4 justify-center items-center gap-3 inline-flex hover:shadow-xl transition duration-200',
         color === 'punch' && 'bg-punch-500 text-white',
         color === 'surface' && 'bg-surface-200 text-surface-800',
     ]}>
