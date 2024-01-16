@@ -1,12 +1,12 @@
 ---
 import '@fontsource-variable/plus-jakarta-sans'
 import '@fontsource-variable/kumbh-sans'
-import Head from '../globals/Head.astro'
-import Header from '../globals/Header.astro'
-import Footer from '../globals/Footer.astro'
+import Head from '../composites/Head.astro'
+import Header from '../composites/Header.astro'
+import Footer from '../composites/Footer.astro'
 import { useStoryblokApi } from '@storyblok/astro'
 import Wrapper from './Wrapper.astro'
-import TitleHidden from '../components/TitleHidden.astro'
+import TitleHidden from '../atoms/TitleHidden.astro'
 
 const { pageTitle, pageDescription, pageThumbnail } = Astro.props
 const storyblokApi = useStoryblokApi()
