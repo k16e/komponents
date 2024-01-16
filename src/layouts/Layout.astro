@@ -25,13 +25,13 @@ const site = settings.story.content
 	<body
         class="text-slate-700 bg-surface-50 flex min-h-dvh flex-col"
         data-body-exit>
-        <Header title={ site.title }/>
+        <Header title={ site.title } class:list="h-16 lg:h-24"/>
 		<main
-            class="flex-1 swup-in"
+            class="flex-1 swup-in mt-16 lg:mt-24"
             id="swup"
             tabindex="-1">
             <TitleHidden title={ pageTitle }/>
-            <Wrapper data-wrapper class:list="py-5">
+            <Wrapper data-wrapper class:list="">
                 <slot/>
             </Wrapper>
         </main>
