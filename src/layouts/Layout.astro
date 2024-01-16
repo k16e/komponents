@@ -11,7 +11,8 @@ import TitleHidden from '../components/TitleHidden.astro'
 const { pageTitle, pageDescription, pageThumbnail } = Astro.props
 const storyblokApi = useStoryblokApi()
 const { data: settings } = await storyblokApi.get('cdn/stories/settings', {
-    version: import.meta.env.DEV ? 'draft' : 'published'
+    version: import.meta.env.DEV ? 'draft' : 'published',
+    resolve_links: 'url'
 })
 const site = settings.story.content
 ---
@@ -25,7 +26,11 @@ const site = settings.story.content
 	<body
         class="text-slate-700 bg-surface-50 flex min-h-dvh flex-col"
         data-body-exit>
-        <Header title={ site.title } class:list="h-16 lg:h-24"/>
+        <Header
+            title={ site.title }
+            class:list="h-16 lg:h-24"
+            contactActions={ site.contact_actions[0].links }
+        />
 		<main
             class="flex-1 swup-in mt-16 lg:mt-24"
             id="swup"
