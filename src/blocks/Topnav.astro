@@ -1,25 +1,26 @@
 ---
 import Button from '../atoms/Button.astro'
+import Anchor from '../atoms/Anchor.astro'
 
 const { links } = Astro.props
 ---
-
-<ul class="hidden xl:flex space-x-[12px]">
+<ul class="hidden xl:flex space-x-[12px] text-surface-700">
 	{
 		links.map((link: any) => (
-			<li>
-				<a
+			<li class="group">
+				<Anchor
 					href={`/${
 						link.link.story.full_slug === 'home'
 							? ''
 							: link.link.story.full_slug
-					}`}>
+					}`}
+                    hover="accent">
 					<Button
 						label={link.title}
 						color={link.color}
                         underbar={link.gets_underbar}
 					/>
-				</a>
+				</Anchor>
 			</li>
 		))
 	}

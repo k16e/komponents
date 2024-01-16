@@ -1,0 +1,15 @@
+---
+const {
+    href, hover
+} = Astro.props
+---
+<a
+    href={ href }
+    class:list={[
+        'flex items-center transition duration-300 ease-out',
+        (hover === 'accent') && 'group-hover:text-punch-600',
+        (hover === 'white') && 'group-hover:text-white/100',
+        (hover === 'shadow') && 'group-hover:shadow-xl'
+    ]}>
+    <slot/>
+</a>

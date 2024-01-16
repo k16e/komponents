@@ -1,29 +1,49 @@
 ---
 import Wrapper from '../layouts/Wrapper.astro'
 import Icon from 'astro-icon'
+import Button from '../atoms/Button.astro'
+import Anchor from '../atoms/Anchor.astro'
 
 const
     year = new Date().getFullYear(),
-    { legalName } = Astro.props
+    { legalName, links } = Astro.props
 ---
 <footer class="bg-surface-950">
     <div class="h-96">
         A
     </div>
     <div class="flex items-center lg:h-[72px] border-t border-surface-900/60 py-4 lg:py-0">
-        <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:col-span-2 items-center">
+        <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:col-span-2 items-center">
                 <div class="flex items-center space-x-4">
                     <Icon name="icon" class="w-8 text-white"/>
                     <small class="text-sm text-white/65">
                         Copyright { year } { legalName }
                     </small>
                 </div>
-                <div>
-                    B
-                </div>
+                <ul class="flex items-center text-white/65">
+                    {
+                        links.map((link: any) => (
+                            <li class="group">
+                                <Anchor
+                                    href={`/${
+                                        link.link.story.full_slug === 'home'
+                                            ? ''
+                                            : link.link.story.full_slug
+                                    }`}
+                                    hover="white">
+                                    <Button
+                                        label={ link.title }
+                                        color={ link.color }
+                                        titleCase={ link.is_titlecase }
+                                    />
+                                </Anchor>
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
-            <div class="justify-self-end">
+            <div class="lg:justify-self-end">
                 C
             </div>
         </Wrapper>

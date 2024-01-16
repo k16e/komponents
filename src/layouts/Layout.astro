@@ -24,7 +24,7 @@ const site = settings.story.content
         image={ pageThumbnail || '/og-image.webp' }
     />
 	<body
-        class="text-slate-700 bg-surface-50 flex min-h-dvh flex-col"
+        class="text-slate-700 bg-white flex min-h-dvh flex-col"
         data-body-exit>
         <Header
             title={ site.title }
@@ -41,7 +41,10 @@ const site = settings.story.content
                 <slot/>
             </Wrapper>
         </main>
-        <Footer legalName={ site.legalName }/>
+        <Footer
+            legalName={ site.legalName }
+            links={ site.legalnav }
+        />
 	</body>
 </html>
 
