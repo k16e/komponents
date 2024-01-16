@@ -4,7 +4,7 @@ import Icon from 'astro-icon'
 
 const
     year = new Date().getFullYear(),
-    { preferredName } = Astro.props
+    { legalName } = Astro.props
 ---
 <footer class="bg-surface-950">
     <div class="h-96">
@@ -13,10 +13,10 @@ const
     <div class="flex items-center h-[72px] border-t border-surface-900/60">
         <Wrapper class:list="w-full">
             <div class="flex items-center space-x-6">
-                <Icon name="icon" class="w-10 text-white"/>
+                <Icon name="icon" class="w-8 text-white"/>
                 <div class="flex items-center space-x-10">
                     <small class="text-sm text-white/65">
-                        <span class="text-base">©</span> { year } Komponents & Solutions Rack
+                        Copyright { year } { legalName }
                     </small>
                     <div>
                         B
