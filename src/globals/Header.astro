@@ -1,10 +1,11 @@
 ---
 import Wrapper from '../layouts/Wrapper.astro'
 import { Icon } from 'astro-icon'
-import ContactActions from '../components/ContactActions.astro'
+import ContactActions from '../blocks/ContactActions.astro'
+import Topnav from '../blocks/Topnav.astro'
 
 const {
-    title, contactActions, class: classes, ...attrs
+    title, contactActions, topnavLinks, class: classes, ...attrs
 } = Astro.props
 ---
 <header
@@ -12,17 +13,17 @@ const {
     data-main-header
     { ...attrs }>
     <Wrapper class:list="flex items-center justify-between h-full">
-        <div>
+        <div class="flex items-center space-x-12">
             <a href="/" class="flex">
                 <Icon name="icon" class="w-9 lg:hidden"/>
                 <Icon name="logo" class="h-10 hidden lg:block"/>
                 <span class='sr-only'>Komponents</span>
             </a>
-            
+            <Topnav links={ topnavLinks }/>
         </div>
         <div class="flex">
             <ContactActions links={ contactActions }/>
-            <button class="lg:hidden pl-4">
+            <button class="xl:hidden pl-4">
                 <Icon name="menu" class="w-8"/>
             </button>
         </div>

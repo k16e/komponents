@@ -2,14 +2,15 @@
 import { Icon } from 'astro-icon'
 import LinkText from './LinkText.astro'
 
-const { icon, iconPosition, label, color } = Astro.props
+const { icon, iconPosition, label, color, underbar = false } = Astro.props
 ---
 <div
     class:list={[
-        'h-12 px-4 justify-center items-center gap-2 inline-flex hover:shadow-xl transition duration-200',
-        color === 'punch' && 'bg-punch-500 text-white',
+        'h-12 px-4 justify-center items-center gap-2 inline-flex transition duration-200',
+        color === 'punch' && 'bg-punch-600 text-white',
         color === 'surface' && 'bg-surface-200 text-surface-800',
         color === 'transparent' && 'bg-transparent text-surface-700',
+        underbar ? 'hover:text-punch-600' : 'hover:shadow-xl'
     ]}>
     { icon && (
         <Icon
