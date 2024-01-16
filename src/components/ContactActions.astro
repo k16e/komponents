@@ -6,8 +6,7 @@ const { links } = Astro.props
 <ul class="flex space-x-[12px]">
     {
         links.map((link: any) => (
-            <li
-                class="first:hidden lg:first:block">
+            <li class="first:hidden lg:first:block">
                 <a
                     href={ `/${link.link.story.full_slug === 'home' ? '' : link.link.story.full_slug}` }>
                     <Button

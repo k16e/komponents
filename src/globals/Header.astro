@@ -17,6 +17,11 @@ const {
             <Icon name="logo" class="h-10 hidden lg:block"/>
             <span class='sr-only'>Komponents</span>
         </a>
-        <ContactActions links={ contactActions }/>
+        <div class="flex">
+            <ContactActions links={ contactActions }/>
+            <button class="lg:hidden pl-4">
+                <Icon name="menu" class="w-8"/>
+            </button>
+        </div>
     </Wrapper>
 </header>
