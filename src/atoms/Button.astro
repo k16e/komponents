@@ -1,12 +1,16 @@
 ---
 import { Icon } from 'astro-icon'
 
-const { icon, label } = Astro.props
+const { icon, iconPosition, label } = Astro.props
 ---
-<div class="h-12 pl-4 pr-5 bg-punch-500 justify-center items-center gap-3 inline-flex text-white">
-    <Icon name={ icon } class="w-[22px]"/>
-    <div class="justify-start items-start gap-2 flex">
-        <p class="text-sm font-bold font-display uppercase tracking-widest">
+<div class="h-12 px-4 bg-punch-500 justify-center items-center gap-3 inline-flex text-white">
+    <Icon
+        name={ icon }
+        class:list={['w-[22px]', iconPosition === 'leading' ? 'order-1' : 'order-2']}
+    />
+    <div
+        class:list={['justify-start items-start gap-2 flex', iconPosition === 'leading' ? 'order-2' : 'order-1']}>
+        <p class="text-[13px] leading-5 font-medium font-display uppercase tracking-widest">
             { label }
         </p>
     </div>

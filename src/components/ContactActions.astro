@@ -6,8 +6,12 @@ const { links } = Astro.props
 {
     links.map((link: any) => {
         return (
-            <a href={ `/${link.link.story.full_slug == 'home' ? '' : link.link.story.full_slug}` }>
-                <Button icon={ link.icon } label={ link.title }/>
+            <a href={ `/${link.link.story.full_slug === 'home' ? '' : link.link.story.full_slug}` }>
+                <Button
+                    icon={ link.icon }
+                    label={ link.title }
+                    iconPosition={ link.icon_position }
+                />
             </a>
         )
     })
