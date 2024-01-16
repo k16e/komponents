@@ -10,18 +10,21 @@ const
     <div class="h-96">
         A
     </div>
-    <div class="flex items-center h-[72px] border-t border-surface-900/60">
-        <Wrapper class:list="w-full">
-            <div class="flex items-center space-x-6">
-                <Icon name="icon" class="w-8 text-white"/>
-                <div class="flex items-center space-x-10">
+    <div class="flex items-center lg:h-[72px] border-t border-surface-900/60 py-4 lg:py-0">
+        <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:col-span-2 items-center">
+                <div class="flex items-center space-x-4">
+                    <Icon name="icon" class="w-8 text-white"/>
                     <small class="text-sm text-white/65">
                         Copyright { year } { legalName }
                     </small>
-                    <div>
-                        B
-                    </div>
                 </div>
+                <div>
+                    B
+                </div>
+            </div>
+            <div class="justify-self-end">
+                C
             </div>
         </Wrapper>
     </div>
