@@ -12,11 +12,14 @@ const {
     data-main-header
     { ...attrs }>
     <Wrapper class:list="flex items-center justify-between h-full">
-        <a href="/" class="flex">
-            <Icon name="icon" class="w-9 lg:hidden"/>
-            <Icon name="logo" class="h-12 hidden lg:block"/>
-            <span class='sr-only'>Komponents</span>
-        </a>
+        <div>
+            <a href="/" class="flex">
+                <Icon name="icon" class="w-9 lg:hidden"/>
+                <Icon name="logo" class="h-10 hidden lg:block"/>
+                <span class='sr-only'>Komponents</span>
+            </a>
+            
+        </div>
         <div class="flex">
             <ContactActions links={ contactActions }/>
             <button class="lg:hidden pl-4">
