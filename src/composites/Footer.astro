@@ -1,8 +1,28 @@
 ---
+import Wrapper from '../layouts/Wrapper.astro'
+import Icon from 'astro-icon'
+
 const
     year = new Date().getFullYear(),
     { preferredName } = Astro.props
 ---
-<footer class="flex items-center justify-center text-center p-5 text-base">
-    Silence is all for now this { year }
+<footer class="bg-surface-950">
+    <div class="h-96">
+        A
+    </div>
+    <div class="flex items-center h-[72px] border-t border-surface-900/60">
+        <Wrapper class:list="w-full">
+            <div class="flex items-center space-x-6">
+                <Icon name="icon" class="w-10 text-white"/>
+                <div class="flex items-center space-x-10">
+                    <small class="text-sm text-white/65">
+                        <span class="text-base">©</span> { year } Komponents & Solutions Rack
+                    </small>
+                    <div>
+                        B
+                    </div>
+                </div>
+            </div>
+        </Wrapper>
+    </div>
 </footer>
