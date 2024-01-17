@@ -8,6 +8,6 @@ export default function runAlpine() {
 
     Alpine.plugin(persist)
     Alpine.start()
-    
-    console.log('Alpine take off 🚀')
+
+    console.log('Alpine took off 🚀')
 }

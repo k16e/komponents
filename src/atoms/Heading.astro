@@ -1,6 +1,27 @@
 ---
-const
-    {
-        hLevel
-    } = Astro.props
+const { level, class: classes, ...attrs } = Astro.props
 ---
+<Fragment>
+    {() => {
+        switch (level) {
+            case 'h1':
+                return (
+                    <h1 { ...attrs } class:list={[ classes ]}>
+                        H1
+                    </h1>
+                )
+            case 'h3':
+                return (
+                    <h3 { ...attrs } class:list={[ classes ]}>
+                        H3
+                    </h3>
+                )
+            default:
+                return (
+                    <h2 { ...attrs } class:list={[ classes ]}>
+                        H2 - Default
+                    </h2>
+                )
+        }
+    }}
+</Fragment>
