@@ -4,16 +4,14 @@ import Icon from 'astro-icon'
 import Legal from '../blocks/Legal.astro'
 import Social from '../blocks/Social.astro'
 import Heading from '../atoms/Heading.astro'
+import TwinActions from '../blocks/TwinActions.astro'
 
 const
     year = new Date().getFullYear(),
-    { legalName, legalLinks, social } = Astro.props
+    { legalName, legalLinks, social, actions } = Astro.props
 ---
 <footer class="bg-surface-950">
-    <div class="text-white space-y-4">
-        <Heading text="Find an Affiliate" level="h2" size="3xl" weight="extra" tighten/>
-        <Heading text="Work with vetted technicians" size="sm" weight="medium" loosen uppercase class:list="text-white/60"/>
-    </div>
+    <TwinActions actions={ actions }/>
     <div class="flex items-center lg:h-[72px] border-t border-surface-900/60 py-4 lg:py-0">
         <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:col-span-2 items-center">
