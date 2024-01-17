@@ -6,22 +6,26 @@ import Icon from 'astro-icon'
 const { actions, class: classes, ...attrs } = Astro.props
 ---
 <ul
-    class:list={['grid grid-cols-1 lg:grid-cols-2 gap-x-3 items-end overflow-clip', classes]}
+    class:list={['grid grid-cols-1 lg:grid-cols-2 gap-x-3 items-end relative lg:static', classes]}
     {...attrs}>
     {
         actions.map((action: any) => (
-            <li class='group flex items-center justify-center first:h-[280px] last:h-[376px] relative'>
-                <Icon
-                    name="slat"
-                    class="z-10 w-full h-full absolute group-first:-bottom-1 group-last:-bottom-2"
-                />
-                <Wrapper class:list="w-full z-20 absolute left-0 group-first:pt-16 group-last:pt-20">
-                    <BigAction
-                        title={ action.title }
-                        subtitle={ action.subtitle }
-                        class:list="text-white text-center"
+            <li
+                class='group flex items-center justify-center h-[208px] lg:first:h-[275px] lg:last:h-[369px] lg:relative lg:overflow-clip'>
+                <a href="/" class="flex items-center h-full w-full">
+                    <Icon
+                        name="slat"
+                        class="z-10 w-full h-[496px] lg:h-full absolute inset-x-0 group-first:-bottom-2 group-last:-bottom-3 group-last:hidden lg:group-last:block"
                     />
-                </Wrapper>
+                    <Wrapper
+                        class:list="w-full z-20 absolute left-0 lg:group-first:pt-14 lg:group-last:pt-28">
+                        <BigAction
+                            title={ action.title }
+                            subtitle={ action.subtitle }
+                            class:list="text-white text-center"
+                        />
+                    </Wrapper>
+                </a>
             </li>
         ))
     }
