@@ -3,10 +3,12 @@ import Wrapper from '../layouts/Wrapper.astro'
 import Icon from 'astro-icon'
 import Button from '../atoms/Button.astro'
 import Anchor from '../atoms/Anchor.astro'
+import Legal from '../blocks/Legal.astro'
+import Social from '../blocks/Social.astro'
 
 const
     year = new Date().getFullYear(),
-    { legalName, links } = Astro.props
+    { legalName, legalLinks, social } = Astro.props
 ---
 <footer class="bg-surface-950">
     <div class="h-96">
@@ -21,31 +23,9 @@ const
                         Copyright { year } { legalName }
                     </small>
                 </div>
-                <ul class="flex items-center text-white/65">
-                    {
-                        links.map((link: any) => (
-                            <li class="group">
-                                <Anchor
-                                    href={`/${
-                                        link.link.story.full_slug === 'home'
-                                            ? ''
-                                            : link.link.story.full_slug
-                                    }`}
-                                    hover="white">
-                                    <Button
-                                        label={ link.title }
-                                        color={ link.color }
-                                        titleCase={ link.is_titlecase }
-                                    />
-                                </Anchor>
-                            </li>
-                        ))
-                    }
-                </ul>
+                <Legal links={ legalLinks }/>
             </div>
-            <div class="lg:justify-self-end">
-                C
-            </div>
+            <Social links={ social } class:list="lg:justify-self-end"/>
         </Wrapper>
     </div>
 </footer>

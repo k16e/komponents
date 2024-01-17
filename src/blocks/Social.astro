@@ -1,0 +1,23 @@
+---
+import Anchor from '../atoms/Anchor.astro'
+import Icon from 'astro-icon'
+
+const {
+    links, class: classes, ...attrs
+} = Astro.props
+---
+<ul
+    class:list={['flex space-x-[12px]', classes]}
+    { ...attrs }>
+	{
+		links.map((link: any) => (
+			<li class="group text-white/60">
+				<Anchor
+					href={ link.link.cached_url}
+					hover="white">
+                    <Icon name={ link.icon } class="w-6"/>
+				</Anchor>
+			</li>
+		))
+	}
+</ul>
