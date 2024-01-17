@@ -7,6 +7,9 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
         extend: {
+            fontSize: {
+                sm: ['0.825rem', '1.25rem']
+            },
             fontFamily: {
                 sans: ['Kumbh Sans Variable, sans-serif', ...defaultTheme.fontFamily.sans],
                 display: 'Plus Jakarta Sans Variable, sans-serif'
