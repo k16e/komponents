@@ -1,8 +1,6 @@
 ---
 import Wrapper from '../layouts/Wrapper.astro'
 import Icon from 'astro-icon'
-import Button from '../atoms/Button.astro'
-import Anchor from '../atoms/Anchor.astro'
 import Legal from '../blocks/Legal.astro'
 import Social from '../blocks/Social.astro'
 import Heading from '../atoms/Heading.astro'
@@ -12,10 +10,9 @@ const
     { legalName, legalLinks, social } = Astro.props
 ---
 <footer class="bg-surface-950">
-    <div class="h-96">
-        <Heading level="h1"/>
-        <Heading level="h3"/>
-        <Heading/>
+    <div class="h-96 text-white space-y-4">
+        <Heading text="Find an Affiliate" level="h2" size="3xl" weight="extra" tighten/>
+        <Heading text="Work with vetted technicians" size="sm" weight="semi" loosen uppercase class:list="text-white/60"/>
     </div>
     <div class="flex items-center lg:h-[72px] border-t border-surface-900/60 py-4 lg:py-0">
         <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">

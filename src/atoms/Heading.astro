@@ -1,27 +1,39 @@
 ---
-const { level, class: classes, ...attrs } = Astro.props
+const {
+    level, text, size, uppercase, weight, tighten, loosen, class: classes, ...attrs
+} = Astro.props
 ---
-<Fragment>
+<div
+    { ...attrs }
+    class:list={[
+        // Default Classes
+        'h',
+
+        // Font Sizes
+        size === 'sm' && 'text-sm',
+        size === '3xl' && 'text-5xl',
+
+        // Font Weights
+        weight === 'regular' && 'font-normal',
+        weight === 'medium' && 'font-medium',
+        weight === 'semi' && 'font-semibold',
+        weight === 'bold' && 'font-bold',
+        weight === 'extra' && 'font-extrabold',
+
+        // Booleans
+        uppercase && 'uppercase',
+        tighten && 'tracking-tight',
+        loosen && 'tracking-widest',
+
+        // Classes Passed In
+        classes
+    ]}>
     {() => {
         switch (level) {
-            case 'h1':
-                return (
-                    <h1 { ...attrs } class:list={[ classes ]}>
-                        H1
-                    </h1>
-                )
-            case 'h3':
-                return (
-                    <h3 { ...attrs } class:list={[ classes ]}>
-                        H3
-                    </h3>
-                )
-            default:
-                return (
-                    <h2 { ...attrs } class:list={[ classes ]}>
-                        H2 - Default
-                    </h2>
-                )
+            case 'h1': return <h1>{ text }</h1>
+            case 'h2': return <h2>{ text }</h2>
+            case 'h3': return <h3>{ text }</h3>
+            default: return <span>{ text }</span>
         }
     }}
-</Fragment>
+</div>
