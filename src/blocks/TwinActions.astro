@@ -1,25 +1,28 @@
 ---
 import BigAction from '../atoms/BigAction.astro'
 import Wrapper from '../layouts/Wrapper.astro'
+import Icon from 'astro-icon'
 
 const { actions, class: classes, ...attrs } = Astro.props
 ---
-<section class="lg:h-[368px] bg-gradient-to-b from-surface-900 to-surface-950">
-    <ul
-        class:list={['grid grid-cols-1 lg:grid-cols-2 gap-x-3 h-full', classes]}
-        {...attrs}>
-        {
-            actions.map((action: any) => (
-                <li class='group flex items-center justify-center'>
-                    <Wrapper class:list="w-full">
-                        <BigAction
-                            title={ action.title }
-                            subtitle={ action.subtitle }
-                            class:list="text-white text-center"
-                        />
-                    </Wrapper>
-                </li>
-            ))
-        }
-    </ul>
-</section>
+<ul
+    class:list={['grid grid-cols-1 lg:grid-cols-2 gap-x-3 items-end', classes]}
+    {...attrs}>
+    {
+        actions.map((action: any) => (
+            <li class='group flex items-center justify-center relative'>
+                <Icon
+                    name="slat"
+                    class="absolute inset-x-0 bottom-0 z-10 w-full"
+                />
+                <Wrapper class:list="w-full z-20">
+                    <BigAction
+                        title={ action.title }
+                        subtitle={ action.subtitle }
+                        class:list="text-white text-center"
+                    />
+                </Wrapper>
+            </li>
+        ))
+    }
+</ul>

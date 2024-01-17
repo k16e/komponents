@@ -3,16 +3,15 @@ import Wrapper from '../layouts/Wrapper.astro'
 import Icon from 'astro-icon'
 import Legal from '../blocks/Legal.astro'
 import Social from '../blocks/Social.astro'
-import Heading from '../atoms/Heading.astro'
 import TwinActions from '../blocks/TwinActions.astro'
 
 const
     year = new Date().getFullYear(),
     { legalName, legalLinks, social, actions } = Astro.props
 ---
-<footer>
+<footer class="relative">
     <TwinActions actions={ actions }/>
-    <div class="flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/60 py-4 lg:py-0">
+    <div class="flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/60 py-4 lg:py-0 relative z-30">
         <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:col-span-2 items-center">
                 <div class="flex items-center space-x-4">
