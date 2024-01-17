@@ -6,16 +6,16 @@ import Icon from 'astro-icon'
 const { actions, class: classes, ...attrs } = Astro.props
 ---
 <ul
-    class:list={['grid grid-cols-1 lg:grid-cols-2 gap-x-3 items-end', classes]}
+    class:list={['grid grid-cols-1 lg:grid-cols-2 gap-x-3 items-end overflow-clip', classes]}
     {...attrs}>
     {
         actions.map((action: any) => (
-            <li class='group flex items-center justify-center relative'>
+            <li class='group flex items-center justify-center first:h-[280px] last:h-[376px] relative'>
                 <Icon
                     name="slat"
-                    class="absolute inset-x-0 bottom-0 z-10 w-full"
+                    class="z-10 w-full h-full absolute group-first:-bottom-1 group-last:-bottom-2"
                 />
-                <Wrapper class:list="w-full z-20">
+                <Wrapper class:list="w-full z-20 absolute left-0 group-first:pt-16 group-last:pt-20">
                     <BigAction
                         title={ action.title }
                         subtitle={ action.subtitle }
