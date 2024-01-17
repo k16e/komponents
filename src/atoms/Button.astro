@@ -2,7 +2,9 @@
 import { Icon } from 'astro-icon'
 import LinkText from './LinkText.astro'
 
-const { icon, iconPosition, label, color, underbar = false, titleCase = false } = Astro.props
+const {
+    icon, iconPosition, label, color, underbar = false, titleCase = false, class: classes, ...attrs
+} = Astro.props
 ---
 <div
     class:list={[
@@ -10,8 +12,10 @@ const { icon, iconPosition, label, color, underbar = false, titleCase = false } 
         color === 'punch' && 'bg-punch-600 text-white',
         color === 'surface' && 'bg-surface-200 text-surface-800',
         color === 'transparent' && 'bg-transparent',
-        underbar ? '' : ''
-    ]}>
+        underbar ? '' : '',
+        classes
+    ]}
+    { ...attrs }>
     { icon && (
         <Icon
             name={ icon }
