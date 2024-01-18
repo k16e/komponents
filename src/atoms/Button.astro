@@ -8,12 +8,12 @@ const {
 ---
 <div
     class:list={[
-        'px-3 justify-center items-center gap-2 inline-flex pointer-events-none',
+        'justify-center items-center gap-2 inline-flex pointer-events-none',
         color === 'punch' && 'bg-punch-600 text-white',
         color === 'surface' && 'bg-surface-200 text-surface-800',
         color === 'dark' && 'bg-surface-950 text-white',
         color === 'transparent' && 'bg-transparent',
-        responsive ? 'h-[44px] lg:h-12' : 'h-12',
+        responsive ? 'h-[44px] lg:h-12 px-3' : 'h-14 px-5',
         underbar ? '' : '',
         classes
     ]}

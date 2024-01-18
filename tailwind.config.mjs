@@ -7,6 +7,10 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
         extend: {
+            screens: {
+                'xs': '475px',
+                ...defaultTheme.screens
+            },
             fontSize: {
                 sm: ['0.825rem', '1.25rem']
             },
