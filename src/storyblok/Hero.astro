@@ -12,16 +12,16 @@ const { blok } = Astro.props
 <section>
     <Wrapper inner padY="y" padX={ false }>
         <Grid>
-            <div slot='leading' class="space-y-4 md:space-y-6 lg:space-y-10">
+            <div slot='leading' class="space-y-3 md:space-y-5 lg:space-y-9">
                 <BannerTitle
                     title={ blok.title }
                     class:list="text-punch-600"
                 />
                 <BannerSubtitle title={ blok.subtitle }/>
             </div>
-            <div slot="trailing" class="space-y-6 md:space-y-8 lg:space-y-12">
+            <div slot="trailing" class="space-y-7 md:space-y-9 lg:space-y-14">
                 <Copy content={ blok.copy }/>
-                <ul class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-[12px]">
+                <ul class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
                     { blok.links.map((link: any) => (
                         <li class="group">
                             <Anchor

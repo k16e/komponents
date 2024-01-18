@@ -8,7 +8,7 @@ const { cols = 2, inner = true, class: classes, ...attrs } = Astro.props
     {...attrs}>
     <div
         class:list={[
-            'pl-3',
+            'pl-3 pr-3 lg:pr-0',
             cols === 2 && 'w-full lg:w-[640px]',
             inner && 'pr-0 lg:pr-8'
         ]}>
