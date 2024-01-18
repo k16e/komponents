@@ -7,9 +7,8 @@ const
     env = loadEnv('', process.cwd(), 'STORYBLOK'),
     redirectHome = { status: 301, destination: '/' }
 
-// https://astro.build/config
 export default defineConfig({
-    site: 'https://sayings.cc',
+    site: 'https://komponents-v2.netlify.app',
     prefetch: {
         prefetchAll: true,
         defaultStrategy: 'viewport',
