@@ -2,7 +2,7 @@
 const { cols = 2, inner = true, class: classes, ...attrs } = Astro.props
 ---
 <div class:list={[
-    cols === 2 && 'flex flex-col lg:flex-row',
+    cols === 2 && 'flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-0',
     classes
     ]}
     {...attrs}>
@@ -16,7 +16,7 @@ const { cols = 2, inner = true, class: classes, ...attrs } = Astro.props
     </div>
     <div
         class:list={[
-            'pr-3',
+            'pl-3 pr-3 lg:pl-0',
             cols === 2 && 'w-full lg:w-[480px]'
         ]}>
         <slot name="trailing"/>
