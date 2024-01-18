@@ -10,17 +10,17 @@ import ImageSlat from '../blocks/ImageSlat.astro'
 
 const { blok } = Astro.props
 ---
-<section>
+<section class="bg-gradient-to-b from-white via-punch-50 to-white">
     <Wrapper inner padY="y" padX={ false }>
         <Grid>
-            <div slot='leading' class="space-y-3 md:space-y-5 lg:space-y-9">
+            <div slot='leading' class="space-y-4 md:space-y-6 lg:space-y-10">
                 <BannerTitle
                     title={ blok.title }
                     class:list="text-punch-600"
                 />
                 <BannerSubtitle title={ blok.subtitle }/>
             </div>
-            <div slot="trailing" class="space-y-7 md:space-y-9 lg:space-y-14">
+            <div slot="trailing" class="space-y-8 md:space-y-10 lg:space-y-14">
                 <Copy content={ blok.copy }/>
                 <ul class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
                     { blok.links.map((link: any) => (
@@ -42,5 +42,5 @@ const { blok } = Astro.props
             </div>
         </Grid>
     </Wrapper>
-    <ImageSlat images={ blok.images } class="sm:mt-6 lg:mt-8"/>
+    <ImageSlat images={ blok.images } class="sm:mt-8 lg:mt-10"/>
 </section>
