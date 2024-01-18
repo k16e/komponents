@@ -1,0 +1,12 @@
+---
+import Heading from '../atoms/Heading.astro'
+
+const { title, class: classes, ...attrs } = Astro.props
+---
+<div
+    class:list={[
+        'flex items-end',
+        classes
+    ]} {...attrs}>
+	<Heading text={ title } size='6xl' weight='extra' tighten color="surface"/>
+</div>
