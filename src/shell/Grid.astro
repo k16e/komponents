@@ -1,5 +1,5 @@
 ---
-const { cols = 2, class: classes, ...attrs } = Astro.props
+const { cols = 2, inner = true, class: classes, ...attrs } = Astro.props
 ---
 <div class:list={[
     cols === 2 && 'flex flex-col lg:flex-row',
@@ -7,15 +7,18 @@ const { cols = 2, class: classes, ...attrs } = Astro.props
     ]}
     {...attrs}>
     <div
-        class:list={
-            cols === 2 && 'w-full lg:w-[640px]'
-        }>
+        class:list={[
+            'pl-3',
+            cols === 2 && 'w-full lg:w-[640px]',
+            inner && 'pr-0 lg:pr-8'
+        ]}>
         <slot name="leading"/>
     </div>
     <div
-        class:list={
+        class:list={[
+            'pr-3',
             cols === 2 && 'w-full lg:w-[480px]'
-        }>
+        ]}>
         <slot name="trailing"/>
     </div>
 </div>
