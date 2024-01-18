@@ -3,18 +3,19 @@ import BigAction from '../atoms/BigAction.astro'
 import Wrapper from '../shell/Wrapper.astro'
 import Icon from 'astro-icon'
 
-const { actions, class: classes, ...attrs } = Astro.props
+const
+    { actions, class: classes, ...attrs } = Astro.props
 ---
 <ul
     class:list={['grid grid-cols-1 lg:grid-cols-2 gap-x-3 items-end relative lg:static', classes]}
     {...attrs}>
     {
-        actions.map((action: any) => (
+        actions.map((action: any, index: number) => (
             <li
                 class='group flex items-center justify-center h-[144px] sm:h-[192px] lg:first:h-[272px] lg:last:h-[368px] lg:relative lg:overflow-clip'>
                 <a href="/" class="flex items-center h-full w-full">
                     <Icon
-                        name="slat"
+                        name={ index == 0 ? 'slat-leading' : 'slat-trailing' }
                         class="z-10 w-full h-[396px] sm:h-[496px] lg:h-full absolute inset-x-0 group-first:-bottom-1.5 group-last:-bottom-3 group-last:hidden lg:group-last:block"
                     />
                     <Wrapper
