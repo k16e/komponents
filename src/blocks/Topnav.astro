@@ -2,7 +2,9 @@
 import Button from '../atoms/Button.astro'
 import Anchor from '../atoms/Anchor.astro'
 
-const { links } = Astro.props
+const
+    { links } = Astro.props,
+    current = Astro.url.pathname.split('/')[1]
 ---
 <ul class="hidden xl:flex text-surface-700">
 	{
@@ -16,9 +18,9 @@ const { links } = Astro.props
 					}`}
                     hover="accent">
 					<Button
-						label={link.title}
-						color={link.color}
-                        underbar={link.gets_underbar}
+						label={ link.title }
+						color={ link.color }
+                        underbar={ link.gets_underbar }
 					/>
 				</Anchor>
 			</li>
