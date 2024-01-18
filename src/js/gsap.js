@@ -1,6 +1,6 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { $ } from './snips'
+import { _$ } from './snips'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -33,7 +33,7 @@ const
 
     // Islands
     Silence = () => {
-        if (!$('[data-gsap="silence"]')) return
+        if (!_$('[data-gsap="silence"]')) return
         gsap.from('[data-gsap="silence"]', {
             scrollTrigger: {
                 trigger: '[data-gsap="silence"]',
@@ -47,12 +47,12 @@ const
         })
     },
     runAnimations = () => {
-        $('[data-gsap="logo"]') && tl.from('[data-gsap="logo"]', dropIn)
-        $('[data-gsap="rise-in"]') && tl.from('[data-gsap="rise-in"]', {
+        _$('[data-gsap="logo"]') && tl.from('[data-gsap="logo"]', dropIn)
+        _$('[data-gsap="rise-in"]') && tl.from('[data-gsap="rise-in"]', {
             ...riseIn,
-            onComplete: () => $('[data-wrapper="main"]').removeAttribute('style')
+            onComplete: () => _$('[data-wrapper="main"]').removeAttribute('style')
         })
-        $('[data-gsap="list-fly-in"]') && gsap.utils.toArray('[data-gsap="list-fly-in"]').forEach(el => {
+        _$('[data-gsap="list-fly-in"]') && gsap.utils.toArray('[data-gsap="list-fly-in"]').forEach(el => {
             tl.from(el, {
                 ...flyIn,
                 stagger: {
