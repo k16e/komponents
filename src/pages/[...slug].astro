@@ -28,7 +28,8 @@ const
     { slug } = Astro.params,
     storyblokApi = useStoryblokApi(),
     { data } = await storyblokApi.get(`cdn/stories/${slug === undefined ? 'home' : slug}`, {
-        version: import.meta.env.DEV ? 'draft' : 'published'
+        version: import.meta.env.DEV ? 'draft' : 'published',
+        resolve_links: 'url'
     }),
     page = data.story,
     content = page.content,

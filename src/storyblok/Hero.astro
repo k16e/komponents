@@ -4,6 +4,8 @@ import BannerTitle from '../blocks/BannerTitle.astro'
 import BannerSubtitle from '../blocks/BannerSubtitle.astro'
 import Grid from '../shell/Grid.astro'
 import Copy from '../atoms/Copy.astro'
+import Anchor from '../atoms/Anchor.astro'
+import Button from '../atoms/Button.astro'
 
 const { blok } = Astro.props
 ---
@@ -17,8 +19,26 @@ const { blok } = Astro.props
                 />
                 <BannerSubtitle title={ blok.subtitle }/>
             </div>
-            <div slot="trailing">
+            <div slot="trailing" class="space-y-6 md:space-y-8 lg:space-y-12">
                 <Copy content={ blok.copy }/>
+                <ul class="flex space-x-[12px]">
+                    {
+                        blok.links.map((link: any) => (
+                            <li class="group">
+                                <Anchor
+                                    href={ `/${link.link.story.full_slug === 'home' ? '' : link.link.story.full_slug}` }
+                                    hover="shadow">
+                                    <Button
+                                        icon={ link.icon }
+                                        label={ link.title }
+                                        iconPosition={ link.icon_position }
+                                        color={ link.color }
+                                    />
+                                </Anchor>
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
         </Grid>
     </Wrapper>
