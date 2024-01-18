@@ -6,6 +6,7 @@ import Grid from '../shell/Grid.astro'
 import Copy from '../atoms/Copy.astro'
 import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
+import ImageSlat from '../blocks/ImageSlat.astro'
 
 const { blok } = Astro.props
 ---
@@ -41,4 +42,5 @@ const { blok } = Astro.props
             </div>
         </Grid>
     </Wrapper>
+    <ImageSlat images={ blok.images } class="mt-5 sm:mt-7 lg:mt-9"/>
 </section>
