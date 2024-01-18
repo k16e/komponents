@@ -1,10 +1,14 @@
 ---
 import Wrapper from '../shell/Wrapper.astro'
+import BannerTitle from '../blocks/BannerTitle.astro'
 
 const { blok } = Astro.props
 ---
 <section>
-    <Wrapper inner>
-        Hero
+    <Wrapper inner padY="y">
+        <BannerTitle
+            title={ blok.title }
+            class:list="text-punch-600"
+        />
     </Wrapper>
 </section>

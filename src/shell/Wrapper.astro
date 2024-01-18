@@ -3,8 +3,9 @@ const {
     class: classes,
     outer = true,
     centered = true,
-    pad = true,
+    padX = true,
     inner,
+    padY = '',
     ...props
 } = Astro.props
 ---
@@ -13,8 +14,9 @@ const {
     class:list={[
         (outer && !inner) && 'max-w-5xl lg:max-w-screen-xl',
         centered && 'mx-auto',
-        pad && 'px-3',
+        padX && 'px-3',
         inner && 'max-w-4xl lg:max-w-[70rem]',
+        padY === 'y' && 'py-10 lg:py-20',
         classes
     ]}>
     <slot/>
