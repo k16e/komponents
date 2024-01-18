@@ -3,16 +3,17 @@ import { Icon } from 'astro-icon'
 import LinkText from './LinkText.astro'
 
 const {
-    icon, iconPosition, label, color, underbar = false, titleCase = false, class: classes, ...attrs
+    icon, iconPosition, label, color, underbar = false, titleCase = false, responsive, class: classes, ...attrs
 } = Astro.props
 ---
 <div
     class:list={[
-        'h-[44px] lg:h-12 px-3 justify-center items-center gap-2 inline-flex pointer-events-none',
+        'px-3 justify-center items-center gap-2 inline-flex pointer-events-none',
         color === 'punch' && 'bg-punch-600 text-white',
         color === 'surface' && 'bg-surface-200 text-surface-800',
         color === 'dark' && 'bg-surface-950 text-white',
         color === 'transparent' && 'bg-transparent',
+        responsive ? 'h-[44px] lg:h-12' : 'h-12',
         underbar ? '' : '',
         classes
     ]}
