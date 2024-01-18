@@ -1,0 +1,21 @@
+---
+const { cols = 2, class: classes, ...attrs } = Astro.props
+---
+<div class:list={[
+    cols === 2 && 'flex flex-col lg:flex-row',
+    classes
+    ]}
+    {...attrs}>
+    <div
+        class:list={
+            cols === 2 && 'w-full lg:w-[640px]'
+        }>
+        <slot name="leading"/>
+    </div>
+    <div
+        class:list={
+            cols === 2 && 'w-full lg:w-[480px]'
+        }>
+        <slot name="trailing"/>
+    </div>
+</div>
