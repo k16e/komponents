@@ -12,7 +12,8 @@ export default {
                 ...defaultTheme.screens
             },
             fontSize: {
-                sm: ['0.825rem', '1.25rem']
+                sm: ['0.825rem', '1.25rem'],
+                md: ['1.0925rem', '1.65rem'],
             },
             fontFamily: {
                 sans: ['Kumbh Sans Variable, sans-serif', ...defaultTheme.fontFamily.sans],
@@ -34,7 +35,7 @@ export default {
                 },
                 surface: {
                     '50': '#f9fafa',
-                    '100': '#f3f4f4',
+                    '100': '#e7e7e7',
                     '200': '#e5e9e9',
                     '300': '#d0d6d7',
                     '400': '#b4bcbe',
