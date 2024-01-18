@@ -3,37 +3,41 @@ import { useStoryblokApi } from '@storyblok/astro'
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import Layout from '../layouts/Layout.astro'
 
+// Let Astro know where to look to build your routes
 export async function getStaticPaths() {
     const
         storyblokApi = useStoryblokApi(),
-        { data: { links } } = await storyblokApi.get('cdn/links', {
+        { data } = await storyblokApi.get('cdn/links', {
             version: import.meta.env.DEV ? 'draft' : 'published'
-        }),
-        filteredLinks = Object.values(links).filter((link: any) => link.slug.includes('pages/'))
+        })
 
-    return filteredLinks.map((l: any) => {
+    let links = data.links
+
+    links = Object.values(links)
+
+    return links.map((link: any) => {
         return {
             params: {
-                slug: l.slug.split('/')[1]
+                slug: link.slug === 'home' ? undefined : link.slug,
             }
         }
     })
 }
 
+// Pull slug from the routes and corresponding content/blocks from Storyblok
 const
     { slug } = Astro.params,
     storyblokApi = useStoryblokApi(),
-    { data: pageData } = await storyblokApi.get(`cdn/stories/pages/${slug}`, {
+    { data } = await storyblokApi.get(`cdn/stories/${slug === undefined ? 'home' : slug}`, {
         version: import.meta.env.DEV ? 'draft' : 'published'
     }),
-    page = pageData.story,
-    meta = page.content.meta[0]
+    page = data.story,
+    content = page.content,
+    meta = content.meta[0]
 ---
 <Layout
     pageTitle={ meta.title }
     pageDescription={ meta.description }
     pageThumbnail={ meta.image.filename }>
-    <StoryblokComponent
-        blok={ page.content }
-    />
+    <StoryblokComponent blok={ content }/>
 </Layout>
