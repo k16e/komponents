@@ -38,26 +38,24 @@ const
 </header>
 
 <script>
-    import { headerUp } from '../js/store'
+    import { $headerUp, $activateHeader, $deactivateHeader } from '../js/store'
     import { _$, _translateDown } from '../js/snips'
 
     const
         header = _$('header'),
         height = header.getBoundingClientRect().height,
-        activeClasses = ['bg-white', 'shadow', 'backdrop-filter', 'backdrop-blur-lg', 'bg-opacity-90'],
-        activateHeader = () => headerUp.set(true),
-        deactivateHeader = () => headerUp.set(false)
+        activeClasses = ['bg-white', 'shadow', 'backdrop-filter', 'backdrop-blur-lg', 'bg-opacity-90']
 
-    headerUp.subscribe(active => {
-        active ? header.classList.add(...activeClasses) : header.classList.remove(...activeClasses)
+    $headerUp.subscribe(value => {
+        value ? header.classList.add(...activeClasses) : header.classList.remove(...activeClasses)
     })
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > height) {
-            activateHeader()
+            $activateHeader()
             header.classList.remove(..._translateDown())
         } else {
-            deactivateHeader()
+            $deactivateHeader()
             header.classList.add(..._translateDown())
         }
     })
