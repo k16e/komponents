@@ -21,7 +21,7 @@ export default defineConfig({
             components: {
                 page: 'storyblok/Page',
                 hero: 'storyblok/Hero',
-                flipphone: 'storyblok/FlipPhone',
+                flipPhone: 'storyblok/FlipPhone',
             }
         })
     ],
