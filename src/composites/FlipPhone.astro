@@ -28,14 +28,16 @@ const {
             </div>
             <div
                 slot="leading"
-                class="lg:bg-white lg:shadow-lg lg:p-12 lg:h-[640px] overflow-clip flex flex-col justify-between relative">
-                <div class="space-y-14 sm:space-y-16">
+                class="lg:bg-white lg:shadow-lg lg:p-12 lg:h-[640px] overflow-clip flex flex-col justify-between">
+                <div class="space-y-14 sm:space-y-16 relative">
                     { blok.banners.map(entry => (
-                        <BannerEntry
-                            subtitle={ entry.subtitle }
-                            title={ entry.title }
-                            copy={ entry.copy }
-                        />
+                        <div class="lg:absolute top-0 left-0 [&:nth-child(2)]:lg:hidden last:lg:hidden">
+                            <BannerEntry
+                                subtitle={ entry.subtitle }
+                                title={ entry.title }
+                                copy={ entry.copy }
+                            />
+                        </div>
                     )) }
                 </div>
                 <div aria-hidden="true" class="hidden lg:block">
