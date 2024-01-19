@@ -2,7 +2,7 @@
 import Heading from '../atoms/Heading.astro'
 
 const {
-    title, showSubtitle, showTitle, showCopy,
+    subtitle, title, showSubtitle, showTitle, showCopy,
     class: classes, ...attrs
 } = Astro.props
 ---
@@ -11,7 +11,7 @@ const {
         'flex items-end',
         classes
     ]} {...attrs}>
-	{ showSubtitle && <Heading text={ title } size='6xl' weight='medium' loosen color="surface"/> }
+	{ showSubtitle && <Heading text={ subtitle } size="sm" weight="medium" color="surface" uppercase loosen/> }
     {
         showTitle && (
             <div>

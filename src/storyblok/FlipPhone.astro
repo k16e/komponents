@@ -1,6 +1,13 @@
 ---
-const { blok } = Astro.props
+import Wrapper from '../shell/Wrapper.astro'
+import { _gradientSurface } from '../js/snips'
+
+const {
+    blok
+} = Astro.props
 ---
-<section>
-    
+<section class:list={[ ..._gradientSurface() ]}>
+    <Wrapper inner padY="y">
+
+    </Wrapper>
 </section>
