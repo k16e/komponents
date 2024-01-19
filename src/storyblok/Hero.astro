@@ -7,11 +7,11 @@ import Copy from '../atoms/Copy.astro'
 import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
 import ImageSlat from '../blocks/ImageSlat.astro'
-import { _padB } from '../js/snips'
+import { _padB, _gradientLight } from '../js/snips'
 
 const { blok } = Astro.props
 ---
-<section class="bg-gradient-to-b from-white via-punch-50 to-white">
+<section class:list={[ _gradientLight() ]}>
     <Wrapper inner padY="y" padX={ false }>
         <Grid>
             <div slot='leading' class="space-y-4 md:space-y-6 lg:space-y-10">
