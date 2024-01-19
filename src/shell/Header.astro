@@ -48,6 +48,10 @@ const
     })
 
     window.addEventListener('scroll', () => {
-        window.scrollY > height ? activateHeader() : deactivateHeader()
+        if (window.scrollY > height) {
+            activateHeader()
+        } else {
+            deactivateHeader()
+        }
     })
 </script>
