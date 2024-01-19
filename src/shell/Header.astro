@@ -40,6 +40,7 @@ const
 <script>
     import { topbar, setTopbar, unsetTopbar } from '../js/store'
     import { _$, _translateDown } from '../js/snips'
+    import { Scroll } from '../js/scroll'
 
     const
         header = _$('header'),
@@ -52,12 +53,13 @@ const
         deactivate = () => {
             unsetTopbar()
             header.classList.add(..._translateDown())
-        }
+        },
+        toggle = () => (window.scrollY > height) ? activate() : deactivate()
 
     topbar.subscribe(value => {
         value ? header.classList.add(...activeClasses) : header.classList.remove(...activeClasses)
     })
 
     window.scrollY !== 0 ? activate() : deactivate()
-    window.addEventListener('scroll', () => (window.scrollY > height) ? activate() : deactivate())
+    Scroll(toggle)
 </script>
