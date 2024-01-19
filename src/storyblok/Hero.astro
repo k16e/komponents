@@ -7,6 +7,7 @@ import Copy from '../atoms/Copy.astro'
 import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
 import ImageSlat from '../blocks/ImageSlat.astro'
+import { _padB } from '../js/snips'
 
 const { blok } = Astro.props
 ---
@@ -42,5 +43,5 @@ const { blok } = Astro.props
             </div>
         </Grid>
     </Wrapper>
-    <ImageSlat images={ blok.images } class="sm:mt-8 lg:mt-10"/>
+    <ImageSlat images={ blok.images } class:list={['sm:mt-8 lg:mt-10', _padB()]}/>
 </section>

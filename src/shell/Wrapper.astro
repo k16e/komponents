@@ -1,4 +1,8 @@
 ---
+import {
+    _padB, _padY
+} from '../js/snips'
+
 const {
     class: classes,
     outer = true,
@@ -6,6 +10,7 @@ const {
     padX = true,
     inner,
     padY = '',
+    padB = '',
     ...props
 } = Astro.props
 ---
@@ -16,7 +21,8 @@ const {
         centered && 'mx-auto',
         padX && 'px-4',
         inner && 'max-w-2xl md:max-w-3xl lg:max-w-screen-lg xl:max-w-[70rem]',
-        padY === 'y' && 'py-12 lg:py-24',
+        padY === 'y' && _padY(),
+        padB === 'b' && _padB(),
         classes
     ]}>
     <slot/>
