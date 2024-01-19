@@ -12,7 +12,7 @@ export function Scroll(...scrollEvents) {
                 ticking = false
             })
 
-            ticking = false
+            ticking = true
         }
     })
 }
