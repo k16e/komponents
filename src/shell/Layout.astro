@@ -61,6 +61,7 @@ const site = settings.story.content
     import runAlpine from '../js/alpine'
 	import Swup from 'swup'
 	import Astrolog from '../js/astrolog'
+    import Header from '../js/header'
 
 	const swup = new Swup({
 		animationSelector: '[class*="swup-"]'
@@ -68,11 +69,12 @@ const site = settings.story.content
 
 	document.addEventListener('DOMContentLoaded', () => {
 		once()
+        init()
 	})
 	swup.hooks.on('page:view', () => init())
 
 	function init() {
-		console.log('init() ran')
+        Header()
 	}
 
 	function once() {
