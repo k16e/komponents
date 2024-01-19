@@ -1,5 +1,5 @@
 ---
-const { cols = 2, inner = true, order, class: classes, ...attrs } = Astro.props
+const { cols = 2, inner = true, flipped, class: classes, ...attrs } = Astro.props
 ---
 <div
     class:list={[
@@ -12,7 +12,7 @@ const { cols = 2, inner = true, order, class: classes, ...attrs } = Astro.props
             'pl-3 pr-3 lg:pr-0',
             cols === 2 && 'w-full lg:w-[640px]',
             inner && 'pr-0 lg:pr-8',
-            order === 2 ? 'order-2' : 'order-1'
+            flipped && 'order-2'
         ]}>
         <slot name="leading"/>
     </div>
@@ -20,7 +20,7 @@ const { cols = 2, inner = true, order, class: classes, ...attrs } = Astro.props
         class:list={[
             'pl-3 pr-3 lg:pl-0',
             cols === 2 && 'w-full lg:w-[480px]',
-            order === 1 ? 'order-1' : 'order-2',
+            flipped && 'order-1',
             classes
         ]}>
         <slot name="trailing"/>
