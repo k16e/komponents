@@ -22,11 +22,12 @@ const
     _translateDown = () => new Array('translate-y-1.5', 'lg:translate-y-3'),
     _padY = () => new Array('py-12', 'lg:py-24'),
     _padB = () => new Array('pb-12', 'lg:pb-24'),
+    _padT = () => new Array('pt-12', 'lg:pt-24'),
     _gradientLight = () => new Array('bg-gradient-to-b', 'from-white', 'via-punch-50', 'to-white'),
     _gradientSurface = () => new Array('bg-gradient-to-b', 'from-white', 'via-surface-200', 'to-white')
 
 
 // Exports
 export {
-    _body, _slugify, _$, _$$, _transition, _padY, _padB, _translateDown, _gradientLight, _gradientSurface
+    _body, _slugify, _$, _$$, _transition, _padY, _padB, _padT, _translateDown, _gradientLight, _gradientSurface
 }

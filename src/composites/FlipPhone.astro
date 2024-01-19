@@ -11,7 +11,7 @@ const {
 } = Astro.props
 ---
 <section class:list={[ ..._gradientSurface() ]}>
-    <Wrapper inner padY="y">
+    <Wrapper inner padY="y" padX={ false }>
         <Grid flipped>
             <div slot="trailing" class="space-y-8">
                 <SectionTitle
@@ -20,12 +20,29 @@ const {
                 />
                 <div class="hidden lg:flex flex-col space-y-16">
                     { blok.banners.map(entry => (
-                        <Heading text={ entry.subtitle } size="4xl" weight="extra" color="surface" tighten/>
+                        <button>
+                            <Heading text={ entry.subtitle } size="4xl" weight="extra" color="surface" tighten/>
+                        </button>
                     )) }
                 </div>
             </div>
-            <div slot="leading" class="lg:bg-white lg:shadow-lg lg:p-12 lg:min-h-[640px]">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nihil est perferendis minima earum iusto accusantium minus ullam voluptatibus sequi rem veniam natus sit a alias, molestias accusamus placeat vel?
+            <div
+                slot="leading"
+                class="lg:bg-white lg:shadow-lg lg:p-12 lg:h-[640px] overflow-clip flex flex-col justify-between relative">
+                <div class="space-y-12">
+                    { blok.banners.map(entry => (
+                        <BannerEntry
+                            subtitle={ entry.subtitle }
+                            title={ entry.title }
+                            copy={ entry.copy }
+                        />
+                    )) }
+                </div>
+                <div aria-hidden="true" class="hidden lg:block">
+                    <div>
+                        A
+                    </div>
+                </div>
             </div>
         </Grid>
     </Wrapper>
