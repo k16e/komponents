@@ -1,6 +1,7 @@
 import { atom } from 'nanostores'
+import { persistentAtom } from '@nanostores/persistent'
 
-export const $headerUp = atom(false)
+export const topbar = atom(false)
 
-export function $activateHeader () { $headerUp.set(true) }
-export function $deactivateHeader () { $headerUp.set(false) }
+export function setTopbar () { topbar.set(true) }
+export function unsetTopbar () { topbar.set(false) }

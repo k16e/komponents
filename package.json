@@ -15,6 +15,7 @@
         "@astrojs/tailwind": "^5.1.0",
         "@fontsource-variable/kumbh-sans": "^5.0.14",
         "@fontsource-variable/plus-jakarta-sans": "^5.0.19",
+        "@nanostores/persistent": "^0.9.1",
         "@storyblok/astro": "^4.0.0",
         "@swup/a11y-plugin": "^4.5.0",
         "@swup/head-plugin": "^2.1.2",

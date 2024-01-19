@@ -38,25 +38,26 @@ const
 </header>
 
 <script>
-    import { $headerUp, $activateHeader, $deactivateHeader } from '../js/store'
+    import { topbar, setTopbar, unsetTopbar } from '../js/store'
     import { _$, _translateDown } from '../js/snips'
 
     const
         header = _$('header'),
         height = header.getBoundingClientRect().height,
-        activeClasses = ['bg-white', 'shadow', 'backdrop-filter', 'backdrop-blur-lg', 'bg-opacity-90']
+        activeClasses = ['bg-white', 'shadow', 'backdrop-filter', 'backdrop-blur-lg', 'bg-opacity-90'],
+        activate = () => {
+            setTopbar()
+            header.classList.remove(..._translateDown())
+        },
+        deactivate = () => {
+            unsetTopbar()
+            header.classList.add(..._translateDown())
+        }
 
-    $headerUp.subscribe(value => {
+    topbar.subscribe(value => {
         value ? header.classList.add(...activeClasses) : header.classList.remove(...activeClasses)
     })
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > height) {
-            $activateHeader()
-            header.classList.remove(..._translateDown())
-        } else {
-            $deactivateHeader()
-            header.classList.add(..._translateDown())
-        }
-    })
+    window.scrollY !== 0 ? activate() : deactivate()
+    window.addEventListener('scroll', () => (window.scrollY > height) ? activate() : deactivate())
 </script>
