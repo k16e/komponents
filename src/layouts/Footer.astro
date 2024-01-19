@@ -11,19 +11,21 @@ const
     { legalName, legalLinks, social, actions } = Astro.props
 ---
 <footer class:list={['relative', ..._padT()]}>
-    <TwinActions actions={ actions }/>
-    <div class="flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/60 py-8 lg:py-0 relative z-30">
-        <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:col-span-2 items-center">
-                <div class="flex items-center space-x-4">
-                    <Icon name="icon" class="w-8 text-white"/>
-                    <small class="text-sm text-white/65">
-                        Copyright { year } { legalName }
-                    </small>
+    <div class:list={[..._padT()]}>
+        <TwinActions actions={ actions }/>
+        <div class="flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/60 py-8 lg:py-0 relative z-30">
+            <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:col-span-2 items-center">
+                    <div class="flex items-center space-x-4">
+                        <Icon name="icon" class="w-8 text-white"/>
+                        <small class="text-sm text-white/65">
+                            Copyright { year } { legalName }
+                        </small>
+                    </div>
+                    <Legal links={ legalLinks }/>
                 </div>
-                <Legal links={ legalLinks }/>
-            </div>
-            <Social links={ social } class:list="lg:justify-self-end"/>
-        </Wrapper>
+                <Social links={ social } class:list="lg:justify-self-end"/>
+            </Wrapper>
+        </div>
     </div>
 </footer>

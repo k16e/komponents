@@ -13,7 +13,7 @@ const {
 <section class:list={[ ..._gradientSurface() ]}>
     <Wrapper inner padY="y" padX={ false }>
         <Grid flipped>
-            <div slot="trailing" class="space-y-8">
+            <div slot="trailing" class="space-y-10">
                 <SectionTitle
                     title={ blok.title }
                     class:list="opacity-60"
@@ -29,7 +29,7 @@ const {
             <div
                 slot="leading"
                 class="lg:bg-white lg:shadow-lg lg:p-12 lg:h-[640px] overflow-clip flex flex-col justify-between relative">
-                <div class="space-y-12">
+                <div class="space-y-14 sm:space-y-16">
                     { blok.banners.map(entry => (
                         <BannerEntry
                             subtitle={ entry.subtitle }
