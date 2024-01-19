@@ -17,12 +17,14 @@ const _slugify = str => {
     return str
 }
 
-const _transition = () => new Array('transition', 'duration-300', 'ease-out')
-const _padY = () => new Array('py-12', 'lg:py-24')
-const _padB = () => new Array('pb-12', 'lg:pb-24')
+const
+    _transition = () => new Array('transition', 'duration-300', 'ease-out'),
+    _translateDown = () => new Array('translate-y-1.5', 'lg:translate-y-3'),
+    _padY = () => new Array('py-12', 'lg:py-24'),
+    _padB = () => new Array('pb-12', 'lg:pb-24')
 
 
 // Exports
 export {
-    _body, _slugify, _$, _$$, _transition, _padY, _padB
+    _body, _slugify, _$, _$$, _transition, _padY, _padB, _translateDown
 }
