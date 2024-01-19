@@ -11,7 +11,7 @@ const
     } = Astro.props
 ---
 <header
-    class:list={[ classes, 'z-50 fixed top-0 inset-x-0 transition duration-300' ]}
+    class:list={[ classes, 'z-50 fixed top-0 inset-x-0 transition duration-300 py-2 translate-y-3' ]}
     data-main-header
     { ...attrs }>
     <Wrapper class:list="flex items-center justify-between h-full !pr-0">
@@ -50,8 +50,10 @@ const
     window.addEventListener('scroll', () => {
         if (window.scrollY > height) {
             activateHeader()
+            header.classList.remove('translate-y-3')
         } else {
             deactivateHeader()
+            header.classList.add('translate-y-3')
         }
     })
 </script>

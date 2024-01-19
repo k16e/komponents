@@ -30,12 +30,11 @@ const
         data-body-exit>
         <Header
             title={ site.title }
-            class:list="h-16 sm:h-20 lg:h-24"
             contactActions={ site.contact_actions[0].links }
             topnavLinks={ site.topnav }
         />
 		<main
-            class="flex-1 swup-in mt-20 sm:mt-24"
+            class="flex-1 swup-in pt-20 sm:pt-24"
             id="swup"
             tabindex="-1">
             <TitleHidden title={ pageTitle }/>
@@ -75,7 +74,7 @@ const
 	swup.hooks.on('page:view', () => init())
 
 	function init() {
-        
+
 	}
 
 	function once() {
