@@ -1,4 +1,4 @@
-export function Scroll(...scrollEvents) {
+export default function Scroll(...scrollEvents) {
     let
         lastKnownScrollPosition = 0,
         ticking = false
