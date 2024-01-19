@@ -7,13 +7,16 @@ import Footer from './Footer.astro'
 import { useStoryblokApi } from '@storyblok/astro'
 import TitleHidden from '../atoms/TitleHidden.astro'
 
-const { pageTitle, pageDescription, pageThumbnail } = Astro.props
-const storyblokApi = useStoryblokApi()
-const { data: settings } = await storyblokApi.get('cdn/stories/settings', {
-    version: import.meta.env.DEV ? 'draft' : 'published',
-    resolve_links: 'url'
-})
-const site = settings.story.content
+const
+    {
+        pageTitle, pageDescription, pageThumbnail
+    } = Astro.props,
+    storyblokApi = useStoryblokApi(),
+    { data: settings } = await storyblokApi.get('cdn/stories/settings', {
+        version: import.meta.env.DEV ? 'draft' : 'published',
+        resolve_links: 'url'
+    }),
+    site = settings.story.content
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth bg-surface-950">
@@ -58,10 +61,8 @@ const site = settings.story.content
 </style>
 
 <script>
-    import runAlpine from '../js/alpine'
 	import Swup from 'swup'
 	import Astrolog from '../js/astrolog'
-    import Header from '../js/header'
 
 	const swup = new Swup({
 		animationSelector: '[class*="swup-"]'
@@ -74,11 +75,10 @@ const site = settings.story.content
 	swup.hooks.on('page:view', () => init())
 
 	function init() {
-        Header()
+        
 	}
 
 	function once() {
-        runAlpine()
 		Astrolog()
 	}
 </script>
