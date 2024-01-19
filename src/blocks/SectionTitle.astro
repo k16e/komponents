@@ -1,0 +1,11 @@
+---
+import Heading from '../atoms/Heading.astro'
+import Icon from 'astro-icon'
+
+const { title, showSlat = true, class: classes, ...attrs } = Astro.props
+---
+<div
+    class:list={['flex items-end space-x-2', classes ]} {...attrs}>
+    { showSlat && <Icon name="slat-leadingbar" class="w-[24px] h-[4px]"/> }
+	<Heading text={ title } level="h2" size="md" weight='bold' tighten color="surface"/>
+</div>

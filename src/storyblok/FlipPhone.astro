@@ -1,5 +1,8 @@
 ---
 import Wrapper from '../shell/Wrapper.astro'
+import Grid from '../shell/Grid.astro'
+import SectionTitle from '../blocks/SectionTitle.astro'
+import BannerEntry from '../blocks/BannerEntry.astro'
 import { _gradientSurface } from '../js/snips'
 
 const {
@@ -8,6 +11,16 @@ const {
 ---
 <section class:list={[ ..._gradientSurface() ]}>
     <Wrapper inner padY="y">
-
+        <Grid>
+            <div slot="leading" class="">
+                <SectionTitle
+                    title={ blok.title }
+                    class:list="opacity-70"
+                />
+            </div>
+            <div slot="trailing" class="">
+                B
+            </div>
+        </Grid>
     </Wrapper>
 </section>
