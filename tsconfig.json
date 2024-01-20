@@ -4,5 +4,8 @@
         "noImplicitAny": false,
         "checkJs": false,
         "skipLibCheck": true
+    },
+    "paths": {
+        "@components/*": ["./components/*"]
     }
 }

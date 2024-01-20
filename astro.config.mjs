@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config'
+import { loadEnv } from 'vite'
 import storyblok from '@storyblok/astro'
 import tailwind from '@astrojs/tailwind'
-import { loadEnv } from 'vite'
 
 const
     env = loadEnv('', process.cwd(), 'STORYBLOK'),
@@ -23,7 +23,7 @@ export default defineConfig({
                 hero: 'composites/Hero',
                 flipPhone: 'composites/FlipPhone',
             }
-        })
+        }),
     ],
     redirects: {},
     image: {

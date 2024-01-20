@@ -54,17 +54,15 @@ const
 	html.is-animating .swup-in { @apply opacity-0 scale-[.9999] translate-y-3 ease-in; }
 	.swup-progress-bar { @apply h-0.5 bg-punch-600 dark:bg-punch-300; }
 	main:focus { outline: none; }
-    button {
-        text-align: inherit
-    }
-	[astro-icon] {
+    button { text-align: inherit; }
+	svg {
 		@apply flex-shrink-0 pointer-events-none fill-current;
 	}
 </style>
 
 <script>
 	import Swup from 'swup'
-	import Astrolog from '../js/astrolog'
+	import Astrolog from '../scripts/astrolog'
 
 	const swup = new Swup({
 		animationSelector: '[class*="swup-"]'

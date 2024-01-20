@@ -1,9 +1,9 @@
 ---
 import Wrapper from './Wrapper.astro'
-import { Icon } from 'astro-icon'
+import Icon from '../atoms/Icon.astro'
 import ContactActions from '../blocks/ContactActions.astro'
 import Topnav from '../blocks/Topnav.astro'
-import { _transition, _translateDown } from '../js/snips'
+import { _transition, _translateDown } from '../scripts/snips'
 
 const
     {
@@ -23,7 +23,7 @@ const
         <div class="flex items-center space-x-10">
             <a href="/" class="flex">
                 <Icon name="icon" class="w-9 lg:hidden text-punch-600"/>
-                <Icon name="logo" class="h-9 hidden lg:block"/>
+                <Icon name="logo" class="h-10 hidden lg:block"/>
                 <span class='sr-only'>Komponents</span>
             </a>
             <Topnav links={ topnavLinks }/>
@@ -38,9 +38,9 @@ const
 </header>
 
 <script>
-    import { topbar, setTopbar, unsetTopbar } from '../js/store'
-    import { _$, _translateDown } from '../js/snips'
-    import Scroll from '../js/scroll'
+    import { topbar, setTopbar, unsetTopbar } from '../scripts/store'
+    import { _$, _translateDown } from '../scripts/snips'
+    import Scroll from '../scripts/scroll'
 
     const
         header = _$('header'),

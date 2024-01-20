@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon'
+import Icon from '../atoms/Icon.astro'
 import LinkText from './LinkText.astro'
 
 const {
@@ -13,7 +13,7 @@ const {
         color === 'surface' && 'bg-surface-100 text-surface-800',
         color === 'dark' && 'bg-surface-950 text-white',
         color === 'transparent' && 'bg-transparent',
-        responsive ? 'h-[44px] lg:h-12 px-3' : 'h-[52px] px-5',
+        responsive ? 'h-11 px-3' : 'h-[52px] px-5',
         underbar ? '' : '',
         classes
     ]}

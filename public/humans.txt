@@ -14,3 +14,4 @@ Code Repository: Github
 Web: HTML, CSS, & JS
 
 /* THANKS */
+- Icons => David Warrington [https://ellodave.dev/blog/article/using-svgs-as-astro-components-and-inline-css/]
