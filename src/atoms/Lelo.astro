@@ -1,0 +1,12 @@
+---
+import Icon from './Icon.astro'
+
+const {
+    class: classes, ...attrs
+} = Astro.props
+---
+<div
+    class:list={[ 'absolute inset-0', classes ]}
+    { ...attrs }>
+    <Icon name="lelo" class="w-full h-full"/>
+</div>

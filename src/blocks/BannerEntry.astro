@@ -4,7 +4,7 @@ import Copy from '../atoms/Copy.astro'
 import Icon from '../atoms/Icon.astro'
 
 const {
-    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy,
+    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'surface', slatColor = 'punch', hLevel = 3,
     class: classes, ...attrs
 } = Astro.props
 ---
@@ -16,14 +16,27 @@ const {
 	<div class="flex flex-col gap-y-4">
         {
             showSubtitle && (
-                <Heading text={ subtitle } size="sm" weight="semi" color="surface" uppercase loosen class="opacity-60"/>
+                <Heading text={ subtitle } size="sm" weight="semi" color={ color } uppercase loosen class="opacity-60"/>
             )
         }
         {
             showTitle && (
                 <div class="flex space-x-4 items-end">
-                    { showSlat && <Icon name="slat-leadingbar" class="w-[48px] h-[6px] text-punch-600"/> }
-                    <Heading text={ title } level="h3" size="3xl" weight="extra" tighten color="surface"/>
+                    {
+                        showSlat &&
+                            <Icon
+                                name="slat-leadingbar"
+                                class:list={[
+                                    hLevel === 3 && 'w-[32px] h-[5px] lg:w-[48px] lg:h-[6px]',
+                                    hLevel === 4 && 'w-[36px] h-[7px] lg:w-[56px] lg:h-[8px]',
+                                    slatColor === 'punch' && 'text-punch-600',
+                                    slatColor === 'surface' && 'text-surface-950',
+                                    slatColor === 'white' && 'text-white'
+                                ]}
+                            />
+                    }
+                    { hLevel === 3 && <Heading text={ title } level="h3" size="3xl" weight="extra" tighten color={ color }/> }
+                    { hLevel === 4 && <Heading text={ title } level="h2" size="4xl" weight="extra" tighten color={ color }/> }
                 </div>
             )
         }
@@ -31,7 +44,7 @@ const {
     <div>
         {
             showCopy && (
-                <Copy content={ copy }/>
+                <Copy content={ copy } color={ color }/>
             )
         }
     </div>
