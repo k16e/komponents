@@ -22,6 +22,7 @@ export default defineConfig({
                 page: 'composites/Page',
                 hero: 'composites/Hero',
                 flipPhone: 'composites/FlipPhone',
+                callout: 'composites/Callout',
             }
         }),
     ],

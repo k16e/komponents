@@ -1,0 +1,14 @@
+---
+import Wrapper from '../layouts/Wrapper.astro'
+import BannerEntry from '../blocks/BannerEntry.astro'
+import { _gradientLight } from '../scripts/snips'
+
+const {
+    blok
+} = Astro.props
+---
+<section class:list={[ ..._gradientLight() ]}>
+    <Wrapper inner padY="y" padX={ false }>
+
+    </Wrapper>
+</section>
