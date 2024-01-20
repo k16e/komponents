@@ -2,21 +2,24 @@
 import Heading from '../atoms/Heading.astro'
 import Copy from '../atoms/Copy.astro'
 import Icon from '../atoms/Icon.astro'
+import { _empty } from '../scripts/snips'
+import Anchor from '../atoms/Anchor.astro'
+import Button from '../atoms/Button.astro'
 
 const {
-    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'surface', slatColor = 'punch', hLevel = 3, centered,
+    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'surface', slatColor = 'punch', hLevel = 3, centered, links,
     class: classes, ...attrs
 } = Astro.props
 ---
 <div
     class:list={[
         'space-y-8 lg:space-y-10',
+        centered && 'justify-center text-center',
         classes
     ]} {...attrs}>
 	<div
         class:list={[
-            'flex flex-col gap-y-4',
-            centered && 'justify-center text-center'
+            'flex flex-col gap-y-6'
         ]}>
         {
             showSubtitle && (
@@ -28,7 +31,7 @@ const {
                 <div
                     class:list={[
                         'flex',
-                        centered ? 'flex-col items-center gap-y-8' : 'space-x-4 items-end'
+                        centered ? 'flex-col items-center gap-y-6' : 'space-x-4 items-end'
                     ]}>
                     { showSlat &&
                         <Icon
@@ -49,13 +52,39 @@ const {
             )
         }
     </div>
-    <div class:list={[
-        centered && 'text-center'
-    ]}>
+    <div
+        class:list={[
+            centered && 'justify-center text-center',
+            'space-y-8 md:space-y-10 lg:space-y-14'
+        ]}>
         {
             showCopy && (
                 <Copy content={ copy } color={ color }/>
             )
         }
+        <ul class:list={[
+            'flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3',
+            centered && 'justify-center'
+            ]}>
+            {
+                !_empty(links) && (
+                    links.map((link: any) => (
+                        <li class="group">
+                            <Anchor
+                                href={ `/${link.link.story.full_slug === 'home' ? '' : link.link.story.full_slug}` }
+                                hover="shadow">
+                                <Button
+                                    icon={ link.icon }
+                                    label={ link.title }
+                                    iconPosition={ link.icon_position }
+                                    color={ link.color }
+                                    class="w-full"
+                                />
+                            </Anchor>
+                        </li>
+                    ))
+                )
+            }
+        </ul>
     </div>
 </div>

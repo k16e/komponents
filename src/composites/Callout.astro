@@ -9,10 +9,11 @@ const {
     blok
 } = Astro.props
 ---
-<section class:list={[ ..._gradientLight(), 'relative h-[824px]' ]}>
-    <Lelo class:list="text-punch-600 h-full w-full z-[2]"/>
-    <Wrapper inner padY="y" padX={ false } class:list="relative z-[3] h-full">
-        <Readable class:list="flex flex-col items-center h-full">
+<section>
+    <Wrapper inner padY="y"
+        class:list="relative z-[3] bg-punch-600 h-[576px] md:h-[720px]"
+        style="clip-path: polygon(0 12%, 100% 0%, 100% 88%, 0% 100%);">
+        <Readable class:list="h-full flex flex-col items-center justify-center">
             <BannerEntry
                 subtitle={ blok.callout[0].subtitle }
                 title={ blok.callout[0].title }
@@ -21,6 +22,7 @@ const {
                 slatColor="white"
                 hLevel={ 4 }
                 centered
+                links={ blok.callout[0].links }
             />
         </Readable>
     </Wrapper>

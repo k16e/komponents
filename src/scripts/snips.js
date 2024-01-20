@@ -17,6 +17,12 @@ const _slugify = str => {
     return str
 }
 
+
+const _empty = obj => {
+    if (obj === undefined || obj === null) return true
+    if (!Object.keys(obj).length) return true
+}
+
 const
     _transition = () => new Array('transition', 'duration-300', 'ease-out'),
     _translateDown = () => new Array('translate-y-1.5', 'lg:translate-y-3'),
@@ -29,5 +35,5 @@ const
 
 // Exports
 export {
-    _body, _slugify, _$, _$$, _transition, _padY, _padB, _padT, _translateDown, _gradientLight, _gradientSurface
+    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _translateDown, _gradientLight, _gradientSurface
 }
