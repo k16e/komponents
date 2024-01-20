@@ -4,7 +4,7 @@ import Copy from '../atoms/Copy.astro'
 import Icon from '../atoms/Icon.astro'
 
 const {
-    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'surface', slatColor = 'punch', hLevel = 3,
+    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'surface', slatColor = 'punch', hLevel = 3, centered,
     class: classes, ...attrs
 } = Astro.props
 ---
@@ -13,7 +13,11 @@ const {
         'space-y-8 lg:space-y-10',
         classes
     ]} {...attrs}>
-	<div class="flex flex-col gap-y-4">
+	<div
+        class:list={[
+            'flex flex-col gap-y-4',
+            centered && 'justify-center text-center'
+        ]}>
         {
             showSubtitle && (
                 <Heading text={ subtitle } size="sm" weight="semi" color={ color } uppercase loosen class="opacity-60"/>
@@ -21,19 +25,23 @@ const {
         }
         {
             showTitle && (
-                <div class="flex space-x-4 items-end">
-                    {
-                        showSlat &&
-                            <Icon
-                                name="slat-leadingbar"
-                                class:list={[
-                                    hLevel === 3 && 'w-[32px] h-[5px] lg:w-[48px] lg:h-[6px]',
-                                    hLevel === 4 && 'w-[36px] h-[7px] md:w-[64px] md:h-[9px] lg:w-[64px] lg:h-[11px]',
-                                    slatColor === 'punch' && 'text-punch-600',
-                                    slatColor === 'surface' && 'text-surface-950',
-                                    slatColor === 'white' && 'text-white'
-                                ]}
-                            />
+                <div
+                    class:list={[
+                        'flex',
+                        centered ? 'flex-col items-center gap-y-8' : 'space-x-4 items-end'
+                    ]}>
+                    { showSlat &&
+                        <Icon
+                            name={ centered ? 'centerbar' : 'leadingbar' }
+                            class:list={[
+                                hLevel === 3 && 'w-[32px] h-[5px] lg:w-[48px] lg:h-[6px]',
+                                hLevel === 4 && 'w-[36px] h-[7px] md:w-[64px] md:h-[9px] lg:w-[64px] lg:h-[11px]',
+                                slatColor === 'punch' && 'text-punch-600',
+                                slatColor === 'surface' && 'text-surface-950',
+                                slatColor === 'white' && 'text-white',
+                                centered && 'order-2'
+                            ]}
+                        />
                     }
                     { hLevel === 3 && <Heading text={ title } level="h3" size="3xl" weight="extra" tighten color={ color }/> }
                     { hLevel === 4 && <Heading text={ title } level="h2" size="4xl" weight="extra" tighten color={ color }/> }
@@ -41,7 +49,9 @@ const {
             )
         }
     </div>
-    <div>
+    <div class:list={[
+        centered && 'text-center'
+    ]}>
         {
             showCopy && (
                 <Copy content={ copy } color={ color }/>

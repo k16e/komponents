@@ -1,5 +1,6 @@
 ---
 import Wrapper from '../layouts/Wrapper.astro'
+import Readable from '../layouts/Readable.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
 import { _gradientLight } from '../scripts/snips'
 import Lelo from '../atoms/Lelo.astro'
@@ -10,14 +11,17 @@ const {
 ---
 <section class:list={[ ..._gradientLight(), 'relative h-[824px]' ]}>
     <Lelo class:list="text-punch-600 h-full w-full z-[2]"/>
-    <Wrapper inner padY="y" padX={ false } class:list="relative z-[3]">
-        <BannerEntry
-            subtitle={ blok.callout[0].subtitle }
-            title={ blok.callout[0].title }
-            copy={ blok.callout[0].copy }
-            color="white"
-            slatColor="white"
-            hLevel={ 4 }
-        />
+    <Wrapper inner padY="y" padX={ false } class:list="relative z-[3] h-full">
+        <Readable class:list="flex flex-col items-center h-full">
+            <BannerEntry
+                subtitle={ blok.callout[0].subtitle }
+                title={ blok.callout[0].title }
+                copy={ blok.callout[0].copy }
+                color="white"
+                slatColor="white"
+                hLevel={ 4 }
+                centered
+            />
+        </Readable>
     </Wrapper>
 </section>
