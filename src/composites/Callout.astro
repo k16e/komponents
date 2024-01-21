@@ -2,13 +2,13 @@
 import Wrapper from '../layouts/Wrapper.astro'
 import Readable from '../layouts/Readable.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
-import { _gradientLight } from '../scripts/snips'
+import { _gradientLight, _padY } from '../scripts/snips'
 
 const {
     blok
 } = Astro.props
 ---
-<section>
+<section class:list={[ ..._padY() ]}>
     <Wrapper inner padY="y" class:list="relative z-[3] bg-punch-600 h-[640px] md:h-[744px] clip-path-xs lg:clip-path-sm">
         <Readable class:list="h-full flex flex-col items-center justify-center">
             <BannerEntry
