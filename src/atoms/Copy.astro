@@ -1,13 +1,14 @@
 ---
-const {
-    content, color = 'surface'
-} = Astro.props
+const
+    {
+        content, color = 'surface', Tag = 'div'
+    } = Astro.props
 ---
-<div
+<Tag
     class:list={[
         'text-base sm:text-md font-sans',
         color === 'surface' && 'text-surface-800',
         color === 'white' && 'text-white/80',
     ]}>
     <Fragment set:html={ content }/>
-</div>
+</Tag>
