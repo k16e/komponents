@@ -8,7 +8,8 @@ const
     {
         blok
     } = Astro.props,
-    feature = blok.entry.content.meta[0]
+    entry = blok.entry,
+    feature = entry.content.meta[0]
 
 ---
 <section class:list={[ ..._padY() ]}>
@@ -19,7 +20,7 @@ const
         />
         <div class="lg:absolute inset-0 bg-punch-600 lg:bg-transparent">
             <Wrapper inner padX={ false } class:list="flex justify-end h-full">
-                <div class="bg-punch-600 lg:w-[480px] h-full flex flex-col lg:justify-end px-4 py-10 lg:px-12 lg:py-12">
+                <div class="bg-punch-600 lg:w-[480px] h-full flex flex-col lg:justify-end px-4 py-12 lg:px-12">
                     <BannerEntry
                         subtitle={ blok.title }
                         title={ feature.title }
@@ -27,7 +28,7 @@ const
                         color="white"
                         slatColor="white"
                         hLevel={ 3 }
-                        link={ blok.entry.full_slug }
+                        link={ entry.full_slug }
                     />
                 </div>
             </Wrapper>
