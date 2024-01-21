@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets'
 import Wrapper from '../layouts/Wrapper.astro'
 import Readable from '../layouts/Readable.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
@@ -10,12 +11,14 @@ const {
 } = Astro.props
 ---
 <section>
+    <Image
+        src={ blok.entry.content.meta[0].image.filename }
+        alt={ '' }
+        width="1600"
+        height="1280"
+        quality="100"
+    />
     <Wrapper inner padY="y" class:list="relative">
-        {
-            blok.title
-        }
-        {
-            blok.entry.content.meta[0].title
-        }
+
     </Wrapper>
 </section>
