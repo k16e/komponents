@@ -4,7 +4,8 @@ import Wrapper from '../layouts/Wrapper.astro'
 import Icon from '../atoms/Icon.astro'
 
 const
-    { actions, class: classes, ...attrs } = Astro.props
+    { actions, class: classes, ...attrs }
+= Astro.props
 ---
 <ul
     class:list={['grid grid-cols-1 lg:grid-cols-2 gap-x-2 items-end relative lg:static overflow-x-clip', classes]}
@@ -12,7 +13,7 @@ const
     {
         actions.map((action: any, index: number) => (
             <li
-                class='group flex items-center justify-center h-[144px] sm:h-[192px] lg:first:h-[272px] lg:last:h-[368px] lg:relative lg:overflow-clip'>
+                class="group flex items-center justify-center h-[144px] sm:h-[192px] lg:first:h-[272px] lg:last:h-[368px] lg:relative lg:overflow-clip lg:clip-path-slat">
                 <a href="/" class="flex items-center h-full w-full">
                     <Icon
                         name={ index === 0 ? 'slat-leading' : 'slat-trailing' }
