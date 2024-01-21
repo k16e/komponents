@@ -7,7 +7,7 @@ import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
 
 const {
-    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'surface', slatColor = 'punch', hLevel = 3, centered, links,
+    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'surface', slatColor = 'punch', hLevel = 3, centered, links, link,
     class: classes, ...attrs
 } = Astro.props
 ---
@@ -62,28 +62,31 @@ const {
                 <Copy content={ copy } color={ color }/>
             )
         }
-        <ul class:list={[
-            'flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3',
-            centered && 'justify-center'
-            ]}>
-            {
-                !_empty(links) && (
-                    links.map((link: any) => (
-                        <li class="group flex justify-center">
-                            <Anchor
-                                href={ `/${link.link.story.full_slug === 'home' ? '' : link.link.story.full_slug}` }
-                                hover="shadow">
-                                <Button
-                                    icon={ link.icon }
-                                    label={ link.title }
-                                    iconPosition={ link.icon_position }
-                                    color={ link.color }
-                                />
-                            </Anchor>
-                        </li>
-                    ))
-                )
-            }
-        </ul>
+
+        {
+            !_empty(links) && (
+                <ul class:list={[
+                        'flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3',
+                        centered && 'justify-center'
+                    ]}>
+                    {
+                        links.map((link: any) => (
+                            <li class="group flex justify-center">
+                                <Anchor
+                                    href={ `/${link.link.story.full_slug === 'home' ? '' : link.link.story.full_slug}` }
+                                    hover="shadow">
+                                    <Button
+                                        icon={ link.icon }
+                                        label={ link.title }
+                                        iconPosition={ link.icon_position }
+                                        color={ link.color }
+                                    />
+                                </Anchor>
+                            </li>
+                        ))
+                    }
+                </ul>
+            )
+        }
     </div>
 </div>
