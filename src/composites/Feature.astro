@@ -1,24 +1,27 @@
 ---
-import { Image } from 'astro:assets'
 import Wrapper from '../layouts/Wrapper.astro'
-import Readable from '../layouts/Readable.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
-import { _gradientLight, _padY } from '../scripts/snips'
-import Icon from '../atoms/Icon.astro'
+import { _padY } from '../scripts/snips'
+import Cover from '../blocks/Cover.astro'
 
 const {
     blok
 } = Astro.props
 ---
-<section>
-    <Image
-        src={ blok.entry.content.meta[0].image.filename }
-        alt={ '' }
-        width="1600"
-        height="1280"
-        quality="100"
-    />
-    <Wrapper inner padY="y" class:list="relative">
-
-    </Wrapper>
+<section class:list={[ ..._padY() ]}>
+    <div class="relative">
+        <Cover
+            filename={ blok.entry.content.meta[0].image.filename }
+            alt={ '' }
+        />
+        <div class="lg:absolute inset-0 bg-punch-600 lg:bg-transparent">
+            <Wrapper inner padX={ false } class:list="flex justify-end h-full">
+                <div class="bg-punch-600 lg:w-[480px] h-full flex flex-col lg:justify-end px-4 py-10 lg:px-12 lg:py-12">
+                    <div>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit iure natus quasi culpa magni praesentium laborum, quidem excepturi maiores repellat, minima ea. Voluptatum minus impedit quo quas natus explicabo facere?
+                    </div>
+                </div>
+            </Wrapper>
+        </div>
+    </div>
 </section>

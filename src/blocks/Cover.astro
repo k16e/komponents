@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets'
+
+const {
+    filename
+} = Astro.props
+---
+<Image
+    src={ filename }
+    alt={ '' }
+    width="1600"
+    height="1024"
+    quality="100"
+    class:list={[
+        'object-cover min-h-[424px] max-h-[424px] sm:min-h-[480px] sm:max-h-[480px] lg:min-h-[640px] lg:max-h-[640px]'
+    ]}
+/>
