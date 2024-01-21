@@ -2,7 +2,8 @@
 import Wrapper from '../layouts/Wrapper.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
 import { _padY } from '../scripts/snips'
-import Cover from '../blocks/Cover.astro'
+import DashedBox from '../atoms/DashedBox.astro'
+import SectionTitle from '../blocks/SectionTitle.astro'
 
 const
     {
@@ -11,7 +12,15 @@ const
 
 ---
 <section class:list={[ ..._padY() ]}>
-    <div class="relative">
-
-    </div>
+    <Wrapper inner>
+        <DashedBox class:list="relative">
+            <div class:list={[ 'px-4 sm:px-8 lg:px-12', ..._padY() ]}>
+                <SectionTitle
+                    title={ blok.title }
+                    class:list="opacity-60"
+                    centered
+                />
+            </div>
+        </DashedBox>
+    </Wrapper>
 </section>

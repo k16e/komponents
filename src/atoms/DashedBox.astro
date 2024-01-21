@@ -1,0 +1,17 @@
+---
+const
+    {
+        Element = 'div',
+        class: classes,
+        ...attrs
+    }
+    = Astro.props
+---
+<Element
+    class:list={[
+        'border border-dashed border-surface-200',
+        classes
+    ]}
+    { ...attrs }>
+    <slot/>
+</Element>
