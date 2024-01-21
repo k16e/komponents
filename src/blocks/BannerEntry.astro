@@ -88,5 +88,20 @@ const {
                 </ul>
             )
         }
+
+        {
+            link && (
+                <Anchor
+                    href={ `/${link}` }
+                    hover="shadow">
+                    <Button
+                        icon={ link.icon }
+                        label={ link.title }
+                        iconPosition={ link.icon_position }
+                        color={ link.color }
+                    />
+                </Anchor>
+            )
+        }
     </div>
 </div>
