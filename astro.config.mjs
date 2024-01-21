@@ -26,6 +26,7 @@ export default defineConfig({
                 flipPhone: 'composites/FlipPhone',
                 callout: 'composites/Callout',
                 feature: 'composites/Feature',
+                logoClouds: 'composites/LogoClouds',
             }
         }),
     ],
