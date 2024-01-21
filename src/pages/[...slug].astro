@@ -29,7 +29,8 @@ const
     storyblokApi = useStoryblokApi(),
     { data } = await storyblokApi.get(`cdn/stories/${slug === undefined ? 'home' : slug}`, {
         version: import.meta.env.DEV ? 'draft' : 'published',
-        resolve_links: 'url'
+        resolve_links: 'url',
+        resolve_relations: 'feature.entry'
     }),
     page = data.story,
     content = page.content,

@@ -25,6 +25,7 @@ export default defineConfig({
                 hero: 'composites/Hero',
                 flipPhone: 'composites/FlipPhone',
                 callout: 'composites/Callout',
+                feature: 'composites/Feature',
             }
         }),
     ],
