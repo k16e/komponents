@@ -3,13 +3,26 @@ import Wrapper from '../layouts/Wrapper.astro'
 import Readable from '../layouts/Readable.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
 import { _gradientLight, _padY } from '../scripts/snips'
+import Icon from '../atoms/Icon.astro'
 
 const {
     blok
 } = Astro.props
 ---
-<section class:list={[ ..._padY() ]}>
-    <Wrapper inner padY="y" class:list="relative z-[3] bg-punch-600 h-[640px] md:h-[744px] clip-path-xs lg:clip-path-sm">
+<section class:list={[ 'relative overflow-clip', ..._padY() ]}>
+    <Icon
+        name="symbol"
+        aria-hidden
+        aria-label="Decoration leading"
+        class="text-punch-400 opacity-20 z-10 absolute w-[496px] sm:w-[520px] md:w-[576px] top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 xl:w-[640px] xl:top-[unset] xl:translate-x-0 xl:translate-y-0 xl:bottom-[12%] xl:left-[-13.5%]"
+    />
+    <Icon
+        name="symbol"
+        aria-hidden
+        aria-label="Decoration trailing"
+        class="text-punch-400 opacity-20 z-10 absolute w-[640px] top-[8%] right-[-13.5%] hidden xl:block"
+    />
+    <Wrapper inner padY="y" class:list="relative z-[3] bg-punch-600 h-[640px] md:h-[768px] clip-path-xs lg:clip-path-sm">
         <Readable class:list="h-full flex flex-col items-center justify-center">
             <BannerEntry
                 subtitle={ blok.callout[0].subtitle }
