@@ -8,13 +8,7 @@ const { filename, alt, class: classes, ...attrs } = Astro.props
     alt={ alt || '' }
     width="1280"
     height="1280"
-    class:list={[ 'object-cover aspect-[3/4] max-h-[520px] sm:max-h-[640px]', classes ]}
+    class:list={[ 'object-cover aspect-[3/4] max-h-[520px] sm:max-h-[640px] clip-path-xs', classes ]}
     quality="100"
     { ...attrs }
 />
-
-<style>
-    img {
-        clip-path: polygon(0 10%, 100% 0%, 100% 90%, 0% 100%);
-    }
-</style>

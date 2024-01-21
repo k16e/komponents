@@ -4,7 +4,7 @@ const
     colors = require('tailwindcss/colors')
 
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: ['./src/**/*.{astro,html,js,md,mdx,ts}'],
 	theme: {
         extend: {
             screens: {
@@ -48,9 +48,15 @@ export default {
                 }
             }
         }
-	},
+    },
     plugins: [
         require('@tailwindcss/typography'),
-        require('@tailwindcss/forms')
+        require('@tailwindcss/forms'),
+        function ({ addComponents, theme }) {
+            addComponents({
+                '.clip-path-xs': { clipPath: 'polygon(0 9%, 100% 0%, 100% 91%, 0% 100%)' },
+                '.clip-path-sm': { clipPath: 'polygon(0 11%, 100% 0%, 100% 88%, 0% 100%)' },
+            })
+        }
     ]
 }

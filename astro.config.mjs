@@ -15,7 +15,9 @@ export default defineConfig({
         ignoreSlowConnection: true
     },
     integrations: [
-        tailwind(),
+        tailwind({
+            nesting: true
+        }),
         storyblok({
             accessToken: env.STORYBLOK_TOKEN,
             components: {

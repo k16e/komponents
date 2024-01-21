@@ -10,9 +10,7 @@ const {
 } = Astro.props
 ---
 <section>
-    <Wrapper inner padY="y"
-        class:list="relative z-[3] bg-punch-600 h-[696px] md:h-[744px]"
-        style="clip-path: polygon(0 10%, 100% 0%, 100% 90%, 0% 100%);">
+    <Wrapper inner padY="y" class:list="relative z-[3] bg-punch-600 h-[640px] md:h-[744px] clip-path-xs lg:clip-path-sm">
         <Readable class:list="h-full flex flex-col items-center justify-center">
             <BannerEntry
                 subtitle={ blok.callout[0].subtitle }
