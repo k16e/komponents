@@ -4,22 +4,30 @@ import BannerEntry from '../blocks/BannerEntry.astro'
 import { _padY } from '../scripts/snips'
 import Cover from '../blocks/Cover.astro'
 
-const {
-    blok
-} = Astro.props
+const
+    {
+        blok
+    } = Astro.props,
+    feature = blok.entry.content.meta[0]
+
 ---
 <section class:list={[ ..._padY() ]}>
     <div class="relative">
         <Cover
-            filename={ blok.entry.content.meta[0].image.filename }
+            filename={ feature.image.filename }
             alt={ '' }
         />
         <div class="lg:absolute inset-0 bg-punch-600 lg:bg-transparent">
             <Wrapper inner padX={ false } class:list="flex justify-end h-full">
                 <div class="bg-punch-600 lg:w-[480px] h-full flex flex-col lg:justify-end px-4 py-10 lg:px-12 lg:py-12">
-                    <div>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit iure natus quasi culpa magni praesentium laborum, quidem excepturi maiores repellat, minima ea. Voluptatum minus impedit quo quas natus explicabo facere?
-                    </div>
+                    <BannerEntry
+                        subtitle={ blok.title }
+                        title={ feature.title }
+                        copy={ feature.description }
+                        color="white"
+                        slatColor="white"
+                        hLevel={ 3 }
+                    />
                 </div>
             </Wrapper>
         </div>
