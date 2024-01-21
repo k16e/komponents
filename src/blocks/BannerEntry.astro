@@ -55,7 +55,7 @@ const {
     <div
         class:list={[
             centered && 'justify-center text-center',
-            'space-y-8 md:space-y-10 lg:space-y-14'
+            'space-y-10 md:space-y-12 lg:space-y-16'
         ]}>
         {
             showCopy && (
@@ -69,7 +69,7 @@ const {
             {
                 !_empty(links) && (
                     links.map((link: any) => (
-                        <li class="group">
+                        <li class="group flex justify-center">
                             <Anchor
                                 href={ `/${link.link.story.full_slug === 'home' ? '' : link.link.story.full_slug}` }
                                 hover="shadow">
@@ -78,7 +78,6 @@ const {
                                     label={ link.title }
                                     iconPosition={ link.icon_position }
                                     color={ link.color }
-                                    class="w-full"
                                 />
                             </Anchor>
                         </li>
