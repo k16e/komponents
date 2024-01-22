@@ -30,10 +30,11 @@ const
     _padB = () => new Array('pb-12', 'lg:pb-24'),
     _padT = () => new Array('pt-12', 'lg:pt-24'),
     _gradientLight = () => new Array('bg-gradient-to-b', 'from-white', 'via-punch-50', 'to-white'),
-    _gradientSurface = () => new Array('bg-gradient-to-b', 'from-white', 'via-surface-200', 'to-white')
+    _gradientSurface = () => new Array('bg-gradient-to-b', 'from-white', 'via-surface-200', 'to-white'),
+    _absoluteCenter = () => new Array('absolute', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2')
 
 
 // Exports
 export {
-    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _translateDown, _gradientLight, _gradientSurface
+    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _translateDown, _gradientLight, _gradientSurface, _absoluteCenter
 }
