@@ -1,7 +1,7 @@
 ---
 import { useStoryblokApi } from '@storyblok/astro'
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
-import Layout from '../layouts/Layout.astro'
+import Base from '../layouts/Base.astro'
 
 // Let Astro know where to look to build your routes
 export async function getStaticPaths() {
@@ -36,9 +36,9 @@ const
     content = page.content,
     meta = content.meta[0]
 ---
-<Layout
+<Base
     pageTitle={ meta.title }
     pageDescription={ meta.description }
     pageThumbnail={ meta.image.filename }>
     <StoryblokComponent blok={ content }/>
-</Layout>
+</Base>

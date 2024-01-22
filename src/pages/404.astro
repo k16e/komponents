@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Base from '../layouts/Base.astro'
 import { useStoryblokApi, renderRichText } from '@storyblok/astro'
 
 const storyblokApi = useStoryblokApi()
@@ -8,8 +8,8 @@ const { data: settings } = await storyblokApi.get('cdn/stories/settings', {
 })
 const error = settings.story.content.error[0]
 ---
-<Layout
+<Base
     pageTitle={ error.title }
     pageDescription={ error.description }>
     Error
-</Layout>
+</Base>
