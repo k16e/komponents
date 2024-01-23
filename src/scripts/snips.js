@@ -46,7 +46,6 @@ const _activePath = () => {
 
 const
     _transition = () => new Array('transition', 'duration-300', 'ease-out'),
-    _translateDown = () => new Array('translate-y-1.5', 'lg:translate-y-3'),
     _padY = () => new Array('py-12', 'lg:py-24'),
     _padB = () => new Array('pb-12', 'lg:pb-24'),
     _padT = () => new Array('pt-12', 'lg:pt-24'),
@@ -56,5 +55,5 @@ const
 
 // Exports
 export {
-    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _translateDown, _gradientLight, _gradientSurface, _intoView, _activePath
+    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _intoView, _activePath
 }

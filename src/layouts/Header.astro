@@ -3,7 +3,7 @@ import Wrapper from './Wrapper.astro'
 import Icon from '../atoms/Icon.astro'
 import ContactActions from '../blocks/ContactActions.astro'
 import Topnav from '../blocks/Topnav.astro'
-import { _transition, _translateDown } from '../scripts/snips'
+import { _transition } from '../scripts/snips'
 
 const
     {
@@ -12,8 +12,7 @@ const
 ---
 <header
     class:list={[
-        'z-50 fixed top-0 inset-x-0 py-1.5',
-        _translateDown(),
+        'z-50 fixed top-0 inset-x-0 py-2 bg-white',
         _transition(),
         classes
     ]}
@@ -39,21 +38,15 @@ const
 
 <script>
     import { topbar, setTopbar, unsetTopbar } from '../scripts/store'
-    import { _$, _translateDown } from '../scripts/snips'
+    import { _$ } from '../scripts/snips'
     import Scroll from '../scripts/scroll'
 
     const
         header = _$('header'),
         height = header.getBoundingClientRect().height,
-        activeClasses = ['bg-white', 'shadow', 'backdrop-filter', 'backdrop-blur-lg', 'bg-opacity-90'],
-        activate = () => {
-            setTopbar()
-            header.classList.remove(..._translateDown())
-        },
-        deactivate = () => {
-            unsetTopbar()
-            header.classList.add(..._translateDown())
-        },
+        activeClasses = ['shadow', 'backdrop-filter', 'backdrop-blur-lg', 'bg-opacity-90'],
+        activate = () => setTopbar(),
+        deactivate = () => unsetTopbar(),
         toggle = () => (window.scrollY > height) ? activate() : deactivate()
 
     topbar.subscribe(value => {
