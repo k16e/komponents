@@ -63,7 +63,7 @@ const
 <script>
 	import Swup from 'swup'
 	import Astrolog from '../scripts/astrolog'
-    import { _$, _intoView } from '../scripts/snips'
+    import { _$, _intoView, _activePath } from '../scripts/snips'
 
 	const swup = new Swup({
 		animationSelector: '[class*="swup-"]'
@@ -76,6 +76,7 @@ const
 	swup.hooks.on('page:view', () => init())
 
 	function init() {
+        _activePath()
         _intoView(_$('._scroll-into-view'))
 	}
 

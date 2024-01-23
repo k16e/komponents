@@ -19,7 +19,8 @@ const
 							: link.link.story.full_slug
 					}`}
                     hover="accent"
-                    class:list={ (_slugify(currentPath) === _slugify(link.link.story.full_slug)) ? 'active' : '' }>
+                    class:list={ (_slugify(currentPath) === _slugify(link.link.story.full_slug)) ? 'active' : '' }
+                    data-anchor={ _slugify(link.link.story.full_slug) }>
 					<Button
 						label={ link.title }
 						color={ link.color }

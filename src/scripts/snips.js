@@ -25,11 +25,16 @@ const _empty = obj => {
 
 const _intoView = obj => {
     if (!obj) return
-    console.log(obj)
     const sibling = obj.closest('section').nextElementSibling
-    console.log(obj.closest('section'))
     if (!sibling) return
     obj.addEventListener('click', () => sibling.scrollIntoView())
+}
+
+const _activePath = () => {
+    const
+        navA = _$$('[data-anchor]')
+
+    console.log(navA)
 }
 
 const
@@ -44,5 +49,5 @@ const
 
 // Exports
 export {
-    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _translateDown, _gradientLight, _gradientSurface, _intoView
+    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _translateDown, _gradientLight, _gradientSurface, _intoView, _activePath
 }
