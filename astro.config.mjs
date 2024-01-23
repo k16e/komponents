@@ -30,7 +30,10 @@ export default defineConfig({
             }
         }),
     ],
-    redirects: {},
+    redirects: {
+        '/pages': redirectHome,
+        '/pages/': redirectHome
+    },
     image: {
         domains: ['a.storyblok.com']
     }
