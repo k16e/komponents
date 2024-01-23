@@ -27,8 +27,8 @@ const
                 inner
                 padX={ false }
                 class:list={[
-                    `flex justify-end h-full`,
-                    blok.is_header && `lg:items-center`
+                    'flex justify-end h-full',
+                    blok.is_header && 'lg:items-center relative'
                 ]}>
                 <div
                     class:list={[
@@ -45,11 +45,15 @@ const
                         link={ !blok.is_header && entry.full_slug }
                     />
                 </div>
-                <!-- {
-                    blok.is_header && (
-                        <Button tag="button" icon="arrow-down" color="punch" fab responsive={ false }/>
-                    )
-                } -->
+                { blok.is_header && (
+                    <Button
+                        tag="button"
+                        icon="arrow-down"
+                        color="punch"
+                        fab
+                        class:list="hidden lg:flex absolute lg:-bottom-8 lg:left-0"
+                    />
+                )}
             </Wrapper>
         </div>
     </div>
