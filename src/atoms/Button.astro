@@ -2,31 +2,47 @@
 import Icon from '../atoms/Icon.astro'
 import LinkText from './LinkText.astro'
 
-const {
-    icon, iconPosition, label, color, underbar = false, titleCase = false, responsive, class: classes, ...attrs
-} = Astro.props
+const
+    {
+        icon, iconPosition, label, color, underbar = false, titleCase = false, responsive, fab, eventsNone, tag = 'div', class: classes, ...attrs
+    } = Astro.props,
+    Tag = tag,
+    dimensions = (responsive, fab) => {
+        if (responsive) return 'h-11 px-3'
+        else if (fab) return 'h-16 w-16 rounded-full'
+        else return 'h-[52px] px-5'
+    }
 ---
-<div
+<Tag
     class:list={[
-        'justify-center items-center gap-2 inline-flex pointer-events-none',
+        'justify-center items-center gap-2 inline-flex',
         color === 'punch' && 'bg-punch-600 text-white',
         color === 'surface' && 'bg-surface-100 text-surface-800',
         color === 'dark' && 'bg-surface-950 text-white',
         color === 'transparent' && 'bg-transparent',
         color === 'light_p' && 'bg-punch-50 text-punch-600',
-        responsive ? 'h-11 px-3' : 'h-[52px] px-5',
         underbar ? '' : '',
+        eventsNone && 'pointer-events-none',
+        dimensions(responsive, fab),
         classes
     ]}
     { ...attrs }>
     { icon && (
         <Icon
             name={ icon }
-            class:list={['w-6', iconPosition === 'leading' ? 'order-1' : 'order-2']}
+            class:list={[
+                fab ? 'w-8' : 'w-6',
+                iconPosition === 'leading' ? 'order-1' : 'order-2'
+            ]}
         />
     )}
-    <div
-        class:list={['justify-start items-start gap-2 flex', iconPosition === 'leading' ? 'order-2' : 'order-1']}>
-        <LinkText text={ label } titleCase={ titleCase }/>
-    </div>
-</div>
+    { label && (
+        <div
+            class:list={[
+                `justify-start items-start gap-2 flex`,
+                iconPosition === 'leading' ? 'order-2' : 'order-1'
+            ]}>
+            <LinkText text={ label } titleCase={ titleCase }/>
+        </div>
+    )}
+</Tag>
