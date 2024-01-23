@@ -1,10 +1,12 @@
 ---
 import Button from '../atoms/Button.astro'
 import Anchor from '../atoms/Anchor.astro'
+import { _slugify } from '../scripts/snips'
 
 const
     { links } = Astro.props,
-    current = Astro.url.pathname.split('/')[1]
+    pathname = new URL(Astro.request.url).pathname,
+    currentPath = pathname.slice(1)
 ---
 <ul class="hidden xl:flex text-surface-700">
 	{
@@ -16,7 +18,9 @@ const
 							? ''
 							: link.link.story.full_slug
 					}`}
-                    hover="accent">
+                    hover="accent"
+                    class:list={ (currentPath === _slugify(link.link.story.full_slug)) && 'active' }
+                    data-anchor={ _slugify(link.link.story.full_slug) }>
 					<Button
 						label={ link.title }
 						color={ link.color }

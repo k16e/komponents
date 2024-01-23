@@ -2,7 +2,7 @@
 import { _transition } from '../scripts/snips'
 
 const {
-    href, hover, ...attrs
+    href, hover, class: classes, ...attrs
 } = Astro.props
 ---
 <a
@@ -12,7 +12,8 @@ const {
         (hover === 'accent') && 'group-hover:text-punch-600',
         (hover === 'white') && 'group-hover:text-white/100',
         (hover === 'shadow') && 'group-hover:shadow-xl',
-        _transition()
+        _transition(),
+        classes
     ]}
     { ...attrs }>
     <slot/>

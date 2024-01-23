@@ -16,3 +16,4 @@ Web: HTML, CSS, & JS
 /* THANKS */
 - Icons => David Warrington [https://ellodave.dev/blog/article/using-svgs-as-astro-components-and-inline-css/]
 - Grids => Sarah Drasner [https://cssgrid-generator.netlify.app/]
+- Nav active link => Chen Yang [https://www.cyishere.dev/blog/astro-active-nav-item]

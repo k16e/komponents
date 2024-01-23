@@ -1,7 +1,10 @@
 ---
 import { SEO } from 'astro-seo'
 
-const { title, image, description = '' } = Astro.props
+const
+    { title, image, description = '' }
+    = Astro.props,
+    canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 <head>
 	<meta charset='UTF-8'/>
@@ -31,5 +34,6 @@ const { title, image, description = '' } = Astro.props
             }
         }}
     />
-    <link rel="manifest" href="/site.webmanifest">
+    <!-- <link rel="canonical" href={ canonicalURL }/> -->
+    <link rel="manifest" href="/site.webmanifest"/>
 </head>
