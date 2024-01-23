@@ -3,7 +3,8 @@ import { Image } from 'astro:assets'
 
 const {
     filename,
-    class: classes
+    class: classes,
+    ...attrs
 } = Astro.props
 ---
 <Image
@@ -17,4 +18,5 @@ const {
         'object-cover min-h-[424px] max-h-[424px] sm:min-h-[480px] sm:max-h-[480px] lg:min-h-[640px] lg:max-h-[640px]',
         classes
     ]}
+    { ...attrs }
 />
