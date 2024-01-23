@@ -25,6 +25,7 @@ const
 						label={ link.title }
 						color={ link.color }
                         underbar={ link.gets_underbar }
+                        active={ (currentPath === _slugify(link.link.story.full_slug)) }
 					/>
 				</Anchor>
 			</li>
