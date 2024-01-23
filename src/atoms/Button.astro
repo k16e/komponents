@@ -21,7 +21,7 @@ const
         color === 'dark' && 'bg-surface-950 text-white',
         color === 'transparent' && 'bg-transparent',
         color === 'light_p' && 'bg-punch-50 text-punch-600',
-        active && 'text-punch-600',
+        active && 'text-punch-600 relative',
         underbar ? '' : '',
         eventsNone && 'pointer-events-none',
         dimensions(responsive, fab),
@@ -32,7 +32,7 @@ const
         <Icon
             name={ icon }
             class:list={[
-                fab ? 'w-8' : 'w-6',
+                fab ? 'w-8 pointer-events-none' : 'w-6',
                 iconPosition === 'leading' ? 'order-1' : 'order-2'
             ]}
         />
@@ -46,4 +46,10 @@ const
             <LinkText text={ label } titleCase={ titleCase }/>
         </div>
     )}
+    { active &&
+        <Icon
+            name="centerbar"
+            class:list="absolute bottom-0 left-1/2 -translate-x-1/2 w-[24px] h-[4px]"
+        />
+    }
 </Tag>
