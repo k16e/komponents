@@ -2,6 +2,7 @@
 import Button from '../atoms/Button.astro'
 import Anchor from '../atoms/Anchor.astro'
 import { _slugify } from '../scripts/snips'
+import Icon from '../atoms/Icon.astro'
 
 const
     { links } = Astro.props,
@@ -19,7 +20,7 @@ const
 							: link.link.story.full_slug
 					}`}
                     hover="accent"
-                    class:list={ (_slugify(currentPath) === _slugify(link.link.story.full_slug)) ? 'active' : '' }
+                    class:list="relative group [&.active]:text-punch-600"
                     data-anchor={ _slugify(link.link.story.full_slug) }>
 					<Button
 						label={ link.title }
@@ -27,6 +28,10 @@ const
                         underbar={ link.gets_underbar }
                         active={ (currentPath === _slugify(link.link.story.full_slug)) }
 					/>
+                    <Icon
+                        name="centerbar"
+                        class:list="absolute bottom-0 left-1/2 -translate-x-1/2 w-[24px] h-[4px] text-punch-600 hidden group-[&.active]:block"
+                    />
 				</Anchor>
 			</li>
 		))

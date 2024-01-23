@@ -32,9 +32,16 @@ const _intoView = obj => {
 
 const _activePath = () => {
     const
-        navA = _$$('[data-anchor]')
+        navA = _$$('[data-anchor]'),
+        currLoc = _slugify(location.pathname),
+        activeA = navA.find(a => (a.getAttribute('data-anchor') === currLoc))
 
-    console.log(navA)
+    if (activeA) {
+        navA.map(a => a.classList.remove('active'))
+        activeA.classList.add('active')
+    } else {
+        navA.map(a => a.classList.remove('active'))
+    }
 }
 
 const
