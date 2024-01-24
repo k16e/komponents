@@ -28,6 +28,7 @@ export default defineConfig({
                 feature: 'composites/Feature',
                 logoClouds: 'composites/LogoClouds',
                 splitContent: 'composites/SplitContent',
+                twinSlats: 'composites/TwinSlats',
             }
         }),
     ],

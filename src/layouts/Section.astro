@@ -3,7 +3,11 @@ const {
     title, class: classes, ...attrs
 } = Astro.props
 ---
-<section class:list={[ '_section relative', classes ]} { ...attrs }>
+<section
+    class:list={[
+        '_section relative'
+        , classes
+    ]} { ...attrs }>
     <h2 set:text={ title } class="sr-only"/>
     <slot/>
 </section>

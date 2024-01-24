@@ -1,0 +1,47 @@
+---
+import Section from '../layouts/Section.astro'
+import Wrapper from '../layouts/Wrapper.astro'
+import Split from '../layouts/Split.astro'
+import BannerEntry from '../blocks/BannerEntry.astro'
+import ObjectSquare from '../atoms/ObjectSquare.astro'
+import { _padY } from '../scripts/snips'
+
+const
+    { blok } = Astro.props,
+    leading = blok.leading[0],
+    trailing = blok.trailing[0]
+---
+<Section
+    class:list={[ ..._padY() ]}
+    title={ blok.title }>
+    <Split alternate={ blok.alternate }>
+        <div
+            slot="leading"
+            class:list={[
+                'clip-path-lelo h-full aspect-square',
+                blok.color === 'punch' && 'bg-punch-600 text-white',
+                blok.color === 'surface' && 'bg-surface-100 text-surface-800',
+                blok.color === 'dark' && 'bg-surface-950 text-white',
+                blok.color === 'transparent' && 'bg-transparent',
+                blok.color === 'light_p' && 'bg-punch-50 text-punch-600',
+            ]}>
+            <Wrapper inner padY="y" padX={ false }>
+                <BannerEntry
+                    title={ leading.title }
+                    hLevel={ 4 }
+                    copy={ leading.copy }
+                    color={
+                        (blok.color === 'punch' || blok.color === 'surface') ? 'white' : 'surface'
+                    }
+                    slatColor={
+                        (blok.color === 'punch' || blok.color === 'surface') ? 'white' : 'punch'
+                    }
+                />
+            </Wrapper>
+        </div>
+        <ObjectSquare
+            slot="trailing"
+            filename={ trailing.file.filename }
+        />
+    </Split>
+</Section>
