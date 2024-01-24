@@ -1,12 +1,22 @@
 ---
-import Icon from './Icon.astro'
+import { Image } from 'astro:assets'
 
 const {
-    class: classes, ...attrs
+    filename,
+    class: classes,
+    ...attrs
 } = Astro.props
 ---
-<div
-    class:list={[ 'absolute inset-0', classes ]}
-    { ...attrs }>
-    <Icon name="lelo" class="w-full h-full"/>
-</div>
+<Image
+    src={ filename }
+    alt={ '' }
+    width="1440"
+    height="1440"
+    quality="100"
+    draggable="false"
+    class:list={[
+        'object-cover aspect-[3/4] h-[520px] sm:h-[640px] md:h-[720px] clip-path-lelo',
+        classes
+    ]}
+    { ...attrs }
+/>

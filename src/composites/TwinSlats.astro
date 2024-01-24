@@ -3,7 +3,7 @@ import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
 import Split from '../layouts/Split.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
-import ObjectSquare from '../atoms/ObjectSquare.astro'
+import Lelo from '../atoms/Lelo.astro'
 import { _padY } from '../scripts/snips'
 
 const
@@ -18,14 +18,15 @@ const
         <div
             slot="leading"
             class:list={[
-                'clip-path-lelo h-full aspect-square',
+                'clip-path-lelo h-[520px] sm:h-[640px] md:h-[720px] flex flex-col justify-center xl:items-end xl:pr-12',
                 blok.color === 'punch' && 'bg-punch-600 text-white',
                 blok.color === 'surface' && 'bg-surface-100 text-surface-800',
                 blok.color === 'dark' && 'bg-surface-950 text-white',
                 blok.color === 'transparent' && 'bg-transparent',
                 blok.color === 'light_p' && 'bg-punch-50 text-punch-600',
+                ..._padY()
             ]}>
-            <Wrapper inner padY="y" padX={ false }>
+            <Wrapper inner padX={ false } class:list="px-4 xl:px-0 xl:!max-w-[504px]">
                 <BannerEntry
                     title={ leading.title }
                     hLevel={ 4 }
@@ -39,7 +40,7 @@ const
                 />
             </Wrapper>
         </div>
-        <ObjectSquare
+        <Lelo
             slot="trailing"
             filename={ trailing.file.filename }
         />

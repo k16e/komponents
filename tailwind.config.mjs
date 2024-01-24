@@ -55,10 +55,10 @@ export default {
         function ({ addComponents, theme }) {
             addComponents({
                 '.clip-path-xs': { clipPath: 'polygon(0 9%, 100% 0%, 100% 91%, 0% 100%)' },
-                '.clip-path-sm': { clipPath: 'polygon(0 11%, 100% 0%, 100% 88%, 0% 100%)' },
+                '.clip-path-sm': { clipPath: 'polygon(0 12%, 100% 0%, 100% 88%, 0% 100%)' },
                 '.clip-path-slat': { clipPath: 'polygon(100% 0, 100% 100%, 0 100%, 0 25%)' },
                 '.clip-path-b': { clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0% 100%)' },
-                '.clip-path-lelo': { clipPath: 'polygon(0 15%, 100% 0, 100% 85%, 0% 100%)' },
+                '.clip-path-lelo': { clipPath: 'polygon(0 12%, 100% 0, 100% 88%, 0% 100%)' },
             })
         }
     ]
