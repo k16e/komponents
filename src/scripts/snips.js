@@ -42,21 +42,6 @@ const _intoView = obj => {
 }
 
 
-const _activePath = () => {
-    const
-        navA = _$$('[data-anchor]'),
-        currLoc = _slugify(location.pathname),
-        activeA = navA.find(a => (a.getAttribute('data-anchor') === currLoc))
-
-    if (activeA) {
-        navA.map(a => a.classList.remove('active'))
-        activeA.classList.add('active')
-    } else {
-        navA.map(a => a.classList.remove('active'))
-    }
-}
-
-
 const
     _transition = () => new Array('transition', 'duration-300', 'ease-out'),
     _padY = () => new Array('py-12', 'lg:py-24'),
@@ -68,5 +53,5 @@ const
 
 // Exports
 export {
-    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _intoView, _activePath, _scrollToTopOffset
+    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _intoView, _scrollToTopOffset
 }
