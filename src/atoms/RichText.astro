@@ -1,0 +1,16 @@
+---
+import { renderRichText } from '@storyblok/astro'
+
+const
+    {
+        content, color = 'surface', Tag = 'div'
+    } = Astro.props
+---
+<Tag
+    class:list={[
+        'text-base sm:text-md font-sans',
+        color === 'surface' && 'text-surface-800',
+        color === 'white' && 'text-white/80',
+    ]}>
+    <Fragment set:html={ renderRichText(content) }/>
+</Tag>

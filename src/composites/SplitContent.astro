@@ -1,15 +1,25 @@
 ---
 import Wrapper from '../layouts/Wrapper.astro'
 import Grid from '../layouts/Grid.astro'
-import { _padB, _gradientLight } from '../scripts/snips'
+import { _padB } from '../scripts/snips'
+import BannerEntry from '../blocks/BannerEntry.astro'
 
-const { blok } = Astro.props
+const
+    {
+        blok
+    } = Astro.props,
+    leading = blok.leading[0],
+    trailing = blok.trailing[0]
 ---
-<section class:list={[ _gradientLight() ]}>
+<section class:list="">
     <Wrapper inner padY="y" padX={ false }>
         <Grid>
             <div slot="leading" class="">
-                A
+                <BannerEntry
+                    subtitle={ leading.subtitle }
+                    title={ leading.title }
+                    hLevel={ 4 }
+                />
             </div>
             <div slot="trailing" class="">
                 B

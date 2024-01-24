@@ -53,7 +53,7 @@ const {
         }
     </div>
     <div class:list={[ centered && 'text-center', 'space-y-8 md:space-y-12' ]}>
-        { showCopy && (
+        { (copy || showCopy) && (
             <Copy content={ copy } color={ color } Tag="p"/>
         ) }
         { !_empty(links) && (
