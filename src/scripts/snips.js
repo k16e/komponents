@@ -4,7 +4,6 @@ const _$ = (selector, parent) => (parent ? parent : document).querySelector(sele
 const _$$ = (selector, parent) => Array.from((parent ? parent : document).querySelectorAll(selector))
 
 
-
 // Snippets
 const _slugify = str => {
     // Thanks to https://dev.to/bybydev/how-to-slugify-a-string-in-javascript-4o9n
@@ -18,17 +17,30 @@ const _slugify = str => {
 }
 
 
+const _scrollToTopOffset = (target, offset = 56) => {
+    // Credit here @ https://stackoverflow.com/questions/49820013/javascript-scrollintoview-smooth-scroll-and-offset
+    const
+        topOffset = offset,
+        elPos = Math.round(target.getBoundingClientRect().top),
+        offsetPos = (elPos + window.scrollY) - topOffset
+
+    window.scrollTo({ top: offsetPos })
+}
+
+
 const _empty = obj => {
     if (obj === undefined || obj === null) return true
     if (!Object.keys(obj).length) return true
 }
 
+
 const _intoView = obj => {
     if (!obj) return
     const sibling = obj.closest('section').nextElementSibling
     if (!sibling) return
-    obj.addEventListener('click', () => sibling.scrollIntoView())
+    obj.addEventListener('click', () => _scrollToTopOffset(sibling))
 }
+
 
 const _activePath = () => {
     const
@@ -44,6 +56,7 @@ const _activePath = () => {
     }
 }
 
+
 const
     _transition = () => new Array('transition', 'duration-300', 'ease-out'),
     _padY = () => new Array('py-12', 'lg:py-24'),
@@ -55,5 +68,5 @@ const
 
 // Exports
 export {
-    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _intoView, _activePath
+    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _intoView, _activePath, _scrollToTopOffset
 }
