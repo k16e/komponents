@@ -12,12 +12,14 @@ const
     ]} { ...attrs }>
     <div
         class:list={[
+            'group',
             alternate ? 'order-2' : 'order-1',
         ]}>
         <slot name="leading"/>
     </div>
     <div
         class:list={[
+            'group',
             alternate ? 'order-1' : 'order-2',
         ]}>
         <slot name="trailing"/>
