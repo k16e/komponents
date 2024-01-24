@@ -27,6 +27,7 @@ export default defineConfig({
                 callout: 'composites/Callout',
                 feature: 'composites/Feature',
                 logoClouds: 'composites/LogoClouds',
+                splitContent: 'composites/SplitContent',
             }
         }),
     ],
