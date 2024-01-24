@@ -12,8 +12,8 @@ export default {
                 ...defaultTheme.screens
             },
             fontSize: {
-                sm: ['0.825rem', '1.25rem'],
-                md: ['1.0925rem', '1.65rem'],
+                sm: ['0.825rem', '1.275rem'],
+                md: ['1.0925rem', '1.675rem'],
             },
             fontFamily: {
                 sans: ['Kumbh Sans Variable, sans-serif', ...defaultTheme.fontFamily.sans],
