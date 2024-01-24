@@ -1,8 +1,8 @@
 ---
 import Wrapper from '../layouts/Wrapper.astro'
 import Grid from '../layouts/Grid.astro'
-import { _padB } from '../scripts/snips'
 import BannerEntry from '../blocks/BannerEntry.astro'
+import RichText from '../atoms/RichText.astro'
 
 const
     {
@@ -14,16 +14,13 @@ const
 <section class:list="">
     <Wrapper inner padY="y" padX={ false }>
         <Grid>
-            <div slot="leading" class="">
-                <BannerEntry
-                    subtitle={ leading.subtitle }
-                    title={ leading.title }
-                    hLevel={ 4 }
-                />
-            </div>
-            <div slot="trailing" class="">
-                B
-            </div>
+            <BannerEntry
+                subtitle={ leading.subtitle }
+                title={ leading.title }
+                hLevel={ 4 }
+                slot="leading"
+            />
+            <RichText text={ trailing.text } slot="trailing"/>
         </Grid>
     </Wrapper>
 </section>

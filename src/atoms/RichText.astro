@@ -3,7 +3,7 @@ import { renderRichText } from '@storyblok/astro'
 
 const
     {
-        content, color = 'surface', Tag = 'div'
+        text, color = 'surface', Tag = 'div'
     } = Astro.props
 ---
 <Tag
@@ -12,5 +12,5 @@ const
         color === 'surface' && 'text-surface-800',
         color === 'white' && 'text-white/80',
     ]}>
-    <Fragment set:html={ renderRichText(content) }/>
+    <Fragment set:html={ renderRichText(text) }/>
 </Tag>
