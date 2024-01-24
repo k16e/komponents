@@ -10,22 +10,20 @@ const
     year = new Date().getFullYear(),
     { legalName, legalLinks, social, actions } = Astro.props
 ---
-<footer class="pt-12 xl:pt-0">
-    <div class="pt-12 lg:pt-0 space-y-[-0.25rem]">
-        <TwinActions actions={ actions }/>
-        <div class="flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/70 py-8 lg:py-0 relative z-30">
-            <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:col-span-2 items-center">
-                    <div class="flex items-center space-x-4">
-                        <Icon name="icon" class="w-8 text-white"/>
-                        <small class="text-sm text-white/65">
-                            Copyright { year } { legalName }
-                        </small>
-                    </div>
-                    <Legal links={ legalLinks }/>
+<footer class:list={ _padT() }>
+    <TwinActions actions={ actions }/>
+    <div class="flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/70 py-8 lg:py-0 relative z-30">
+        <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:col-span-2 items-center">
+                <div class="flex items-center space-x-4">
+                    <Icon name="icon" class="w-8 text-white"/>
+                    <small class="text-sm text-white/65">
+                        Copyright { year } { legalName }
+                    </small>
                 </div>
-                <Social links={ social } class:list="lg:justify-self-end"/>
-            </Wrapper>
-        </div>
+                <Legal links={ legalLinks }/>
+            </div>
+            <Social links={ social } class:list="lg:justify-self-end"/>
+        </Wrapper>
     </div>
 </footer>
