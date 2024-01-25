@@ -1,0 +1,34 @@
+---
+import Heading from '../atoms/Heading.astro'
+import Icon from '../atoms/Icon.astro'
+
+const
+    {
+        title, copy, tag
+        , class: classes, ...attrs
+    } = Astro.props,
+    Tag = 'div'
+---
+<Tag
+    class:list={[
+        'relative'
+        , classes
+    ]}
+    data-flipper { ...attrs }>
+    <div
+        class="bg-punch-600 text-white"
+        data-flipper="face">
+        <Icon name="arrow-down"/>
+        <Heading
+            level={ 'h3' }
+            text={ title }
+            size={ 'lg' }
+            weight={ 'extra' }
+            color={ 'white' }
+            tighten
+        />
+    </div>
+    <div data-flipper="back">
+
+    </div>
+</Tag>

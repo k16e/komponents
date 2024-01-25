@@ -3,6 +3,7 @@ import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
 import { _padY } from '../scripts/snips'
+import Flipper from '../blocks/Flipper.astro'
 
 const
     { blok } = Astro.props,
@@ -22,5 +23,12 @@ const
             slatColor={ 'punch' }
             class:list={ 'lg:max-w-screen-md' }
         />
+        <div class="relative">
+            { values.map((entry: any) => (
+                <Flipper
+                    title={ entry.title }
+                />
+            )) }
+        </div>
     </Wrapper>
 </Section>
