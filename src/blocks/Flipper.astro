@@ -1,6 +1,8 @@
 ---
 import Heading from '../atoms/Heading.astro'
 import Icon from '../atoms/Icon.astro'
+import Copy from '../atoms/Copy.astro'
+import BannerTitle from './BannerTitle.astro'
 
 const
     {
@@ -23,18 +25,26 @@ const
             <Icon name="arrow-down" class:list="w-8 pointer-events-none"/>
         </div>
         <div class="flex items-end gap-2 p-4">
-            <Icon name="leadingbar" class="w-[24px] h-[5px]"/>
-            <Heading
+            <BannerTitle
+                title={ title }
                 level={ 'h3' }
-                text={ title }
                 size={ 'lg' }
                 weight={ 'extra' }
                 color={ 'white' }
-                tighten
             />
         </div>
     </button>
-    <div data-flipper="back">
-
+    <div class="flex flex-col gap-y-4 p-4">
+        <BannerTitle
+            title={ title }
+            level={ 'h3' }
+            size={ 'md' }
+            weight={ 'bold' }
+            color={ 'surface' }
+        />
+        <Copy
+            content={ copy }
+            data-flipper="back"
+        />
     </div>
 </Tag>

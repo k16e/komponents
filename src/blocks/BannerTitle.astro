@@ -2,10 +2,36 @@
 import Heading from '../atoms/Heading.astro'
 import Icon from '../atoms/Icon.astro'
 
-const { title, showSlat = true, class: classes, ...attrs } = Astro.props
+const
+    {
+        title, level, size, weight, color,
+        showSlat = true,
+        class: classes,
+        ...attrs
+    } = Astro.props
 ---
 <div
-    class:list={['flex items-end space-x-2 sm:space-x-3 lg:space-x-6', classes ]} {...attrs}>
-    { showSlat && <Icon name="leadingbar" class="w-[40px] h-[8px] md:w-[72px] md:h-[11px] lg:w-[132px] lg:h-[16px]"/> }
-	<Heading text={ title } level="h2" size="7xl" weight="extra" tighten color="punch"/>
+    class:list={[
+        'flex items-end',
+        level === 'h2' && 'space-x-2 sm:space-x-3 lg:space-x-6',
+        level === 'h3' && 'space-x-2',
+        classes
+    ]} {...attrs}>
+    { showSlat &&
+        <Icon
+            name="leadingbar"
+            class:list={[
+                level === 'h2' && 'w-[40px] h-[8px] md:w-[72px] md:h-[11px] lg:w-[132px] lg:h-[16px]',
+                level === 'h3' && 'w-[24px] h-[5px]'
+            ]}
+        />
+    }
+	<Heading
+        text={ title }
+        level={ level || 'h2' }
+        size={ size || '7xl' }
+        weight={ weight || 'extra' }
+        color={ color || 'punch' }
+        tighten
+    />
 </div>

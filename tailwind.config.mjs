@@ -13,7 +13,7 @@ export default {
             },
             fontSize: {
                 sm: ['0.825rem', '1.275rem'],
-                md: ['1.0925rem', '1.675rem'],
+                md: ['1.055rem', '1.625rem'],
             },
             fontFamily: {
                 sans: ['Kumbh Sans Variable, sans-serif', ...defaultTheme.fontFamily.sans],
