@@ -13,15 +13,21 @@ const _flipper = () => {
 
     faces.forEach(face => {
         face.addEventListener('click', e => {
-            if (face.classList.contains('translate-y-0')) {
-                face.classList.remove('translate-y-0')
-            }
+            const
+                currFace = e.target,
+                otherFaces = faces.filter(face => (face !== currFace))
+
+            if (face.classList.contains('translate-y-0')) face.classList.remove('translate-y-0')
             face.classList.add('translate-y-full')
+            otherFaces.forEach(face => face.classList.remove('translate-y-full'))
         })
     })
     backs.forEach(back => {
         back.addEventListener('click', e => {
-            e.target.previousElementSibling.classList.add('translate-y-0')
+            const backface = e.target.previousElementSibling
+
+            if (backface.classList.contains('translate-y-full')) backface.classList.remove('translate-y-full')
+            backface.classList.add('translate-y-0')
         })
     })
 }

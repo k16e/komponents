@@ -13,7 +13,7 @@ const
 ---
 <Tag
     class:list={[
-        'relative min-h-[480px] sm:min-h-[456px] lg:min-h-[424px]'
+        'relative min-h-[392px] sm:min-h-[456px] lg:min-h-[392px]'
         , classes
     ]}
     data-flipper { ...attrs }>
@@ -27,7 +27,7 @@ const
             class="flex items-center justify-end p-5 w-full pointer-events-none">
             <Icon
                 name="arrow-down"
-                class:list="w-8 pointer-events-none animate-bounce [animation-play-state:paused] group-hover:[animation-play-state:running]"
+                class:list="w-7 pointer-events-none animate-bounce [animation-play-state:paused] group-hover:[animation-play-state:running]"
             />
         </div>
         <div class="flex items-end gap-2 p-5 pointer-events-none">
@@ -57,13 +57,12 @@ const
             <Copy
                 content={ copy }
                 growText={ false }
-                data-flipper="back"
             />
         </div>
         <div class="flex items-center justify-end w-full pointer-events-none">
             <Icon
                 name="arrow-up"
-                class:list="w-8 pointer-events-none text-punch-600 animate-bounce [animation-play-state:paused] group-hover:[animation-play-state:running]"
+                class:list="w-7 pointer-events-none text-punch-600 animate-bounce [animation-play-state:paused] group-hover:[animation-play-state:running]"
             />
         </div>
     </div>
