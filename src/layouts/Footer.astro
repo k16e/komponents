@@ -10,7 +10,7 @@ const
     year = new Date().getFullYear(),
     { legalName, legalLinks, social, actions } = Astro.props
 ---
-<footer class:list={ _padT() }>
+<footer>
     <TwinActions actions={ actions }/>
     <div class="flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/70 py-8 lg:py-0 relative z-30">
         <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
