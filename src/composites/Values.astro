@@ -1,0 +1,20 @@
+---
+import Section from '../layouts/Section.astro'
+import Wrapper from '../layouts/Wrapper.astro'
+import Split from '../layouts/Split.astro'
+import BannerEntry from '../blocks/BannerEntry.astro'
+import Lelo from '../atoms/Lelo.astro'
+import { _padY } from '../scripts/snips'
+
+const
+    { blok } = Astro.props,
+    banner = blok.banner[0],
+    values = blok.values
+---
+<Section
+    class:list={[ ..._padY() ]}
+    title={ blok.title }>
+    <Wrapper inner>
+
+    </Wrapper>
+</Section>
