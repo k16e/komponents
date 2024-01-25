@@ -13,16 +13,19 @@ const
 ---
 <Tag
     class:list={[
-        'relative'
+        'relative min-h-[480px] sm:min-h-[456px] lg:min-h-[424px]'
         , classes
     ]}
     data-flipper { ...attrs }>
     <div
-        class="bg-punch-600 text-white w-full min-h-[480px] sm:min-h-[456px] lg:min-h-[424px] flex flex-col justify-between"
+        class="bg-punch-600 text-white flex flex-col justify-between h-full absolute inset-0 z-[2]"
         data-flipper="face">
         <div
             class="flex items-center justify-end p-4 w-full">
-            <Icon name="arrow-down" class:list="w-8 pointer-events-none"/>
+            <Icon
+                name="arrow-down"
+                class:list="w-8 pointer-events-none animate-bounce [animation-play-state:paused] group-hover:[animation-play-state:running]"
+            />
         </div>
         <div class="flex items-end gap-2 p-4">
             <BannerTitle
@@ -34,7 +37,8 @@ const
             />
         </div>
     </div>
-    <div class="flex flex-col justify-between p-4 min-h-[480px] sm:min-h-[456px] lg:min-h-[424px]">
+    <div
+        class="flex flex-col justify-between p-4 h-full absolute inset-0 z-[1]">
         <div class="flex flex-col gap-y-4">
             <BannerTitle
                 title={ title }
