@@ -15,11 +15,14 @@ const
         , classes
     ]}
     data-flipper { ...attrs }>
-    <div
-        class="bg-punch-600 text-white min-h-[480px] sm:min-h-[456px] lg:min-h-[424px]"
+    <button
+        class="bg-punch-600 text-white w-full min-h-[480px] sm:min-h-[456px] lg:min-h-[424px] flex flex-col justify-between"
         data-flipper="face">
-        <Icon name="arrow-down" class:list="w-8"/>
-        <div class="flex items-end gap-2">
+        <div
+            class="flex items-center justify-end p-4 w-full">
+            <Icon name="arrow-down" class:list="w-8 pointer-events-none"/>
+        </div>
+        <div class="flex items-end gap-2 p-4">
             <Icon name="leadingbar" class="w-[24px] h-[5px]"/>
             <Heading
                 level={ 'h3' }
@@ -30,7 +33,7 @@ const
                 tighten
             />
         </div>
-    </div>
+    </button>
     <div data-flipper="back">
 
     </div>
