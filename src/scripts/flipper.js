@@ -7,11 +7,20 @@ const _flipper = () => {
 
     const
         faces = _$$('[data-flipper="face"]'),
-        backs = _$$('[data-flipper="back"]'),
-        translateDown = (obj) => obj.classList.add('translate-y-full'),
-        translateUp = (obj) => obj.classList.add('translate-y-0')
+        backs = _$$('[data-flipper="back"]')
 
-    translateDown(faces[0])
+    faces[0].classList.add('translate-y-full')
+
+    faces.forEach(face => {
+        face.addEventListener('click', e => {
+            console.log(e)
+        })
+    })
+    backs.forEach(back => {
+        back.addEventListener('click', e => {
+
+        })
+    })
 }
 
 export default _flipper

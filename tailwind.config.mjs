@@ -46,6 +46,21 @@ export default {
                     '900': '#3d3d3d',
                     '950': '#262a2c'
                 }
+            },
+            keyFrames: {
+                'bounce-up': {
+                    '0%, 100%': {
+                        transform: 'translateY(25%)',
+                        animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
+                    },
+                    '50%': {
+                        transform: 'none',
+                        animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+                    }
+                }
+            },
+            animation: {
+                'bounce-up': 'bounce-up 1s infinite'
             }
         }
     },
@@ -60,7 +75,7 @@ export default {
                 '.clip-path-b': { clipPath: 'polygon(0 0, 100% 0, 100% 88%, 0% 100%)' },
                 '.clip-path-t': { clipPath: 'polygon(0 12%, 100% 0%, 100% 100%, 0% 100%)' },
                 '.clip-path-y': { clipPath: 'polygon(0 12%, 100% 0, 100% 88%, 0% 100%)' },
-                '.clip-path-lelo': { clipPath: 'polygon(0 12%, 100% 0, 100% 88%, 0% 100%)' },
+                '.clip-path-lelo': { clipPath: 'polygon(0 12%, 100% 0, 100% 88%, 0% 100%)' }
             })
         }
     ]

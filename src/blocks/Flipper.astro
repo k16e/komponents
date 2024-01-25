@@ -2,6 +2,7 @@
 import Icon from '../atoms/Icon.astro'
 import Copy from '../atoms/Copy.astro'
 import BannerTitle from './BannerTitle.astro'
+import { _transition } from '../scripts/snips'
 
 const
     {
@@ -17,7 +18,10 @@ const
     ]}
     data-flipper { ...attrs }>
     <div
-        class="bg-punch-600 text-white flex flex-col justify-between h-full absolute inset-0 z-[2]"
+        class:list={[
+            'bg-punch-600 text-white flex flex-col justify-between h-full absolute inset-0 z-[2]',
+            _transition()
+        ]}
         data-flipper="face">
         <div
             class="flex items-center justify-end p-5 w-full">
@@ -37,7 +41,10 @@ const
         </div>
     </div>
     <div
-        class="bg-surface-50 flex flex-col justify-between p-5 h-full absolute inset-0 z-[1]"
+        class:list={[
+            'bg-surface-50 flex flex-col justify-between p-5 h-full absolute inset-0 z-[1]',
+            _transition()
+        ]}
         data-flipper="back">
         <div class="flex flex-col gap-y-4">
             <BannerTitle
@@ -54,7 +61,10 @@ const
             />
         </div>
         <div class="flex items-center justify-end p-5 w-full">
-            <Icon name="arrow-up" class:list="w-8 pointer-events-none text-punch-600"/>
+            <Icon
+                name="arrow-up"
+                class:list="w-8 pointer-events-none text-punch-600 animate-bounce [animation-play-state:paused] group-hover:[animation-play-state:running]"
+            />
         </div>
     </div>
 </Tag>
