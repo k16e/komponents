@@ -24,13 +24,13 @@ const
         ]}
         data-flipper="face">
         <div
-            class="flex items-center justify-end p-5 w-full">
+            class="flex items-center justify-end p-5 w-full pointer-events-none">
             <Icon
                 name="arrow-down"
                 class:list="w-8 pointer-events-none animate-bounce [animation-play-state:paused] group-hover:[animation-play-state:running]"
             />
         </div>
-        <div class="flex items-end gap-2 p-5">
+        <div class="flex items-end gap-2 p-5 pointer-events-none">
             <BannerTitle
                 title={ title }
                 level={ 'h3' }
@@ -46,7 +46,7 @@ const
             _transition()
         ]}
         data-flipper="back">
-        <div class="flex flex-col gap-y-4">
+        <div class="flex flex-col gap-y-4 pointer-events-none">
             <BannerTitle
                 title={ title }
                 level={ 'h3' }
@@ -60,7 +60,7 @@ const
                 data-flipper="back"
             />
         </div>
-        <div class="flex items-center justify-end p-5 w-full">
+        <div class="flex items-center justify-end p-5 w-full pointer-events-none">
             <Icon
                 name="arrow-up"
                 class:list="w-8 pointer-events-none text-punch-600 animate-bounce [animation-play-state:paused] group-hover:[animation-play-state:running]"

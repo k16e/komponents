@@ -13,12 +13,15 @@ const _flipper = () => {
 
     faces.forEach(face => {
         face.addEventListener('click', e => {
-            console.log(e)
+            if (face.classList.contains('translate-y-0')) {
+                face.classList.remove('translate-y-0')
+            }
+            face.classList.add('translate-y-full')
         })
     })
     backs.forEach(back => {
         back.addEventListener('click', e => {
-
+            e.target.previousElementSibling.classList.add('translate-y-0')
         })
     })
 }
