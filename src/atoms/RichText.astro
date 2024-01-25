@@ -3,12 +3,15 @@ import { renderRichText } from '@storyblok/astro'
 
 const
     {
-        text, color = 'surface', Tag = 'div'
+        text,
+        growText = true,
+        color = 'surface',
+        Tag = 'div'
     } = Astro.props
 ---
 <Tag
     class:list={[
-        'text-base sm:text-md font-sans',
+        growText ? 'text-base sm:text-md font-sans' : 'text-base',
         color === 'surface' && 'text-surface-800',
         color === 'white' && 'text-white/80',
     ]}>
