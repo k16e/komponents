@@ -57,7 +57,7 @@ const
     button { text-align: inherit; }
 	svg {
 		@apply flex-shrink-0 pointer-events-none fill-current;
-        
+
 	}
 </style>
 
@@ -65,7 +65,10 @@ const
 	import Swup from 'swup'
 	import Astrolog from '../scripts/astrolog'
     import _activePath from '../scripts/active-path'
-    import { _$, _intoView } from '../scripts/snips'
+    import {
+        _$, _intoView
+    } from '../scripts/snips'
+    import _flipper from '../scripts/flipper'
 
 	const swup = new Swup({
 		animationSelector: '[class*="swup-"]'
@@ -80,6 +83,7 @@ const
 	function init() {
         _activePath()
         _intoView(_$('._scroll-into-view'))
+        _flipper()
 	}
 
 	function once() {
