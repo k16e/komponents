@@ -43,7 +43,7 @@ const _intoView = obj => {
 
 
 const
-    _transition = () => new Array('transition', 'duration-200', 'ease-out'),
+    _transition = () => new Array('transition', 'duration-[250ms]', 'ease-out'),
     _padY = () => new Array('py-12', 'lg:py-24'),
     _padB = () => new Array('pb-12', 'lg:pb-24'),
     _padT = () => new Array('pt-12', 'lg:pt-24'),
