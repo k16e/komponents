@@ -82,7 +82,7 @@ const
 
 	function init() {
         _activePath()
-        _intoView(_$('._scroll-into-view'))
+        _$('[data-scroll-into-view]') && _intoView(_$('[data-scroll-into-view]'))
         _flipper()
 	}
 
