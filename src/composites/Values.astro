@@ -2,7 +2,7 @@
 import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
-import { _padY } from '../scripts/snips'
+import { _padY, _padT } from '../scripts/snips'
 import Flipper from '../blocks/Flipper.astro'
 
 const
@@ -13,7 +13,9 @@ const
 <Section
     class:list={[ ..._padY() ]}
     title={ blok.title }>
-    <Wrapper inner>
+    <Wrapper
+        inner
+        class:list="">
         <BannerEntry
             subtitle={ banner.subtitle }
             title={ banner.title }
@@ -23,7 +25,11 @@ const
             slatColor={ 'punch' }
             class:list={ 'lg:max-w-screen-md' }
         />
-        <div class="relative">
+        <div
+            class:list={[
+                'relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-8 sm:pt-12 lg:pt-16'
+                ,
+            ]}>
             { values.map((entry: any) => (
                 <Flipper
                     title={ entry.title }

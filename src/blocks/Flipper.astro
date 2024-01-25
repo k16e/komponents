@@ -16,17 +16,20 @@ const
     ]}
     data-flipper { ...attrs }>
     <div
-        class="bg-punch-600 text-white"
+        class="bg-punch-600 text-white min-h-[480px] sm:min-h-[456px] lg:min-h-[424px]"
         data-flipper="face">
-        <Icon name="arrow-down"/>
-        <Heading
-            level={ 'h3' }
-            text={ title }
-            size={ 'lg' }
-            weight={ 'extra' }
-            color={ 'white' }
-            tighten
-        />
+        <Icon name="arrow-down" class:list="w-8"/>
+        <div class="flex items-end gap-2">
+            <Icon name="leadingbar" class="w-[24px] h-[5px]"/>
+            <Heading
+                level={ 'h3' }
+                text={ title }
+                size={ 'lg' }
+                weight={ 'extra' }
+                color={ 'white' }
+                tighten
+            />
+        </div>
     </div>
     <div data-flipper="back">
 
