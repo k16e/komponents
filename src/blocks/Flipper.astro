@@ -17,7 +17,7 @@ const
         , classes
     ]}
     data-flipper { ...attrs }>
-    <button
+    <div
         class="bg-punch-600 text-white w-full min-h-[480px] sm:min-h-[456px] lg:min-h-[424px] flex flex-col justify-between"
         data-flipper="face">
         <div
@@ -33,18 +33,24 @@ const
                 color={ 'white' }
             />
         </div>
-    </button>
-    <div class="flex flex-col gap-y-4 p-4">
-        <BannerTitle
-            title={ title }
-            level={ 'h3' }
-            size={ 'md' }
-            weight={ 'bold' }
-            color={ 'surface' }
-        />
-        <Copy
-            content={ copy }
-            data-flipper="back"
-        />
+    </div>
+    <div class="flex flex-col justify-between p-4 min-h-[480px] sm:min-h-[456px] lg:min-h-[424px]">
+        <div class="flex flex-col gap-y-4">
+            <BannerTitle
+                title={ title }
+                level={ 'h3' }
+                size={ 'md' }
+                weight={ 'bold' }
+                color={ 'surface' }
+            />
+            <Copy
+                content={ copy }
+                growText={ false }
+                data-flipper="back"
+            />
+        </div>
+        <div class="flex items-center justify-end p-4 w-full">
+            <Icon name="arrow-up" class:list="w-8 pointer-events-none text-punch-600"/>
+        </div>
     </div>
 </Tag>

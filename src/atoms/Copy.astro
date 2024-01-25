@@ -3,6 +3,7 @@ const
     {
         content,
         color = 'surface',
+        growText = true,
         Tag = 'div',
         class: classes,
         ...attrs
@@ -10,7 +11,7 @@ const
 ---
 <Tag
     class:list={[
-        'text-base sm:text-md font-sans',
+        growText ? 'text-base sm:text-md font-sans' : 'text-base',
         color === 'surface' && 'text-surface-800',
         color === 'white' && 'text-white/80',
         classes
