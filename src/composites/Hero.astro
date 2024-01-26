@@ -12,7 +12,7 @@ import { _padB, _gradientLight, _padT } from '../scripts/snips'
 const { blok } = Astro.props
 ---
 <section class:list={[ _gradientLight() ]}>
-    <Wrapper inner padY="y" padX={ false }>
+    <Wrapper inner padY="y">
         <Grid class:list="pt-8">
             <div slot="leading" class="space-y-4 md:space-y-6 lg:space-y-10 lg:pb-8">
                 <BannerTitle
