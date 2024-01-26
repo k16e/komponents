@@ -16,13 +16,13 @@ const
     class:list={[
         blok.is_header ? _padB() : _padY()
     ]}>
-    <div class="_grid relative">
+    <div class="relative lg:grid lg:grid-cols-12 lg:grid-rows-12">
         <Cover
             filename={ feature.image.filename }
             alt={ '' }
-            class:list="_grid-1"
+            class:list="lg:[grid-area:1/1/13/13]"
         />
-        <div class="_grid-2 bg-punch-600 lg:bg-transparent">
+        <div class="lg:[grid-area:1/1/13/13] bg-punch-600 lg:bg-transparent">
             <Wrapper
                 inner
                 padX={ false }
@@ -32,7 +32,7 @@ const
                 ]}>
                 <div
                     class:list={[
-                        `bg-punch-600 lg:w-[480px] h-full flex flex-col lg:justify-end px-4 py-12 lg:px-12`,
+                        `bg-punch-600 lg:w-[480px] h-full flex flex-col lg:justify-end px-4 py-24 lg:py-16 lg:px-12`,
                         blok.is_header && 'lg:max-h-[488px]'
                     ]}>
                     <BannerEntry
@@ -59,19 +59,3 @@ const
         </div>
     </div>
 </section>
-
-<style>
-    ._grid {
-        @apply lg:grid lg:grid-cols-12 lg:grid-rows-12;
-    }
-    ._grid-1 {
-        @media screen(lg) {
-            grid-area: 1 / 1 / 13 / 13;
-        }
-    }
-    ._grid-2 {
-        @media screen(lg) {
-            grid-area: 1 / 1 / 13 / 13;
-        }
-    }
-</style>
