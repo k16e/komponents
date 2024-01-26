@@ -33,18 +33,21 @@ const
                 ]}>
                 <div
                     class:list={[
-                        `bg-punch-600 lg:w-[480px] h-full flex flex-col lg:justify-end px-4 py-24 lg:py-16 lg:px-12`,
-                        blok.is_header && 'lg:max-h-[488px]'
+                        `bg-punch-600 lg:w-[480px] h-full flex flex-col lg:justify-end lg:px-12`,
+                        blok.is_header && 'lg:max-h-[488px]',
+                        _padY()
                     ]}>
-                    <BannerEntry
-                        subtitle={ blok.title }
-                        title={ feature.title }
-                        copy={ feature.description }
-                        color="white"
-                        slatColor="white"
-                        hLevel={ blok.is_header ? 4 : 3 }
-                        link={ !blok.is_header && entry.full_slug }
-                    />
+                    <div class="py-8 sm:py-12 lg:py-0">
+                        <BannerEntry
+                            subtitle={ blok.title }
+                            title={ feature.title }
+                            copy={ feature.description }
+                            color="white"
+                            slatColor="white"
+                            hLevel={ blok.is_header ? 4 : 3 }
+                            link={ !blok.is_header && entry.full_slug }
+                        />
+                    </div>
                 </div>
                 { blok.is_header && (
                     <Button
