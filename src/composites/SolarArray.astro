@@ -1,10 +1,9 @@
 ---
 import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
-import BannerEntry from '../blocks/BannerEntry.astro'
+import BannerTitle from '../blocks/BannerTitle.astro'
 import SlatImage from '../atoms/SlatImage.astro'
 import { _padY, _padB } from '../scripts/snips'
-import Cover from '../atoms/Cover.astro'
 import Button from '../atoms/Button.astro'
 
 const
@@ -16,15 +15,23 @@ const
 <Section
     title={ blok.title }
     class:list={[ _padY() ]}>
-    <Wrapper tag="ul" containXlUp>
+    <Wrapper
+        tag="ul"
+        containXlUp
+        padX={ false }>
         {
             entries.map((i: any) => (
-                <li class="grid grid-cols-1 lg:grid-cols-2">
-                    <div>
+                <li class="grid grid-cols-1 lg:grid-cols-2 group">
+                    <div class:list={[
+                        'lg:group-odd:order-1 lg:group-even:order-2'
+                    ]}>
                         A
                     </div>
                     <SlatImage
                         filename={ i.image.filename }
+                        class:list={[
+                            'lg:group-odd:order-2 lg:group-even:order-1'
+                        ]}
                     />
                 </li>
             ))
