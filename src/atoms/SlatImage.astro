@@ -3,6 +3,7 @@ import { Image } from 'astro:assets'
 
 const {
     filename,
+    clip = 'y',
     class: classes,
     ...attrs
 } = Astro.props
@@ -15,7 +16,8 @@ const {
     quality="100"
     draggable="false"
     class:list={[
-        'object-cover aspect-[3/4] h-[520px] sm:h-[640px] md:h-[720px]',
+        'object-cover aspect-[3/4] h-[520px] sm:h-[572px]',
+        clip === 'y' && 'clip-path-y',
         classes
     ]}
     { ...attrs }

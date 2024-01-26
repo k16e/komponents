@@ -4,8 +4,8 @@ import Wrapper from '../layouts/Wrapper.astro'
 import Grid from '../layouts/Grid.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
 import RichText from '../atoms/RichText.astro'
+import SlatImage from '../atoms/SlatImage.astro'
 import { _padY, _padB } from '../scripts/snips'
-import Cover from '../atoms/Cover.astro'
 import Button from '../atoms/Button.astro'
 
 const
@@ -27,14 +27,21 @@ const
         ]}>
         <Grid>
             <div slot="leading">
-                <BannerEntry
-                    subtitle={ blok.subtitle }
-                    title={ blok.title }
-                    hLevel={ 4 }
-                />
-                <RichText text={ blok.content } slot="trailing"/>
+                <div class="lg:pr-12">
+                    <BannerEntry
+                        subtitle={ blok.subtitle }
+                        title={ blok.title }
+                        hLevel={ 4 }
+                    />
+                    <RichText text={ blok.content }/>
+                </div>
             </div>
-            
+            <SlatImage
+                slot="trailing"
+                filename={ blok.image.filename }
+                clip="y"
+                class:list="md:px-4 lg:!pl-0"
+            />
         </Grid>
     </Wrapper>
 </Section>
