@@ -3,20 +3,23 @@ import {
     _padB, _padY, _padT
 } from '../scripts/snips'
 
-const {
-    outer = true,
-    centered = true,
-    padX = true,
-    inner,
-    padY = '',
-    padT = '',
-    padB = '',
-    containXlUp,
-    class: classes,
-    ...props
-} = Astro.props
+const
+    {
+        outer = true,
+        centered = true,
+        padX = true,
+        inner,
+        padY = '',
+        padT = '',
+        padB = '',
+        tag = 'div',
+        containXlUp,
+        class: classes,
+        ...props
+    } = Astro.props,
+    Tag = tag
 ---
-<div
+<Tag
     { ...props }
     class:list={[
         (outer && !inner) && 'max-w-5xl lg:max-w-[82rem]',
@@ -30,4 +33,4 @@ const {
         classes
     ]}>
     <slot/>
-</div>
+</Tag>

@@ -31,6 +31,7 @@ export default defineConfig({
                 twinSlats: 'composites/TwinSlats',
                 values: 'composites/Values',
                 vSplit: 'composites/VSplit',
+                solarArray: 'composites/SolarArray',
             }
         }),
     ],
