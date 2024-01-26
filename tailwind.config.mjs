@@ -13,6 +13,7 @@ export default {
             },
             fontSize: {
                 sm: ['0.825rem', '1.275rem'],
+                base: ['1rem', '1.595rem'],
                 md: ['1.055rem', '1.625rem'],
             },
             fontFamily: {

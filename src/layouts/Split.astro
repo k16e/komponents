@@ -1,7 +1,7 @@
 ---
 const
     {
-        alternate, color = 'punch', slit = true,
+        alternate, color = 'punch', gap = true,
         class: classes,
         ...attrs
     } = Astro.props
@@ -9,7 +9,7 @@ const
 <div
     class:list={[
         'grid grid-cols-1 lg:grid-cols-2',
-        slit && 'gap-3',
+        gap && 'gap-3',
         classes
     ]} { ...attrs }>
     <div

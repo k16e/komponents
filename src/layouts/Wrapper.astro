@@ -1,6 +1,6 @@
 ---
 import {
-    _padB, _padY
+    _padB, _padY, _padT
 } from '../scripts/snips'
 
 const {
@@ -9,6 +9,7 @@ const {
     padX = true,
     inner,
     padY = '',
+    padT = '',
     padB = '',
     containXlUp,
     class: classes,
@@ -24,6 +25,7 @@ const {
         inner && 'max-w-2xl md:max-w-3xl lg:max-w-screen-lg xl:max-w-[70rem]',
         containXlUp && 'w-full max-w-none xl:max-w-[1440px] 2xl:max-w-[1280px]',
         padY === 'y' && _padY(),
+        padT === 't' && _padT(),
         padB === 'b' && _padB(),
         classes
     ]}>
