@@ -38,11 +38,11 @@ const
 
 <script>
     import { topbar, setTopbar, unsetTopbar } from '../scripts/store'
-    import { _$ } from '../scripts/snips'
+    import { _q } from '../scripts/snips'
     import Scroll from '../scripts/scroll'
 
     const
-        header = _$('header'),
+        header = _q('header'),
         height = header.getBoundingClientRect().height,
         activeClasses = ['shadow', 'backdrop-filter', 'backdrop-blur-lg', 'bg-opacity-90'],
         activate = () => setTopbar(),

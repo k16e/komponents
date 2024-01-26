@@ -1,10 +1,10 @@
-import { _slugify, _$$, _$ } from './snips'
+import { _slugify, _ql, _q } from './snips'
 
 const _activePath = () => {
-    if (!_$('[data-anchor]')) return
+    if (!_q('[data-anchor]')) return
 
     const
-        navA = _$$('[data-anchor]'),
+        navA = _ql('[data-anchor]'),
         currLoc = _slugify(location.pathname),
         activeA = navA.find(a => (a.getAttribute('data-anchor') === currLoc))
 

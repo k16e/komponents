@@ -1,7 +1,7 @@
 // Selectors
 const _body = () => document.body
-const _$ = (selector, parent) => (parent ? parent : document).querySelector(selector)
-const _$$ = (selector, parent) => Array.from((parent ? parent : document).querySelectorAll(selector))
+const _q = (selector, parent) => (parent ? parent : document).querySelector(selector)
+const _ql = (selector, parent) => Array.from((parent ? parent : document).querySelectorAll(selector))
 
 
 // Snippets
@@ -34,14 +34,6 @@ const _empty = obj => {
 }
 
 
-const _intoView = obj => {
-    if (!obj) return
-    const sibling = obj.closest('section').nextElementSibling
-    if (!sibling) return
-    obj.addEventListener('click', () => _scrollToTopOffset(sibling))
-}
-
-
 const
     _transition = () => new Array('transition', 'duration-[250ms]', 'ease-out'),
     _padY = () => new Array('py-12', 'lg:py-24'),
@@ -53,5 +45,5 @@ const
 
 // Exports
 export {
-    _body, _slugify, _empty, _$, _$$, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _intoView, _scrollToTopOffset
+    _body, _slugify, _empty, _q, _ql, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _scrollToTopOffset
 }
