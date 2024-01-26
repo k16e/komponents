@@ -1,9 +1,11 @@
 ---
 import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
+import Split from '../layouts/Split.astro'
 import BannerTitle from '../blocks/BannerTitle.astro'
+import RichText from '../atoms/RichText.astro'
 import SlatImage from '../atoms/SlatImage.astro'
-import { _padY, _padB } from '../scripts/snips'
+import { _padY, _padB, _even, _odd } from '../scripts/snips'
 import Button from '../atoms/Button.astro'
 
 const
@@ -13,34 +15,46 @@ const
     entries = blok.list
 ---
 <Section
-    title={ blok.title }
-    class:list={[ _padY() ]}>
+    title={ blok.title }>
     <Wrapper
         tag="ul"
         containXlUp
-        padX={ false }>
+        padX={ false }
+        class:list="">
         {
-            entries.map((i: any) => (
-                <li class="grid grid-cols-1 lg:grid-cols-2 group">
-                    <div class:list={[
-                        'lg:group-odd:order-1 lg:group-even:order-2'
-                    ]}>
-                        <BannerTitle
-                            title={ i.title }
-                            level="h3"
-                            color="surface"
-                            size="xl"
-                            weight="bold"
-                            slatColor="punch"
-                        />
+            entries.map((i: any, idx: number) => (
+                <Split
+                    tag="li"
+                    gap
+                    alternateLg={ _even(idx) ? false : true }
+                    class:list="">
+                    <div
+                        slot="leading"
+                        class:list={[
+                            'bg-surface-100 min-h-[456px] sm:h-[480px] md:h-[520px] lg:min-h-full flex flex-col justify-center xl:items-end group-[&.order-1]:lg:pr-12 group-[&.order-2]:lg:pl-12 group-[&.order-1]:clip-path-t group-[&.order-2]:clip-path-b lg:!clip-path-y'
+                        ]}>
+                        <div class="flex flex-col space-y-6">
+                            <BannerTitle
+                                title={ i.title }
+                                level="h3"
+                                color="surface"
+                                size="xl"
+                                weight="bold"
+                                slatColor="punch"
+                            />
+                            <RichText text={ i.summary }/>
+                        </div>
                     </div>
                     <SlatImage
+                        slot='trailing'
+                        defaultHeight={ false }
+                        growHeight
                         filename={ i.image.filename }
                         class:list={[
-                            'lg:group-odd:order-2 lg:group-even:order-1'
+                            'group-[&.order-2]:clip-path-b group-[&.order-1]:clip-path-t lg:!clip-path-y'
                         ]}
                     />
-                </li>
+                </Split>
             ))
         }
     </Wrapper>
