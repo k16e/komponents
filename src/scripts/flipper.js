@@ -8,8 +8,8 @@ const _flipper = () => {
     const
         faces = _ql('[data-flipper="face"]'),
         backs = _ql('[data-flipper="back"]'),
-        close = ['translate-y-0', 'scale-1', 'opacity-1'],
-        open = ['translate-y-full', 'scale-[0.96]', 'opacity-0']
+        close = ['translate-y-0', 'scale-1'],
+        open = ['translate-y-full', 'scale-95']
 
     faces[0].classList.add('translate-y-full')
 

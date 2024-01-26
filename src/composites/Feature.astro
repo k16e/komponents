@@ -1,4 +1,5 @@
 ---
+import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
 import { _padY, _padB } from '../scripts/snips'
@@ -12,7 +13,8 @@ const
     entry = blok.entry,
     feature = entry.content.meta[0]
 ---
-<section
+<Section
+    title={ feature.title }
     class:list={[
         blok.is_header ? _padB() : _padY()
     ]}>
@@ -58,4 +60,4 @@ const
             </Wrapper>
         </div>
     </div>
-</section>
+</Section>

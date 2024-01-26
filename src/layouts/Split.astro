@@ -1,14 +1,16 @@
 ---
 const
     {
-        alternate, color = 'punch'
-        , class: classes, ...attrs
+        alternate, color = 'punch', slit = true,
+        class: classes,
+        ...attrs
     } = Astro.props
 ---
 <div
     class:list={[
-        'grid grid-cols-1 lg:grid-cols-2 gap-3'
-        , classes
+        'grid grid-cols-1 lg:grid-cols-2',
+        slit && 'gap-3',
+        classes
     ]} { ...attrs }>
     <div
         class:list={[
