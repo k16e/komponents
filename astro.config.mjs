@@ -30,6 +30,7 @@ export default defineConfig({
                 splitContent: 'composites/SplitContent',
                 twinSlats: 'composites/TwinSlats',
                 values: 'composites/Values',
+                vSplit: 'composites/VSplit',
             }
         }),
     ],

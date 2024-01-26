@@ -1,7 +1,7 @@
 ---
 import Wrapper from '../layouts/Wrapper.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
-import { _padY } from '../scripts/snips'
+import { _padY, _padB } from '../scripts/snips'
 import Cover from '../atoms/Cover.astro'
 import Button from '../atoms/Button.astro'
 
@@ -14,7 +14,7 @@ const
 ---
 <section
     class:list={[
-        blok.is_header ? '' : _padY()
+        blok.is_header ? _padB() : _padY()
     ]}>
     <div class="_grid relative">
         <Cover
