@@ -36,8 +36,18 @@ const
                 slot="trailing"
                 filename={ blok.image.filename }
                 clip="y"
-                class:list="md:px-4 lg:!pl-0"
+                class:list=""
             />
         </Grid>
+        { blok.is_header && (
+            <Button
+                tag="button"
+                icon="arrow-down"
+                color="punch"
+                fab
+                class:list="hidden lg:flex absolute lg:-bottom-8 lg:left-4 z-10"
+                data-scroll-into-view
+            />
+        )}
     </Wrapper>
 </Section>

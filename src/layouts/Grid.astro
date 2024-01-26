@@ -3,6 +3,7 @@ const
     {
         cols = 2,
         flipped,
+        padX,
         class: classes,
         ...attrs
     } = Astro.props
@@ -11,6 +12,7 @@ const
     class:list={[
         'overflow-clip',
         cols === 2 && 'flex flex-col lg:flex-row gap-y-8 sm:gap-y-12 lg:gap-y-0',
+        padX && 'px-4',
         classes
     ]}
     { ...attrs }>
