@@ -36,9 +36,9 @@ const _empty = obj => {
 
 const
     _transition = () => new Array('transition', 'duration-[250ms]', 'ease-out'),
-    _padY = () => new Array('py-12', 'lg:py-24'),
-    _padB = () => new Array('pb-12', 'lg:pb-24'),
-    _padT = () => new Array('pt-12', 'lg:pt-24'),
+    _padY = () => new Array('py-8', 'sm:py-12', 'lg:py-24'),
+    _padB = () => new Array('pb-8', 'sm:pb-12', 'lg:pb-24'),
+    _padT = () => new Array('pt-8', 'sm:pt-12', 'lg:pt-24'),
     _gradientLight = () => new Array('bg-gradient-to-b', 'from-white', 'via-punch-50', 'to-white'),
     _gradientSurface = () => new Array('bg-gradient-to-b', 'from-white', 'via-surface-200', 'to-white')
 
