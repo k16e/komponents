@@ -2,6 +2,7 @@
 import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
 import Grid from '../layouts/Grid.astro'
+import Inner from '../layouts/Inner.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
 import RichText from '../atoms/RichText.astro'
 
@@ -13,12 +14,13 @@ const
 <Section title={ blok.title }>
     <Wrapper inner padY="y" padX={ false }>
         <Grid>
-            <BannerEntry
-                subtitle={ leading.subtitle }
-                title={ leading.title }
-                hLevel={ 4 }
-                slot="leading"
-            />
+            <Inner slot="leading">
+                <BannerEntry
+                    subtitle={ leading.subtitle }
+                    title={ leading.title }
+                    hLevel={ 4 }
+                />
+            </Inner>
             <RichText text={ trailing.text } slot="trailing"/>
         </Grid>
     </Wrapper>
