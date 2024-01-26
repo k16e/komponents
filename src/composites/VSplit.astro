@@ -19,11 +19,10 @@ const
     class:list={[ blok.is_header ? _padB() : _padY() ]}>
     <Wrapper
         inner
-        padT={ blok.is_header && 't' }
-        padY={ !blok.is_header && 'y' }
+        padY="y"
         padX={ false }
         class:list={[ blok.is_header && 'relative']}>
-        <Grid class:list="sm:px-4 xl:px-0">
+        <Grid class:list="sm:px-4 xl:px-0 pt-8 sm:pt-12 lg:pt-0">
             <Inner slot="leading" class:list="pl-4 pr-4 sm:pl-0 sm:pr-0">
                 <BannerEntry
                     subtitle={ blok.subtitle }
@@ -45,7 +44,7 @@ const
                 icon="arrow-down"
                 color="punch"
                 fab
-                class:list="hidden lg:flex absolute lg:-bottom-4 lg:left-4 xl:left-0 z-10"
+                class:list="hidden lg:flex absolute lg:bottom-24 lg:left-4 xl:left-0 z-10"
                 data-scroll-into-view
             />
         )}
