@@ -3,6 +3,7 @@ import Wrapper from '../layouts/Wrapper.astro'
 import BannerTitle from '../blocks/BannerTitle.astro'
 import BannerSubtitle from '../blocks/BannerSubtitle.astro'
 import Grid from '../layouts/Grid.astro'
+import Inner from '../layouts/Inner.astro'
 import Copy from '../atoms/Copy.astro'
 import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
@@ -14,14 +15,16 @@ const { blok } = Astro.props
 <section class:list={[ _gradientLight() ]}>
     <Wrapper inner padY="y">
         <Grid class:list="pt-8">
-            <div slot="leading" class="space-y-4 md:space-y-6 lg:space-y-10 lg:pb-8">
+            <Inner slot="leading" class="space-y-4 md:space-y-6 lg:space-y-10 lg:pb-8">
                 <BannerTitle
                     title={ blok.title }
                     level="h2"
+                    size="4xl"
+                    weight="extra"
                     class:list="text-punch-600"
                 />
                 <BannerSubtitle title={ blok.subtitle }/>
-            </div>
+            </Inner>
             <div slot="trailing" class="space-y-8 md:space-y-10 lg:space-y-14">
                 <Copy content={ blok.copy }/>
                 <ul class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
