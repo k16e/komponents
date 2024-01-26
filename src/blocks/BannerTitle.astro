@@ -6,6 +6,7 @@ const
     {
         title, level, size, weight, color,
         showSlat = true,
+        slatColor,
         class: classes,
         ...attrs
     } = Astro.props
@@ -22,7 +23,9 @@ const
             name="leadingbar"
             class:list={[
                 level === 'h2' && 'w-[40px] h-[8px] md:w-[64px] md:h-[11px] lg:w-[88px] lg:h-[14px] xl:w-[112px] xl:h-[16px]',
-                level === 'h3' && 'w-[24px] h-[5px]'
+                level === 'h3' && 'w-[24px] h-[5px]',
+                size === 'xl' && 'w-[32px] h-[5px] lg:w-[40px] lg:h-[7px]',
+                slatColor === 'punch' && 'text-punch-600'
             ]}
         />
     }

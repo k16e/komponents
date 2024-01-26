@@ -25,7 +25,14 @@ const
                     <div class:list={[
                         'lg:group-odd:order-1 lg:group-even:order-2'
                     ]}>
-                        A
+                        <BannerTitle
+                            title={ i.title }
+                            level="h3"
+                            color="surface"
+                            size="xl"
+                            weight="bold"
+                            slatColor="punch"
+                        />
                     </div>
                     <SlatImage
                         filename={ i.image.filename }
