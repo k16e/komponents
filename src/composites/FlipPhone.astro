@@ -6,9 +6,7 @@ import Heading from '../atoms/Heading.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
 import { _gradientSurface } from '../scripts/snips'
 
-const {
-    blok
-} = Astro.props
+const { blok } = Astro.props
 ---
 <section class:list={[ ..._gradientSurface() ]}>
     <Wrapper inner padY="y" padX={ false } releaseXlUp>
