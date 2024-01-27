@@ -66,6 +66,7 @@ const
     import _activePath from '../scripts/active-path'
     import _flipper from '../scripts/flipper'
     import _intoView from '../scripts/into-view'
+    import _astrolog from '../scripts/astrolog'
 
 	const swup = new Swup({
 		animationSelector: '[class*="swup-"]'
@@ -86,5 +87,6 @@ const
 
 	function once() {
 		// run only on page load
+        _astrolog()
 	}
 </script>
