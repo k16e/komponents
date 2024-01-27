@@ -8,6 +8,6 @@ const {
         '_section relative'
         , classes
     ]} { ...attrs }>
-    <h2 set:text={ title } class="sr-only"/>
+    { title && <h2 set:text={ title } class="sr-only"/> }
     <slot/>
 </section>

@@ -14,6 +14,7 @@ const {
     draggable="false"
     class:list={[
         'object-contain w-full',
-        aspect === 'rect' && 'h-8 sm:h-10 lg:h-11'
+        aspect === 'rect' && 'h-8 sm:h-10 lg:h-11',
+        (aspect === 'box' || aspect === 'square') && 'size-28 sm:size-32'
     ]}
 />
