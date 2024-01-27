@@ -5,6 +5,7 @@ import Icon from '../atoms/Icon.astro'
 import { _empty } from '../scripts/snips'
 import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
+import _slug from '../scripts/slug'
 
 const {
     subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'dark', slatColor = 'accent', hLevel = 3, centered, links, link,
@@ -63,9 +64,7 @@ const {
                 ]}>
                 { links.map((link: any) => (
                     <li class="group flex justify-center">
-                        <Anchor
-                            href={ `/${link.link.story.full_slug === 'home' ? '' : link.link.story.full_slug}` }
-                            hover="shadow">
+                        <Anchor href={ _slug(link.link) } hover="shadow">
                             <Button
                                 icon={ link.icon }
                                 label={ link.title }
@@ -78,7 +77,7 @@ const {
             </ul>
         ) }
         { link && (
-            <Anchor href={ `/${link}` } hover="shadow">
+            <Anchor href={ _slug(link) } hover="shadow">
                 <Button
                     icon="arrow-right"
                     label="View Project"
