@@ -8,7 +8,7 @@ const
     _padB = () => new Array('pb-8', 'sm:pb-12', 'lg:pb-24'),
     _padT = () => new Array('pt-8', 'sm:pt-12', 'lg:pt-24'),
     _gradientLight = () => new Array('bg-gradient-to-b', 'from-white', 'via-accent-50', 'to-white'),
-    _gradientSurface = () => new Array('bg-gradient-to-b', 'from-white', 'via-surface-200', 'to-white'),
+    _gradientSurface = () => new Array('bg-gradient-to-b', 'from-white', 'via-surface-50', 'to-white'),
     _even = n => n % 2 == 0,
     _odd = n => Math.abs(n % 2) == 1
 
