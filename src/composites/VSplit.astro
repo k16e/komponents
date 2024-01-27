@@ -9,14 +9,11 @@ import SlatImage from '../atoms/SlatImage.astro'
 import { _padY, _padB } from '../scripts/snips'
 import Button from '../atoms/Button.astro'
 
-const
-    {
-        blok
-    } = Astro.props
+const { blok } = Astro.props
 ---
 <Section
     title={ blok.title }
-    class:list={[ blok.is_header ? _padB() : _padY() ]}>
+    class:list={[ blok.is_header ? '' : _padY() ]}>
     <Wrapper
         inner
         padY="y"
