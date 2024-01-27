@@ -2,17 +2,18 @@
 import { Image } from 'astro:assets'
 
 const {
-    filename
+    filename, aspect = 'rect',
 } = Astro.props
 ---
 <Image
     src={ filename }
     alt={ '' }
-    width="320"
-    height="96"
+    width="480"
+    height="320"
     quality="100"
     draggable="false"
     class:list={[
-        'object-contain h-8 sm:h-10 lg:h-11 w-full'
+        'object-contain w-full',
+        aspect === 'rect' && 'h-8 sm:h-10 lg:h-11'
     ]}
 />
