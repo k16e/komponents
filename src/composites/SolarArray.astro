@@ -19,15 +19,17 @@ const { blok } = Astro.props
                 <Split tag="li" gap alternateLg={ _even(idx) ? false : true }>
                     <div slot="leading"
                         class:list={[
-                            'bg-surface-100 min-h-[456px] sm:h-[480px] md:h-[520px] lg:min-h-full flex flex-col justify-center xl:items-center xl:px-20 group-[&.order-1]:clip-path-t group-[&.order-2]:clip-path-b lg:!clip-path-y'
+                            'bg-surface-100 min-h-full flex flex-col justify-center xl:items-center xl:px-20 group-[&.order-1]:clip-path-t group-[&.order-2]:clip-path-b lg:!clip-path-y',
+                            _padY()
                         ]}>
-                        <Wrapper inner padX={ false } class="flex flex-col space-y-6 px-4 xl:px-0">
+                        <Wrapper inner padY="y" padX={ false } class="flex flex-col space-y-6 px-4 xl:px-0">
                             <BannerTitle
                                 title={ el.title }
                                 level="h3"
                                 size="xl"
                                 weight="bold"
                                 slatColor="accent"
+                                class:list="pt-8 lg:pt-0"
                             />
                             <RichText text={ el.summary }/>
                             <div class="inline-flex group/nested">

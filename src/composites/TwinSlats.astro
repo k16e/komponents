@@ -16,14 +16,15 @@ const
         <Split alternate={ blok.alternate }>
             <div slot="leading"
                 class:list={[
-                    'min-h-[456px] sm:h-[480px] md:h-[520px] lg:min-h-full flex flex-col justify-center xl:items-center xl:px-20 group-[&.order-1]:clip-path-t group-[&.order-2]:clip-path-b lg:!clip-path-y',
+                    'min-h-full flex flex-col justify-center xl:items-center xl:px-20 group-[&.order-1]:clip-path-t group-[&.order-2]:clip-path-b lg:!clip-path-y',
                     blok.color === 'accent' && 'bg-accent-600 text-white',
                     blok.color === 'surface' && 'bg-surface-100 text-surface-800',
                     blok.color === 'dark' && 'bg-surface-950 text-white',
                     blok.color === 'transparent' && 'bg-transparent',
-                    blok.color === 'light_a' && 'bg-accent-50 text-accent-600'
+                    blok.color === 'light_a' && 'bg-accent-50 text-accent-600',
+                    _padY()
                 ]}>
-                <Wrapper inner padX={ false } class:list="px-4 xl:px-0">
+                <Wrapper inner padY="y" padX={ false } class:list="px-4 xl:px-0">
                     <BannerEntry
                         title={ leading.title }
                         hLevel={ 4 }
