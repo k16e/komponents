@@ -6,50 +6,52 @@ import BannerTitle from '../blocks/BannerTitle.astro'
 import RichText from '../atoms/RichText.astro'
 import SlatImage from '../atoms/SlatImage.astro'
 import { _padY, _padB, _even, _odd } from '../scripts/snips'
+import _slug from '../scripts/_slug'
+import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
 
-const
-    {
-        blok
-    } = Astro.props,
-    entries = blok.list
+const { blok } = Astro.props
 ---
-<Section
-    title={ blok.title }>
-    <Wrapper
-        tag="ul"
-        containXlUp
-        padX={ false }
-        class:list="">
+<Section title={ blok.title }>
+    <Wrapper tag="ul" containXlUp padX={ false }>
         {
-            entries.map((i: any, idx: number) => (
-                <Split
-                    tag="li"
-                    gap
-                    alternateLg={ _even(idx) ? false : true }
-                    class:list="">
-                    <div
-                        slot="leading"
+            blok.list.map((el: any, idx: number) => (
+                <Split tag="li" gap alternateLg={ _even(idx) ? false : true }>
+                    <div slot="leading"
                         class:list={[
                             'bg-surface-100 min-h-[456px] sm:h-[480px] md:h-[520px] lg:min-h-full flex flex-col justify-center xl:items-end group-[&.order-1]:lg:pr-12 group-[&.order-2]:lg:pl-12 group-[&.order-1]:clip-path-t group-[&.order-2]:clip-path-b lg:!clip-path-y'
                         ]}>
                         <div class="flex flex-col space-y-6">
                             <BannerTitle
-                                title={ i.title }
+                                title={ el.title }
                                 level="h3"
                                 color="surface"
                                 size="xl"
                                 weight="bold"
                                 slatColor="punch"
                             />
-                            <RichText text={ i.summary }/>
+                            <RichText text={ el.summary }/>
+                            <div class="inline-flex group/nested">
+                                <Anchor
+                                    href={ _slug(el.link[0].link) }
+                                    hover="shadow"
+                                    nested
+                                    class:list="mt-3">
+                                    <Button
+                                        icon={ el.link[0].icon }
+                                        label={ el.link[0].title }
+                                        iconPosition={ el.link[0].icon_position }
+                                        color={ el.link[0].color }
+                                    />
+                                </Anchor>
+                            </div>
                         </div>
                     </div>
                     <SlatImage
                         slot='trailing'
                         defaultHeight={ false }
                         growHeight
-                        filename={ i.image.filename }
+                        filename={ el.image.filename }
                         class:list={[
                             'group-[&.order-2]:clip-path-b group-[&.order-1]:clip-path-t lg:!clip-path-y'
                         ]}

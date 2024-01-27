@@ -14,7 +14,7 @@ const { blok } = Astro.props
 ---
 <section class:list={[ _gradientLight() ]}>
     <Wrapper inner padY="y">
-        <Grid class:list="pt-8">
+        <Grid class:list="py-8">
             <Inner slot="leading" class="space-y-4 md:space-y-6 lg:space-y-10 lg:pb-8">
                 <BannerTitle
                     title={ blok.title }
@@ -28,16 +28,16 @@ const { blok } = Astro.props
             <div slot="trailing" class="space-y-8 md:space-y-10 lg:space-y-14">
                 <Copy content={ blok.copy }/>
                 <ul class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
-                    { blok.links.map((link: any) => (
+                    { blok.links.map((el: any) => (
                         <li class="group">
                             <Anchor
-                                href={ `/${link.link.story.full_slug === 'home' ? '' : link.link.story.full_slug}` }
+                                href={ `/${el.link.story.full_slug === 'home' ? '' : el.link.story.full_slug}` }
                                 hover="shadow">
                                 <Button
-                                    icon={ link.icon }
-                                    label={ link.title }
-                                    iconPosition={ link.icon_position }
-                                    color={ link.color }
+                                    icon={ el.icon }
+                                    label={ el.title }
+                                    iconPosition={ el.icon_position }
+                                    color={ el.color }
                                     class="w-full"
                                 />
                             </Anchor>
