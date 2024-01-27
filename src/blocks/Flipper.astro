@@ -11,12 +11,7 @@ const
     } = Astro.props,
     Tag = 'div'
 ---
-<Tag
-    class:list={[
-        'relative min-h-[456px] xl:min-h-[424px]'
-        , classes
-    ]}
-    data-flipper { ...attrs }>
+<Tag class:list={['relative min-h-[456px] xl:min-h-[424px]', classes]} data-flipper { ...attrs }>
     <div
         class:list={[
             'bg-accent-600 text-white flex flex-col justify-between h-full absolute inset-0 z-[2]',
@@ -49,10 +44,11 @@ const
         <div class="flex flex-col gap-y-5 pointer-events-none">
             <BannerTitle
                 title={ title }
-                level={ 'h3' }
-                size={ 'md' }
-                weight={ 'bold' }
-                color={ 'surface' }
+                level="h3"
+                size="md"
+                weight="bold"
+                color="dark",
+                slatColor="accent"
             />
             <Copy
                 content={ copy }
