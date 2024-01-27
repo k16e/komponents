@@ -1,6 +1,7 @@
 ---
 import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
+import _slug from '../scripts/slug'
 
 const { links } = Astro.props
 ---
@@ -8,9 +9,7 @@ const { links } = Astro.props
     {
         links.map((link: any) => (
             <li class="first:hidden md:first:block group first:text-surface-700">
-                <Anchor
-                    href={ `/${link.link.story.full_slug === 'home' ? '' : link.link.story.full_slug}` }
-                    hover="shadow">
+                <Anchor href={ _slug(link.link) } hover="shadow">
                     <Button
                         icon={ link.icon }
                         label={ link.title }
