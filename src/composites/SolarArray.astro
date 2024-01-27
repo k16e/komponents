@@ -21,7 +21,7 @@ const { blok } = Astro.props
                         class:list={[
                             'bg-surface-100 min-h-[456px] sm:h-[480px] md:h-[520px] lg:min-h-full flex flex-col justify-center xl:items-center xl:px-20 group-[&.order-1]:clip-path-t group-[&.order-2]:clip-path-b lg:!clip-path-y'
                         ]}>
-                        <div class="flex flex-col space-y-6">
+                        <Wrapper inner padX={ false } class="flex flex-col space-y-6 px-4 xl:px-0">
                             <BannerTitle
                                 title={ el.title }
                                 level="h3"
@@ -44,7 +44,7 @@ const { blok } = Astro.props
                                     />
                                 </Anchor>
                             </div>
-                        </div>
+                        </Wrapper>
                     </div>
                     <SlatImage
                         slot='trailing'
