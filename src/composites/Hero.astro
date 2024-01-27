@@ -9,6 +9,7 @@ import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
 import ImageSlat from '../blocks/ImageSlat.astro'
 import { _padY, _gradientLight, _padT, _padB } from '../scripts/snips'
+import _slug from '../scripts/slug'
 
 const { blok } = Astro.props
 ---
@@ -31,9 +32,7 @@ const { blok } = Astro.props
                 <ul class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
                     { blok.links.map((el: any) => (
                         <li class="group">
-                            <Anchor
-                                href={ `/${el.link.story.full_slug === 'home' ? '' : el.link.story.full_slug}` }
-                                hover="shadow">
+                            <Anchor href={ _slug(el.link) } hover="shadow">
                                 <Button
                                     icon={ el.icon }
                                     label={ el.title }
