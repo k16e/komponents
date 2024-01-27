@@ -23,7 +23,7 @@
         "@swup/progress-plugin": "^3.1.2",
         "@swup/scroll-plugin": "^3.3.1",
         "@types/alpinejs": "^3.13.6",
-        "astro": "^4.2.1",
+        "astro": "^4.2.6",
         "astro-seo": "^0.8.0",
         "gsap": "^3.12.4",
         "nanostores": "^0.9.5",
