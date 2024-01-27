@@ -1,4 +1,5 @@
-import { _slugify, _ql, _q } from './snips'
+import { _ql, _q } from './snips'
+import _slugify from './slugify'
 
 const _activePath = () => {
     if (!_q('[data-anchor]')) return

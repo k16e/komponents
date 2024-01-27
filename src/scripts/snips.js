@@ -13,19 +13,6 @@ const
     _odd = n => Math.abs(n % 2) == 1
 
 
-// Snippets
-const _slugify = str => {
-    // Thanks to https://dev.to/bybydev/how-to-slugify-a-string-in-javascript-4o9n
-    str = str.replace(/^\s+|\s+$/g, '')
-    str = str.toLowerCase()
-    str = str
-        .replace(/[^a-z0-9 -]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-    return str
-}
-
-
 const _scrollToTopOffset = (target, offset = 56) => {
     // Credit here @ https://stackoverflow.com/questions/49820013/javascript-scrollintoview-smooth-scroll-and-offset
     const
@@ -46,5 +33,5 @@ const _empty = obj => {
 
 // Exports
 export {
-    _body, _slugify, _empty, _q, _ql, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _scrollToTopOffset, _even, _odd
+    _body, _empty, _q, _ql, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _scrollToTopOffset, _even, _odd
 }
