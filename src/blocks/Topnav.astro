@@ -3,6 +3,7 @@ import Button from '../atoms/Button.astro'
 import Anchor from '../atoms/Anchor.astro'
 import Icon from '../atoms/Icon.astro'
 import _slugify from '../scripts/slugify'
+import _slug from '../scripts/slug'
 
 const
     { links } = Astro.props,
@@ -14,11 +15,7 @@ const
 		links.map((link: any) => (
 			<li class="group">
 				<Anchor
-					href={`/${
-						link.link.story.full_slug === 'home'
-							? ''
-							: link.link.story.full_slug
-					}`}
+					href={ _slug(link.link) }
                     hover="accent"
                     class:list="relative group [&.active]:text-accent-600"
                     data-anchor={ _slugify(link.link.story.full_slug) }>

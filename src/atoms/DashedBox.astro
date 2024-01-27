@@ -1,17 +1,17 @@
 ---
 const
     {
-        Element = 'div',
+        Tag = 'div',
         class: classes,
         ...attrs
     }
     = Astro.props
 ---
-<Element
+<Tag
     class:list={[
         'border border-dashed border-surface-200',
         classes
     ]}
     { ...attrs }>
     <slot/>
-</Element>
+</Tag>
