@@ -7,7 +7,7 @@ import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
 
 const {
-    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'surface', slatColor = 'accent', hLevel = 3, centered, links, link,
+    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'dark', slatColor = 'accent', hLevel = 3, centered, links, link,
     class: classes, ...attrs
 } = Astro.props
 ---
@@ -82,7 +82,7 @@ const {
                 <Button
                     icon="arrow-right"
                     label="View Project"
-                    color="light_p"
+                    color="light_a"
                 />
             </Anchor>
         ) }
