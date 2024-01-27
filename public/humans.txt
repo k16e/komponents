@@ -19,3 +19,4 @@ Web: HTML, CSS, & JS
 - Nav active link => Chen Yang [https://www.cyishere.dev/blog/astro-active-nav-item] (some direction)
 - NPM Upgrades => Natalie Pina [https://www.freecodecamp.org/news/how-to-update-npm-dependencies/]
 - Slugify => byby [https://dev.to/bybydev/how-to-slugify-a-string-in-javascript-4o9n]
+- Unslash => StackOverflow [https://stackoverflow.com/questions/6680825/return-string-without-trailing-slash/36242700#36242700]
