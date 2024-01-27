@@ -13,7 +13,7 @@ import Button from '../atoms/Button.astro'
 const { blok } = Astro.props
 ---
 <Section title={ blok.title } class:list={[ ..._padY() ]}>
-    <Wrapper tag="ul" containXlUp padX={ false } class:list="lg:space-y-[-74px]">
+    <Wrapper tag="ul" containXlUp padX={ false } class:list="space-y-[-92px] lg:space-y-[-74px]">
         {
             blok.list.map((el: any, idx: number) => (
                 <Split tag="li" gap alternateLg={ _even(idx) ? false : true }>
