@@ -16,19 +16,16 @@ const
     title={ blok.title }>
     <Wrapper padX={ false } containXlUp>
         <Split alternate={ blok.alternate }>
-            <div
-                slot="leading"
+            <div slot="leading"
                 class:list={[
-                    'min-h-[456px] sm:h-[480px] md:h-[520px] lg:min-h-full flex flex-col justify-center xl:items-end group-[&.order-1]:lg:pr-12 group-[&.order-2]:lg:pl-12 group-[&.order-1]:clip-path-t group-[&.order-2]:clip-path-b lg:!clip-path-y',
+                    'min-h-[456px] sm:h-[480px] md:h-[520px] lg:min-h-full flex flex-col justify-center xl:items-center xl:px-20 group-[&.order-1]:clip-path-t group-[&.order-2]:clip-path-b lg:!clip-path-y',
                     blok.color === 'punch' && 'bg-punch-600 text-white',
                     blok.color === 'surface' && 'bg-surface-100 text-surface-800',
                     blok.color === 'dark' && 'bg-surface-950 text-white',
                     blok.color === 'transparent' && 'bg-transparent',
                     blok.color === 'light_p' && 'bg-punch-50 text-punch-600'
                 ]}>
-                <Wrapper
-                    inner
-                    class:list="">
+                <Wrapper inner padX={ false } class:list="px-4 xl:px-0">
                     <BannerEntry
                         title={ leading.title }
                         hLevel={ 4 }
