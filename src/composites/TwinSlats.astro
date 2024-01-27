@@ -11,19 +11,17 @@ const
     leading = blok.leading[0],
     trailing = blok.trailing[0]
 ---
-<Section
-    class:list={[ ..._padY() ]}
-    title={ blok.title }>
+<Section class:list={[ ..._padY() ]} title={ blok.title }>
     <Wrapper padX={ false } containXlUp>
         <Split alternate={ blok.alternate }>
             <div slot="leading"
                 class:list={[
                     'min-h-[456px] sm:h-[480px] md:h-[520px] lg:min-h-full flex flex-col justify-center xl:items-center xl:px-20 group-[&.order-1]:clip-path-t group-[&.order-2]:clip-path-b lg:!clip-path-y',
-                    blok.color === 'punch' && 'bg-punch-600 text-white',
+                    blok.color === 'accent' && 'bg-accent-600 text-white',
                     blok.color === 'surface' && 'bg-surface-100 text-surface-800',
                     blok.color === 'dark' && 'bg-surface-950 text-white',
                     blok.color === 'transparent' && 'bg-transparent',
-                    blok.color === 'light_p' && 'bg-punch-50 text-punch-600'
+                    blok.color === 'light_p' && 'bg-accent-50 text-accent-600'
                 ]}>
                 <Wrapper inner padX={ false } class:list="px-4 xl:px-0">
                     <BannerEntry
@@ -31,10 +29,10 @@ const
                         hLevel={ 4 }
                         copy={ leading.copy }
                         color={
-                            (blok.color === 'punch' || blok.color === 'surface') ? 'white' : 'surface'
+                            (blok.color === 'accent' || blok.color === 'surface') ? 'white' : 'surface'
                         }
                         slatColor={
-                            (blok.color === 'punch' || blok.color === 'surface') ? 'white' : 'punch'
+                            (blok.color === 'accent' || blok.color === 'surface') ? 'white' : 'accent'
                         }
                     />
                 </Wrapper>
