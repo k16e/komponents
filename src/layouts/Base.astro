@@ -6,6 +6,7 @@ import Header from './Header.astro'
 import Footer from './Footer.astro'
 import { useStoryblokApi } from '@storyblok/astro'
 import TitleHidden from '../atoms/TitleHidden.astro'
+import { modal } from '../scripts/store'
 
 const
     {
@@ -19,7 +20,9 @@ const
     site = settings.story.content
 ---
 <!doctype html>
-<html lang="en" class="scroll-smooth bg-white">
+<html
+    lang="en"
+    class="scroll-smooth bg-white">
 	<Head
         title={ `${ pageTitle } | ${ site.title }` }
         description={ pageDescription || site.description }

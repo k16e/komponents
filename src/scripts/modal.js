@@ -5,7 +5,10 @@ const _modal = () => {
     if (!_q('[data-modal]')) return
 
     const
-        trigger = _ql('[data-modal]')
+        trigger = _ql('[data-modal]'),
+        html = document.documentElement,
+        fix = () => html.classList.add('overflow-hidden'),
+        free = () => html.classList.remove('overflow-hidden')
 
     trigger.map(el => {
         el.addEventListener('click', (e) => {
@@ -15,6 +18,7 @@ const _modal = () => {
         })
     })
 
+    modal.subscribe(value => value ? fix() : free())
 
     console.log(modal)
 }
