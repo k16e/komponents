@@ -1,4 +1,5 @@
 ---
+import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
 import BannerTitle from '../blocks/BannerTitle.astro'
 import BannerSubtitle from '../blocks/BannerSubtitle.astro'
@@ -13,19 +14,21 @@ import _slug from '../scripts/slug'
 
 const { blok } = Astro.props
 ---
-<section class:list={[ _gradientLight() ]}>
+<Section
+    title={ blok.title }
+    component={ blok.component }
+    class:list={[ _gradientLight() ]}>
     <Wrapper inner padY="y">
         <Grid class:list="py-8">
             <Inner slot="leading" class="space-y-4 md:space-y-6 lg:space-y-10 lg:pb-8">
                 <BannerTitle
-                    title={ blok.title }
-                    level="h2"
+                    title={ blok.headline }
                     size="4xl"
                     weight="extra"
                     color="accent"
                     class:list="text-accent-600"
                 />
-                <BannerSubtitle title={ blok.subtitle }/>
+                <BannerSubtitle title={ blok.subheadline }/>
             </Inner>
             <div slot="trailing" class="space-y-8 md:space-y-10 lg:space-y-14">
                 <Copy content={ blok.copy }/>
@@ -48,4 +51,4 @@ const { blok } = Astro.props
         </Grid>
     </Wrapper>
     <ImageSlat images={ blok.images } class:list={[ _padB() ]}/>
-</section>
+</Section>
