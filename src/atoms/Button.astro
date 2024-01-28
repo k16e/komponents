@@ -7,7 +7,7 @@ const
         icon, iconPosition, label, color, titleCase = false, responsive, fab, eventsNone, tag = 'div', class: classes, ...attrs
     } = Astro.props,
     Tag = tag,
-    dimensions = (responsive, fab) => {
+    dimensions = (responsive: any, fab: any) => {
         if (responsive) return 'h-11 px-3'
         else if (fab) return 'h-16 w-16 rounded-full'
         else return 'h-[52px] px-5'

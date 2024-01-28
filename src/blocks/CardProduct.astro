@@ -1,18 +1,29 @@
 ---
 import ImageProduct from '../atoms/ImageProduct.astro'
 import Heading from '../atoms/Heading.astro'
+import LinkText from '../atoms/LinkText.astro'
+import Icon from '../atoms/Icon.astro'
+import { _transition } from '../scripts/snips'
 
 const
     {
-        filename, name,
+        filename, name, link, linkText
     } = Astro.props
 ---
-<div
-    class="border-surface-200 border flex flex-col h-full p-3 gap-3">
+<a
+    href={ link }
+    class:list={[
+        "border-surface-200 border flex flex-col h-full p-3 gap-3 group hover:shadow-lg",
+        _transition()
+    ]}>
     <div class="flex items-center justify-center w-full h-full py-3">
         <ImageProduct filename={ filename }/>
     </div>
     <div class="h-28 flex flex-col justify-between">
         <Heading text={ name } color="dark" weight="medium" level="h3"/>
+        <div class="flex items-end justify-between text-accent-600">
+            <LinkText tiny={ false } titleCase text="View Details"/>
+            <Icon name="arrow-right-up" class:list="w-5"/>
+        </div>
     </div>
-</div>
+</a>
