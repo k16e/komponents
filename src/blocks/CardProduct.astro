@@ -1,9 +1,10 @@
 ---
 import ImageProduct from '../atoms/ImageProduct.astro'
+import Heading from '../atoms/Heading.astro'
 
 const
     {
-        filename
+        filename, name,
     } = Astro.props
 ---
 <div
@@ -12,6 +13,6 @@ const
         <ImageProduct filename={ filename }/>
     </div>
     <div class="h-28 flex flex-col justify-between">
-        content
+        <Heading text={ name } color="dark" weight="medium" level="h3"/>
     </div>
 </div>

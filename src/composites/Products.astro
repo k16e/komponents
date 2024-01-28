@@ -13,16 +13,16 @@ const
 <Section
     title={ blok.title }
     component={ blok.component }
-    class:list="pt-4 sm:pt-0">
+    class:list="pt-8 xs:pt-12 lg:pt-8">
     <Wrapper
         inner
         tag="ul"
-        padY="y"
         class:list="w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
         {
             products.map((el: any, idx: number) => (
                 <CardProduct
                     filename={ el.image[0].file.filename }
+                    name={ el.name }
                 />
             ))
         }
