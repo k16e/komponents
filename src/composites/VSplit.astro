@@ -13,6 +13,7 @@ const { blok } = Astro.props
 ---
 <Section
     title={ blok.title }
+    component={ blok.component }
     class:list={[ blok.is_header ? '' : _padY() ]}>
     <Wrapper
         inner
@@ -32,7 +33,6 @@ const { blok } = Astro.props
                 slot="trailing"
                 filename={ blok.image.filename }
                 clip="y"
-                class:list=""
             />
         </Grid>
         { blok.is_header && (
