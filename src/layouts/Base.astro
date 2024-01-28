@@ -6,6 +6,7 @@ import Header from './Header.astro'
 import Footer from './Footer.astro'
 import { useStoryblokApi } from '@storyblok/astro'
 import TitleHidden from '../atoms/TitleHidden.astro'
+import Backdrop from '../blocks/Backdrop.astro'
 import Modal from '../blocks/Modal.astro'
 
 const
@@ -49,11 +50,7 @@ const
             social={ site.social }
             actions={ site.cta }
         />
-        <Modal
-            class:list={[
-                'hidden group-[.modal-active]/modal:block'
-            ]}>
-        </Modal>
+        <Backdrop/>
 	</body>
 </html>
 
