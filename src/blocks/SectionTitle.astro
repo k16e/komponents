@@ -4,7 +4,8 @@ import Icon from '../atoms/Icon.astro'
 
 const
     {
-        title, showSlat = true, centered, class: classes, ...attrs
+        title, showSlat = true, centered, slatColor = 'accent',
+        class: classes, ...attrs
     } = Astro.props
 ---
 <div
@@ -18,9 +19,18 @@ const
             name={ centered ? 'centerbar' : 'leadingbar' }
             class:list={[
                 'w-[24px] h-[4px]',
-                centered && 'order-2'
+                centered && 'order-2',
+                slatColor === 'accent' && 'text-accent-600'
             ]}
         />
     }
-	<Heading text={ title } level="h2" size="md" weight='bold' tighten color="surface"/>
+	<Heading
+        text={ title }
+        level="h2"
+        size="md"
+        weight="semi"
+        color="surface"
+        tighten
+        class:list="opacity-60"
+    />
 </div>
