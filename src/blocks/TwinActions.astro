@@ -8,8 +8,11 @@ import _slug from '../scripts/slug'
 const { actions, class: classes, ...attrs } = Astro.props
 ---
 <ul
-    class:list={['grid grid-cols-1 lg:grid-cols-2 gap-x-2 items-end relative lg:static overflow-x-clip', classes]}
-    {...attrs}>
+    class:list={[
+        'grid grid-cols-1 lg:grid-cols-2 gap-x-2 items-end relative lg:static overflow-x-clip',
+        classes
+    ]}
+    { ...attrs }>
     {
         actions.map((el: any, idx: number) => (
             <li
