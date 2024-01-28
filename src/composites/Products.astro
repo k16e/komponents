@@ -13,12 +13,12 @@ const
 <Section
     title={ blok.title }
     component={ blok.component }
-    class:list="pt-8 sm:pt-0">
+    class:list="pt-4 sm:pt-0">
     <Wrapper
         inner
         tag="ul"
         padY="y"
-        class:list="w-full relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+        class:list="w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
         {
             products.map((el: any, idx: number) => (
                 <CardProduct
