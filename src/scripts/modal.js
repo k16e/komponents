@@ -6,6 +6,7 @@ const _modal = () => {
 
     const
         trigger = _ql('[data-modal-trigger]'),
+        close = _q('[data-modal-close]'),
         modalWindow = _q('[data-modal]'),
         html = document.documentElement,
         body = document.body,
@@ -16,15 +17,16 @@ const _modal = () => {
         off = () => {
             modalWindow.classList.remove('translate-x-0', 'opacity-100')
             modalWindow.classList.add('translate-x-full', 'opacity-0')
+            unsetModal()
         }
-    
+
     trigger.map(el => {
         el.addEventListener('click', (e) => {
             e.preventDefault()
             modal.value ? unsetModal() : setModal()
         })
     })
-
+    close.addEventListener('click', () => off())
     modal.subscribe(value => value ? onn() : off())
 }
 
