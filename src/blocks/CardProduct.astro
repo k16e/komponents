@@ -1,14 +1,17 @@
 ---
+import ImageProduct from '../atoms/ImageProduct.astro'
+
 const
     {
-        blok
+        filename
     } = Astro.props
 ---
-<div>
-    <div>
-        image
+<div
+    class="border-surface-200 border flex flex-col h-full p-3 gap-3">
+    <div class="flex items-center justify-center w-full h-full">
+        <ImageProduct filename={ filename }/>
     </div>
-    <div>
+    <div class="h-24 flex flex-col justify-between">
         content
     </div>
 </div>

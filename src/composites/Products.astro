@@ -22,6 +22,7 @@ const
         {
             products.map((el: any, idx: number) => (
                 <CardProduct
+                    filename={ el.image[0].file.filename }
                 />
             ))
         }
