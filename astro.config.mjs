@@ -34,6 +34,7 @@ export default defineConfig({
                 solarArray: 'composites/SolarArray',
                 awardsCloud: 'composites/AwardsCloud',
                 pageHeader: 'composites/PageHeader',
+                products: 'composites/Products',
             }
         }),
     ],
