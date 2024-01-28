@@ -22,15 +22,13 @@ const
         tag="ul"
         padB="b"
         class:list="w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
-        {
-            products.map((el: any, idx: number) => (
-                <CardProduct
-                    filename={ el.image[0].file.filename }
-                    link={ _slug(el.link[0].link) }
-                    name={ el.name }
-                    isNew={ el.is_new }
-                />
-            ))
-        }
+        { products.map((el: any) => (
+            <CardProduct
+                filename={ el.image[0].file.filename }
+                link={ _slug(el.link[0].link) }
+                name={ el.name }
+                isNew={ el.is_new }
+            />
+        )) }
     </Wrapper>
 </Section>
