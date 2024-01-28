@@ -11,7 +11,9 @@ const
     leading = blok.leading[0],
     trailing = blok.trailing[0]
 ---
-<Section title={ blok.title }>
+<Section
+    component={ blok.component }
+    title={ blok.title }>
     <Wrapper inner padY="y" padX={ false }>
         <Grid padX>
             <Inner slot="leading">
@@ -19,6 +21,7 @@ const
                     subtitle={ leading.subtitle }
                     title={ leading.title }
                     hLevel={ 4 }
+                    showCopy={ leading.show_copy }
                 />
             </Inner>
             <RichText text={ trailing.text } slot="trailing"/>
