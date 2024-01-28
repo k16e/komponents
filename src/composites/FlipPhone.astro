@@ -1,4 +1,5 @@
 ---
+import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
 import Grid from '../layouts/Grid.astro'
 import SectionTitle from '../blocks/SectionTitle.astro'
@@ -8,7 +9,10 @@ import { _gradientSurface } from '../scripts/snips'
 
 const { blok } = Astro.props
 ---
-<section class:list={[ ..._gradientSurface() ]}>
+<Section
+    title={ blok.title }
+    component={ blok.component }
+    class:list={[ ..._gradientSurface() ]}>
     <Wrapper inner padY="y" padX={ false } releaseXlUp>
         <Grid flipped>
             <div slot="trailing" class="lg:space-y-14 lg:pl-4 xl:pl-0">
@@ -43,4 +47,4 @@ const { blok } = Astro.props
             </div>
         </Grid>
     </Wrapper>
-</section>
+</Section>
