@@ -1,18 +1,29 @@
 ---
 import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
+import CardProduct from '../blocks/CardProduct.astro'
 import { _padY, _padB } from '../scripts/snips'
 
 const
     {
         blok
-    } = Astro.props
+    } = Astro.props,
+    products = blok.products
 ---
 <Section
     title={ blok.title }
     component={ blok.component }
-    class:list="">
-    <Wrapper inner padY="y" class:list="w-full relative">
-
+    class:list="pt-8 sm:pt-0">
+    <Wrapper
+        inner
+        tag="ul"
+        padY="y"
+        class:list="w-full relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+        {
+            products.map((el: any, idx: number) => (
+                <CardProduct
+                />
+            ))
+        }
     </Wrapper>
 </Section>
