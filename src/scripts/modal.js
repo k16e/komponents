@@ -15,13 +15,10 @@ const _modal = () => {
         el.addEventListener('click', (e) => {
             e.preventDefault()
             modal.value ? unsetModal() : setModal()
-            console.log(modal.value)
         })
     })
 
     modal.subscribe(value => value ? fix() : free())
-
-    console.log(modal)
 }
 
 export default _modal
