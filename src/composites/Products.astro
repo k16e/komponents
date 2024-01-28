@@ -10,6 +10,7 @@ const
         blok
     } = Astro.props,
     products = blok.products
+        .filter((el: any) => el.in_stock)
 ---
 <Section
     title={ blok.title }
