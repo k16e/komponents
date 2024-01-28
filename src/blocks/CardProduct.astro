@@ -9,14 +9,16 @@ import Chip from '../atoms/Chip.astro'
 const
     {
         filename, name, link, isNew = false,
+        class: classes, ...rest
     } = Astro.props
 ---
 <a
     href={ link }
     class:list={[
         'border-surface-200 border flex flex-col h-full p-3 gap-3 group hover:shadow-lg relative',
-        _transition()
-    ]}>
+        _transition(),
+        classes
+    ]} { ...rest }>
     <div class="flex items-center justify-center w-full h-full py-3">
         <ImageProduct filename={ filename }/>
     </div>

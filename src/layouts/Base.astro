@@ -55,10 +55,7 @@ const
 	.swup-progress-bar { @apply h-0.5 bg-accent-600 dark:bg-accent-300; }
 	main:focus { outline: none; }
     button { text-align: inherit; }
-	svg {
-		@apply flex-shrink-0 pointer-events-none fill-current;
-
-	}
+	svg { @apply flex-shrink-0 pointer-events-none fill-current; }
 </style>
 
 <script>
@@ -67,6 +64,7 @@ const
     import _flipper from '../scripts/flipper'
     import _intoView from '../scripts/into-view'
     import _astrolog from '../scripts/astrolog'
+    import _modal from '../scripts/modal'
 
 	const swup = new Swup({
 		animationSelector: '[class*="swup-"]'
@@ -83,6 +81,7 @@ const
         _activePath()
         _intoView()
         _flipper()
+        _modal()
 	}
 
 	function once() {
