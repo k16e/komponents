@@ -1,5 +1,6 @@
 import { modal, setModal, unsetModal } from './store'
 import { _q, _ql } from './snips'
+import Click from './click'
 
 const _modal = () => {
     if (!_q('[data-modal-trigger]')) return
@@ -26,7 +27,8 @@ const _modal = () => {
             modal.value ? unsetModal() : setModal()
         })
     })
-    close.addEventListener('click', () => off())
+
+    Click(close, off)
     modal.subscribe(value => value ? onn() : off())
 }
 

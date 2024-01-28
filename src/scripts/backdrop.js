@@ -1,5 +1,6 @@
 import { modal, setModal, unsetModal } from './store'
 import { _q, _ql } from './snips'
+import Click from './click'
 
 const _backdrop = () => {
     if (!_q('[data-backdrop]')) return
@@ -21,7 +22,7 @@ const _backdrop = () => {
         }
 
     modal.subscribe(value => value ? onn() : off())
-    backdrop.addEventListener('click', () => off())
+    Click(backdrop, off)
 }
 
 export default _backdrop
