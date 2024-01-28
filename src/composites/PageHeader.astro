@@ -12,6 +12,15 @@ const
 ---
 <Section
     title={ blok.title }
-    component={ blok.component }>
-    Page Header! !!!
+    component={ blok.component }
+    class:list="py-8 sm:py-12 bg-surface-100 flex items-center justify-center min-h-48">
+    <Wrapper inner>
+        <BannerEntry
+            title={ banner.title }
+            color="dark"
+            slatColor="accent"
+            hLevel={ 4 }
+            centered
+        />
+    </Wrapper>
 </Section>
