@@ -7,8 +7,9 @@ const _modal = () => {
     const
         trigger = _ql('[data-modal]'),
         html = document.documentElement,
-        fix = () => html.classList.add('overflow-hidden'),
-        free = () => html.classList.remove('overflow-hidden')
+        body = document.body,
+        fix = () => body.classList.add('modal-active'),
+        free = () => body.classList.remove('modal-active')
 
     trigger.map(el => {
         el.addEventListener('click', (e) => {

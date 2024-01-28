@@ -1,0 +1,18 @@
+---
+const {
+    class: classes, ...rest
+} = Astro.props
+
+---
+<div
+    aria-labelledby="modal-title" role="dialog" aria-modal="true"
+    class:list={[
+        'fixed inset-0 z-[100]',
+        classes
+    ]} { ...rest }>
+    <div class="absolute inset-0 bg-black bg-opacity-75 transition-opacity"></div>
+    <div
+        >
+        MODAL!!!
+    </div>
+</div>

@@ -21,3 +21,4 @@ Web: HTML, CSS, & JS
 - Slugify => byby [https://dev.to/bybydev/how-to-slugify-a-string-in-javascript-4o9n]
 - Unslash => Stack Overflow [https://stackoverflow.com/questions/6680825/return-string-without-trailing-slash/36242700#36242700]
 - Product Sorting => Stack Overflow [https://stackoverflow.com/questions/979256/sorting-an-array-of-objects-by-property-values]
+- States => Make Use Of [https://www.makeuseof.com/astro-state-manage-applications-how-to/]
