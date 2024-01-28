@@ -11,6 +11,7 @@ const
     } = Astro.props,
     products = blok.products
         .filter((el: any) => el.in_stock)
+        .sort((a: any, b: any) => (b.is_new - a.is_new))
 ---
 <Section
     title={ blok.title }
