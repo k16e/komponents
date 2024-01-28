@@ -5,9 +5,18 @@ const _modal = () => {
     if (!_q('[data-modal]')) return
 
     const
-        newProducts = _ql('[data-modal]')
+        trigger = _ql('[data-modal]')
 
-    console.log(newProducts)
+    trigger.map(el => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault()
+            modal.value ? unsetModal() : setModal()
+            console.log(modal.value)
+        })
+    })
+
+
+    console.log(modal)
 }
 
 export default _modal
