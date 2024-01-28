@@ -4,16 +4,17 @@ import Heading from '../atoms/Heading.astro'
 import LinkText from '../atoms/LinkText.astro'
 import Icon from '../atoms/Icon.astro'
 import { _transition } from '../scripts/snips'
+import Chip from '../atoms/Chip.astro'
 
 const
     {
-        filename, name, link, linkText
+        filename, name, link, isNew = false,
     } = Astro.props
 ---
 <a
     href={ link }
     class:list={[
-        "border-surface-200 border flex flex-col h-full p-3 gap-3 group hover:shadow-lg",
+        'border-surface-200 border flex flex-col h-full p-3 gap-3 group hover:shadow-lg relative',
         _transition()
     ]}>
     <div class="flex items-center justify-center w-full h-full py-3">
@@ -26,4 +27,6 @@ const
             <Icon name="arrow-right-up" class:list="w-5"/>
         </div>
     </div>
+
+    { isNew && (<Chip class:list="absolute top-3 left-0"/>)}
 </a>
