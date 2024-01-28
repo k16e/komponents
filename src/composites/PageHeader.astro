@@ -1,0 +1,17 @@
+---
+import Section from '../layouts/Section.astro'
+import Wrapper from '../layouts/Wrapper.astro'
+import BannerEntry from '../blocks/BannerEntry.astro'
+import { _padY, _padB } from '../scripts/snips'
+
+const
+    {
+        blok
+    } = Astro.props,
+    banner = blok.banner[0]
+---
+<Section
+    title={ blok.title }
+    component={ blok.component }>
+    Page Header! !!!
+</Section>

@@ -33,6 +33,7 @@ export default defineConfig({
                 vSplit: 'composites/VSplit',
                 solarArray: 'composites/SolarArray',
                 awardsCloud: 'composites/AwardsCloud',
+                pageHeader: 'composites/PageHeader',
             }
         }),
     ],
