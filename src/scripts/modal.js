@@ -1,6 +1,5 @@
-import { modal, setModal, unsetModal } from './store'
+import { modal, setModal, unsetModal, addProduct, $product } from './store'
 import { _q, _ql } from './snips'
-import Click from './click'
 
 const _modal = () => {
     if (!_q('[data-modal-trigger]')) return
@@ -27,12 +26,15 @@ const _modal = () => {
             const
                 target = e.target,
                 attr = target.getAttribute('data-display'),
-                slot = slots.find(el => (el.dataset.modalDisplay === attr))
+                slot = slots.find(el => (el.dataset.modalDisplay === attr)),
+                data = JSON.parse(target.nextElementSibling.textContent)
 
+            console.log(data)
+            addProduct(data)
+            console.log($product.value)
             slot.classList.remove('sr-only')
             modal.value ? unsetModal() : setModal()
         }
-
 
     slots.map(el => el.classList.add('sr-only'))
     trigger.map(el => el.addEventListener('click', e => display(e)))

@@ -7,9 +7,9 @@ import _slug from '../scripts/slug'
 
 const
     {
-        blok
+        blok, product
     } = Astro.props,
-    products = blok.products
+    filteredProducts= blok.products
         .filter((el: any) => el.in_stock)
         .sort((a: any, b: any) => (b.is_new - a.is_new))
 ---
@@ -22,7 +22,7 @@ const
         tag="ul"
         padB="b"
         class:list="w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
-        { products.map((el: any) => (
+        { filteredProducts.map((el: any, idx: number) => (
             <li>
                 <CardProduct
                     filename={ el.image[0].file.filename }
@@ -31,8 +31,10 @@ const
                     isNew={ el.is_new }
                     data-modal-trigger={ el.is_new }
                     data-display="product"
-                    
                 />
+                <div class="hidden">
+                    { JSON.stringify(el) }
+                </div>
             </li>
         )) }
     </Wrapper>

@@ -22,3 +22,4 @@ Web: HTML, CSS, & JS
 - Unslash => Stack Overflow [https://stackoverflow.com/questions/6680825/return-string-without-trailing-slash/36242700#36242700]
 - Product Sorting => Stack Overflow [https://stackoverflow.com/questions/979256/sorting-an-array-of-objects-by-property-values]
 - States => Make Use Of [https://www.makeuseof.com/astro-state-manage-applications-how-to/]
+- JSON Stringify => FreeCodeCamp [https://www.freecodecamp.org/news/json-stringify-example-how-to-parse-a-json-object-with-javascript/]
