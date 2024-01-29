@@ -1,11 +1,14 @@
 {
-    "extends": "astro/tsconfigs/base",
-    "compilerOptions": {
-        "noImplicitAny": false,
-        "checkJs": false,
-        "skipLibCheck": true
-    },
-    "paths": {
-        "@components/*": ["./components/*"]
-    }
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "jsx": "preserve"
+  },
+  "paths": {
+    "@components/*": [
+      "./components/*"
+    ]
+  }
 }
