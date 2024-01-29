@@ -10,7 +10,7 @@ import Backdrop from '../blocks/Backdrop.astro'
 import Modal from '../blocks/Modal.astro'
 import ModalProduct from '../blocks/ModalProduct.astro'
 import ModalAffiliate from '../blocks/ModalAffiliate.astro'
-import { $product } from '../scripts/store'
+import { product } from '../scripts/store'
 
 const
     {
@@ -54,7 +54,7 @@ const
             actions={ site.cta }
         />
         <Modal>
-            <ModalProduct data-modal-display="product" content={ $product }/>
+            <ModalProduct data-modal-display="product"/>
             <ModalAffiliate data-modal-display="affiliate"/>
         </Modal>
         <Backdrop/>

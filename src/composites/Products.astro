@@ -32,7 +32,7 @@ const
                     data-modal-trigger={ el.is_new }
                     data-display="product"
                 />
-                <div class="hidden">{ JSON.stringify(el) }</div>
+                <div class="hidden" data-signal={ `product-at-${idx}`}>{ JSON.stringify(el) }</div>
             </li>
         )) }
     </Wrapper>
