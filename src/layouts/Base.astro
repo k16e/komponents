@@ -10,6 +10,7 @@ import Backdrop from '../blocks/Backdrop.astro'
 import Modal from '../blocks/Modal.astro'
 import ModalProduct from '../blocks/ModalProduct.astro'
 import ModalAffiliate from '../blocks/ModalAffiliate.astro'
+import { _products } from '../scripts/store'
 
 const
     {
@@ -20,13 +21,7 @@ const
         version: import.meta.env.DEV ? 'draft' : 'published',
         resolve_links: 'url'
     }),
-    site = settings.story.content,
-    { data } = await api.get('cdn/stories/products', {
-        version: import.meta.env.DEV ? 'draft' : 'published'
-    }),
-    products = data.story.content.body[1].products
-        .filter((el: any) => el.in_stock)
-        .sort((a: any, b: any) => (b.is_new - a.is_new))
+    site = settings.story.content
 ---
 <!doctype html>
 <html
@@ -59,7 +54,7 @@ const
             actions={ site.cta }
         />
         <Modal>
-            { products.map((el: any, idx: number) => (
+            { _products.value.map((el: any, idx: number) => (
                 <ModalProduct product={ el } data-modal-display={ `product-at-${idx}` }/>
             )) }
             <ModalAffiliate data-modal-display="affiliate"/>

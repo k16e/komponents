@@ -4,14 +4,17 @@ import Wrapper from '../layouts/Wrapper.astro'
 import CardProduct from '../blocks/CardProduct.astro'
 import { _padY, _padB } from '../scripts/snips'
 import _slug from '../scripts/slug'
+import { _addProducts, _products } from '../scripts/store'
 
 const
     {
-        blok, product
+        blok
     } = Astro.props,
     filteredProducts = blok.products
         .filter((el: any) => el.in_stock)
         .sort((a: any, b: any) => (b.is_new - a.is_new))
+
+_addProducts(filteredProducts)
 ---
 <Section
     title={ blok.title }
