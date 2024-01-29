@@ -1,6 +1,7 @@
 ---
 const
     {
+        product,
         class: classes, ...rest
     } = Astro.props
 ---
@@ -9,5 +10,7 @@ const
         '',
         classes
     ]} { ...rest }>
-    <div data-signal></div>
+    <div>
+        { product.name }
+    </div>
 </div>

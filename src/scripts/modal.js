@@ -1,4 +1,4 @@
-import { modal, setModal, unsetModal, addProduct, product } from './store'
+import { modal, setModal, unsetModal } from './store'
 import { _q, _ql } from './snips'
 
 const _modal = () => {
@@ -16,6 +16,7 @@ const _modal = () => {
         off = () => {
             window.classList.remove('translate-x-0', 'opacity-100')
             window.classList.add('translate-x-full', 'opacity-0')
+            slots.map(el => el.classList.add('sr-only'))
             unsetModal()
         },
         display = (e) => {
@@ -24,18 +25,8 @@ const _modal = () => {
             const
                 target = e.target,
                 attr = target.getAttribute('data-display'),
-                slot = slots.find(el => (el.dataset.modalDisplay === attr)),
-                data = JSON.parse(target.nextElementSibling.textContent),
-                populate = _q('[data-signal]', slot),
-                html = `
-                    <div class="flex items-center justify-center">
-                        <img src="${data.image[0].file.filename}" alt="" width="296" height="296" class="object-contain"/>
-                    </div>
-                `
+                slot = slots.find(el => (el.dataset.modalDisplay === attr))
 
-            addProduct(data)
-            console.log(data)
-            populate.innerHTML = html
             slot.classList.remove('sr-only')
             modal.value ? unsetModal() : setModal()
         }

@@ -9,7 +9,7 @@ const
     {
         blok, product
     } = Astro.props,
-    filteredProducts= blok.products
+    filteredProducts = blok.products
         .filter((el: any) => el.in_stock)
         .sort((a: any, b: any) => (b.is_new - a.is_new))
 ---
@@ -30,9 +30,8 @@ const
                     name={ el.name }
                     isNew={ el.is_new }
                     data-modal-trigger={ el.is_new }
-                    data-display="product"
+                    data-display={ `product-at-${idx}`}
                 />
-                <div class="hidden" data-signal={ `product-at-${idx}`}>{ JSON.stringify(el) }</div>
             </li>
         )) }
     </Wrapper>

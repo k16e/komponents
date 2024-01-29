@@ -10,18 +10,23 @@ import Backdrop from '../blocks/Backdrop.astro'
 import Modal from '../blocks/Modal.astro'
 import ModalProduct from '../blocks/ModalProduct.astro'
 import ModalAffiliate from '../blocks/ModalAffiliate.astro'
-import { product } from '../scripts/store'
 
 const
     {
         pageTitle, pageDescription, pageThumbnail
     } = Astro.props,
-    storyblokApi = useStoryblokApi(),
-    { data: settings } = await storyblokApi.get('cdn/stories/settings', {
+    api = useStoryblokApi(),
+    { data: settings } = await api.get('cdn/stories/settings', {
         version: import.meta.env.DEV ? 'draft' : 'published',
         resolve_links: 'url'
     }),
-    site = settings.story.content
+    site = settings.story.content,
+    { data } = await api.get('cdn/stories/products', {
+        version: import.meta.env.DEV ? 'draft' : 'published'
+    }),
+    products = data.story.content.body[1].products
+        .filter((el: any) => el.in_stock)
+        .sort((a: any, b: any) => (b.is_new - a.is_new))
 ---
 <!doctype html>
 <html
@@ -54,7 +59,9 @@ const
             actions={ site.cta }
         />
         <Modal>
-            <ModalProduct data-modal-display="product"/>
+            { products.map((el: any, idx: number) => (
+                <ModalProduct product={ el } data-modal-display={ `product-at-${idx}` }/>
+            )) }
             <ModalAffiliate data-modal-display="affiliate"/>
         </Modal>
         <Backdrop/>
