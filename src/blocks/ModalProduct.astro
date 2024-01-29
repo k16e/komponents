@@ -1,16 +1,8 @@
 ---
-import { useStoryblokApi } from '@storyblok/astro'
-
 const
-    api = useStoryblokApi(),
-    { data } = await api.get(`cdn/stories/products`, {
-        version: import.meta.env.DEV ? 'draft' : 'published',
-    }),
     {
         class: classes, ...rest
-    } = Astro.props,
-    content = data.story.content,
-    products = content.body.map((el: any) => el.products)
+    } = Astro.props
 ---
 <div
     class:list={[
