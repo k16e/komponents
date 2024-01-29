@@ -9,8 +9,6 @@ const _modal = () => {
         close = _q('[data-modal-close]'),
         window = _q('[data-modal]'),
         slots = _ql('[data-modal-display]'),
-        html = document.documentElement,
-        body = document.body,
         onn = () => {
             window.classList.remove('translate-x-full', 'opacity-0')
             window.classList.add('translate-x-0', 'opacity-100')
@@ -29,7 +27,6 @@ const _modal = () => {
                 slot = slots.find(el => (el.dataset.modalDisplay === attr)),
                 data = JSON.parse(target.nextElementSibling.textContent)
 
-            console.log(data)
             addProduct(data)
             console.log($product.value)
             slot.classList.remove('sr-only')
