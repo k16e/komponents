@@ -14,7 +14,7 @@ const {
 ---
 <div
     class:list={[
-        'space-y-10 lg:space-y-12',
+        'space-y-8 lg:space-y-10',
         centered && 'text-center',
         classes
     ]} {...attrs}>
@@ -39,6 +39,7 @@ const {
                             class:list={[
                                 hLevel === 3 && 'w-[32px] h-[6px] lg:w-[48px] lg:h-[7px]',
                                 hLevel === 4 && 'w-[36px] h-[7px] md:w-[52px] md:h-[9px] lg:w-[56px] lg:h-[10px]',
+                                hLevel === 5 && 'w-[32px] h-[6px]',
                                 slatColor === 'accent' && 'text-accent-600',
                                 slatColor === 'surface' && 'text-surface-950',
                                 slatColor === 'white' && 'text-white',
@@ -48,6 +49,7 @@ const {
                     }
                     { hLevel === 3 && <Heading text={ title } level="h3" size="xl" weight="extra" tighten color={ color }/> }
                     { hLevel === 4 && <Heading text={ title } size="2xl" weight="extra" tighten color={ color }/> }
+                    { hLevel === 5 && <Heading text={ title } size="md" weight="bold" tighten color={ color }/> }
                 </div>
             )
         }

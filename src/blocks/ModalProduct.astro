@@ -1,5 +1,6 @@
 ---
 import ImageProduct from '../atoms/ImageProduct.astro'
+import BannerEntry from './BannerEntry.astro'
 
 const
     {
@@ -16,7 +17,15 @@ const
         <div class="flex items-center justify-center pb-4 border-b border-surface-200 border-dashed">
             <ImageProduct filename={ product.image[0].file.filename } large/>
         </div>
-        { product.name }
-        { product.oem }
+        <div class="py-8">
+            <BannerEntry
+                subtitle={ product.oem }
+                title={ product.name }
+                copy={ product.description }
+                hLevel={ 5 }
+                color={ 'surface' }
+                slatColor={ 'accent' }
+            />
+        </div>
     </div>
 </div>
