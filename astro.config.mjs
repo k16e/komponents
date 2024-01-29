@@ -36,7 +36,7 @@ export default defineConfig({
                 pageHeader: 'composites/PageHeader',
                 products: 'composites/Products',
             }
-        }),
+        })
     ],
     redirects: {
         '/pages': redirectHome,
