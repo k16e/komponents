@@ -1,6 +1,9 @@
 ---
 import ImageProduct from '../atoms/ImageProduct.astro'
 import BannerEntry from './BannerEntry.astro'
+import Anchor from '../atoms/Anchor.astro'
+import Button from '../atoms/Button.astro'
+import _slug from '../scripts/slug'
 
 const
     {
@@ -10,7 +13,7 @@ const
 ---
 <div
     class:list={[
-        '',
+        'relative',
         classes
     ]} { ...rest }>
     <div class="p-8">
@@ -27,5 +30,16 @@ const
                 slatColor={ 'accent' }
             />
         </div>
+    </div>
+    <div class="fixed left-0 bottom-[52px] z-10">
+        <Anchor href={ _slug(product.link[0].link) } hover="shadow">
+            <Button
+                icon={ product.link[0].icon }
+                label={ product.link[0].title }
+                iconPosition={ product.link[0].icon_position }
+                color={ product.link[0].color }
+                responsive
+            />
+        </Anchor>
     </div>
 </div>
