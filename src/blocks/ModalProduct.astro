@@ -1,6 +1,7 @@
 ---
 const
     {
+        content,
         class: classes, ...rest
     } = Astro.props
 ---
@@ -9,5 +10,7 @@ const
         '',
         classes
     ]} { ...rest }>
-    Modal Product! !!!
+    <pre data-content={ content }>
+        { content }
+    </pre>
 </div>
