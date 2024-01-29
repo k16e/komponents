@@ -1,4 +1,6 @@
 ---
+import ImageProduct from '../atoms/ImageProduct.astro'
+
 const
     {
         product,
@@ -11,6 +13,8 @@ const
         classes
     ]} { ...rest }>
     <div>
+        <ImageProduct filename={ product.image[0].file.filename }/>
         { product.name }
+        { product.oem }
     </div>
 </div>
