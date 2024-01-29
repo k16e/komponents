@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets'
 
 const {
-    filename,
+    filename, small = true, medium, large,
     class: classes,
     ...attrs
 } = Astro.props
@@ -15,7 +15,9 @@ const {
     quality="100"
     draggable="false"
     class:list={[
-        'object-contain aspect-square max-w-52',
+        'object-contain aspect-square',
+        small && 'max-w-52',
+        large && 'max-w-80',
         classes
     ]}
     { ...attrs }

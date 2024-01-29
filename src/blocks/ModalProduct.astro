@@ -12,8 +12,10 @@ const
         '',
         classes
     ]} { ...rest }>
-    <div>
-        <ImageProduct filename={ product.image[0].file.filename }/>
+    <div class="p-8">
+        <div class="flex items-center justify-center pb-4 border-b border-surface-200 border-dashed">
+            <ImageProduct filename={ product.image[0].file.filename } large/>
+        </div>
         { product.name }
         { product.oem }
     </div>
