@@ -8,6 +8,8 @@ import { useStoryblokApi } from '@storyblok/astro'
 import TitleHidden from '../atoms/TitleHidden.astro'
 import Backdrop from '../blocks/Backdrop.astro'
 import Modal from '../blocks/Modal.astro'
+import ModalProduct from '../blocks/ModalProduct.astro'
+import ModalAffiliate from '../blocks/ModalAffiliate.astro'
 
 const
     {
@@ -50,7 +52,10 @@ const
             social={ site.social }
             actions={ site.cta }
         />
-        <Modal/>
+        <Modal>
+            <ModalProduct data-modal-display="product"/>
+            <ModalAffiliate data-modal-display="affiliate"/>
+        </Modal>
         <Backdrop/>
 	</body>
 </html>

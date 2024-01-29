@@ -1,0 +1,13 @@
+---
+const
+    {
+        class: classes, ...rest
+    } = Astro.props
+---
+<div
+    class:list={[
+        '',
+        classes
+    ]} { ...rest }>
+    Modal Product! !!!
+</div>

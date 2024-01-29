@@ -8,27 +8,36 @@ const _modal = () => {
     const
         trigger = _ql('[data-modal-trigger]'),
         close = _q('[data-modal-close]'),
-        modalWindow = _q('[data-modal]'),
+        window = _q('[data-modal]'),
+        slots = _ql('[data-modal-display]'),
         html = document.documentElement,
         body = document.body,
         onn = () => {
-            modalWindow.classList.remove('translate-x-full', 'opacity-0')
-            modalWindow.classList.add('translate-x-0', 'opacity-100')
+            window.classList.remove('translate-x-full', 'opacity-0')
+            window.classList.add('translate-x-0', 'opacity-100')
         },
         off = () => {
-            modalWindow.classList.remove('translate-x-0', 'opacity-100')
-            modalWindow.classList.add('translate-x-full', 'opacity-0')
+            window.classList.remove('translate-x-0', 'opacity-100')
+            window.classList.add('translate-x-full', 'opacity-0')
             unsetModal()
+        },
+        display = (e) => {
+            e.preventDefault()
+
+            const
+                target = e.target,
+                attr = target.getAttribute('data-display'),
+                slot = slots.find(el => (el.dataset.modalDisplay === attr))
+
+            slot.classList.remove('sr-only')
+            modal.value ? unsetModal() : setModal()
         }
 
-    trigger.map(el => {
-        el.addEventListener('click', (e) => {
-            e.preventDefault()
-            modal.value ? unsetModal() : setModal()
-        })
-    })
 
-    Click(close, off)
+    slots.map(el => el.classList.add('sr-only'))
+    trigger.map(el => el.addEventListener('click', e => display(e)))
+    close.addEventListener('click', () => off())
+
     modal.subscribe(value => value ? onn() : off())
 }
 

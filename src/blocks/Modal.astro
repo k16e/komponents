@@ -17,12 +17,18 @@ const {
     data-modal
     { ...rest }>
     <button
-        class="p-3 md:p-5 absolute top-0 right-0"
+        class="p-3 md:p-5 absolute top-0 right-0 group/close"
         data-modal-close>
-        <Icon name="close-x" class:list="text-white w-7"/>
+        <Icon
+            name="close-x"
+            class:list={[
+                'text-white w-7 opacity-70 group-hover/close:opacity-100',
+                _transition()
+            ]}
+        />
     </button>
     <div
-        class="bg-white w-[352px] xs:w-[456px] sm:w-[520px] h-full max-h-[calc(100vh-104px)] lg:h-[680px] mx-auto md:ml-auto md:mr-16">
-        MODAL!!!
+        class="bg-white w-full xs:w-[456px] sm:w-[520px] h-full max-h-[calc(100vh-104px)] lg:h-[680px] mx-auto md:ml-auto md:mr-16">
+        <slot/>
     </div>
 </div>
