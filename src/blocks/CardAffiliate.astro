@@ -19,16 +19,21 @@ const
         _transition(),
         classes
     ]} { ...rest }>
-    <div class="pointer-events-none relative z-[2] h-[424px] xs:h-[520px] lg:h-[656px] flex group-odd:justify-items-end">
+    <div
+        class="pointer-events-none relative z-[2] h-[480px] xs:h-[640px] flex group-even:justify-end group-odd:justify-start">
         <ImageProfile
             filename={ filename }
-            class:list="w-[calc(100%-40px)] h-[calc(100%-40px)] xs:h-[calc(100%-40px)] lg:h-[calc(100%-40px)] shadow"
+            class:list="w-[calc(100%-24px)] lg:w-[calc(100%-32px)] h-[calc(100%-24px)] lg:h-[calc(100%-32px)] shadow"
         />
     </div>
     <div
         aria-hidden
-        class:list={[
-            'absolute bottom-0 h-[368px] w-[calc(100%-40px)] bg-accent-600 clip-path-t z-[1] right-0'
+        class:list={[`
+            absolute bottom-0 group-odd:right-0 group-even:left-0
+            h-[368px] w-[calc(100%-32px)]
+            bg-accent-600
+            group-even:zoid-right group-odd:zoid-left
+            z-[1]`
         ]}
     />
 </a>

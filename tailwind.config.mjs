@@ -75,7 +75,9 @@ export default {
                 '.clip-path-b': { clipPath: 'polygon(0 0, 100% 0, 100% 88%, 0% 100%)' },
                 '.clip-path-t': { clipPath: 'polygon(0 12%, 100% 0%, 100% 100%, 0% 100%)' },
                 '.clip-path-y': { clipPath: 'polygon(0 12%, 100% 0, 100% 88%, 0% 100%)' },
-                '.clip-path-lelo': { clipPath: 'polygon(0 12%, 100% 0, 100% 88%, 0% 100%)' }
+                '.clip-path-lelo': { clipPath: 'polygon(0 12%, 100% 0, 100% 88%, 0% 100%)' },
+                '.zoid-right': { clipPath: 'polygon(0 0, 100% 15%, 100% 100%, 0% 100%)' },
+                '.zoid-left': { clipPath: 'polygon(0 15%, 100% 0, 100% 100%, 0% 100%)' }
             })
         }
     ]
