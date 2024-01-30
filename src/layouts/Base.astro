@@ -10,7 +10,9 @@ import Backdrop from '../blocks/Backdrop.astro'
 import Modal from '../blocks/Modal.astro'
 import ModalProduct from '../blocks/ModalProduct.astro'
 import ModalAffiliate from '../blocks/ModalAffiliate.astro'
-import { _products, _addProducts, _addProductsNew, _productsNew } from '../scripts/store'
+import {
+    _products, _addProducts, _addProductsNew, _productsNew, _affiliates, _addAffiliates
+} from '../scripts/store'
 
 const
     {
@@ -24,16 +26,23 @@ const
     site = settings.story.content
 
 let
-    { data: addedProducts } = await api.get(`cdn/stories/products`, {
+    { data: dataProducts } = await api.get(`cdn/stories/products`, {
         version: import.meta.env.DEV ? 'draft' : 'published',
     }),
-    products = addedProducts.story.content.body
-        .map((el: any) => el.products)[1]
+    products = dataProducts.story.content.body
+        .filter((el: any) => (el.component === 'products'))[0].products
         .filter((el: any) => el.in_stock)
-        .sort((a: any, b: any) => (b.is_new - a.is_new))
+        .sort((a: any, b: any) => (b.is_new - a.is_new)),
+    { data: dataAffiliates } = await api.get(`cdn/stories/affiliates`, {
+        version: import.meta.env.DEV ? 'draft' : 'published',
+    }),
+    affiliates = dataAffiliates.story.content.body
+        .filter((el: any) => (el.component === 'affiliates'))[0].affiliates
+        .filter((el: any) => el.available)
 
 _addProducts(products)
 _addProductsNew(products.filter((el: any) => el.is_new))
+_addAffiliates(affiliates)
 ---
 <!doctype html>
 <html

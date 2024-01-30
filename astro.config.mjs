@@ -35,6 +35,7 @@ export default defineConfig({
                 awardsCloud: 'composites/AwardsCloud',
                 pageHeader: 'composites/PageHeader',
                 products: 'composites/Products',
+                affiliates: 'composites/Affiliates',
             }
         })
     ],
