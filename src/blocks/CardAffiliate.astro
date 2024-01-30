@@ -8,7 +8,7 @@ import Chip from '../atoms/Chip.astro'
 
 const
     {
-        filename, name, link, isNew = false,
+        filename, name, link, isNew = false, position,
         class: classes, ...rest
     } = Astro.props
 ---
@@ -19,7 +19,16 @@ const
         _transition(),
         classes
     ]} { ...rest }>
-    <div class="pointer-events-none">
-        <ImageProfile filename={ filename } class:list="w-full h-[424px] xs:h-[520px] lg:h-[656px]"/>
+    <div class="pointer-events-none relative z-[2] h-[424px] xs:h-[520px] lg:h-[656px] flex group-odd:justify-items-end">
+        <ImageProfile
+            filename={ filename }
+            class:list="w-[calc(100%-40px)] h-[calc(100%-40px)] xs:h-[calc(100%-40px)] lg:h-[calc(100%-40px)] shadow"
+        />
     </div>
+    <div
+        aria-hidden
+        class:list={[
+            'absolute bottom-0 h-[368px] w-[calc(100%-40px)] bg-accent-600 clip-path-t z-[1] right-0'
+        ]}
+    />
 </a>
