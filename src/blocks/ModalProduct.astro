@@ -15,7 +15,7 @@ const
         ...rest
     } = Astro.props
 ---
-<div class:list={[ classes ]} { ...rest }>
+<div class:list={[ 'overflow-auto h-full', classes ]} { ...rest }>
     <div class="px-4 py-4 sm:px-8 sm:py-8 h-full flex flex-col justify-between">
         <div class="flex items-center justify-center pb-4 border-b border-surface-200 border-dashed">
             <ImageProduct
