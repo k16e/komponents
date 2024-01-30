@@ -10,7 +10,7 @@ import Backdrop from '../blocks/Backdrop.astro'
 import Modal from '../blocks/Modal.astro'
 import ModalProduct from '../blocks/ModalProduct.astro'
 import ModalAffiliate from '../blocks/ModalAffiliate.astro'
-import { _products, _addProducts } from '../scripts/store'
+import { _products, _addProducts, _addProductsNew, _productsNew } from '../scripts/store'
 
 const
     {
@@ -33,6 +33,7 @@ let
         .sort((a: any, b: any) => (b.is_new - a.is_new))
 
 _addProducts(products)
+_addProductsNew(products.filter((el: any) => el.is_new))
 ---
 <!doctype html>
 <html
@@ -65,7 +66,7 @@ _addProducts(products)
             actions={ site.cta }
         />
         <Modal>
-            { _products.value.map((el: any, idx: number) => (
+            { _productsNew.value.map((el: any, idx: number) => (
                 <ModalProduct product={ el } data-modal-display={ `product-at-${idx}` }/>
             )) }
             <ModalAffiliate data-modal-display="affiliate"/>
