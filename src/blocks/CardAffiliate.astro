@@ -1,7 +1,5 @@
 ---
 import ImageProfile from '../atoms/ImageProfile.astro'
-import LinkText from '../atoms/LinkText.astro'
-import Icon from '../atoms/Icon.astro'
 import { _transition } from '../scripts/snips'
 import BannerTitle from './BannerTitle.astro'
 
@@ -18,12 +16,14 @@ const
         _transition(),
         classes
     ]} { ...rest }>
-    <div
-        class="pointer-events-none relative z-[2] h-[480px] xs:h-[640px] flex group-even:justify-end group-odd:justify-start">
-        <div class="relative w-[calc(100%-24px)] lg:w-[calc(100%-32px)] h-[calc(100%-24px)] lg:h-[calc(100%-32px)] shadow">
+    <div class="pointer-events-none relative z-[2] h-[480px] xs:h-[640px] flex group-even:justify-end group-odd:justify-start">
+        <div class="relative w-[calc(100%-24px)] lg:w-[calc(100%-32px)] h-[calc(100%-24px)] lg:h-[calc(100%-32px)] shadow overflow-clip">
             <ImageProfile
                 filename={ filename }
-                class:list="w-full h-full"
+                class:list={[
+                    'w-full h-full group-hover:scale-105 !duration-700',
+                    _transition()
+                ]}
             />
             <div aria-hidden class="bg-gradient-to-b from-transparent via-transparent to-black/70 absolute inset-0"/>
             <BannerTitle
@@ -44,7 +44,7 @@ const
             h-[368px] w-[calc(100%-32px)]
             bg-accent-600
             group-even:zoid-right group-odd:zoid-left
-            z-[1]`
+            z-[1] pointer-events-none`
         ]}
     />
 </a>
