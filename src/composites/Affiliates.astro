@@ -21,6 +21,8 @@ const { blok } = Astro.props
             <li class="group sm:odd:pt-12 sm:even:-mt-4">
                 <CardAffiliate
                     filename={ el.image[0].file.filename }
+                    name={ el.bio[0].title }
+                    link={ _slug(el.link[0].link) }
                 />
             </li>
         )) }

@@ -35,6 +35,7 @@ let
         .sort((a: any, b: any) => (b.is_new - a.is_new)),
     { data: dataAffiliates } = await api.get(`cdn/stories/affiliates`, {
         version: import.meta.env.DEV ? 'draft' : 'published',
+        resolve_links: 'url'
     }),
     affiliates = dataAffiliates.story.content.body
         .filter((el: any) => (el.component === 'affiliates'))[0].affiliates

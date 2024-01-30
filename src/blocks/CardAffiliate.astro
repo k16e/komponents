@@ -1,14 +1,13 @@
 ---
 import ImageProfile from '../atoms/ImageProfile.astro'
-import Heading from '../atoms/Heading.astro'
 import LinkText from '../atoms/LinkText.astro'
 import Icon from '../atoms/Icon.astro'
 import { _transition } from '../scripts/snips'
-import Chip from '../atoms/Chip.astro'
+import BannerTitle from './BannerTitle.astro'
 
 const
     {
-        filename, name, link, isNew = false, position,
+        filename, name, link,
         class: classes, ...rest
     } = Astro.props
 ---
@@ -21,10 +20,22 @@ const
     ]} { ...rest }>
     <div
         class="pointer-events-none relative z-[2] h-[480px] xs:h-[640px] flex group-even:justify-end group-odd:justify-start">
-        <ImageProfile
-            filename={ filename }
-            class:list="w-[calc(100%-24px)] lg:w-[calc(100%-32px)] h-[calc(100%-24px)] lg:h-[calc(100%-32px)] shadow"
-        />
+        <div class="relative w-[calc(100%-24px)] lg:w-[calc(100%-32px)] h-[calc(100%-24px)] lg:h-[calc(100%-32px)] shadow">
+            <ImageProfile
+                filename={ filename }
+                class:list="w-full h-full"
+            />
+            <div aria-hidden class="bg-gradient-to-b from-transparent via-transparent to-black/70 absolute inset-0"/>
+            <BannerTitle
+                title={ name }
+                level="h3"
+                size="lg"
+                weight="extra"
+                color="white"
+                slatColor="white"
+                class:list="absolute bottom-8 left-8"
+            />
+        </div>
     </div>
     <div
         aria-hidden

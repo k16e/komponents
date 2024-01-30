@@ -16,6 +16,7 @@ const
     class:list={[
         'flex items-end',
         size === '4xl' && 'space-x-2 sm:space-x-3 lg:space-x-6',
+        size === 'lg' && 'space-x-2 sm:space-x-3 lg:space-x-4',
         level === 'h3' && 'space-x-2',
         classes
     ]} {...attrs}>
@@ -26,7 +27,8 @@ const
                 size === '4xl' && 'w-[40px] h-[8px] md:w-[64px] md:h-[11px] lg:w-[88px] lg:h-[14px] xl:w-[112px] xl:h-[16px]',
                 level === 'h3' && 'w-[24px] h-[5px]',
                 size === 'xl' && 'w-[32px] h-[5px] lg:w-[40px] lg:h-[7px]',
-                slatColor === 'accent' && 'text-accent-600'
+                slatColor === 'accent' && 'text-accent-600',
+                slatColor === 'white' && 'text-white'
             ]}
         />
     }
