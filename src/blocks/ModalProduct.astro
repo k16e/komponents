@@ -5,6 +5,8 @@ import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
 import _slug from '../scripts/slug'
 import RichText from '../atoms/RichText.astro'
+import { _empty } from '../scripts/snips'
+import ListItem from '../atoms/ListItem.astro'
 
 const
     {
@@ -30,6 +32,15 @@ const
             slatColor={ 'accent' }
             class:list="py-8"
         />
+        { !_empty(product.highlights) && (
+            <ul class="border-t border-surface-200 border-dashed py-8 space-y-2">
+                { product.highlights.map((el: any) => (
+                    <li>
+                        <ListItem text={ el.item }/>
+                    </li>
+                )) }
+            </ul>
+        ) }
         <RichText text={ product.long_description[0].text } class:list="pt-8 pb-20 border-t border-surface-200 border-dashed"/>
     </div>
     <Anchor
