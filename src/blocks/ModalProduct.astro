@@ -6,7 +6,7 @@ import Button from '../atoms/Button.astro'
 import _slug from '../scripts/slug'
 import RichText from '../atoms/RichText.astro'
 import { _empty } from '../scripts/snips'
-import ListItem from '../atoms/ListItem.astro'
+import Checklist from '../atoms/Checklist.astro'
 
 const
     {
@@ -33,10 +33,10 @@ const
             class:list="py-8"
         />
         { !_empty(product.highlights) && (
-            <ul class="border-t border-surface-200 border-dashed py-8 space-y-2">
+            <ul class="border-t border-surface-200 border-dashed py-8 space-y-3">
                 { product.highlights.map((el: any) => (
                     <li>
-                        <ListItem text={ el.item }/>
+                        <Checklist text={ el.item }/>
                     </li>
                 )) }
             </ul>
