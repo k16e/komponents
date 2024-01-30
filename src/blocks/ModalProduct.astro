@@ -4,42 +4,44 @@ import BannerEntry from './BannerEntry.astro'
 import Anchor from '../atoms/Anchor.astro'
 import Button from '../atoms/Button.astro'
 import _slug from '../scripts/slug'
+import RichText from '../atoms/RichText.astro'
 
 const
     {
         product,
-        class: classes, ...rest
+        class: classes,
+        ...rest
     } = Astro.props
 ---
-<div
-    class:list={[
-        'relative',
-        classes
-    ]} { ...rest }>
-    <div class="p-8">
+<div class:list={[ classes ]} { ...rest }>
+    <div class="px-4 py-4 sm:px-8 sm:py-8 h-full flex flex-col justify-between">
         <div class="flex items-center justify-center pb-4 border-b border-surface-200 border-dashed">
-            <ImageProduct filename={ product.image[0].file.filename } large/>
-        </div>
-        <div class="py-8">
-            <BannerEntry
-                subtitle={ product.oem }
-                title={ product.name }
-                copy={ product.description }
-                hLevel={ 5 }
-                color={ 'surface' }
-                slatColor={ 'accent' }
+            <ImageProduct
+                filename={ product.image[0].file.filename }
+                large
             />
         </div>
+        <BannerEntry
+            subtitle={ product.oem }
+            title={ product.name }
+            copy={ product.description }
+            hLevel={ 5 }
+            color={ 'surface' }
+            slatColor={ 'accent' }
+            class:list="py-8"
+        />
+        <RichText text={ product.long_description[0].text } class:list="pt-8 pb-20 border-t border-surface-200 border-dashed"/>
     </div>
-    <div class="fixed left-0 bottom-[52px] z-10">
-        <Anchor href={ _slug(product.link[0].link) } hover="shadow">
-            <Button
-                icon={ product.link[0].icon }
-                label={ product.link[0].title }
-                iconPosition={ product.link[0].icon_position }
-                color={ product.link[0].color }
-                responsive
-            />
-        </Anchor>
-    </div>
+    <Anchor
+        href={ _slug(product.link[0].link) }
+        hover="shadow"
+        class:list="fixed left-0 bottom-0 z-[2]">
+        <Button
+            icon={ product.link[0].icon }
+            label={ product.link[0].title }
+            iconPosition={ product.link[0].icon_position }
+            color={ product.link[0].color }
+            responsive
+        />
+    </Anchor>
 </div>
