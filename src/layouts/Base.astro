@@ -104,7 +104,6 @@ _addProductsNew(products.filter((el: any) => el.is_new))
 	swup.hooks.on('page:view', () => init())
 
 	function init() {
-        // run on page load and every page swaps
         _activePath()
         _intoView()
         _flipper()
@@ -113,7 +112,6 @@ _addProductsNew(products.filter((el: any) => el.is_new))
 	}
 
 	function once() {
-		// run only on page load
         _astrolog()
 	}
 </script>
