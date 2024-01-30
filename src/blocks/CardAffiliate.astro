@@ -1,0 +1,25 @@
+---
+import ImageProfile from '../atoms/ImageProfile.astro'
+import Heading from '../atoms/Heading.astro'
+import LinkText from '../atoms/LinkText.astro'
+import Icon from '../atoms/Icon.astro'
+import { _transition } from '../scripts/snips'
+import Chip from '../atoms/Chip.astro'
+
+const
+    {
+        filename, name, link, isNew = false,
+        class: classes, ...rest
+    } = Astro.props
+---
+<a
+    href={ link }
+    class:list={[
+        'relative',
+        _transition(),
+        classes
+    ]} { ...rest }>
+    <div class="pointer-events-none">
+        <ImageProfile filename={ filename } class:list="w-full h-[424px] xs:h-[520px] lg:h-[656px]"/>
+    </div>
+</a>
