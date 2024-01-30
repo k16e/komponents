@@ -27,6 +27,7 @@ const _modal = () => {
                 attr = target.getAttribute('data-display'),
                 slot = slots.find(el => (el.dataset.modalDisplay === attr))
 
+            slot.scrollTop = 0
             slot.classList.remove('sr-only')
             modal.value ? unsetModal() : setModal()
         }
