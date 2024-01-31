@@ -36,6 +36,7 @@ export default defineConfig({
                 pageHeader: 'composites/PageHeader',
                 products: 'composites/Products',
                 affiliates: 'composites/Affiliates',
+                collection: 'composites/Collection',
             }
         })
     ],
