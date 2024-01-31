@@ -5,10 +5,7 @@ import Icon from '../atoms/Icon.astro'
 import _slugify from '../scripts/slugify'
 import _slug from '../scripts/slug'
 
-const
-    { links } = Astro.props,
-    pathname = new URL(Astro.request.url).pathname,
-    currentPath = pathname.slice(1)
+const { links } = Astro.props
 ---
 <ul class="hidden xl:flex text-surface-700">
 	{
@@ -23,7 +20,6 @@ const
 						label={ link.title }
 						color={ link.color }
                         underbar={ link.gets_underbar }
-                        active={ (currentPath === _slugify(link.link.story.full_slug)) }
 					/>
                     <Icon
                         name="centerbar"

@@ -99,7 +99,7 @@ _addAffiliates(affiliates)
 <script>
 	import Swup from 'swup'
     import SwupProgressPlugin from '@swup/progress-plugin'
-    import _activePath from '../scripts/active-path'
+    import _active from '../scripts/active'
     import _flipper from '../scripts/flipper'
     import _intoView from '../scripts/into-view'
     import _astrolog from '../scripts/astrolog'
@@ -121,7 +121,7 @@ _addAffiliates(affiliates)
 	swup.hooks.on('page:view', () => init())
 
 	function init() {
-        _activePath()
+        _active()
         _intoView()
         _flipper()
         _modal()
