@@ -2,6 +2,7 @@
 import ImageSquare from '../atoms/ImageSquare.astro'
 import { _transition } from '../scripts/snips'
 import BannerTitle from './BannerTitle.astro'
+import Button from '../atoms/Button.astro'
 
 const
     {
@@ -37,13 +38,19 @@ const
             ]}
         />
     </div>
-    <div class="md:group-odd:order-2 md:group-even:order-1">
+    <div class="md:group-odd:order-2 md:group-even:order-1 space-y-4 sm:space-y-6 lg:space-y-12">
         <BannerTitle
             title={ title }
             level="h3"
             size="2xl"
             showSlat={ false }
             weight="bold"
+        />
+        <Button
+            icon="arrow-right-fill"
+            label="Read More"
+            left
+            class:list="text-accent-600 group-hover:text-accent-800"
         />
     </div>
 </a>

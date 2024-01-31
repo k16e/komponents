@@ -1,15 +1,18 @@
 ---
 import Icon from '../atoms/Icon.astro'
 import LinkText from './LinkText.astro'
+import { _transition } from '../scripts/snips'
 
 const
     {
-        icon, iconPosition, label, color, titleCase = false, responsive, fab, eventsNone, tag = 'div', class: classes, ...attrs
+        icon, iconPosition, label, color, titleCase = false, responsive, fab, eventsNone, tag = 'div', left,
+        class: classes, ...attrs
     } = Astro.props,
     Tag = tag,
-    dimensions = (responsive: any, fab: any) => {
+    dimensions = (responsive: any, fab: any, left: any) => {
         if (responsive) return 'h-11 px-3'
         else if (fab) return 'h-16 w-16 rounded-full'
+        else if (left) return 'h-[52px] pr-5'
         else return 'h-[52px] px-5'
     }
 ---
@@ -23,7 +26,8 @@ const
         color === 'transparent' && 'bg-transparent',
         color === 'light_a' && 'bg-accent-50 text-accent-600',
         eventsNone && 'pointer-events-none',
-        dimensions(responsive, fab),
+        dimensions(responsive, fab, left),
+        _transition(),
         classes
     ]}
     { ...attrs }>
