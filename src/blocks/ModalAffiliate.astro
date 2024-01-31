@@ -22,7 +22,7 @@ const
             class:list="size-full !object-top"
         />
     </div>
-    <div class="px-4 py-4 sm:px-8 sm:py-8">
+    <div class="px-4 sm:px-8 mb-12">
         <BannerEntry
             subtitle={ item.bio[0].subtitle }
             title={ item.bio[0].title }
@@ -32,17 +32,29 @@ const
             slatColor={ 'accent' }
             class:list="py-8"
         />
+        <BannerEntry
+            subtitle={ item.business[0].subtitle || 'Business Name' }
+            title={ item.business[0].title }
+            showCopy={ item.business[0].show_copy }
+            hLevel={ 5 }
+            color={ 'surface' }
+            slatColor={ 'accent' }
+            class:list="py-8 border-t border-surface-200 border-dashed"
+        />
     </div>
     <Anchor
-        href={ _slug(item.link[0].link) }
         hover="shadow"
-        class:list="fixed left-0 bottom-0 z-[2]">
+        class:list="fixed left-0 bottom-0 z-[2] cursor-pointer"
+        data-affiliate={ item.bio[0].title }
+        data-link={ _slug(item.link[0].link) }
+        data-action>
         <Button
             icon={ item.link[0].icon }
             label={ item.link[0].title }
             iconPosition={ item.link[0].icon_position }
             color={ item.link[0].color }
             responsive
+            eventsNone
         />
     </Anchor>
 </div>

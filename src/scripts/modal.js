@@ -1,7 +1,11 @@
-import { modal, setModal, unsetModal } from './store'
+import { modal, setModal, unsetModal, _addAffiliate, _affiliate } from './store'
 import { _q, _ql } from './snips'
 
 const _modal = () => {
+    _affiliate.subscribe(value => {
+        // pull latest value of affiliate based on subscription/listening for change to it
+        console.log(value)
+    })
     if (!_q('[data-modal-trigger]')) return
 
     const
@@ -9,6 +13,7 @@ const _modal = () => {
         close = _q('[data-modal-close]'),
         window = _q('[data-modal]'),
         slots = _ql('[data-modal-display]'),
+        affilateLinks = _ql('[data-action]') ?? null,
         onn = () => {
             window.classList.remove('translate-x-full', 'opacity-0')
             window.classList.add('translate-x-0', 'opacity-100')
@@ -37,6 +42,22 @@ const _modal = () => {
     close.addEventListener('click', () => off())
 
     modal.subscribe(value => value ? onn() : off())
+
+    if (!affilateLinks) return
+    affilateLinks.map(el => {
+        el.addEventListener('click', e => {
+            e.preventDefault()
+
+            const
+                target = e.target,
+                affiliate = target.getAttribute('data-affiliate'),
+                link = target.getAttribute('data-link')
+
+            _addAffiliate(affiliate)
+            off()
+            location.href = link
+        })
+    })
 }
 
 export default _modal
