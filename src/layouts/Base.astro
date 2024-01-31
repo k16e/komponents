@@ -90,7 +90,7 @@ _addAffiliates(affiliates)
 <style is:global>
 	html.is-changing .swup-in { @apply opacity-100 duration-[.4s] ease-[cubic-bezier(0,0.16,0,1)]; }
 	html.is-animating .swup-in { @apply opacity-0 scale-[.9999] translate-y-3 ease-in; }
-	.swup-progress-bar { @apply h-0.5 bg-accent-600 dark:bg-accent-300; }
+	.swup-progress-bar { @apply h-1 bg-accent-600; }
 	main:focus { outline: none; }
     button { text-align: inherit; }
 	svg { @apply flex-shrink-0 pointer-events-none fill-current; }
@@ -98,6 +98,7 @@ _addAffiliates(affiliates)
 
 <script>
 	import Swup from 'swup'
+    import SwupProgressPlugin from '@swup/progress-plugin'
     import _activePath from '../scripts/active-path'
     import _flipper from '../scripts/flipper'
     import _intoView from '../scripts/into-view'
@@ -106,7 +107,11 @@ _addAffiliates(affiliates)
     import _backdrop from '../scripts/backdrop'
 
 	const swup = new Swup({
-		animationSelector: '[class*="swup-"]'
+		animationSelector: '[class*="swup-"]',
+        animateHistoryBrowsing: true,
+        plugins: [
+            new SwupProgressPlugin({ finishAnimation: false })
+        ]
 	})
 
 	document.addEventListener('DOMContentLoaded', () => {

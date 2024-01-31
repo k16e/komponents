@@ -14,7 +14,7 @@ const { blok } = Astro.props
     class:list="pt-8 xs:pt-12 lg:pt-8">
     <Wrapper
         inner tag="ul" padY="y"
-        class:list="w-full relative grid grid-cols-1 sm:grid-cols-2 gap-y-8 sm:gap-x-12 sm:gap-y-1">
+        class:list="w-full relative grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-x-12 md:gap-y-1">
         { _affiliates.value.map((el: any, idx: number) => (
             <li class="group sm:odd:pt-12 sm:even:-mt-4">
                 <CardAffiliate

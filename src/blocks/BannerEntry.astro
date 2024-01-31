@@ -8,7 +8,7 @@ import Button from '../atoms/Button.astro'
 import _slug from '../scripts/slug'
 
 const {
-    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'dark', slatColor = 'accent', hLevel = 3, centered, links, link,
+    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'dark', slatColor = 'accent', hLevel = 3, centered, links, link, size,
     class: classes, ...attrs
 } = Astro.props
 ---
@@ -25,15 +25,16 @@ const {
         { showTitle && (
             <div
                 class:list={['flex',
-                    centered ? 'flex-col items-center gap-y-2 sm:gap-y-3 lg:gap-y-4' : 'space-x-4 items-end'
+                    centered ? 'flex-col items-center gap-y-2 sm:gap-y-3 lg:gap-y-6' : 'space-x-3 lg:space-x-4 items-end'
                 ]}>
                 { showSlat &&
                     <Icon
                         name={ centered ? 'centerbar' : 'leadingbar' }
                         class:list={[
-                            hLevel === 3 && 'w-[32px] h-[6px] lg:w-[48px] lg:h-[7px]',
-                            hLevel === 4 && 'w-[36px] h-[7px] md:w-[52px] md:h-[9px] lg:w-[56px] lg:h-[10px]',
-                            hLevel === 5 && 'w-[32px] h-[5px]',
+                            size === 'md' && 'w-[30px] h-[5px]',
+                            size === 'lg' && 'w-[30px] h-[6px] lg:w-[40px] lg:h-[7px]',
+                            size === 'xl' && 'w-[32px] h-[6px] lg:w-[48px] lg:h-[7px]',
+                            size === '2xl' && 'w-[36px] h-[7px] md:w-[52px] md:h-[9px] lg:w-[56px] lg:h-[10px]',
                             slatColor === 'accent' && 'text-accent-600',
                             slatColor === 'surface' && 'text-surface-950',
                             slatColor === 'white' && 'text-white',
@@ -41,9 +42,10 @@ const {
                         ]}
                     />
                 }
-                { hLevel === 3 && <Heading text={ title } level="h3" size="xl" weight="extra" tighten color={ color }/> }
-                { hLevel === 4 && <Heading text={ title } size="2xl" weight="extra" tighten color={ color }/> }
-                { hLevel === 5 && <Heading text={ title } size="md" weight="bold" tighten color={ color }/> }
+                { size === 'md' && <Heading text={ title } size="md" weight="bold" tighten color={ color }/> }
+                { size === 'lg' && <Heading text={ title } size="lg" weight="extra" tighten color={ color }/> }
+                { size === 'xl' && <Heading text={ title } level={ hLevel } size="xl" weight="extra" tighten color={ color }/> }
+                { size === '2xl' && <Heading text={ title } size="2xl" weight="extra" tighten color={ color }/> }
             </div>
         ) }
     </div>

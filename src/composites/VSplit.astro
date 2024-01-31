@@ -15,17 +15,13 @@ const { blok } = Astro.props
     title={ blok.title }
     component={ blok.component }
     class:list={[ blok.is_header ? '' : _padY() ]}>
-    <Wrapper
-        inner
-        padY="y"
-        padX={ false }
-        class:list={[ blok.is_header && 'relative']}>
+    <Wrapper inner padY="y" padX={ false } class:list={[ blok.is_header && 'relative']}>
         <Grid class:list="sm:px-4 xl:px-0 pt-8 sm:pt-12 lg:pt-0">
             <Inner slot="leading" class:list="pl-4 pr-4 sm:pl-0 sm:pr-0">
                 <BannerEntry
                     subtitle={ blok.subtitle }
                     title={ blok.title }
-                    hLevel={ 4 }
+                    size="2xl"
                 />
                 <RichText text={ blok.content }/>
             </Inner>

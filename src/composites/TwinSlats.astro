@@ -27,14 +27,10 @@ const
                 <Wrapper inner padY="y" padX={ false } class:list="px-4 xl:px-0">
                     <BannerEntry
                         title={ leading.title }
-                        hLevel={ 4 }
+                        size="2xl"
                         copy={ leading.copy }
-                        color={
-                            (blok.color === 'accent' || blok.color === 'surface') ? 'white' : 'surface'
-                        }
-                        slatColor={
-                            (blok.color === 'accent' || blok.color === 'surface') ? 'white' : 'accent'
-                        }
+                        color={ (blok.color === 'accent' || blok.color === 'surface') ? 'white' : 'surface' }
+                        slatColor={ (blok.color === 'accent' || blok.color === 'surface') ? 'white' : 'accent' }
                     />
                 </Wrapper>
             </div>
