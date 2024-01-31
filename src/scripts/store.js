@@ -7,7 +7,7 @@ export const
     _products = atom([]),
     _productsNew = atom([]),
     _affiliates = atom([]),
-    _affiliate = persistentAtom('affiliate', 'John Doe')
+    _affiliate = persistentAtom('affiliate', '')
 
 export function setTopbar() { topbar.set(true) }
 export function setModal() { modal.set(true) }
