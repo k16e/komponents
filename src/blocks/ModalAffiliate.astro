@@ -1,13 +1,48 @@
 ---
+import ImageScape from '../atoms/ImageScape.astro'
+import BannerEntry from './BannerEntry.astro'
+import Anchor from '../atoms/Anchor.astro'
+import Button from '../atoms/Button.astro'
+import _slug from '../scripts/slug'
+import RichText from '../atoms/RichText.astro'
+import { _empty } from '../scripts/snips'
+import Checklist from '../atoms/Checklist.astro'
+
 const
     {
-        class: classes, ...rest
+        item,
+        class: classes,
+        ...rest
     } = Astro.props
 ---
-<div
-    class:list={[
-        '',
-        classes
-    ]} { ...rest }>
-    Modal Affiliate! !!!
+<div class:list={[ 'overflow-auto h-full', classes ]} { ...rest }>
+    <div class="w-full h-[456px] sm:h-[496px] clip-path-b">
+        <ImageScape
+            filename={ item.image[0].file.filename }
+            class:list="size-full !object-top"
+        />
+    </div>
+    <div class="px-4 py-4 sm:px-8 sm:py-8">
+        <BannerEntry
+            subtitle={ item.bio[0].subtitle }
+            title={ item.bio[0].title }
+            copy={ item.bio[0].copy }
+            hLevel={ 3 }
+            color={ 'surface' }
+            slatColor={ 'accent' }
+            class:list="py-8"
+        />
+    </div>
+    <Anchor
+        href={ _slug(item.link[0].link) }
+        hover="shadow"
+        class:list="fixed left-0 bottom-0 z-[2]">
+        <Button
+            icon={ item.link[0].icon }
+            label={ item.link[0].title }
+            iconPosition={ item.link[0].icon_position }
+            color={ item.link[0].color }
+            responsive
+        />
+    </Anchor>
 </div>

@@ -77,9 +77,11 @@ _addAffiliates(affiliates)
         />
         <Modal>
             { _productsNew.value.map((el: any, idx: number) => (
-                <ModalProduct product={ el } data-modal-display={ `product-at-${idx}` }/>
+                <ModalProduct item={ el } data-modal-display={ `product-at-${idx}` }/>
             )) }
-            <ModalAffiliate data-modal-display="affiliate"/>
+            { _affiliates.value.map((el: any, idx: number) => (
+                <ModalAffiliate item={ el } data-modal-display={ `affiliate-at-${idx}` }/>
+            )) }
         </Modal>
         <Backdrop/>
 	</body>

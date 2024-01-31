@@ -9,15 +9,16 @@ const
         class: classes, ...rest
     } = Astro.props
 ---
-<a
-    href={ link }
+<div
     class:list={[
-        'relative',
+        'relative cursor-pointer',
         _transition(),
         classes
     ]} { ...rest }>
-    <div class="pointer-events-none relative z-[2] h-[480px] xs:h-[640px] flex group-even:justify-end group-odd:justify-start">
-        <div class="relative w-[calc(100%-24px)] lg:w-[calc(100%-32px)] h-[calc(100%-24px)] lg:h-[calc(100%-32px)] shadow overflow-clip">
+    <div
+        class="pointer-events-none relative z-[2] h-[480px] sm:h-[520px] lg:h-[640px] flex group-even:justify-end group-odd:justify-start">
+        <div
+            class="relative w-[calc(100%-24px)] lg:w-[calc(100%-32px)] h-[calc(100%-24px)] lg:h-[calc(100%-32px)] shadow overflow-clip">
             <ImageProfile
                 filename={ filename }
                 class:list={[
@@ -47,4 +48,4 @@ const
             z-[1] pointer-events-none`
         ]}
     />
-</a>
+</div>

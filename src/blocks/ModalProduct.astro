@@ -10,7 +10,7 @@ import Checklist from '../atoms/Checklist.astro'
 
 const
     {
-        product,
+        item,
         class: classes,
         ...rest
     } = Astro.props
@@ -19,39 +19,39 @@ const
     <div class="px-4 py-4 sm:px-8 sm:py-8 h-full flex flex-col justify-between">
         <div class="flex items-center justify-center pb-4 border-b border-surface-200 border-dashed">
             <ImageProduct
-                filename={ product.image[0].file.filename }
+                filename={ item.image[0].file.filename }
                 large
             />
         </div>
         <BannerEntry
-            subtitle={ product.oem }
-            title={ product.name }
-            copy={ product.description }
+            subtitle={ item.oem }
+            title={ item.name }
+            copy={ item.description }
             hLevel={ 5 }
             color={ 'surface' }
             slatColor={ 'accent' }
             class:list="py-8"
         />
-        { !_empty(product.highlights) && (
+        { !_empty(item.highlights) && (
             <ul class="border-t border-surface-200 border-dashed py-8 space-y-3">
-                { product.highlights.map((el: any) => (
+                { item.highlights.map((el: any) => (
                     <li>
                         <Checklist text={ el.item }/>
                     </li>
                 )) }
             </ul>
         ) }
-        <RichText text={ product.long_description[0].text } class:list="pt-8 pb-20 border-t border-surface-200 border-dashed"/>
+        <RichText text={ item.long_description[0].text } class:list="pt-8 pb-20 border-t border-surface-200 border-dashed"/>
     </div>
     <Anchor
-        href={ _slug(product.link[0].link) }
+        href={ _slug(item.link[0].link) }
         hover="shadow"
         class:list="fixed left-0 bottom-0 z-[2]">
         <Button
-            icon={ product.link[0].icon }
-            label={ product.link[0].title }
-            iconPosition={ product.link[0].icon_position }
-            color={ product.link[0].color }
+            icon={ item.link[0].icon }
+            label={ item.link[0].title }
+            iconPosition={ item.link[0].icon_position }
+            color={ item.link[0].color }
             responsive
         />
     </Anchor>
