@@ -49,5 +49,8 @@ export default defineConfig({
     },
     image: {
         domains: ['a.storyblok.com']
+    },
+    build: {
+        format: 'preserve'
     }
 })
