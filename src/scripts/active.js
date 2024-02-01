@@ -7,7 +7,8 @@ const _active = () => {
     const
         navA = _ql('[data-anchor]'),
         currLoc = _slugify(location.pathname),
-        activeA = navA.find(a => (a.getAttribute('data-anchor') === currLoc || currLoc.includes(a.getAttribute('data-anchor'))))
+        parent = location.pathname.split('/')[1],
+        activeA = navA.find(a => (a.getAttribute('data-anchor') === currLoc || parent.includes(a.getAttribute('data-anchor'))))
 
     if (activeA) {
         navA.map(a => a.classList.remove('active'))
