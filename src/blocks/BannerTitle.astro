@@ -19,6 +19,7 @@ const
         size === 'lg' && 'space-x-2 sm:space-x-3',
         size === 'xl' && 'space-x-2 sm:space-x-4',
         size === '4xl' && 'space-x-2 sm:space-x-3 lg:space-x-6',
+        color === 'dark' && 'text-dark-950',
         classes
     ]} {...attrs}>
     { showSlat &&
@@ -40,7 +41,6 @@ const
         level={ level }
         size={ size }
         weight={ weight }
-        color={ color }
         tighten
     />
 </div>

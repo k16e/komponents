@@ -24,10 +24,9 @@ const
             class:list="lg:[grid-area:1/1/13/13]"
         />
         <div class="lg:[grid-area:1/1/13/13] bg-accent-600 lg:bg-transparent">
-            <Wrapper
-                inner
+            <Wrapper inner
                 class:list={[
-                    'flex justify-end h-full',
+                    'flex lg:justify-end h-full',
                     blok.is_header && 'lg:items-center relative'
                 ]}>
                 <div
@@ -42,7 +41,7 @@ const
                             copy={ feature.description }
                             color="white"
                             slatColor="white"
-                            size={ blok.is_header ? '2xl' : 'xl' }
+                            size={ (blok.is_header && !blok.is_collection) ? '2xl' : 'xl' }
                             link={ !blok.is_header && entry.full_slug }
                         />
                     </div>

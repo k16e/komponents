@@ -1,7 +1,10 @@
 ---
-const {
-    level, text, size, uppercase, weight, tighten, loosen, color, class: classes, ...attrs
-} = Astro.props
+import { _transition } from '../scripts/snips'
+
+const
+    {
+        level, text, size, uppercase, weight, tighten, loosen, color, class: classes, ...attrs
+    } = Astro.props
 ---
 <div
     { ...attrs }
@@ -36,6 +39,9 @@ const {
         uppercase && 'uppercase',
         tighten && 'tracking-tight',
         loosen && 'tracking-[0.15em]',
+
+        // Default transition classes
+        _transition(),
 
         // Classes Passed In
         classes
