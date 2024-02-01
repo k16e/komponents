@@ -11,12 +11,18 @@ const
         blok
     } = Astro.props,
     entry = blok.entry,
-    feature = entry.content.meta[0]
+    feature = entry.content.meta[0],
+    padding = () => {
+        if (blok.is_header && !blok.is_collection) return _padB()
+        else if (blok.is_hero && !blok.is_collection) return _padB()
+        else if (blok.is_collection) return ''
+        else return _padY()
+    }
 ---
 <Section
     title={ blok.title }
     component={ blok.component }
-    class:list={[ (blok.is_header || blok.is_hero) ? _padB() : _padY() ]}>
+    class:list={[ padding() ]}>
     <div class="relative lg:grid lg:grid-cols-12 lg:grid-rows-12">
         <Cover
             filename={ feature.image.filename }

@@ -8,7 +8,7 @@ import Button from '../atoms/Button.astro'
 import _slug from '../scripts/slug'
 
 const {
-    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'dark', slatColor = 'accent', hLevel = 3, centered, links, link, size,
+    subtitle, title, showSubtitle = true, showTitle = true, showSlat = true, showCopy = true, copy, color = 'dark', slatColor = 'accent', hLevel = 3, centered, links, link, size, weight = 'extra',
     class: classes, ...attrs
 } = Astro.props
 ---
@@ -43,7 +43,7 @@ const {
                     />
                 }
                 { size === 'md' && <Heading text={ title } size="md" weight="bold" tighten color={ color }/> }
-                { size === 'lg' && <Heading text={ title } size="lg" weight="extra" tighten color={ color }/> }
+                { size === 'lg' && <Heading text={ title } size="lg" weight={ weight } tighten color={ color }/> }
                 { size === 'xl' && <Heading text={ title } level={ hLevel } size="xl" weight="extra" tighten color={ color }/> }
                 { size === '2xl' && <Heading text={ title } size="2xl" weight="extra" tighten color={ color }/> }
             </div>
