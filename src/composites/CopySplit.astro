@@ -15,14 +15,16 @@ const
 <Section
     title={ blok.title }
     component={ blok.component }
-    class:list={[ _padY(), 'bg-surface-200' ]}>
-    <Wrapper inner class:list="space-y-6 sm:space-y-8 lg:space-y-12">
-        { splits.map((el: any, idx: number) => (
-            <Split
-                heading={ el.headline }
-                copy={ el.copy }
-                slat={ idx == 1 }
-            />
-        )) }
-    </Wrapper>
+    class:list={[ _padY() ]}>
+    <div class:list={[ 'bg-surface-200', _padY() ]}>
+        <Wrapper inner class:list="space-y-6 sm:space-y-8 lg:space-y-12">
+            { splits.map((el: any, idx: number) => (
+                <Split
+                    heading={ el.headline }
+                    copy={ el.copy }
+                    slat={ idx == 1 }
+                />
+            )) }
+        </Wrapper>
+    </div>
 </Section>
