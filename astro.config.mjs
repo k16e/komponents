@@ -38,6 +38,7 @@ export default defineConfig({
                 affiliates: 'composites/Affiliates',
                 collection: 'composites/Collection',
                 plotSummary: 'composites/PlotSummary',
+                copySplit: 'composites/CopySplit',
             }
         })
     ],
