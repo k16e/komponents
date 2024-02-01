@@ -39,6 +39,7 @@ export default defineConfig({
                 collection: 'composites/Collection',
                 plotSummary: 'composites/PlotSummary',
                 copySplit: 'composites/CopySplit',
+                quote: 'composites/Quote',
             }
         })
     ],
