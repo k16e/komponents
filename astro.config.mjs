@@ -40,6 +40,7 @@ export default defineConfig({
                 plotSummary: 'composites/PlotSummary',
                 copySplit: 'composites/CopySplit',
                 quote: 'composites/Quote',
+                carousel: 'composites/Carousel',
             }
         })
     ],

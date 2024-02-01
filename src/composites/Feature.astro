@@ -13,7 +13,9 @@ const
     entry = blok.entry,
     feature = entry.content.meta[0],
     padding = () => {
-        if (blok.is_header || blok.is_hero) return _padB()
+        if (blok.is_header && !blok.is_collection) return _padB()
+        else if (blok.is_hero && !blok.is_collection) return _padB()
+        else if (blok.is_collection) return ''
         else return _padY()
     }
 ---

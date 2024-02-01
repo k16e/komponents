@@ -1,0 +1,27 @@
+---
+import Section from '../layouts/Section.astro'
+import { _padY, _padB } from '../scripts/snips'
+import Cover from '../atoms/Cover.astro'
+
+const
+    {
+        blok
+    } = Astro.props,
+    images = blok.images
+---
+<Section
+    title={ blok.title }
+    component={ blok.component }
+    class:list={[ '' ]}>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            { images.map((el: any, idx: number) => (
+                <div class="swiper-slide">
+                    <Cover
+                        filename={ el.file.filename }
+                    />
+                </div>
+            )) }
+        </div>
+    </div>
+</Section>
