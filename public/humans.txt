@@ -26,3 +26,4 @@ Web: HTML, CSS, & JS
 - Fixed Relative Parent => Stack Overflow [https://stackoverflow.com/questions/5209814/can-i-position-an-element-fixed-relative-to-parent#7823145]
 - Sticky Within Flex Parent => Stack Overflow [https://stackoverflow.com/questions/44446671/my-position-sticky-element-isnt-sticky-when-using-flexbox#44446672]
 - Capitalize => Example Javascript [https://examplejavascript.com/lodash/capitalize/]
+- Siblings Helper => JavaScript Tutorial Website [https://www.javascripttutorial.net/javascript-dom/javascript-siblings/]

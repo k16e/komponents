@@ -1,4 +1,6 @@
 import { _q, _ql, _encode } from './snips'
+import { modal, setModal } from './store'
+import gsap from 'gsap'
 
 const _sendForm = () => {
     if (!_q('[data-form-submit]')) return
@@ -19,7 +21,7 @@ const _sendForm = () => {
             form = e.target,
             data = new FormData(form),
             select = _q('#affiliate', form)
-        
+
         await fetch(endpoint, {
             method: 'POST',
             headers: {
@@ -29,13 +31,10 @@ const _sendForm = () => {
             body: _encode(Object.fromEntries(data))
         }).then(res => {
             if (res.status === 200) {
-                console.log('Success')
                 localStorage.removeItem('affiliate')
                 form.reset()
                 select.value = 'Recommend for me!'
-                // do something if submission success
-            }
-            else {
+            } else {
                 console.log('Failed')
                 // do something if fails
             }
