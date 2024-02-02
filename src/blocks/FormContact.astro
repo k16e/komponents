@@ -1,7 +1,7 @@
 ---
 import Input from '../atoms/Input.astro'
 import InputSelect from '../atoms/InputSelect.astro'
-import InputTextarea from '../atoms/InputTextarea.astro'
+import InputArea from '../atoms/InputArea.astro'
 import Button from '../atoms/Button.astro'
 ---
 <form class="grid grid-cols-1 gap-6">
@@ -11,7 +11,7 @@ import Button from '../atoms/Button.astro'
     </div>
     <Input type="email" label="Work Email" placeholder="jane@example.com" autocomplete="Email" required/>
     <InputSelect label="Select Affiliate" id="affiliate" autocomplete="Affiliate" required/>
-    <InputTextarea label="Brief" id="message" required/>
+    <InputArea label="Brief" id="message" required/>
     <button
         class="group/button"
         data-form-submit>

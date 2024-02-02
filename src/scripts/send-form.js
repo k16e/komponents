@@ -9,10 +9,13 @@ const _sendForm = () => {
     buttons.map(ea => {
         const form = ea.parentNode
 
-        
-
-        console.log(form)
+        form.addEventListener('submit', submit)
     })
+
+    function submit(e) {
+        e.preventDefault()
+        console.log(e)
+    }
 }
 
 export default _sendForm

@@ -27,14 +27,14 @@ const
             rows="4"
             name={ _slugify(label) }
             id={ id }
-            maxlength="1000"
+            minlength="100"
+            maxlength="500"
             class:list={[`
                 block w-full border-0 py-3 resize-y
                 bg-surface-100 focus:bg-white text-surface-800
                 ring-[1.5px] ring-inset ring-surface-200
                 placeholder:text-surface-600
                 focus:ring-2 focus:ring-inset focus:ring-accent-600
-            `]}>
-        </textarea>
+            `]}></textarea>
     </div>
 </div>
