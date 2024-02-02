@@ -2,10 +2,6 @@ import { modal, setModal, unsetModal, _addAffiliate, _affiliate } from './store'
 import { _q, _ql } from './snips'
 
 const _modal = () => {
-    _affiliate.subscribe(value => {
-        // pull latest value of affiliate based on subscription/listening for change to it
-        console.log(value)
-    })
     if (!_q('[data-modal-trigger]')) return
 
     const
@@ -55,7 +51,7 @@ const _modal = () => {
 
             _addAffiliate(affiliate)
             off()
-            location.href = link
+            setTimeout(() => location.href = link, 200)
         })
     })
 }

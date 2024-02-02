@@ -106,6 +106,7 @@ _addAffiliates(affiliates)
     import _modal from '../scripts/modal'
     import _backdrop from '../scripts/backdrop'
     import _carousel from '../scripts/carousel'
+    import _getAffiliate from '../scripts/get-affiliate'
 
 	const swup = new Swup({
 		animationSelector: '[class*="swup-"]',
@@ -128,6 +129,7 @@ _addAffiliates(affiliates)
         _modal()
         _backdrop()
         _carousel()
+        _getAffiliate()
 	}
 
 	function once() {

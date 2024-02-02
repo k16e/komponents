@@ -1,5 +1,6 @@
 ---
 import Input from '../atoms/Input.astro'
+import InputSelect from '../atoms/InputSelect.astro'
 ---
 <form
     action=""
@@ -9,4 +10,5 @@ import Input from '../atoms/Input.astro'
         <Input type="text" label="Last Name" placeholder="Diaz" autocomplete="Family Name" required/>
     </div>
     <Input type="email" label="Work Email" placeholder="jane@example.com" autocomplete="Email" required/>
+    <InputSelect label="Select Affiliate" id="affiliate" autocomplete="Affiliate" required/>
 </form>

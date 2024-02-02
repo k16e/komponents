@@ -10,7 +10,8 @@ const
     _gradientLight = () => new Array('bg-gradient-to-b', 'from-white', 'via-accent-50', 'to-white'),
     _gradientSurface = () => new Array('bg-gradient-to-b', 'from-white', 'via-surface-50', 'to-white'),
     _even = n => n % 2 == 0,
-    _odd = n => Math.abs(n % 2) == 1
+    _odd = n => Math.abs(n % 2) == 1,
+    _capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
 
 
 const _scrollToTopOffset = (target, offset = 56) => {
@@ -26,12 +27,12 @@ const _scrollToTopOffset = (target, offset = 56) => {
 
 const _empty = obj => {
     if (obj === undefined || obj === null) return true
-    if (!Object.keys(obj).length) return true
+    if (Object.keys(obj).length > 0) return true
 }
 
 
 
 // Exports
 export {
-    _body, _empty, _q, _ql, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _scrollToTopOffset, _even, _odd
+    _body, _empty, _q, _ql, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _scrollToTopOffset, _even, _odd, _capitalize
 }
