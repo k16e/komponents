@@ -32,7 +32,7 @@ const
                 ring-[1.5px] ring-inset ring-surface-200
                 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-accent-600
             `]}>
-            <option set:text="Recommend for me!" data-affiliate-populate/>
+            <option data-affiliate-populate/>
             { _affiliates.value.map((el: any) => <option set:text={ el.bio[0].title }/>) }
         </select>
     </div>

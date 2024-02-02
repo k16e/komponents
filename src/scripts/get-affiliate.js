@@ -1,14 +1,23 @@
 import { _q, _empty } from './snips'
+import _siblings from './siblings'
 
 const _getAffiliate = () => {
     if (import.meta.env.SSR) return
     if (!_q('[data-affiliate-populate]')) return
 
     const
-        el = _q('[data-affiliate-populate]'),
-        affiliate = _empty(localStorage.affiliate) ? 'Recommend for me!' : localStorage.affiliate
+        text = 'Recommend for me!',
+        option = _q('[data-affiliate-populate]'),
+        affiliate = _empty(localStorage.affiliate) ? text : localStorage.affiliate
 
-    el.innerText = affiliate
+    option.innerText = affiliate
+    
+    if (affiliate !== text) {
+        const siblings = _siblings(option)
+        siblings.map(el => {
+            if (el.innerText === affiliate) el.innerText = text
+        })
+    }
 }
 
 export default _getAffiliate
