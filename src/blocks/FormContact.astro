@@ -1,9 +1,12 @@
 ---
 import Input from '../atoms/Input.astro'
 ---
-<form action="">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <Input type="text" label="First Name" labelFor="first-name" placeholder="Jane" required/>
-        <Input type="text" label="Last Name" labelFor="last-name" placeholder="Diaz" required/>
+<form
+    action=""
+    class="grid grid-cols-1 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
+        <Input type="text" label="First Name" placeholder="Jane" autocomplete="Given Name" required/>
+        <Input type="text" label="Last Name" placeholder="Diaz" autocomplete="Family Name" required/>
     </div>
+    <Input type="email" label="Work Email" placeholder="jane@example.com" autocomplete="Email" required/>
 </form>

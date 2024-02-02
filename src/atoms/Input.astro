@@ -1,29 +1,38 @@
 ---
+import _slugify from '../scripts/slugify'
+
 const {
-    type, label, labelFor, placeholder, required,
+    type, label, placeholder, autocomplete, required,
     class: classes, ...attrs
 } = Astro.props
 ---
-<div
+<label
     class:list={[
         classes
-    ]} { ...attrs }>
+    ]}
+    data-label={ _slugify(label) }
+    { ...attrs }>
     <div class="flex">
-        <label
-            for={ labelFor }
-            class="block text-sm font-medium leading-6 text-gray-900"
+        <span
+            class="block mr-0.5 focus-within:font-medium focus-within:text-dark-950"
             set:text={ label }
         />
-        { required && (<span class="text-accent-600">*</span>) }
+        { required && (<span class="text-red-600">*</span>) }
     </div>
     <div class="mt-1">
         <input
             type={ type }
-            name={ labelFor }
-            id={ labelFor }
+            name={ label }
             placeholder={ placeholder }
+            autocomplete={ autocomplete }
             required={ required }
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            class:list={[`
+                block w-full border-0 py-3
+                bg-surface-100 focus:bg-white text-surface-800
+                shadow-inner ring-1 ring-inset ring-gray-300
+                placeholder:text-surface-600
+                focus:ring-2 focus:ring-inset focus:ring-accent-600
+            `]}
         >
     </div>
-</div>
+</label>
