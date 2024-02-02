@@ -7,10 +7,7 @@ const {
 } = Astro.props
 ---
 <label
-    class:list={[
-        'group',
-        classes
-    ]}
+    class:list={[ 'group', classes ]}
     data-label={ _slugify(label) }
     { ...attrs }>
     <div class="flex">
