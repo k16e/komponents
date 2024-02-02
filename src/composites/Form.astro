@@ -19,7 +19,7 @@ const
     component={ blok.component }
     class:list={[ blok.is_header ? '' : _padY() ]}>
     <Wrapper inner padY="y" class:list={[ blok.is_header && 'relative']}>
-        <Grid flipped>
+        <Grid flipped sticky clip={ false }>
             <Inner slot="trailing">
                 <BannerEntry
                     title={ blok.headline }
