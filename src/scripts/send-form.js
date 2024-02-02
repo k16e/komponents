@@ -17,7 +17,9 @@ const _sendForm = () => {
         e.preventDefault()
         const
             form = e.target,
-            data = new FormData(form)
+            data = new FormData(form),
+            select = _q('#affiliate', form)
+        
         await fetch(endpoint, {
             method: 'POST',
             headers: {
@@ -30,6 +32,7 @@ const _sendForm = () => {
                 console.log('Success')
                 localStorage.removeItem('affiliate')
                 form.reset()
+                select.value = 'Recommend for me!'
                 // do something if submission success
             }
             else {
