@@ -6,7 +6,7 @@ SSG: Astro
 CSS: TailwindCSS
 CMS: Storyblok
 Animations: GSAP
-State Managament: Alpinejs
+State Managament: nanostores
 Page Transitions: Swupjs
 Hosting: Netlify
 IDE: VS Code
@@ -24,3 +24,4 @@ Web: HTML, CSS, & JS
 - States => Make Use Of [https://www.makeuseof.com/astro-state-manage-applications-how-to/]
 - JSON Stringify => FreeCodeCamp [https://www.freecodecamp.org/news/json-stringify-example-how-to-parse-a-json-object-with-javascript/]
 - Fixed Relative Parent => Stack Overflow [https://stackoverflow.com/questions/5209814/can-i-position-an-element-fixed-relative-to-parent#7823145]
+- Sticky Within Flex Parent => Stack Overflow [https://stackoverflow.com/questions/44446671/my-position-sticky-element-isnt-sticky-when-using-flexbox#44446672]
