@@ -27,7 +27,7 @@ const _scrollToTopOffset = (target, offset = 56) => {
 
 const _empty = obj => {
     if (obj === undefined || obj === null) return true
-    if (Object.keys(obj).length > 0) return true
+    if (!Object.keys(obj).length > 0) return true
 }
 
 

@@ -6,7 +6,7 @@ const _getAffiliate = () => {
 
     const
         el = _q('[data-affiliate-populate]'),
-        affiliate = !_empty(localStorage.affiliate) ? 'Recommend for me!' : localStorage.affiliate
+        affiliate = _empty(localStorage.affiliate) ? 'Recommend for me!' : localStorage.affiliate
 
     el.innerText = affiliate
 }
