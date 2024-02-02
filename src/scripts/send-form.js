@@ -1,10 +1,11 @@
-import { _q, _ql } from './snips'
+import { _q, _ql, _encode } from './snips'
 
 const _sendForm = () => {
     if (!_q('[data-form-submit]')) return
 
     const
-        buttons = _ql('[data-form-submit]')
+        buttons = _ql('[data-form-submit]'),
+        endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT
 
     buttons.map(ea => {
         const form = ea.parentNode
@@ -12,9 +13,28 @@ const _sendForm = () => {
         form.addEventListener('submit', submit)
     })
 
-    function submit(e) {
+    async function submit(e) {
         e.preventDefault()
-        console.log(e)
+        await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json'
+            },
+            body: _encode({
+                // pass in the formdata to send
+            })
+        }).then(res => {
+            // reset form data here
+            if (res.status === 200) {
+                console.log('Success')
+                // do something if submission success
+            }
+            else {
+                console.log('Failed')
+                // do something if fails
+            }
+        }).catch(err => console.log(err))
 
         /**
          * get for data, encode, yeah?
