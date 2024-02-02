@@ -8,13 +8,14 @@ const {
 ---
 <label
     class:list={[
+        'group',
         classes
     ]}
     data-label={ _slugify(label) }
     { ...attrs }>
     <div class="flex">
         <span
-            class="block mr-0.5 focus-within:font-medium focus-within:text-dark-950"
+            class="block mr-0.5 group-[:focus-within]:font-medium group-[:focus-within]:text-dark-950"
             set:text={ label }
         />
         { required && (<span class="text-red-600">*</span>) }
