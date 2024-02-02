@@ -28,6 +28,7 @@ const _sendForm = () => {
         }).then(res => {
             if (res.status === 200) {
                 console.log('Success')
+                localStorage.removeItem('affiliate')
                 form.reset()
                 // do something if submission success
             }
