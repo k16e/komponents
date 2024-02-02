@@ -31,8 +31,15 @@ const _empty = obj => {
 }
 
 
+const _encode = data => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&')
+}
+
+
 
 // Exports
 export {
-    _body, _empty, _q, _ql, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _scrollToTopOffset, _even, _odd, _capitalize
+    _body, _empty, _q, _ql, _transition, _padY, _padB, _padT, _gradientLight, _gradientSurface, _scrollToTopOffset, _even, _odd, _capitalize, _encode
 }
