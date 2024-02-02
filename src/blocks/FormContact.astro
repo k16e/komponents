@@ -1,6 +1,8 @@
 ---
 import Input from '../atoms/Input.astro'
 import InputSelect from '../atoms/InputSelect.astro'
+import InputTextarea from '../atoms/InputTextarea.astro'
+import Button from '../atoms/Button.astro'
 ---
 <form
     action=""
@@ -11,4 +13,16 @@ import InputSelect from '../atoms/InputSelect.astro'
     </div>
     <Input type="email" label="Work Email" placeholder="jane@example.com" autocomplete="Email" required/>
     <InputSelect label="Select Affiliate" id="affiliate" autocomplete="Affiliate" required/>
+    <InputTextarea label="Brief" id="message" required/>
+    <button
+        class="group/button">
+        <Button
+            icon="send-plane-fill"
+            label="Send Message"
+            iconPosition="trailing"
+            color="accent"
+            class:list="group-hover/button:shadow-md w-full"
+            responsive
+        />
+    </button>
 </form>

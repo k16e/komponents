@@ -23,17 +23,18 @@ const
         { required && (<span class="text-red-600">*</span>) }
     </label>
     <div class="mt-1">
-        <select
+        <textarea
+            rows="4"
+            name={ _slugify(label) }
             id={ id }
-            name={ _capitalize(id) }
-            autocomplete={ autocomplete }
+            maxlength="1000"
             class:list={[`
-                block w-full border-0 bg-transparent py-3
+                block w-full border-0 py-3 resize-y
+                bg-surface-100 focus:bg-white text-surface-800
                 ring-[1.5px] ring-inset ring-surface-200
-                focus:z-10 focus:ring-2 focus:ring-inset focus:ring-accent-600
+                placeholder:text-surface-600
+                focus:ring-2 focus:ring-inset focus:ring-accent-600
             `]}>
-            <option set:text="Recommend for me!" data-affiliate-populate/>
-            { _affiliates.value.map((el: any) => <option set:text={ el.bio[0].title }/>) }
-        </select>
+        </textarea>
     </div>
 </div>
