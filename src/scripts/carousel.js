@@ -6,6 +6,7 @@ import 'swiper/css'
 
 const _carousel = () => {
     if (!_q('.swiper')) return
+    
     const swiper = new Swiper('.swiper', {
         loop: true,
         autoplay: { delay: 3500 },
@@ -24,7 +25,7 @@ const _carousel = () => {
         a11y: {
             prevSlideMessage: 'Previous Slide',
             nextSlideMessage: 'Next Slide',
-        },
+        }
     })
 }
 

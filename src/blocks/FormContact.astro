@@ -1,6 +1,9 @@
 ---
-
+import Input from '../atoms/Input.astro'
 ---
-<div>
-    Contact Form
-</div>
+<form action="">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <Input type="text" label="First Name" labelFor="first-name" placeholder="Jane" required/>
+        <Input type="text" label="Last Name" labelFor="last-name" placeholder="Diaz" required/>
+    </div>
+</form>

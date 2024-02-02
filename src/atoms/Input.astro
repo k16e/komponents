@@ -1,0 +1,29 @@
+---
+const {
+    type, label, labelFor, placeholder, required,
+    class: classes, ...attrs
+} = Astro.props
+---
+<div
+    class:list={[
+        classes
+    ]} { ...attrs }>
+    <div class="flex">
+        <label
+            for={ labelFor }
+            class="block text-sm font-medium leading-6 text-gray-900"
+            set:text={ label }
+        />
+        { required && (<span class="text-accent-600">*</span>) }
+    </div>
+    <div class="mt-1">
+        <input
+            type={ type }
+            name={ labelFor }
+            id={ labelFor }
+            placeholder={ placeholder }
+            required={ required }
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        >
+    </div>
+</div>
