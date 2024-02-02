@@ -41,6 +41,7 @@ export default defineConfig({
                 copySplit: 'composites/CopySplit',
                 quote: 'composites/Quote',
                 carousel: 'composites/Carousel',
+                form: 'composites/Form',
             }
         })
     ],
