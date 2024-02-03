@@ -1,0 +1,25 @@
+---
+import _slugify from '../scripts/slugify'
+
+const {
+    label,
+    class: classes, ...attrs
+} = Astro.props
+---
+<div class="flex items-center">
+    <input
+        id={ _slugify(label) }
+        name={ label }
+        type="checkbox"
+        class:list={[`
+            h-5 w-5 border-[1.5px]
+            border-surface-400 text-accent-600 focus:ring-accent-600
+            cursor-pointer
+        `]}
+    >
+    <label
+        for={ _slugify(label) }
+        set:text={ label }
+        class="cursor-pointer px-3"
+    />
+</div>

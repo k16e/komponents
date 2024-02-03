@@ -3,8 +3,9 @@ import Input from '../atoms/Input.astro'
 import InputSelect from '../atoms/InputSelect.astro'
 import InputArea from '../atoms/InputArea.astro'
 import Button from '../atoms/Button.astro'
-import DashedBox from '../atoms/DashedBox.astro'
+import DashedBox from '../layouts/DashedBox.astro'
 import InputDate from '../atoms/InputDate.astro'
+import InputCheck from '../atoms/InputCheck.astro'
 ---
 <form class="grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
@@ -17,8 +18,15 @@ import InputDate from '../atoms/InputDate.astro'
         <InputDate label="Installation Date" required/>
         <InputDate label="Failure Date" required/>
     </DashedBox>
-    <DashedBox all={ false } top class:list="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
-        
+    <DashedBox all={ false } top>
+        <fieldset class="grid grid-cols-1">
+            <legend set:text="Device Status" class="flex py-4"/>
+            <div class="flex flex-wrap gap-x-6 gap-y-4">
+                <InputCheck label="Not coming on"/>
+                <InputCheck label="Making Sound"/>
+                <InputCheck label="LED Light Alarm"/>
+            </div>
+        </fieldset>
     </DashedBox>
     <button
         class="group/button"
