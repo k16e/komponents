@@ -7,7 +7,10 @@ import InputDate from '../atoms/InputDate.astro'
 import InputCheck from '../atoms/InputCheck.astro'
 import InputFile from '../atoms/InputFile.astro'
 ---
-<form class="grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4">
+<form
+    accept-charset="UTF-8"
+    enctype="multipart/form-data"
+    class="grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
         <Input type="text" label="Serial Number" placeholder="Serial Number" required/>
         <Input type="text" label="Product Number" placeholder="Product Number" required/>
@@ -28,9 +31,20 @@ import InputFile from '../atoms/InputFile.astro'
             </div>
         </fieldset>
     </DashedBox>
-    <DashedBox all={ false } top class:list="pt-6 space-y-4">
-        <span set:text="Device Picture" class="block"/>
+    <DashedBox all={ false } top class:list="pt-6 space-y-4 mb-1">
+        <span set:text="Device Picture" class="flex"/>
         <InputFile label="Device Picture"/>
+    </DashedBox>
+    <DashedBox all={ false } top class:list="pt-6 grid grid-cols-1 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
+            <Input type="text" label="Full Name" placeholder="Jane Diaz" required/>
+            <Input type="text" label="Company/Device Owner Name" placeholder="Device Owner Name"/>
+        </div>
+        <Input type="text" label="Address" placeholder="Your address" required/>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
+            <Input type="text" label="Phone" placeholder="Your phone number" required/>
+            <Input type="email" label="Email" placeholder="jane.diaz@example.com" required/>
+        </div>
     </DashedBox>
     <button
         class="group/button"

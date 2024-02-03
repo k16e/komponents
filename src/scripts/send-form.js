@@ -17,6 +17,7 @@ const _sendForm = () => {
 
     async function submit(e) {
         e.preventDefault()
+
         const
             form = e.target,
             data = new FormData(form),
@@ -33,10 +34,9 @@ const _sendForm = () => {
             if (res.status === 200) {
                 localStorage.removeItem('affiliate')
                 form.reset()
-                select.value = 'Recommend for me!'
+                if (select) select.value = 'Recommend for me!'
             } else {
                 console.log('Failed')
-                // do something if fails
             }
         })
     }
