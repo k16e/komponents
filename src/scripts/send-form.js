@@ -6,40 +6,46 @@ const _sendForm = () => {
     if (!_q('[data-form-submit]')) return
 
     const
-        buttons = _ql('[data-form-submit]'),
+        button = _q('[data-form-submit]'),
         endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT,
         file = _q('[data-input-file]'),
         fileSuccess = _q('[data-file-success]'),
-        fileError = _q('[data-file-error]')
+        fileError = _q('[data-file-error]'),
+        form = button.parentNode
 
-    file.addEventListener('change', e => {
-        const
-            files = e.target.files,
-            fileSize = files[0].size,
-            size = Math.round((fileSize / 1024))
-        console.log(files, size)
-        if (files.length) {
-            if (size > 300) {
-                gsap.to(fileError, {
-                    display: 'flex',
-                    opacity: 1,
-                    y: -6
-                })
-            } else {
+    if (file) {
+        file.addEventListener('change', e => {
+            const
+                files = e.target.files,
+                fileSize = files[0].size,
+                size = Math.round((fileSize / 1024))
+
+            if (files.length) {
                 gsap.to(fileSuccess, {
                     display: 'flex',
                     opacity: 1,
                     y: -6
                 })
+                // if (size > 300) {
+                //     disable(button)
+                //     gsap.to(fileError, {
+                //         display: 'flex',
+                //         opacity: 1,
+                //         y: -6
+                //     })
+                // } else {
+                //     enable(button)
+                //     gsap.to(fileSuccess, {
+                //         display: 'flex',
+                //         opacity: 1,
+                //         y: -6
+                //     })
+                // }
             }
-        }
-    })
+        })
+    }
 
-    buttons.map(ea => {
-        const form = ea.parentNode
-
-        form.addEventListener('submit', submit)
-    })
+    form.addEventListener('submit', submit)
 
     async function submit(e) {
         e.preventDefault()
@@ -65,6 +71,16 @@ const _sendForm = () => {
                 console.log('Failed')
             }
         })
+    }
+
+    function disable(el) {
+        el.disabled = true
+        el.firstElementChild.classList.add('disabled')
+    }
+
+    function enable(el) {
+        el.disabled = false
+        el.firstElementChild.classList.remove('disabled')
     }
 }
 
