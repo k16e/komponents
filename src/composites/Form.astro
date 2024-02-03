@@ -5,10 +5,9 @@ import Grid from '../layouts/Grid.astro'
 import Inner from '../layouts/Inner.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
 import RichText from '../atoms/RichText.astro'
-import { _padY, _padT } from '../scripts/snips'
-import { _empty } from '../scripts/snips'
+import { _padY, _padT, _gradientSurface, _empty } from '../scripts/snips'
 import FormContact from '../blocks/FormContact.astro'
-import { _gradientSurface } from '../scripts/snips'
+import FormRepairCenter from '../blocks/FormRepairCenter.astro'
 
 const
     { blok } = Astro.props,
@@ -33,6 +32,7 @@ const
             </Inner>
             <div slot="leading" class="bg-white shadow-md lg:shadow-lg p-4 sm:p-8 relative overflow-clip">
                 { blok.form === 'contact' && <FormContact/> }
+                { blok.form === 'repair-center' && <FormRepairCenter/> }
             </div>
         </Grid>
     </Wrapper>

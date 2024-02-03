@@ -1,7 +1,7 @@
 ---
 const
     {
-        Tag = 'div',
+        Tag = 'div', all = true, top, bottom,
         class: classes,
         ...attrs
     }
@@ -9,7 +9,9 @@ const
 ---
 <Tag
     class:list={[
-        'border border-dashed border-surface-200',
+        'border-dashed border-surface-200',
+        all && 'border',
+        top && 'border-t',
         classes
     ]}
     { ...attrs }>

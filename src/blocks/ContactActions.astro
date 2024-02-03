@@ -14,8 +14,11 @@ const { links } = Astro.props
                 <Anchor
                     href={ _slug(el.link) }
                     hover={ idx == 0 ? 'accent' : 'shadow' }
-                    data-anchor={ idx == 0 && _slugify(el.link.story.full_slug) }
-                    class:list="relative group/anchor group-first:[&.active]:text-accent-600">
+                    data-anchor={ _slugify(el.link.story.full_slug) }
+                    class:list={[`
+                        relative group/anchor group-first:[&.active]:text-accent-600
+                        group-last:[&.active]:bg-dark-50 group-last:[&.active]:text-surface-950/50
+                    `]}>
                     <Button
                         icon={ el.icon }
                         label={ el.title }
