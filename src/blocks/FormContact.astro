@@ -4,7 +4,7 @@ import InputSelect from '../atoms/InputSelect.astro'
 import InputArea from '../atoms/InputArea.astro'
 import Button from '../atoms/Button.astro'
 ---
-<form class="grid grid-cols-1 gap-6">
+<form class="grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
         <Input type="text" label="First Name" placeholder="Jane" autocomplete="Given Name" required/>
         <Input type="text" label="Last Name" placeholder="Diaz" autocomplete="Family Name" required/>
