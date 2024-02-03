@@ -27,3 +27,4 @@ Web: HTML, CSS, & JS
 - Sticky Within Flex Parent => Stack Overflow [https://stackoverflow.com/questions/44446671/my-position-sticky-element-isnt-sticky-when-using-flexbox#44446672]
 - Capitalize => Example Javascript [https://examplejavascript.com/lodash/capitalize/]
 - Siblings Helper => JavaScript Tutorial Website [https://www.javascripttutorial.net/javascript-dom/javascript-siblings/]
+- Better isEmpty => Stack Overflow [https://stackoverflow.com/questions/43233102/lodash-isempty-and-has-method-vs-simple-check]

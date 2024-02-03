@@ -47,7 +47,9 @@ export default defineConfig({
     ],
     redirects: {
         '/pages': redirectHome,
-        '/pages/': redirectHome
+        '/pages/': redirectHome,
+        '/home': redirectHome,
+        '/home/': redirectHome,
     },
     image: {
         domains: ['a.storyblok.com']

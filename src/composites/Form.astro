@@ -28,7 +28,9 @@ const
                     showSubtitle={ false }
                     showCopy={ false }
                 />
-                { !_empty(description) && <RichText text={ blok.content }/> }
+                { !_empty(description) && (
+                    <RichText text={ description[0].text } class:list="mt-4 sm:mt-6 lg:mt-8"/>
+                ) }
             </Inner>
             <div slot="leading" class="bg-white shadow-md lg:shadow-lg p-4 sm:p-8 relative overflow-clip">
                 { blok.form === 'contact' && <FormContact/> }

@@ -25,9 +25,13 @@ const _scrollToTopOffset = (target, offset = 56) => {
 }
 
 
-const _empty = obj => {
-    if (obj === undefined || obj === null) return true
-    if (!Object.keys(obj).length > 0) return true
+const _empty = value => {
+    return (
+        value === undefined ||
+        value === null ||
+        (typeof value === "object" && Object.keys(value).length === 0) ||
+        (typeof value === "string" && value.trim().length === 0)
+    )
 }
 
 

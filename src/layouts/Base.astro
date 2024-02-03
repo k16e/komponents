@@ -108,6 +108,7 @@ _addAffiliates(affiliates)
     import _carousel from '../scripts/carousel'
     import _getAffiliate from '../scripts/get-affiliate'
     import _sendForm from '../scripts/send-form'
+    import _unslashHome from '../scripts/unslash-home'
 
 	const swup = new Swup({
 		animationSelector: '[class*="swup-"]',
@@ -136,5 +137,6 @@ _addAffiliates(affiliates)
 
 	function once() {
         _astrolog()
+        _unslashHome()
 	}
 </script>
