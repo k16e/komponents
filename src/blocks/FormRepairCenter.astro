@@ -1,11 +1,11 @@
 ---
 import Input from '../atoms/Input.astro'
-import InputSelect from '../atoms/InputSelect.astro'
 import InputArea from '../atoms/InputArea.astro'
 import Button from '../atoms/Button.astro'
 import DashedBox from '../layouts/DashedBox.astro'
 import InputDate from '../atoms/InputDate.astro'
 import InputCheck from '../atoms/InputCheck.astro'
+import InputFile from '../atoms/InputFile.astro'
 ---
 <form class="grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
@@ -27,6 +27,10 @@ import InputCheck from '../atoms/InputCheck.astro'
                 <InputCheck label="LED Light Alarm"/>
             </div>
         </fieldset>
+    </DashedBox>
+    <DashedBox all={ false } top class:list="pt-6 space-y-4">
+        <span set:text="Device Picture" class="block"/>
+        <InputFile label="Device Picture"/>
     </DashedBox>
     <button
         class="group/button"
