@@ -6,6 +6,7 @@ import DashedBox from '../layouts/DashedBox.astro'
 import InputDate from '../atoms/InputDate.astro'
 import InputCheck from '../atoms/InputCheck.astro'
 import InputFile from '../atoms/InputFile.astro'
+import Icon from '../atoms/Icon.astro'
 ---
 <form
     accept-charset="UTF-8"
@@ -31,9 +32,23 @@ import InputFile from '../atoms/InputFile.astro'
             </div>
         </fieldset>
     </DashedBox>
-    <DashedBox all={ false } top class:list="pt-6 space-y-4 mb-1">
-        <span set:text="Device Picture" class="flex"/>
-        <InputFile label="Device Picture"/>
+    <DashedBox all={ false } top class:list="pt-6 mb-1 flex items-center">
+        <div class="space-y-4">
+            <span set:text="Device Picture" class="flex"/>
+            <div class="flex items-center gap-x-4">
+                <InputFile label="Device Picture"/>
+                <div class="relative flex flex-col gap-y-2">
+                    <div class="items-center gap-x-2 hidden" data-file-success>
+                        <Icon name="check" class:list="text-green-600 w-7"/>
+                        <span set:text="File added." class=""/>
+                    </div>
+                    <div class="items-center gap-x-2 hidden" data-file-error>
+                        <Icon name="close-x-fill" class:list="text-red-600 w-7"/>
+                        <span set:text="Error, file above limit"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </DashedBox>
     <DashedBox all={ false } top class:list="pt-6 grid grid-cols-1 gap-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">

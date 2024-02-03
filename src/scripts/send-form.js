@@ -7,7 +7,33 @@ const _sendForm = () => {
 
     const
         buttons = _ql('[data-form-submit]'),
-        endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT
+        endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT,
+        file = _q('[data-input-file]'),
+        fileSuccess = _q('[data-file-success]'),
+        fileError = _q('[data-file-error]')
+
+    file.addEventListener('change', e => {
+        const
+            files = e.target.files,
+            fileSize = files[0].size,
+            size = Math.round((fileSize / 1024))
+        console.log(files, size)
+        if (files.length) {
+            if (size > 300) {
+                gsap.to(fileError, {
+                    display: 'flex',
+                    opacity: 1,
+                    y: -6
+                })
+            } else {
+                gsap.to(fileSuccess, {
+                    display: 'flex',
+                    opacity: 1,
+                    y: -6
+                })
+            }
+        }
+    })
 
     buttons.map(ea => {
         const form = ea.parentNode
