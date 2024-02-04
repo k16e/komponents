@@ -1,6 +1,7 @@
 import { modal, setModal, unsetModal, _addAffiliate, _affiliate } from './store'
 import { _q, _ql } from './snips'
 
+
 const _modal = () => {
     if (!_q('[data-modal-trigger]')) return
 
