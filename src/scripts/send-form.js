@@ -1,6 +1,8 @@
 import { _q, _ql, _encode } from './snips'
-import { modal, setModal } from './store'
+import _runToast from './toast'
 import gsap from 'gsap'
+
+const _toast = _runToast()
 
 const _sendForm = () => {
     if (!_q('[data-form-submit]')) return
@@ -67,6 +69,7 @@ const _sendForm = () => {
                 localStorage.removeItem('affiliate')
                 form.reset()
                 if (select) select.value = 'Recommend for me!'
+                _toast.display()
             } else {
                 console.log('Failed')
             }
