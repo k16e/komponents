@@ -6,6 +6,7 @@ const _slugify = str => {
         .replace(/[^a-z0-9 -]/g, '')
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-')
+        .replace(/-+$/g, '')
     return str
 }
 

@@ -19,7 +19,10 @@ const
 <Tag
     class:list={[
         'justify-center items-center gap-2 inline-flex',
-        color === 'accent' && 'bg-accent-600 text-white group-[.disabled]/button:bg-dark-50 group-[.disabled]/button:text-surface-950/50 pointer-events-none',
+        color === 'accent' && `bg-accent-600 text-white
+        group-[.disabled]/button:bg-dark-50 group-[.disabled]/button:text-surface-950/50
+        group-[.disabled]/button:pointer-events-none group-[.active]/anchor:bg-dark-50
+        group-[.active]/anchor:text-surface-950/50 group-[.active]/anchor:pointer-events-none`,
         color === 'surface' && 'bg-surface-100 text-surface-900',
         color === 'dark' && 'bg-dark-950 text-white',
         color === 'depth' && 'bg-surface-950 text-white',
