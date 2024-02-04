@@ -13,7 +13,8 @@ const _sendForm = () => {
         file = _q('[data-input-file]'),
         fileSuccess = _q('[data-file-success]'),
         fileError = _q('[data-file-error]'),
-        form = button.parentNode
+        form = button.parentNode,
+        successMsg = _q('[data-form-success-message]').textContent
 
     if (file) {
         file.addEventListener('change', e => {
@@ -54,7 +55,7 @@ const _sendForm = () => {
                 localStorage.removeItem('affiliate')
                 form.reset()
                 if (select) select.value = 'Recommend for me!'
-                _toast.display(`We have received your message. You will hear from us in 48 hours`)
+                _toast.display(successMsg)
             } else {
                 console.log('Failed')
             }

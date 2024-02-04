@@ -11,7 +11,8 @@ import FormRepairCenter from '../blocks/FormRepairCenter.astro'
 
 const
     { blok } = Astro.props,
-    description = blok.description
+    description = blok.description,
+    success = blok.form_success
 ---
 <Section
     title={ blok.title }
@@ -38,4 +39,5 @@ const
             </div>
         </Grid>
     </Wrapper>
+    <p set:text={ success } hidden data-form-success-message/>
 </Section>
