@@ -11,7 +11,7 @@ export const
     _affiliate = persistentAtom('affiliate', '')
 
 export function setTopbar() { topbar.set(true) }
-export function setModal() { m.set(true) }
+export function setModal() { modal.set(true) }
 export function _setToast() { _toast.set(true) }
 
 export function _addProducts(item) { _products.set(item) }

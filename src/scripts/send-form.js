@@ -57,7 +57,7 @@ const _sendForm = () => {
                 if (select) select.value = 'Recommend for me!'
                 _toast.display(successMsg)
             } else {
-                console.log('Failed')
+                _toast.display(`Aw, snap, something broke. Please refresh page and try again.`)
             }
         })
     }

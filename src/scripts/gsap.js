@@ -1,69 +1,21 @@
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { _q } from './snips'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const
-    tl = gsap.timeline({ // Timeline
+    tl = gsap.timeline({
         defaults: {
-            delay: 0.15,
-            duration: 0.5,
-            autoAlpha: 0,
-            opacity: 0
+            duration: .5,
+            autoAlpha: 0
         }
     }),
-
-
-    // Signatures
-    dropIn = {
-        y: -12,
+    slideIn = {
+        y: 0,
+        opacity: 1,
+        visibility: 'visible',
         ease: 'back.out',
-        clearProps: 'all'
     },
-    flyIn = {
-        y: -12,
-        scale: 1.05
-    },
-    riseIn = {
-        y: 12,
-        scale: 0.99
-    },
-
-
-    // Islands
-    Silence = () => {
-        if (!_q('[data-gsap="silence"]')) return
-        gsap.from('[data-gsap="silence"]', {
-            scrollTrigger: {
-                trigger: '[data-gsap="silence"]',
-                toggleActions: 'restart pause reverse pause'
-            },
-            y: '100%',
-            ease: 'expoScale(0.3,7,none)',
-            opacity: 0,
-            scale: 2,
-            duration: .4
-        })
-    },
-    runAnimations = () => {
-        _q('[data-gsap="logo"]') && tl.from('[data-gsap="logo"]', dropIn)
-        _q('[data-gsap="rise-in"]') && tl.from('[data-gsap="rise-in"]', {
-            ...riseIn,
-            onComplete: () => _q('[data-wrapper="main"]').removeAttribute('style')
-        })
-        _q('[data-gsap="list-fly-in"]') && gsap.utils.toArray('[data-gsap="list-fly-in"]').forEach(el => {
-            tl.from(el, {
-                ...flyIn,
-                stagger: {
-                    from: 'start',
-                    each: 0.2,
-                    grid: 'auto'
-                }
-            })
-        })
+    slideOut = {
+        y: '100%',
+        opacity: 0,
+        visibility: 0,
+        ease: 'back.in',
     }
-
-
-// Exports
-export { Silence, runAnimations }
