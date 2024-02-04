@@ -28,21 +28,6 @@ const _sendForm = () => {
                     opacity: 1,
                     y: -6
                 })
-                // if (size > 300) {
-                //     disable(button)
-                //     gsap.to(fileError, {
-                //         display: 'flex',
-                //         opacity: 1,
-                //         y: -6
-                //     })
-                // } else {
-                //     enable(button)
-                //     gsap.to(fileSuccess, {
-                //         display: 'flex',
-                //         opacity: 1,
-                //         y: -6
-                //     })
-                // }
             }
         })
     }
@@ -69,7 +54,7 @@ const _sendForm = () => {
                 localStorage.removeItem('affiliate')
                 form.reset()
                 if (select) select.value = 'Recommend for me!'
-                _toast.display()
+                _toast.display(`We have received your message. You will hear from us in 48 hours`)
             } else {
                 console.log('Failed')
             }

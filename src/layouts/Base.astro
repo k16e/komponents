@@ -111,7 +111,6 @@ _addAffiliates(affiliates)
     import _getAffiliate from '../scripts/get-affiliate'
     import _sendForm from '../scripts/send-form'
     import _prefilters from '../scripts/prefilters'
-    import _runToast from '../scripts/toast'
 
     const swup = new Swup({
         animationSelector: '[class*="swup-"]',
@@ -120,7 +119,6 @@ _addAffiliates(affiliates)
             new SwupProgressPlugin({ finishAnimation: false })
         ]
     })
-    const _toast = _runToast()
 
     document.addEventListener('DOMContentLoaded', () => {
         once()

@@ -28,7 +28,10 @@ const _runToast = () => {
         p = _q('[data-toast-value]'),
         close = _q('[data-toast-close]'),
         dismiss = () => tl.to(toast, slideOut),
-        display = () => tl.to(toast, slideIn)
+        display = (msg) => {
+            p.textContent = msg
+            tl.to(toast, slideIn)
+        }
 
     close.addEventListener('click', dismiss)
 
