@@ -42,6 +42,7 @@ export default defineConfig({
                 quote: 'composites/Quote',
                 carousel: 'composites/Carousel',
                 form: 'composites/Form',
+                longform: 'composites/Longform',
             }
         })
     ],

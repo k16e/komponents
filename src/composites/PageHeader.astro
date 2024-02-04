@@ -22,8 +22,9 @@ const
         inner
         class:list={[
             'w-full relative',
-            blok.product_filter && 'pb-8 sm:pb-12',
-            !blok.product_filter && 'pb-4 pt-3'
+            (blok.product_filter && !blok.overlap) && 'pb-8 sm:pb-12',
+            !blok.product_filter && 'pb-4 pt-3',
+            blok.overlap && 'pb-8 sm:pb-10 lg:pb-16'
         ]}>
         <BannerEntry
             subtitle={ banner.subtitle }
