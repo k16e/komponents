@@ -5,20 +5,21 @@ import gsap from 'gsap'
 const
     tl = gsap.timeline({
         defaults: {
-            duration: 0.3,
-            autoAlpha: 0,
-            opacity: 0,
-            ease: 'back.out',
+            duration: .5,
+            autoAlpha: 0
         }
     }),
     slideIn = {
         y: 0,
+        opacity: 1,
         visibility: 'visible',
-        opacity: 1
+        ease: 'back.out',
     },
     slideOut = {
         y: '100%',
-        visibility: 'hidden'
+        opacity: 0,
+        visibility: 0,
+        ease: 'back.in',
     }
 
 const _runToast = () => {
@@ -28,6 +29,8 @@ const _runToast = () => {
         close = _q('[data-toast-close]'),
         dismiss = () => tl.to(toast, slideOut),
         display = () => tl.to(toast, slideIn)
+
+    close.addEventListener('click', dismiss)
 
     return {
         dismiss,

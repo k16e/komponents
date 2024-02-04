@@ -28,3 +28,4 @@ Web: HTML, CSS, & JS
 - Capitalize => Example Javascript [https://examplejavascript.com/lodash/capitalize/]
 - Siblings Helper => JavaScript Tutorial Website [https://www.javascripttutorial.net/javascript-dom/javascript-siblings/]
 - Better isEmpty => Stack Overflow [https://stackoverflow.com/questions/43233102/lodash-isempty-and-has-method-vs-simple-check]
+- Function as Module => Stack Overflow [https://stackoverflow.com/questions/13218472/calling-a-function-defined-inside-another-function-in-javascript]
