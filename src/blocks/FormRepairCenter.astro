@@ -7,6 +7,9 @@ import InputDate from '../atoms/InputDate.astro'
 import InputCheck from '../atoms/InputCheck.astro'
 import InputFile from '../atoms/InputFile.astro'
 import Icon from '../atoms/Icon.astro'
+import RichText from '../atoms/RichText.astro'
+
+const { consent } = Astro.props
 ---
 <form
     accept-charset="UTF-8"
@@ -61,6 +64,13 @@ import Icon from '../atoms/Icon.astro'
             <Input type="email" label="Email" placeholder="jane.diaz@example.com" required/>
         </div>
     </DashedBox>
+    { consent && (
+        <DashedBox all={ false } top class:list="pt-6 grid grid-cols-1 gap-6">
+            <InputCheck label="Consent" required consent>
+                <RichText text={ consent } tag="span"/>
+            </InputCheck>
+        </DashedBox>
+    ) }
     <button
         class="group/button"
         data-form-submit>

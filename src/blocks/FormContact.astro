@@ -3,6 +3,11 @@ import Input from '../atoms/Input.astro'
 import InputSelect from '../atoms/InputSelect.astro'
 import InputArea from '../atoms/InputArea.astro'
 import Button from '../atoms/Button.astro'
+import DashedBox from '../layouts/DashedBox.astro'
+import InputCheck from '../atoms/InputCheck.astro'
+import RichText from '../atoms/RichText.astro'
+
+const { consent } = Astro.props
 ---
 <form class="grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
@@ -12,6 +17,13 @@ import Button from '../atoms/Button.astro'
     <Input type="email" label="Work Email" placeholder="jane@example.com" autocomplete="Email" required/>
     <InputSelect label="Select Affiliate" id="affiliate" autocomplete="Affiliate" required/>
     <InputArea label="Brief" id="message" required/>
+    { consent && (
+        <DashedBox all={ false } top class:list="pt-6 grid grid-cols-1 gap-6">
+            <InputCheck label="Consent" required consent>
+                <RichText text={ consent } tag="span"/>
+            </InputCheck>
+        </DashedBox>
+    ) }
     <button
         class="group/button"
         data-form-submit>
