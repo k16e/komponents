@@ -16,10 +16,6 @@ const _sendForm = () => {
         form = button.parentNode,
         successMsg = _q('[data-form-success-message]').textContent
 
-    let
-        sent = false,
-        sending = false
-
     if (file) {
         file.addEventListener('change', e => {
             const
@@ -47,7 +43,6 @@ const _sendForm = () => {
             data = new FormData(form),
             select = _q('#affiliate', form)
 
-        sending = true
         button.classList.add('disabled')
 
         await fetch(endpoint, {
@@ -64,8 +59,6 @@ const _sendForm = () => {
                 if (select) select.value = 'Recommend for me!'
                 window.scrollTo({ top: 0, left: 0 })
                 _toast.display(successMsg)
-                sending = false
-                sent = true
                 button.classList.remove('disabled')
             } else {
                 _toast.display(`Aw, snap, something broke. Please refresh page and try again.`)
