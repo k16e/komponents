@@ -15,7 +15,7 @@ const _zaps = () => {
             ease: 'back.out',
         }),
         slideOut = () => ({
-            y: '100%',
+            y: 48,
             opacity: 0,
             visibility: 0,
             ease: 'back.in',
