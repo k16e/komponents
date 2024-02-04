@@ -55,6 +55,7 @@ const _sendForm = () => {
                 localStorage.removeItem('affiliate')
                 form.reset()
                 if (select) select.value = 'Recommend for me!'
+                window.scrollTo({ top: 0, left: 0 })
                 _toast.display(successMsg)
             } else {
                 _toast.display(`Aw, snap, something broke. Please refresh page and try again.`)
