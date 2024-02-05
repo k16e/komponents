@@ -4,7 +4,7 @@ import gsap from 'gsap'
 
 const _toast = _runToast()
 
-const _sendForm = () => {
+const _submit = () => {
     if (!_q('[data-form-submit]')) return
 
     const
@@ -67,4 +67,4 @@ const _sendForm = () => {
     }
 }
 
-export default _sendForm
+export default _submit
