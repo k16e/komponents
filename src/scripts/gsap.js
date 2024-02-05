@@ -8,11 +8,12 @@ const _zaps = () => {
                 autoAlpha: 0
             }
         }),
-        slideIn = () => ({
+        slideIn = (props) => ({
             y: 0,
             opacity: 1,
             visibility: 'visible',
-            ease: 'back.out'
+            ease: 'back.out',
+            ...props
         }),
         slideOut = () => ({
             y: 48,

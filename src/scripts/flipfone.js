@@ -24,15 +24,13 @@ const _flipfone = () => {
             function showFlip(evt) {
                 const
                     toggle = evt.target,
-                    flip = flips.find(flip => (flip.dataset.flipfoneContent === toggle.dataset.flipfoneToggle)),
-                    prev = flip.previousElementSibling,
-                    next = flip.nextElementSibling
+                    flip = flips.find(flip => (flip.dataset.flipfoneContent === toggle.dataset.flipfoneToggle))
 
                 toggle.classList.add('active')
                 _siblings(toggle).map(sib => sib.classList.remove('active'))
 
-                zap.tl().to(flip, zap.slideIn())
-                _siblings(flip).map(el => zap.tl().to(el, zap.slideOff()))
+                _siblings(flip).map(el => zap.tl().to(el, zap.slideOut()))
+                zap.tl().to(flip, zap.slideIn({ delay: 0.6 }))
             }
         })
     })
