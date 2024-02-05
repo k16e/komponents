@@ -29,8 +29,12 @@ const
         </div>
         <div class="flex">
             <ContactActions links={ contactActions }/>
-            <button class:list={[ 'xl:hidden px-4 bg-surface-100 hover:bg-surface-200', _transition()]}>
-                <Icon name="menu" class="w-7"/>
+            <button
+                class:list={[
+                    'xl:hidden px-4 bg-surface-100 hover:bg-surface-200 text-accent-600',
+                    _transition()
+                ]} data-trigger-sheet>
+                <Icon name="menu" class="w-7 pointer-events-none"/>
             </button>
         </div>
     </Wrapper>
@@ -39,6 +43,9 @@ const
 <script>
     import { _q } from '../scripts/snips'
     import _scroll from '../scripts/scroll'
+    import _runSheet from '../scripts/sheet'
+
+    const _sheet = _runSheet()
 
     const
         header = _q('header'),
@@ -46,8 +53,15 @@ const
         activeClasses = ['shadow', 'backdrop-filter', 'backdrop-blur-lg', 'bg-opacity-90'],
         activate = () => header.classList.add(...activeClasses),
         deactivate = () => header.classList.remove(...activeClasses),
-        toggle = () => (window.scrollY > height) ? activate() : deactivate()
+        toggle = () => (window.scrollY > height) ? activate() : deactivate(),
+        sheetTrigger = _q('[data-trigger-sheet]'),
+        openSheet = () => {
+            _sheet.display()
+        }
 
     window.scrollY !== 0 ? activate() : deactivate()
     _scroll(toggle)
+
+
+    sheetTrigger.addEventListener('click', openSheet)
 </script>

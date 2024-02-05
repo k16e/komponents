@@ -1,6 +1,7 @@
-import { _overlay, _setOverlay, _unsetOverlay } from './store'
+import {
+    _overlay, _setOverlay, _unsetOverlay, _sheet, _unsetSheet
+} from './store'
 import { _q, _ql } from './snips'
-import Click from './click'
 
 const _backdrop = () => {
     if (!_q('[data-backdrop]')) return
@@ -8,21 +9,23 @@ const _backdrop = () => {
     const
         body = document.body,
         backdrop = _q('[data-backdrop]'),
-        onn = () => {
+        on = () => {
             backdrop.classList.remove('opacity-0', 'invisible')
-            backdrop.classList.add('opacity-80')
+            backdrop.classList.add('opacity-70')
             body.style.overflow = 'hidden'
         },
         off = () => {
             backdrop.classList.add('opacity-0')
-            backdrop.classList.remove('opacity-80')
+            backdrop.classList.remove('opacity-70')
             setTimeout(() => backdrop.classList.add('invisible'), 300)
             body.style.overflow = ''
             _unsetOverlay()
+            _unsetSheet()
         }
 
-    _overlay.subscribe(value => value ? onn() : off())
-    Click(backdrop, off)
+    _overlay.subscribe(value => value ? on() : off())
+    _sheet.subscribe(value => value ? on() : off())
+    backdrop.addEventListener('click', off)
 }
 
 export default _backdrop

@@ -14,6 +14,7 @@ import {
     _products, _addProducts, _addProductsNew, _productsNew, _affiliates, _addAffiliates
 } from '../scripts/store'
 import Toast from '../blocks/Toast.astro'
+import Sheet from '../blocks/Sheet.astro'
 
 const
     {
@@ -85,6 +86,13 @@ _addAffiliates(affiliates)
             )) }
         </Modal>
         <Toast/>
+        <Sheet>
+            <div>
+                <p class="prose">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius, quibusdam deleniti suscipit sunt numquam maxime perspiciatis nam, ut tenetur dolorem in maiores laboriosam vitae iure nihil blanditiis! Cumque, blanditiis optio?
+                </p>
+            </div>
+        </Sheet>
         <Backdrop/>
 	</body>
 </html>
