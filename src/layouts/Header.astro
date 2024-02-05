@@ -37,22 +37,17 @@ const
 </header>
 
 <script>
-    import { topbar, setTopbar, unsetTopbar } from '../scripts/store'
     import { _q } from '../scripts/snips'
-    import Scroll from '../scripts/scroll'
+    import _scroll from '../scripts/scroll'
 
     const
         header = _q('header'),
         height = header.getBoundingClientRect().height,
         activeClasses = ['shadow', 'backdrop-filter', 'backdrop-blur-lg', 'bg-opacity-90'],
-        activate = () => setTopbar(),
-        deactivate = () => unsetTopbar(),
+        activate = () => header.classList.add(...activeClasses),
+        deactivate = () => header.classList.remove(...activeClasses),
         toggle = () => (window.scrollY > height) ? activate() : deactivate()
 
-    topbar.subscribe(value => {
-        value ? header.classList.add(...activeClasses) : header.classList.remove(...activeClasses)
-    })
-
     window.scrollY !== 0 ? activate() : deactivate()
-    Scroll(toggle)
+    _scroll(toggle)
 </script>
