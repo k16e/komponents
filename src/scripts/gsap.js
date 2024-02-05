@@ -19,9 +19,16 @@ const _zaps = () => {
             opacity: 0,
             visibility: 0,
             ease: 'back.in',
+        }),
+        slideOff = () => ({
+            y: -48,
+            opacity: 0,
+            visibility: 0,
+            ease: 'none',
+            duration: .2
         })
 
-    return { tl, slideIn, slideOut }
+    return { tl, slideIn, slideOut, slideOff }
 }
 
 export default _zaps

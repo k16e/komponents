@@ -5,7 +5,9 @@ import Grid from '../layouts/Grid.astro'
 import SectionTitle from '../blocks/SectionTitle.astro'
 import Heading from '../atoms/Heading.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
-import { _gradientSurface } from '../scripts/snips'
+import { _gradientSurface, _transition } from '../scripts/snips'
+import _mobile from '../scripts/mobile'
+import _slugify from '../scripts/slugify'
 
 const { blok } = Astro.props
 ---
@@ -22,11 +24,22 @@ const { blok } = Astro.props
                     slatColor="surface"
                 />
                 <div class="hidden lg:flex flex-col space-y-16">
-                    { blok.banners.map((entry: any) => (
+                    { blok.banners.map((entry: any, idx: number) => (
                         <button
-                            class="[&:nth-child(2)]:opacity-40 last:opacity-40"
-                            data-flipfone-trigger>
-                            <Heading text={ entry.subtitle } size="2xl" weight="extra" color="surface" tighten/>
+                            class:list={[
+                                `opacity-40 [&.active]:opacity-100`,
+                                idx === 0 && 'active',
+                                _transition()
+                            ]}
+                            data-flipfone-toggle={ _slugify(entry.subtitle) }>
+                            <Heading
+                                text={ entry.subtitle }
+                                size="2xl"
+                                weight="extra"
+                                color="surface"
+                                tighten
+                                class:list="pointer-events-none"
+                            />
                         </button>
                     )) }
                 </div>
@@ -34,11 +47,15 @@ const { blok } = Astro.props
             <div
                 slot="leading"
                 class="lg:bg-white lg:p-12 lg:h-[640px] lg:-translate-y-4 overflow-clip flex flex-col justify-between">
-                <div class="space-y-14 sm:space-y-16 relative">
+                <div class="space-y-14 sm:space-y-16 lg:space-y-0 relative">
                     { blok.banners.map((entry: any) => (
                         <div
-                            class="lg:absolute top-0 left-0 [&:nth-child(2)]:lg:hidden last:lg:hidden"
-                            data-flipfone-content>
+                            class:list={[`
+                                lg:absolute top-0 left-0
+                                [&:nth-child(2)]:lg:invisible [&:nth-child(2)]:lg:translate-y-12 [&:nth-child(2)]:lg:opacity-0
+                                last:lg:invisible last:lg:translate-y-12 last:lg:opacity-0
+                            `]}
+                            data-flipfone-content={ _slugify(entry.subtitle) }>
                             <BannerEntry
                                 subtitle={ entry.subtitle }
                                 title={ entry.title }
@@ -50,8 +67,8 @@ const { blok } = Astro.props
                     )) }
                 </div>
                 <div aria-hidden="true" class="hidden lg:block relative" data-progress>
-                    <div class="h-2 w-full absolute inset-x-0 top-0 bg-surface-200" data-progress-track></div>
-                    <div class="h-2 w-1/3 absolute inset-x-0 top-0 bg-accent-600" data-progress-thumb></div>
+                    <div class="h-2 w-full absolute inset-x-0 top-0 bg-surface-200"></div>
+                    <div class="h-2 w-1/3 absolute inset-x-0 top-0 bg-accent-600"></div>
                 </div>
             </div>
         </Grid>
