@@ -111,6 +111,7 @@ _addAffiliates(affiliates)
     import _getAffiliate from '../scripts/get-affiliate'
     import _sendForm from '../scripts/send-form'
     import _prefilters from '../scripts/prefilters'
+    import _flipfone from '..//scripts/flipfone'
 
     const swup = new Swup({
         animationSelector: '[class*="swup-"]',
@@ -135,6 +136,7 @@ _addAffiliates(affiliates)
         _carousel()
         _getAffiliate()
         _sendForm()
+        _flipfone()
     }
 
     function once() {
