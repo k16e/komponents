@@ -3,7 +3,7 @@ const
     _body = () => document.body,
     _q = (selector, parent) => (parent ? parent : document).querySelector(selector),
     _ql = (selector, parent) => Array.from((parent ? parent : document).querySelectorAll(selector)),
-    _transition = () => new Array('transition', 'duration-[250ms]', 'ease-out'),
+    _transition = () => new Array('transition', 'duration-300', 'ease-in-out'),
     _padY = () => new Array('py-8', 'sm:py-12', 'lg:py-24'),
     _padB = () => new Array('pb-8', 'sm:pb-12', 'lg:pb-24'),
     _padT = () => new Array('pt-8', 'sm:pt-12', 'lg:pt-24'),

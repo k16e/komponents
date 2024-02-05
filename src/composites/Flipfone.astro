@@ -27,7 +27,7 @@ const { blok } = Astro.props
                     { blok.banners.map((entry: any, idx: number) => (
                         <button
                             class:list={[
-                                `opacity-40 [&.active]:opacity-100`,
+                                `opacity-40 [&.active]:opacity-100 hover:opacity-100`,
                                 idx === 0 && 'active',
                                 _transition()
                             ]}
@@ -36,7 +36,7 @@ const { blok } = Astro.props
                                 text={ entry.subtitle }
                                 size="2xl"
                                 weight="extra"
-                                color="surface"
+                                color="dark"
                                 tighten
                                 class:list="pointer-events-none"
                             />
