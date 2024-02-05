@@ -23,7 +23,7 @@ export default defineConfig({
             components: {
                 page: 'composites/Page',
                 hero: 'composites/Hero',
-                flipPhone: 'composites/FlipPhone',
+                flipfone: 'composites/Flipfone',
                 callout: 'composites/Callout',
                 feature: 'composites/Feature',
                 logoClouds: 'composites/LogoClouds',
