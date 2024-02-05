@@ -12,13 +12,13 @@ const _zaps = () => {
             y: 0,
             opacity: 1,
             visibility: 'visible',
-            ease: 'back.out',
+            ease: 'back.out'
         }),
         slideOut = () => ({
             y: 48,
             opacity: 0,
             visibility: 0,
-            ease: 'back.in',
+            ease: 'back.in'
         }),
         slideOff = () => ({
             y: -48,
