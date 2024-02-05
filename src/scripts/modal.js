@@ -1,4 +1,4 @@
-import { modal, setModal, unsetModal, _addAffiliate, _affiliate } from './store'
+import { _overlay, _setOverlay, _unsetOverlay, _addAffiliate, _affiliate } from './store'
 import { _q, _ql } from './snips'
 
 
@@ -8,18 +8,18 @@ const _modal = () => {
     const
         trigger = _ql('[data-modal-trigger]'),
         close = _q('[data-modal-close]'),
-        window = _q('[data-modal]'),
+        modal = _q('[data-modal]'),
         slots = _ql('[data-modal-display]'),
         affilateLinks = _ql('[data-action]') ?? null,
         onn = () => {
-            window.classList.remove('translate-x-full', 'opacity-0')
-            window.classList.add('translate-x-0', 'opacity-100')
+            modal.classList.remove('translate-x-full', 'opacity-0')
+            modal.classList.add('translate-x-0', 'opacity-100')
         },
         off = () => {
-            window.classList.remove('translate-x-0', 'opacity-100')
-            window.classList.add('translate-x-full', 'opacity-0')
+            modal.classList.remove('translate-x-0', 'opacity-100')
+            modal.classList.add('translate-x-full', 'opacity-0')
             slots.map(el => el.classList.add('sr-only'))
-            unsetModal()
+            _unsetOverlay()
         },
         display = (e) => {
             e.preventDefault()
@@ -31,14 +31,14 @@ const _modal = () => {
 
             slot.scrollTop = 0
             slot.classList.remove('sr-only')
-            modal.value ? unsetModal() : setModal()
+            _overlay.value ? _unsetOverlay() : _setOverlay()
         }
 
     slots.map(el => el.classList.add('sr-only'))
     trigger.map(el => el.addEventListener('click', e => display(e)))
     close.addEventListener('click', () => off())
 
-    modal.subscribe(value => value ? onn() : off())
+    _overlay.subscribe(value => value ? onn() : off())
 
     if (!affilateLinks) return
     affilateLinks.map(el => {

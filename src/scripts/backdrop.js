@@ -1,4 +1,4 @@
-import { modal, setModal, unsetModal } from './store'
+import { _overlay, _setOverlay, _unsetOverlay } from './store'
 import { _q, _ql } from './snips'
 import Click from './click'
 
@@ -18,10 +18,10 @@ const _backdrop = () => {
             backdrop.classList.remove('opacity-80')
             setTimeout(() => backdrop.classList.add('invisible'), 300)
             body.style.overflow = ''
-            unsetModal()
+            _unsetOverlay()
         }
 
-    modal.subscribe(value => value ? onn() : off())
+    _overlay.subscribe(value => value ? onn() : off())
     Click(backdrop, off)
 }
 
