@@ -15,7 +15,6 @@ const _runToast = () => {
             setTimeout(() => dismiss(), 5000)
         }
 
-    zap.slideOut(toast)
     close.addEventListener('click', dismiss)
 
     return {
