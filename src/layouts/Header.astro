@@ -2,13 +2,13 @@
 import Wrapper from './Wrapper.astro'
 import Icon from '../atoms/Icon.astro'
 import ContactActions from '../blocks/ContactActions.astro'
-import Topnav from '../blocks/NavDesktop.astro'
+import NavDesktop from '../blocks/NavDesktop.astro'
 import { _transition } from '../scripts/snips'
 import TitleHidden from '../blocks/TitleHidden.astro'
 
 const
     {
-        title, contactActions, topnavLinks, class: classes, ...attrs
+        title, contactActions, nav, class: classes, ...attrs
     } = Astro.props
 ---
 <header
@@ -28,7 +28,7 @@ const
             </a>
             <nav>
                 <TitleHidden tag="h2" title="Navigation for Desktop"/>
-                <Topnav links={ topnavLinks }/>
+                <NavDesktop links={ nav }/>
             </nav>
         </div>
         <div class="flex">

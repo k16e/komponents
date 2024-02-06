@@ -64,7 +64,7 @@ _addAffiliates(affiliates)
         <Header
             title={ site.title }
             contactActions={ site.contact_actions[0].links }
-            topnavLinks={ site.topnav }
+            nav={ site.nav }
         />
 		<main
             class="flex-1 swup-in pt-14 lg:pt-16"
@@ -88,7 +88,7 @@ _addAffiliates(affiliates)
         </Modal>
         <Toast/>
         <Sheet>
-            <NavMobile data-sheet-display="nav-mobile"/>
+            <NavMobile data-sheet-display="nav-mobile" nav={ site.nav }/>
         </Sheet>
         <Backdrop/>
 	</body>
