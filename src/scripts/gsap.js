@@ -29,9 +29,10 @@ const _zaps = () => {
             duration: .2
         }),
         slideTop = () => ({ y: 0, opacity: 1, visibility: 'visible', duration: 0.2, ease: 'circ.out' }),
-        slideBottom = () => ({ y: '100%', opacity: 0, visibility: 0, duration: 0.1, ease: 'circ.in' })
+        slideBottom = () => ({ y: '100%', opacity: 0, visibility: 0, duration: 0.1, ease: 'circ.in' }),
+        moveX = props => ({ opacity: 1, visibility: 'visible', duration: 0.2, ease: 'circ.out', ...props })
 
-    return { tl, slideIn, slideOut, slideOff, slideTop, slideBottom }
+    return { tl, slideIn, slideOut, slideOff, slideTop, slideBottom, moveX }
 }
 
 export default _zaps
