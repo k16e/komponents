@@ -9,6 +9,7 @@ const _runSheet = () => {
     const
         sheet = _q('[data-sheet]'),
         contents = _ql('[data-sheet-display]'),
+        anchors = _ql('a', sheet),
         dismiss = () => {
             zap.tl().to(sheet, zap.slideBottom())
             _unsetSheet()
@@ -27,6 +28,7 @@ const _runSheet = () => {
         }
 
     contents.map(content => content.classList.add('opacity-0', 'invisible', 'absolute', 'inset-0'))
+    anchors.map(a => a.addEventListener('click', dismiss))
     _sheet.subscribe(value => value ? '' : dismiss())
 
     return {

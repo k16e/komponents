@@ -1,0 +1,24 @@
+---
+import BannerTitle from './BannerTitle.astro'
+import Anchor from '../atoms/Anchor.astro'
+import _slugify from '../scripts/slugify'
+import _slug from '../scripts/slug'
+
+const
+    {
+        href, anchor, title
+    } = Astro.props
+---
+<li class="group">
+    <Anchor
+        href={ href }
+        class:list="relative group [&.active]:text-accent-600"
+        data-anchor={ anchor }>
+        <BannerTitle
+            title={ title }
+            size="xl"
+            weight="bold"
+            showSlat={ false }
+        />
+    </Anchor>
+</li>
