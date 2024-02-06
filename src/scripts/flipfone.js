@@ -43,8 +43,8 @@ const _flipfone = () => {
         toggle.classList.add('active')
         _siblings(toggle).map(sib => sib.classList.remove('active'))
 
-        _siblings(flip).map(el => zap.tl().to(el, zap.slideOut()))
-        zap.tl().to(flip, zap.slideIn({ delay: 0.6 }))
+        _siblings(flip).map(el => zip.slideOut(el))
+        zip.slideIn(flip, { delay: 0.5 })
     }
 }
 
