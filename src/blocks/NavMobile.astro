@@ -1,0 +1,19 @@
+---
+import TitleHidden from './TitleHidden.astro'
+
+const
+    {
+        class: classes, ...props
+    } = Astro.props
+---
+<nav
+    class:list={[
+        classes
+    ]} { ...props }>
+    <TitleHidden tag="h2" title="Navigation for Mobile"/>
+    <div class="py-4">
+        <p class="prose">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius, quibusdam deleniti suscipit sunt numquam maxime perspiciatis nam, ut tenetur dolorem in maiores laboriosam vitae iure nihil blanditiis! Cumque, blanditiis optio?
+        </p>
+    </div>
+</nav>

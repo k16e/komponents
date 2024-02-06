@@ -5,7 +5,7 @@ import Head from './Head.astro'
 import Header from './Header.astro'
 import Footer from './Footer.astro'
 import { useStoryblokApi } from '@storyblok/astro'
-import TitleHidden from '../atoms/TitleHidden.astro'
+import TitleHidden from '../blocks/TitleHidden.astro'
 import Backdrop from '../blocks/Backdrop.astro'
 import Modal from '../blocks/Modal.astro'
 import ModalProduct from '../blocks/ModalProduct.astro'
@@ -15,6 +15,7 @@ import {
 } from '../scripts/store'
 import Toast from '../blocks/Toast.astro'
 import Sheet from '../blocks/Sheet.astro'
+import NavMobile from '../blocks/NavMobile.astro'
 
 const
     {
@@ -59,6 +60,7 @@ _addAffiliates(affiliates)
 	<body
         class="text-surface-700 bg-white flex min-h-svh lg:min-h-dvh flex-col group/modal"
         data-body-exit>
+        <TitleHidden title={ pageTitle }/>
         <Header
             title={ site.title }
             contactActions={ site.contact_actions[0].links }
@@ -68,7 +70,6 @@ _addAffiliates(affiliates)
             class="flex-1 swup-in pt-14 lg:pt-16"
             id="swup"
             tabindex="-1">
-            <TitleHidden title={ pageTitle }/>
             <slot/>
         </main>
         <Footer
@@ -87,11 +88,7 @@ _addAffiliates(affiliates)
         </Modal>
         <Toast/>
         <Sheet>
-            <div>
-                <p class="prose">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius, quibusdam deleniti suscipit sunt numquam maxime perspiciatis nam, ut tenetur dolorem in maiores laboriosam vitae iure nihil blanditiis! Cumque, blanditiis optio?
-                </p>
-            </div>
+            <NavMobile data-sheet-display="nav-mobile"/>
         </Sheet>
         <Backdrop/>
 	</body>

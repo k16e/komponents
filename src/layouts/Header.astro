@@ -2,8 +2,9 @@
 import Wrapper from './Wrapper.astro'
 import Icon from '../atoms/Icon.astro'
 import ContactActions from '../blocks/ContactActions.astro'
-import Topnav from '../blocks/Topnav.astro'
+import Topnav from '../blocks/NavDesktop.astro'
 import { _transition } from '../scripts/snips'
+import TitleHidden from '../blocks/TitleHidden.astro'
 
 const
     {
@@ -25,7 +26,10 @@ const
                 <Icon name="logo" class="h-10 hidden lg:block"/>
                 <span class='sr-only'>Komponents</span>
             </a>
-            <Topnav links={ topnavLinks }/>
+            <nav>
+                <TitleHidden tag="h2" title="Navigation for Desktop"/>
+                <Topnav links={ topnavLinks }/>
+            </nav>
         </div>
         <div class="flex">
             <ContactActions links={ contactActions }/>
@@ -33,7 +37,7 @@ const
                 class:list={[
                     'xl:hidden px-4 bg-surface-100 hover:bg-surface-200 text-accent-600',
                     _transition()
-                ]} data-trigger-sheet>
+                ]} data-sheet-trigger="nav-mobile">
                 <Icon name="menu" class="w-7 pointer-events-none"/>
             </button>
         </div>
@@ -54,14 +58,13 @@ const
         activate = () => header.classList.add(...activeClasses),
         deactivate = () => header.classList.remove(...activeClasses),
         toggle = () => (window.scrollY > height) ? activate() : deactivate(),
-        sheetTrigger = _q('[data-trigger-sheet]'),
-        openSheet = () => {
-            _sheet.display()
+        sheetTrigger = _q('[data-sheet-trigger]'),
+        openSheet = (e: any) => {
+            _sheet.display(e)
         }
 
     window.scrollY !== 0 ? activate() : deactivate()
     _scroll(toggle)
-
 
     sheetTrigger.addEventListener('click', openSheet)
 </script>

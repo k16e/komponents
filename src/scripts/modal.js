@@ -11,7 +11,7 @@ const _modal = () => {
         modal = _q('[data-modal]'),
         slots = _ql('[data-modal-display]'),
         affilateLinks = _ql('[data-action]') ?? null,
-        onn = () => {
+        on = () => {
             modal.classList.remove('translate-x-full', 'opacity-0')
             modal.classList.add('translate-x-0', 'opacity-100')
         },
@@ -38,7 +38,7 @@ const _modal = () => {
     trigger.map(el => el.addEventListener('click', e => display(e)))
     close.addEventListener('click', () => off())
 
-    _overlay.subscribe(value => value ? onn() : off())
+    _overlay.subscribe(value => value ? on() : off())
 
     if (!affilateLinks) return
     affilateLinks.map(el => {

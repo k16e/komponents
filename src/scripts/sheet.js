@@ -1,21 +1,33 @@
 import { _q, _ql, _empty } from './snips'
 import { _sheet, _setSheet, _unsetSheet } from './store'
 import _zaps from './gsap'
+import _siblings from './siblings'
 
 const zap = _zaps()
+
 const _runSheet = () => {
     const
         sheet = _q('[data-sheet]'),
+        contents = _ql('[data-sheet-display]'),
         dismiss = () => {
             zap.tl().to(sheet, zap.slideBottom())
             _unsetSheet()
         },
-        display = () => {
+        display = target => {
+            const
+                match = target.srcElement.dataset.sheetTrigger,
+                inside = contents.find(content => (content.dataset.sheetDisplay === match)),
+                siblings = _siblings(inside)
+
             zap.tl().to(sheet, zap.slideTop())
+            siblings.map(sib => zap.tl().to(sib, zap.slideOut()))
+            zap.tl().to(inside, zap.slideIn())
+
             _setSheet()
         }
 
-    _sheet.subscribe(value => value ? display() : dismiss())
+    contents.map(content => content.classList.add('opacity-0', 'invisible', 'absolute', 'inset-0'))
+    _sheet.subscribe(value => value ? '' : dismiss())
 
     return {
         dismiss,
