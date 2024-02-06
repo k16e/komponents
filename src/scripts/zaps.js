@@ -3,10 +3,9 @@ import { gsap } from 'gsap'
 const _zaps = () => {
     let tl = () => gsap.timeline({
         defaults: {
-            opacity: 1,
-            visibility: 'visible',
+            autoAlpha: 1,
             duration: 0.3,
-            ease: 'circ.out',
+            ease: 'circ.out'
         }
     })
 
