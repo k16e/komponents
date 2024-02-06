@@ -1,8 +1,10 @@
 import { _q, _ql, _encode } from './snips'
 import _runToast from './toast'
-import gsap from 'gsap'
+import _zaps from './zaps'
 
-const _toast = _runToast()
+const
+    _toast = _runToast(),
+    zap = _zaps()
 
 const _submit = () => {
     if (!_q('[data-form-submit]')) return
@@ -24,11 +26,7 @@ const _submit = () => {
                 size = Math.round((fileSize / 1024))
 
             if (files.length) {
-                gsap.to(fileSuccess, {
-                    display: 'flex',
-                    opacity: 1,
-                    y: -6
-                })
+                zap.slideTop(fileSuccess, { display: 'flex', y: -6 })
             }
         })
     }
