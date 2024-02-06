@@ -1,5 +1,6 @@
-import { _ql, _q } from './snips'
+import { _ql, _q, _empty } from './snips'
 import _slugify from './slugify'
+import _siblings from './siblings'
 
 const _active = () => {
     if (!_q('[data-anchor]')) return
@@ -8,11 +9,11 @@ const _active = () => {
         navA = _ql('[data-anchor]'),
         currLoc = _slugify(location.pathname),
         parent = location.pathname.split('/')[1],
-        activeA = navA.find(a => (a.getAttribute('data-anchor') === currLoc || parent.includes(a.getAttribute('data-anchor'))))
+        activeA = navA.filter(a => (a.dataset.anchor === currLoc || parent.includes(a.dataset.anchor)))
 
-    if (activeA) {
+    if (!_empty(activeA)) {
         navA.map(a => a.classList.remove('active'))
-        activeA.classList.add('active')
+        activeA.map(a => a.classList.add('active'))
     } else {
         navA.map(a => a.classList.remove('active'))
     }

@@ -10,22 +10,24 @@ const
         href, anchor, title
     } = Astro.props
 ---
-<li class="group/li hover:border-accent-600">
+<li class="group/li">
     <Anchor
         href={ href }
+        hover="accent"
         class:list={[`
-            relative group
-            [&.active]:text-accent-600
-            p-4 border-b border-dashed group-[:last-child]/li:border-0
+            relative group/anchor transition duration-200 ease-linear
+            [&.active]:border-accent-600 hover:text-accent-600 hover:border-accent-600
+            px-4 py-5 border-b border-dashed group-[:last-child]/li:border-0
         `]}
         data-anchor={ anchor }>
         <BannerTitle
             title={ title }
-            size="lg"
-            weight="extra"
+            size="md"
+            weight="bold"
             showSlat={ false }
             class:list={[
-                `group-hover/li:text-accent-600 transition duration-200 ease-linear`
+                `group-hover/li:text-accent-600 group-[.active]/anchor:text-accent-600`,
+                _transition()
             ]}
         />
     </Anchor>
