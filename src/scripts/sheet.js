@@ -28,6 +28,7 @@ const _runSheet = () => {
             _setSheet()
         }
 
+    zap.slideBottom(sheet)
     contents.map(content => content.classList.add('opacity-0', 'invisible', 'absolute', 'inset-0'))
     anchors.map(a => a.addEventListener('click', dismiss))
     close.addEventListener('click', dismiss)
