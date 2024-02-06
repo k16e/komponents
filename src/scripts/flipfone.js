@@ -4,8 +4,10 @@ import {
 import _zaps from './gsap'
 import _siblings from './siblings'
 import gsap from 'gsap'
+import _zips from './gsaps'
 
 const zap = _zaps()
+const zip = _zips()
 
 const _flipfone = () => {
     if (!_q('[data-flipfone]') || import.meta.env.SSR) return
@@ -18,7 +20,7 @@ const _flipfone = () => {
 
     let progressbarWidth = initialWidth
 
-    zap.tl().to(progressbar, zap.moveX({ width: `${progressbarWidth}%` }))
+    zip.moveX(progressbar, { width: `${progressbarWidth}%` })
 
     flipfones.map(el => {
         const
@@ -36,7 +38,7 @@ const _flipfone = () => {
             flip = flips.find(flip => (flip.dataset.flipfoneContent === toggle.dataset.flipfoneToggle))
 
         progressbarWidth = (currentIdx + 1) * initialWidth
-        zap.tl().to(progressbar, zap.moveX({ width: `${progressbarWidth}%` }))
+        zip.moveX(progressbar, { width: `${progressbarWidth}%` })
 
         toggle.classList.add('active')
         _siblings(toggle).map(sib => sib.classList.remove('active'))
