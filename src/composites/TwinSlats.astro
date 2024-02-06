@@ -3,8 +3,8 @@ import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
 import Split from '../layouts/Split.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
-import Lelo from '../atoms/Lelo.astro'
 import { _padY } from '../scripts/snips'
+import ImageSquare from '../atoms/ImageSquare.astro'
 
 const
     { blok } = Astro.props,
@@ -34,7 +34,8 @@ const
                     />
                 </Wrapper>
             </div>
-            <Lelo
+            <ImageSquare
+                lelo
                 slot="trailing"
                 filename={ trailing.file.filename }
                 class:list="group-[&.order-2]:clip-path-b group-[&.order-1]:clip-path-t lg:!clip-path-y"
