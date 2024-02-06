@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets'
 
 const {
-    filename, lelo, square = true,
+    filename, square = true, lelo, slat,
     class: classes,
     ...attrs
 } = Astro.props
@@ -17,7 +17,9 @@ const {
     class:list={[
         'object-cover',
         square && 'aspect-square',
-        lelo && 'aspect-[3/4] h-[520px] sm:h-[640px] md:h-[720px]',
+        (lelo || slat) && 'aspect-[3/4] h-[520px] sm:h-[640px]',
+        lelo && 'md:h-[720px]',
+        slat && 'clip-path-xs',
         classes
     ]}
     { ...attrs }

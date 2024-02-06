@@ -1,5 +1,5 @@
 ---
-import Pic from '../atoms/Pic.astro'
+import ImageSquare from '../atoms/ImageSquare.astro'
 
 const {
     images, class: classes, ...attrs
@@ -10,9 +10,10 @@ const {
     { ...attrs }>
     {
         images.map((image: any) => (
-            <Pic
+            <ImageSquare
+                slat
                 filename={ image.file.filename }
-                class="last:hidden lg:last:block sm:max-w-[50%] lg:max-w-[33%]"
+                class="last:hidden lg:last:block sm:max-w-[50%] lg:max-w-[33.33%]"
             />
         ))
     }
