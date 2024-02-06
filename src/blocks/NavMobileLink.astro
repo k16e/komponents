@@ -3,22 +3,30 @@ import BannerTitle from './BannerTitle.astro'
 import Anchor from '../atoms/Anchor.astro'
 import _slugify from '../scripts/slugify'
 import _slug from '../scripts/slug'
+import { _transition } from '../scripts/snips'
 
 const
     {
         href, anchor, title
     } = Astro.props
 ---
-<li class="group">
+<li class="group/li hover:border-accent-600">
     <Anchor
         href={ href }
-        class:list="relative group [&.active]:text-accent-600"
+        class:list={[`
+            relative group
+            [&.active]:text-accent-600
+            p-4 border-b border-dashed group-[:last-child]/li:border-0
+        `]}
         data-anchor={ anchor }>
         <BannerTitle
             title={ title }
             size="xl"
-            weight="bold"
+            weight="extra"
             showSlat={ false }
+            class:list={[
+                `group-hover/li:text-accent-600 transition duration-200 ease-linear`
+            ]}
         />
     </Anchor>
 </li>
