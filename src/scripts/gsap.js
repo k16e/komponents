@@ -15,9 +15,11 @@ const _gsap = () => {
         slideIn = (el, props) => tl().to(el, { y: 0, ease: 'back.out', ...props }),
         slideTop = (el, props) => tl().to(el, { y: 0, ...props }),
         slideBottom = (el, props) => tl().to(el, { autoAlpha: 0, duration: 0.1, y: '100%', ease: 'circ.in' }),
-        slideOff = (el, props) => tl().to(el, { y: 0, ease: 'back.out', ...props })
+        slideOff = (el, props) => tl().to(el, { y: 0, ease: 'back.out', ...props }),
+        on = (el, props) => tl().to(el, { duration: .5 }),
+        off = (el, props) => tl().to(el, { opacity: 0, visibility: 0, duration: .5 })
 
-    return { moveX, slideOut, slideIn, slideTop, slideBottom, slideOff }
+    return { moveX, slideOut, slideIn, slideTop, slideBottom, slideOff, on, off }
 }
 
 export default _gsap

@@ -1,8 +1,10 @@
 import { gsap } from 'gsap'
 import { Flip } from 'gsap/all'
 import { _q, _ql } from './snips'
+import _gsap from './gsap'
 
 gsap.registerPlugin(Flip)
+const g = _gsap()
 
 const _fuzzySearch = () => {
     if (!_q('[data-fuzzy-search]')) return
@@ -14,11 +16,13 @@ const _fuzzySearch = () => {
         entries = _ql(`[data-list-${wrapper.dataset.list}] > *`),
         typeInterval = 150,
         clear = _q('[data-clear]', wrapper),
-        hide = (item) => {
-            item.classList.remove('hidden')
+        show = item => {
+            g.on(item)
+            item.style.display = 'block'
         },
-        show = (item) => {
-            item.classList.add('hidden')
+        hide = item => {
+            g.off(item)
+            item.style.display = 'none'
         },
         search = (input, list) => {
             const
@@ -26,8 +30,8 @@ const _fuzzySearch = () => {
                 state = Flip.getState(list)
 
             list.map(el => {
-                if (el.textContent.toLowerCase().includes(query)) hide(el)
-                else show(el)
+                if (el.textContent.toLowerCase().includes(query)) show(el)
+                else hide(el)
             })
 
             Flip.from(state, {
@@ -50,7 +54,7 @@ const _fuzzySearch = () => {
     clear.addEventListener('click', () => {
         input.value = ''
         input.focus()
-        entries.map(el => hide(el))
+        entries.map(el => show(el))
     })
     input.addEventListener('keyup', () => action(input, entries))
 }
