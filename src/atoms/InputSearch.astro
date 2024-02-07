@@ -11,7 +11,7 @@ import { _transition } from '../scripts/snips'
         type="search"
         class:list={[
             `
-                block size-full pl-9 sm:pl-11
+                block size-full pl-9 sm:pl-11 peer
                 text-surface-800
                 border-0 border-b-2 border-surface-300 focus:border-accent-600
                 placeholder:text-surface-600
@@ -21,7 +21,12 @@ import { _transition } from '../scripts/snips'
         ]}
         placeholder="Search by product name..."
     >
-    <div class="absolute right-1.5 sm:right-3">
+    <button
+        class:list={[
+            `absolute right-1.5 sm:right-3 peer-placeholder-shown:opacity-0`,
+            _transition()
+        ]}
+        data-clear-search>
         <Icon name="close-x" class:list="w-6 text-accent-600 opacity-"/>
-    </div>
+    </button>
 </div>
