@@ -2,9 +2,9 @@ import {
     _q, _ql
 } from './snips'
 import _siblings from './siblings'
-import _gsaps from './gsap'
+import _gsap from './gsap'
 
-const gsap = _gsaps()
+const gsap = _gsap()
 
 const _flipfone = () => {
     if (!_q('[data-flipfone]') || import.meta.env.SSR) return

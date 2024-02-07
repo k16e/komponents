@@ -1,9 +1,9 @@
 import { _q, _ql, _empty } from './snips'
 import { _sheet, _setSheet, _unsetSheet } from './store'
 import _siblings from './siblings'
-import _gsaps from './gsap'
+import _gsap from './gsap'
 
-const gsap = _gsaps()
+const gsap = _gsap()
 
 const _runSheet = () => {
     const

@@ -1,10 +1,10 @@
 import { _q, _ql, _encode } from './snips'
 import _runToast from './toast'
-import _gsaps from './gsap'
+import _gsap from './gsap'
 
 const
     _toast = _runToast(),
-    gsap = _gsaps()
+    gsap = _gsap()
 
 const _submit = () => {
     if (!_q('[data-form-submit]')) return
