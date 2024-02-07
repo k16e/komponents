@@ -19,11 +19,26 @@ const _fuzzySearch = () => {
             item.classList.add('opacity-0', 'invisible', 'hidden')
         },
         search = (input, list) => {
-            const query = input.value.toLowerCase().trim()
+            const
+                query = input.value.toLowerCase().trim(),
+                state = Flip.getState(list)
 
             list.map(el => {
                 if (el.textContent.toLowerCase().includes(query)) hide(el)
                 else show(el)
+            })
+
+            Flip.from(state, {
+                duration: 0.5,
+                scale: true,
+                ease: 'power1.inOut',
+                absoluteOnLeave: true,
+                prune: true,
+                absolute: true,
+                fade: true,
+                simple: true,
+                onEnter: els => gsap.fromTo(els, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3 }),
+                onLeave: els => gsap.to(els, { opacity: 0, scale: 0, duration: 0.3 })
             })
         },
         action = (input, list) => {
