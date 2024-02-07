@@ -2,6 +2,10 @@
 import Icon from '../atoms/Icon.astro'
 import { _transition } from '../scripts/snips'
 
+const
+    {
+        class: classes, ...props
+    } = Astro.props
 ---
 <div class="relative size-full flex items-center">
     <div class="absolute left-1.5 sm:left-3">
@@ -17,9 +21,11 @@ import { _transition } from '../scripts/snips'
                 placeholder:text-surface-600
                 search-cancel:appearance-none
             `,
-            _transition()
+            _transition(),
+            classes
         ]}
         placeholder="Search by product name..."
+        { ...props }
     >
     <button
         class:list={[

@@ -3,7 +3,7 @@ import Section from '../layouts/Section.astro'
 import Wrapper from '../layouts/Wrapper.astro'
 import BannerEntry from '../blocks/BannerEntry.astro'
 import { _padY, _padB, _empty } from '../scripts/snips'
-import FuzzyFilters from '../blocks/FuzzyFilters.astro'
+import FuzzySearch from '../blocks/FuzzySearch.astro'
 
 const
     {
@@ -38,6 +38,6 @@ const
             showSubtitle={ !_empty(banner.subtitle) }
             class:list="max-w-screen-sm mx-auto"
         />
-        { blok.product_filter && ( <FuzzyFilters/> ) }
+        { blok.product_filter && ( <FuzzySearch data-fuzzy-search data-list="products"/> ) }
     </Wrapper>
 </Section>

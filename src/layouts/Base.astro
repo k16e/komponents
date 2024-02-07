@@ -117,6 +117,7 @@ _addAffiliates(affiliates)
     import _submit from '../scripts/form'
     import _prefilters from '../scripts/prefilters'
     import _flipfone from '../scripts/flipfone'
+    import _fuzzySearch from '../scripts/fuzzy-search'
 
     const swup = new Swup({
         animationSelector: '[class*="swup-"]',
@@ -142,6 +143,7 @@ _addAffiliates(affiliates)
         _getAffiliate()
         _submit()
         _flipfone()
+        _fuzzySearch()
     }
 
     function once() {

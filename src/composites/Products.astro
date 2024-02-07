@@ -16,7 +16,8 @@ const { blok } = Astro.props
         inner
         tag="ul"
         padB="b"
-        class:list="w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
+        class:list="w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3"
+        data-list-products>
         { _products.value.map((el: any, idx: number) => (
             <li>
                 <CardProduct
