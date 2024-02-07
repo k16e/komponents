@@ -25,12 +25,13 @@ const _fuzzySearch = () => {
                 if (el.textContent.toLowerCase().includes(query)) hide(el)
                 else show(el)
             })
+        },
+        action = (input, list) => {
+            clearTimeout(typingTimer)
+            typingTimer = setTimeout(search(input, list), typeInterval)
         }
 
-    input.addEventListener('keyup', () => {
-        clearTimeout(typingTimer)
-        typingTimer = setTimeout(search(input, entries), typeInterval)
-    })
+    input.addEventListener('keyup', () => action(input, entries))
 }
 
 export default _fuzzySearch
