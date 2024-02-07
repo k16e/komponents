@@ -1,17 +1,17 @@
 import { _q, _ql, _empty } from './snips'
-import _zaps from './zaps'
+import _gsaps from './gsap'
 
-const zap = _zaps()
+const gsap = _gsaps()
 
 const _runToast = () => {
     const
         toast = _q('[data-toast]'),
         p = _q('[data-toast-value]'),
         close = _q('[data-toast-close]'),
-        dismiss = () => zap.slideOut(toast),
+        dismiss = () => gsap.slideOut(toast),
         display = (msg) => {
             p.textContent = msg
-            zap.slideIn(toast)
+            gsap.slideIn(toast)
             setTimeout(() => dismiss(), 5000)
         }
 

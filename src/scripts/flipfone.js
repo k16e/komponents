@@ -2,9 +2,9 @@ import {
     _q, _ql
 } from './snips'
 import _siblings from './siblings'
-import _zaps from './zaps'
+import _gsaps from './gsap'
 
-const zap = _zaps()
+const gsap = _gsaps()
 
 const _flipfone = () => {
     if (!_q('[data-flipfone]') || import.meta.env.SSR) return
@@ -17,7 +17,7 @@ const _flipfone = () => {
 
     let progressbarWidth = initialWidth
 
-    zap.moveX(progressbar, { width: `${progressbarWidth}%` })
+    gsap.moveX(progressbar, { width: `${progressbarWidth}%` })
 
     flipfones.map(el => {
         const
@@ -35,13 +35,13 @@ const _flipfone = () => {
             flip = flips.find(flip => (flip.dataset.flipfoneContent === toggle.dataset.flipfoneToggle))
 
         progressbarWidth = (currentIdx + 1) * initialWidth
-        zap.moveX(progressbar, { width: `${progressbarWidth}%` })
+        gsap.moveX(progressbar, { width: `${progressbarWidth}%` })
 
         toggle.classList.add('active')
         _siblings(toggle).map(sib => sib.classList.remove('active'))
 
-        _siblings(flip).map(el => zap.slideOut(el))
-        zap.slideIn(flip, { delay: 0.5 })
+        _siblings(flip).map(el => gsap.slideOut(el))
+        gsap.slideIn(flip, { delay: 0.25 })
     }
 }
 

@@ -5,8 +5,9 @@ import { _q, _ql } from './snips'
 gsap.registerPlugin(Flip)
 
 const _fuzzySearch = () => {
-    let typingTimer
+    if (!_q('[data-fuzzy-search]')) return
 
+    let typingTimer
     const
         wrapper = _q('[data-fuzzy-search]'),
         input = _q('input', wrapper),

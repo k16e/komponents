@@ -1,9 +1,9 @@
 import { _q, _ql, _empty } from './snips'
 import { _sheet, _setSheet, _unsetSheet } from './store'
-import _zaps from './zaps'
 import _siblings from './siblings'
+import _gsaps from './gsap'
 
-const zap = _zaps()
+const gsap = _gsaps()
 
 const _runSheet = () => {
     const
@@ -12,7 +12,7 @@ const _runSheet = () => {
         close = _q('[data-sheet-close]'),
         anchors = _ql('a', sheet),
         dismiss = () => {
-            zap.slideBottom(sheet)
+            gsap.slideBottom(sheet)
             _unsetSheet()
         },
         display = target => {
@@ -21,9 +21,9 @@ const _runSheet = () => {
                 inside = contents.find(content => (content.dataset.sheetDisplay === match)),
                 siblings = _siblings(inside)
 
-            zap.slideTop(sheet)
-            siblings.map(sibling => zap.slideOut(sibling))
-            zap.slideIn(inside)
+            gsap.slideTop(sheet)
+            siblings.map(sibling => gsap.slideOut(sibling))
+            gsap.slideIn(inside)
 
             _setSheet()
         }
