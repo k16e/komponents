@@ -30,7 +30,6 @@ const _fuzzySearch = () => {
             })
 
             Flip.from(state, {
-                duration: 0.5,
                 scale: true,
                 ease: 'power1.inOut',
                 absoluteOnLeave: true,
