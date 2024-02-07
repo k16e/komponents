@@ -12,11 +12,12 @@ const _fuzzySearch = () => {
         input = _q('input', wrapper),
         entries = _ql(`[data-list-${wrapper.dataset.list}] > *`),
         typeInterval = 150,
+        clear = _q('[data-clear]', wrapper),
         hide = (item) => {
-            item.classList.remove('opacity-0', 'invisible', 'hidden')
+            item.classList.remove('hidden')
         },
         show = (item) => {
-            item.classList.add('opacity-0', 'invisible', 'hidden')
+            item.classList.add('hidden')
         },
         search = (input, list) => {
             const
@@ -37,8 +38,8 @@ const _fuzzySearch = () => {
                 absolute: true,
                 fade: true,
                 simple: true,
-                onEnter: els => gsap.fromTo(els, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3 }),
-                onLeave: els => gsap.to(els, { opacity: 0, scale: 0, duration: 0.3 })
+                onEnter: els => gsap.fromTo(els, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1 }),
+                onLeave: els => gsap.to(els, { opacity: 0, scale: 0 })
             })
         },
         action = (input, list) => {
@@ -46,6 +47,11 @@ const _fuzzySearch = () => {
             typingTimer = setTimeout(search(input, list), typeInterval)
         }
 
+    clear.addEventListener('click', () => {
+        input.value = ''
+        input.focus()
+        entries.map(el => hide(el))
+    })
     input.addEventListener('keyup', () => action(input, entries))
 }
 
