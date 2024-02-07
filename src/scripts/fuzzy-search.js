@@ -6,7 +6,7 @@ import _gsap from './gsap'
 gsap.registerPlugin(Flip)
 const g = _gsap()
 
-const _fuzzySearch = () => {
+export default function _fuzzySearch() {
     if (!_q('[data-fuzzy-search]')) return
 
     let typingTimer
@@ -58,5 +58,3 @@ const _fuzzySearch = () => {
     })
     input.addEventListener('keyup', () => action(input, entries))
 }
-
-export default _fuzzySearch
