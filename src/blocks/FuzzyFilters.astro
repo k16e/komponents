@@ -1,4 +1,6 @@
 ---
+import InputSearch from '../atoms/InputSearch.astro'
+
 const
     {
         class: classes,
@@ -10,7 +12,7 @@ const
         'w-full lg:max-w-[680px] mx-auto px-4 absolute bottom-[-80px] left-1/2 -translate-x-1/2',
         classes
     ]} { ...rest }>
-    <div class="bg-white shadow-lg h-16 sm:h-[72px] flex items-center">
-        product search x filter
+    <div class="bg-white shadow-lg h-16 sm:h-[72px] flex items-center overflow-clip">
+        <InputSearch/>
     </div>
 </div>

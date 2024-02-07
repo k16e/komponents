@@ -79,6 +79,9 @@ export default {
                 '.zoid-right': { clipPath: 'polygon(0 0, 100% 15%, 100% 100%, 0% 100%)' },
                 '.zoid-left': { clipPath: 'polygon(0 15%, 100% 0, 100% 100%, 0% 100%)' }
             })
-        }
+        },
+        require('tailwindcss/plugin')(({ addVariant }) => {
+            addVariant('search-cancel', '&::-webkit-search-cancel-button')
+        }),
     ]
 }

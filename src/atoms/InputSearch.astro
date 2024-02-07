@@ -1,0 +1,27 @@
+---
+import Icon from '../atoms/Icon.astro'
+import { _transition } from '../scripts/snips'
+
+---
+<div class="relative size-full flex items-center">
+    <div class="absolute left-1.5 sm:left-3">
+        <Icon name="search" class:list="w-6 text-surface-400"/>
+    </div>
+    <input
+        type="search"
+        class:list={[
+            `
+                block size-full pl-9 sm:pl-11
+                text-surface-800
+                border-0 border-b-2 border-surface-300 focus:border-accent-600
+                placeholder:text-surface-600
+                search-cancel:appearance-none
+            `,
+            _transition()
+        ]}
+        placeholder="Search by product name..."
+    >
+    <div class="absolute right-1.5 sm:right-3">
+        <Icon name="close-x" class:list="w-6 text-accent-600 opacity-"/>
+    </div>
+</div>
