@@ -10,31 +10,28 @@ export default function _runSheet() {
         sheet = _q('[data-sheet]'),
         contents = _ql('[data-sheet-display]'),
         close = _q('[data-sheet-close]'),
-        anchors = _ql('a', sheet),
-        dismiss = () => {
-            g.slideBottom(sheet)
-            _unsetSheet()
-        },
-        display = target => {
-            const
-                match = target.srcElement.dataset.sheetTrigger,
-                inside = contents.find(content => (content.dataset.sheetDisplay === match)),
-                siblings = _siblings(inside)
-
-            g.slideTop(sheet)
-            siblings.map(sibling => g.slideOut(sibling))
-            g.slideIn(inside)
-            _setSheet()
-        }
+        anchors = _ql('a', sheet)
 
     contents.map(content => content.classList.add('opacity-0', 'invisible', 'absolute', 'inset-0'))
     anchors.map(a => a.addEventListener('click', dismiss))
     close.addEventListener('click', dismiss)
-
     _sheet.subscribe(value => value ? '' : dismiss())
 
-    return {
-        dismiss,
-        display
+    function display(target) {
+        const
+            match = target.srcElement.dataset.sheetTrigger,
+            inside = contents.find(content => (content.dataset.sheetDisplay === match)),
+            siblings = _siblings(inside)
+
+        g.slideTop(sheet)
+        siblings.map(sibling => g.slideOut(sibling))
+        g.slideIn(inside)
+        _setSheet()
     }
+    function dismiss() {
+        g.slideBottom(sheet)
+        _unsetSheet()
+    }
+
+    return { dismiss, display }
 }
