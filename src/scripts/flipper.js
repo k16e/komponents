@@ -2,7 +2,7 @@ import {
     _q, _ql
 } from './snips'
 
-const _flipper = () => {
+export default function _flipper () {
     if (!_q('[data-flipper]')) return
 
     const
@@ -31,5 +31,3 @@ const _flipper = () => {
         })
     })
 }
-
-export default _flipper

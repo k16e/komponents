@@ -6,7 +6,7 @@ const
     _toast = _runToast(),
     g = _gsap()
 
-const _submit = () => {
+export default function _submit() {
     if (!_q('[data-form-submit]')) return
 
     const
@@ -64,5 +64,3 @@ const _submit = () => {
         })
     }
 }
-
-export default _submit

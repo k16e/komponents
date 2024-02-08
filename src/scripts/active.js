@@ -2,7 +2,7 @@ import { _ql, _q, _empty } from './snips'
 import _slugify from './slugify'
 import _siblings from './siblings'
 
-const _active = () => {
+export default function _active() {
     if (!_q('[data-anchor]')) return
 
     const
@@ -18,5 +18,3 @@ const _active = () => {
         navA.map(a => a.classList.remove('active'))
     }
 }
-
-export default _active

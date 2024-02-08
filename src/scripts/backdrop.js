@@ -3,7 +3,7 @@ import {
 } from './store'
 import { _q, _ql } from './snips'
 
-const _backdrop = () => {
+export default function _backdrop() {
     if (!_q('[data-backdrop]')) return
 
     const
@@ -27,5 +27,3 @@ const _backdrop = () => {
     _sheet.subscribe(value => value ? on() : off())
     backdrop.addEventListener('click', off)
 }
-
-export default _backdrop

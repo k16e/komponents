@@ -1,3 +1,1 @@
-const _unslash = str => str.endsWith('/') ? str.slice(0, -1) : str
-
-export default _unslash
+export default function _unslash(str) { return str.endsWith('/') ? str.slice(0, -1) : str }

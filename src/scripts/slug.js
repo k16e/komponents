@@ -1,6 +1,6 @@
 import _unslash from './unslash'
 
-const _slug = linkObj => {
+export default function _slug(linkObj) {
     const
         iLink = linkObj.linktype === 'story',
         xLink = linkObj.linktype === 'url'
@@ -12,5 +12,3 @@ const _slug = linkObj => {
     }
     if (xLink) return linkObj.cached_url
 }
-
-export default _slug

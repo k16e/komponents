@@ -4,9 +4,9 @@ import { Navigation } from 'swiper/modules'
 
 import 'swiper/css'
 
-const _carousel = () => {
+export default function _carousel() {
     if (!_q('.swiper')) return
-    
+
     const swiper = new Swiper('.swiper', {
         loop: true,
         autoplay: { delay: 3500 },
@@ -28,5 +28,3 @@ const _carousel = () => {
         }
     })
 }
-
-export default _carousel

@@ -1,8 +1,7 @@
 import { _overlay, _setOverlay, _unsetOverlay, _addAffiliate, _affiliate } from './store'
 import { _q, _ql } from './snips'
 
-
-const _modal = () => {
+export default function _modal() {
     if (!_q('[data-modal-trigger]')) return
 
     const
@@ -56,5 +55,3 @@ const _modal = () => {
         })
     })
 }
-
-export default _modal

@@ -1,4 +1,4 @@
-const _siblings = (el) => {
+export default function _siblings(el) {
     let siblings = []
     if (!el.parentNode) return siblings
     let sibling = el.parentNode.firstChild
@@ -9,5 +9,3 @@ const _siblings = (el) => {
     }
     return siblings
 }
-
-export default _siblings

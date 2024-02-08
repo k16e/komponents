@@ -1,3 +1,1 @@
-const _astrolog = () => console.log('Thank God for Astro 🚀')
-
-export default _astrolog
+export default function _astrolog() { console.log('Thank God for Astro 😍') }

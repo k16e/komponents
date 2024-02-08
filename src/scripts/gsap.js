@@ -1,6 +1,6 @@
 import { gsap } from 'gsap'
 
-const _gsap = () => {
+export default function _gsap() {
     let tl = () => gsap.timeline({
         defaults: {
             autoAlpha: 1,
@@ -21,5 +21,3 @@ const _gsap = () => {
 
     return { moveX, slideOut, slideIn, slideTop, slideBottom, slideOff, on, off }
 }
-
-export default _gsap

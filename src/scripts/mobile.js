@@ -1,4 +1,4 @@
-const _mobile = () => {
+export default function _mobile() {
     const
         media = '(max-width: 1023px)',
         mql = window.matchMedia(media)
@@ -11,5 +11,3 @@ const _mobile = () => {
     mql.addEventListener('change', listener)
     return screen
 }
-
-export default _mobile
