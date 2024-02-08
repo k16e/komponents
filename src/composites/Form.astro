@@ -17,7 +17,7 @@ const
 <Section
     title={ blok.title }
     component={ blok.component }
-    class:list={[ blok.is_header ? _padT() : _padY(), _gradientSurface() ]}>
+    class:list={[ _padY(), _gradientSurface() ]}>
     <Wrapper inner class:list={[ blok.is_header && 'relative']}>
         <Grid flipped sticky clip={ false }>
             <Inner slot="trailing">

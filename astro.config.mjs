@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config'
 import { loadEnv } from 'vite'
 import storyblok from '@storyblok/astro'
 import tailwind from '@astrojs/tailwind'
+// import pages from 'astro-pages'
 
 const
     env = loadEnv('', process.cwd(), 'STORYBLOK'),
@@ -15,6 +16,7 @@ export default defineConfig({
         ignoreSlowConnection: true
     },
     integrations: [
+        // pages({ dir: 'routes', glob: '**.{astro}' }),
         tailwind({
             nesting: true
         }),
