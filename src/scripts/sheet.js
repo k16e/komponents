@@ -24,7 +24,6 @@ export default function _runSheet() {
             g.slideTop(sheet)
             siblings.map(sibling => g.slideOut(sibling))
             g.slideIn(inside)
-
             _setSheet()
         }
 

@@ -35,7 +35,7 @@ const _flipfone = () => {
             flip = flips.find(flip => (flip.dataset.flipfoneContent === toggle.dataset.flipfoneToggle))
 
         progressbarWidth = (currentIdx + 1) * initialWidth
-        gsap.moveX(progressbar, { width: `${progressbarWidth}%` })
+        gsap.moveX(progressbar, { width: `${progressbarWidth}%`, delay: 0.25 })
 
         toggle.classList.add('active')
         _siblings(toggle).map(sib => sib.classList.remove('active'))

@@ -4,13 +4,12 @@ import Icon from '../atoms/Icon.astro'
 import Legal from '../blocks/Legal.astro'
 import Social from '../blocks/Social.astro'
 import TwinActions from '../blocks/TwinActions.astro'
-import { _padT } from '../scripts/snips'
 
 const
     year = new Date().getFullYear(),
     { legalName, legalLinks, social, actions } = Astro.props
 ---
-<footer class:list={[ '-space-y-0.5 mt-24 lg:mt-0', _padT() ]}>
+<footer class:list={[ '-space-y-0.5 mt-20 xs:mt-24 sm:mt-16 lg:mt-12' ]}>
     <TwinActions actions={ actions }/>
     <div class="flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/70 py-8 lg:py-0 relative z-30">
         <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">

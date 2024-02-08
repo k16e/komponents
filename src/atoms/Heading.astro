@@ -9,7 +9,7 @@ const
     { ...attrs }
     class:list={[
         // Default Classes
-        'h',
+        `h is-${ level ? level : 'span' }`,
 
         // Font Sizes
         size === 'sm' && 'text-xs lg:text-sm',
