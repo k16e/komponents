@@ -1,16 +1,53 @@
 ---
 import Error from '../layouts/Error.astro'
 import { useStoryblokApi } from '@storyblok/astro'
+import Wrapper from '../layouts/Wrapper.astro'
+import Grid from '../layouts/Grid.astro'
+import Inner from '../layouts/Inner.astro'
+import BannerTitle from '../blocks/BannerTitle.astro'
+import BannerSubtitle from '../blocks/BannerSubtitle.astro'
+import Copy from '../atoms/Copy.astro'
+import Anchor from '../atoms/Anchor.astro'
+import Button from '../atoms/Button.astro'
+import _slug from '../scripts/slug'
 
-const storyblokApi = useStoryblokApi()
-const { data: settings } = await storyblokApi.get('cdn/stories/settings', {
-    version: import.meta.env.DEV ? 'draft' : 'published'
-})
-const error = settings.story.content.error[0]
+const
+    storyblokApi = useStoryblokApi(),
+    { data: settings } = await storyblokApi.get('cdn/stories/settings', {
+        version: import.meta.env.DEV ? 'draft' : 'published',
+        resolve_links: 'url'
+    }),
+    error = settings.story.content.error[0],
+    link = error.link[0]
 ---
 <Error
     pageTitle={ error.title }
     pageDescription={ error.description }
     showNav={ false }>
-
+    <Wrapper inner padY="top">
+        <Grid class:list="pt-8 sm:pt-12 lg:pt-4">
+            <Inner slot="leading" class="space-y-4 sm:space-y-6 lg:space-y-12 lg:pb-8">
+                <BannerTitle
+                    title={ error.headline }
+                    size="4xl"
+                    weight="extra"
+                    color="accent"
+                    class:list="text-accent-600"
+                />
+                <BannerSubtitle title={ error.subheadline }/>
+            </Inner>
+            <div slot="trailing" class="space-y-8 md:space-y-10 lg:space-y-14">
+                <Copy content={ error.description }/>
+                <Anchor href={ _slug(link.link) } hover="shadow">
+                    <Button
+                        icon={ link.icon }
+                        label={ link.title }
+                        iconPosition={ link.icon_position }
+                        color={ link.color }
+                        class="w-full"
+                    />
+                </Anchor>
+            </div>
+        </Grid>
+    </Wrapper>
 </Slats>

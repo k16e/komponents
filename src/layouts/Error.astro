@@ -17,10 +17,10 @@ const
         image={ pageThumbnail || '/og-image.webp' }
     />
 	<body
-        class="text-surface-700 bg-white flex min-h-svh lg:min-h-dvh flex-col">
+        class="text-surface-700 bg-white flex min-h-svh lg:min-h-dvh flex-col overflow-clip">
         <TitleHidden title={ pageTitle }/>
         <HeaderBrand/>
-		<main class="flex-1 pt-14 lg:pt-16">
+		<main class="flex-1">
             <slot/>
         </main>
         <Slats qty={ 3 }/>

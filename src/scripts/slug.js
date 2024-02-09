@@ -6,7 +6,7 @@ export default function _slug(linkObj) {
         xLink = linkObj.linktype === 'url'
 
     if (iLink && linkObj.story) {
-        return linkObj.story.full_slug === 'home' ? '' : `/${ _unslash(linkObj.story.full_slug) }`
+        return linkObj.story.full_slug === 'home' ? '/' : `/${ _unslash(linkObj.story.full_slug) }`
     } else if (!linkObj.story && !xLink) {
         return linkObj
     }
