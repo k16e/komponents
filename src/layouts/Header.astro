@@ -8,7 +8,8 @@ import TitleHidden from '../blocks/TitleHidden.astro'
 
 const
     {
-        title, contactActions, showNav = true, nav, class: classes, ...attrs
+        title, contactActions, showNav = true, nav,
+        class: classes, ...attrs
     } = Astro.props
 ---
 <header
@@ -17,7 +18,7 @@ const
         _transition(),
         classes
     ]}
-    data-main-header
+    data-header-main
     { ...attrs }>
     <Wrapper padX={ false } class:list="flex items-center justify-between h-full">
         <div class="flex items-center space-x-10">

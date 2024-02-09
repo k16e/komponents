@@ -8,7 +8,10 @@ const
         title, contactActions, showNav = true, nav, class: classes, ...attrs
     } = Astro.props
 ---
-<header class:list={[ 'z-50 bg-white', _transition(), classes ]} data-header-brand { ...attrs }>
+<header
+    class:list={[ 'z-50 bg-white', _transition(), classes ]}
+    data-header-brand
+    { ...attrs }>
     <Wrapper class:list="flex items-center justify-between h-full">
         <a href="/" class="flex p-4">
             <Icon name="icon" class="w-9 lg:hidden text-accent-600"/>
