@@ -2,6 +2,7 @@
 import Head from './Head.astro'
 import TitleHidden from '../blocks/TitleHidden.astro'
 import HeaderBrand from './HeaderBrand.astro'
+import Slats from '../blocks/Slats.astro'
 
 const
     {
@@ -22,6 +23,7 @@ const
 		<main class="flex-1 pt-14 lg:pt-16">
             <slot/>
         </main>
+        <Slats qty={ 3 }/>
 	</body>
 </html>
 
