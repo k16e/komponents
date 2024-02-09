@@ -8,7 +8,7 @@ import TitleHidden from '../blocks/TitleHidden.astro'
 
 const
     {
-        title, contactActions, nav, class: classes, ...attrs
+        title, contactActions, showNav = true, nav, class: classes, ...attrs
     } = Astro.props
 ---
 <header
@@ -26,20 +26,24 @@ const
                 <Icon name="logo" class="h-10 hidden lg:block"/>
                 <span class='sr-only'>Komponents</span>
             </a>
-            <nav>
-                <TitleHidden tag="h2" title="Navigation for Desktop"/>
-                <NavDesktop links={ nav }/>
-            </nav>
+            { showNav && (
+                <nav>
+                    <TitleHidden tag="h2" title="Navigation for Desktop"/>
+                    <NavDesktop links={ nav }/>
+                </nav>
+            ) }
         </div>
-        <div class="flex">
+        <div class:list={[ 'flex', !showNav && 'pr-4' ]}>
             <ContactActions links={ contactActions }/>
-            <button
-                class:list={[
-                    'xl:hidden px-4 bg-surface-100 hover:bg-surface-200 text-accent-600',
-                    _transition()
-                ]} data-sheet-trigger="nav-mobile">
-                <Icon name="menu" class="w-7 pointer-events-none"/>
-            </button>
+            { showNav && (
+                <button
+                    class:list={[
+                        'xl:hidden px-4 bg-surface-100 hover:bg-surface-200 text-accent-600',
+                        _transition()
+                    ]} data-sheet-trigger="nav-mobile">
+                    <Icon name="menu" class="w-7 pointer-events-none"/>
+                </button>
+            ) }
         </div>
     </Wrapper>
 </header>

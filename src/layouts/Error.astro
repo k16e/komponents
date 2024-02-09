@@ -1,0 +1,51 @@
+---
+import '@fontsource-variable/plus-jakarta-sans'
+import '@fontsource-variable/kumbh-sans'
+import Head from './Head.astro'
+import Header from './Header.astro'
+import { useStoryblokApi } from '@storyblok/astro'
+import TitleHidden from '../blocks/TitleHidden.astro'
+
+const
+    {
+        pageTitle, pageDescription, pageThumbnail, showNav
+    } = Astro.props,
+    api = useStoryblokApi(),
+    { data: settings } = await api.get('cdn/stories/settings', {
+        version: import.meta.env.DEV ? 'draft' : 'published',
+        resolve_links: 'url'
+    }),
+    site = settings.story.content
+
+---
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-white">
+	<Head
+        title={ `${ pageTitle } | ${ site.title }` }
+        description={ pageDescription || site.description }
+        image={ pageThumbnail || '/og-image.webp' }
+    />
+	<body
+        class="text-surface-700 bg-white flex min-h-svh lg:min-h-dvh flex-col">
+        <TitleHidden title={ pageTitle }/>
+		<main
+            class="flex-1 swup-in pt-14 lg:pt-16"
+            tabindex="-1">
+            <slot/>
+        </main>
+	</body>
+</html>
+
+<style is:global>
+	main:focus { outline: none; }
+    button { text-align: inherit; }
+	svg { @apply flex-shrink-0 pointer-events-none fill-current; }
+</style>
+
+<script>
+    import _astrolog from '../scripts/astrolog'
+
+    document.addEventListener('DOMContentLoaded', () => {
+        _astrolog()
+    })
+</script>

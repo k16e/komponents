@@ -1,6 +1,6 @@
 ---
-import Base from '../layouts/Base.astro'
-import { useStoryblokApi, renderRichText } from '@storyblok/astro'
+import Error from '../layouts/Error.astro'
+import { useStoryblokApi } from '@storyblok/astro'
 
 const storyblokApi = useStoryblokApi()
 const { data: settings } = await storyblokApi.get('cdn/stories/settings', {
@@ -8,8 +8,9 @@ const { data: settings } = await storyblokApi.get('cdn/stories/settings', {
 })
 const error = settings.story.content.error[0]
 ---
-<Base
+<Error
     pageTitle={ error.title }
-    pageDescription={ error.description }>
+    pageDescription={ error.description }
+    showNav={ false }>
     Error
-</Base>
+</Error>

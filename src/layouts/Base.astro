@@ -19,7 +19,7 @@ import NavMobile from '../blocks/NavMobile.astro'
 
 const
     {
-        pageTitle, pageDescription, pageThumbnail
+        pageTitle, pageDescription, pageThumbnail, showNav, isError
     } = Astro.props,
     api = useStoryblokApi(),
     { data: settings } = await api.get('cdn/stories/settings', {
@@ -65,6 +65,7 @@ _addAffiliates(affiliates)
             title={ site.title }
             contactActions={ site.contact_actions[0].links }
             nav={ site.nav }
+            showNav={ showNav }
         />
 		<main
             class="flex-1 swup-in pt-14 lg:pt-16"
