@@ -5,35 +5,37 @@ import { _affiliate, _affiliates } from '../scripts/store'
 
 const
     {
-        label, id, autocomplete, required, firstOpt,
+        label, id, required, firstOpt, showLabel = true, ringed = true, inset,
         class: classes, ...attrs
     } = Astro.props
 ---
 <div
-    class:list={[ 'group', classes ]}
+    class:list={[
+        'group',
+        classes,
+        inset && 'h-full min-w-32'
+    ]}
     data-label={ _slugify(label) }
     { ...attrs }>
     <label
         for={ id }
-        class="flex">
+        class:list={ showLabel ? 'flex' : 'hidden' }>
         <span
             class="block mr-0.5 group-[:focus-within]:font-medium group-[:focus-within]:text-dark-950"
             set:text={ label }
         />
         { required && (<span class="text-red-600">*</span>) }
     </label>
-    <div class="mt-1">
-        <select
-            id={ id }
-            name={ _capitalize(id) }
-            autocomplete={ autocomplete }
-            class:list={[`
-                block w-full border-0 bg-transparent py-3
-                ring-[1.5px] ring-inset ring-surface-200
-                focus:z-10 focus:ring-2 focus:ring-inset focus:ring-accent-600
-            `]}>
-            <option data-first-option={ firstOpt }/>
-            <slot/>
-        </select>
-    </div>
+    <select
+        id={ id }
+        name={ _capitalize(id) }
+        class:list={[
+            'block w-full border-0 bg-transparent py-3 focus:z-10',
+            showLabel && 'mt-1',
+            ringed && `ring-[1.5px] ring-inset ring-surface-200 focus:ring-2 focus:ring-inset focus:ring-accent-600`,
+            inset && 'h-full'
+        ]}>
+        <option data-first-option={ _slugify(firstOpt) }/>
+        <slot/>
+    </select>
 </div>
