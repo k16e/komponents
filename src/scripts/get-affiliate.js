@@ -3,11 +3,11 @@ import _siblings from './siblings'
 
 export default function _getAffiliate() {
     if (import.meta.env.SSR) return
-    if (!_q('[data-affiliate-populate]')) return
+    if (!_q('[data-first-option="affiliate"]')) return
 
     const
         text = 'Recommend for me!',
-        option = _q('[data-affiliate-populate]'),
+        option = _q('[data-first-option="affiliate"]'),
         affiliate = _empty(localStorage.affiliate) ? text : localStorage.affiliate
 
     option.innerText = affiliate

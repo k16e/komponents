@@ -20,8 +20,10 @@ const { consent } = Astro.props
         label="Select Affiliate"
         id="affiliate"
         autocomplete="Affiliate"
-        required
-    />
+        firstOpt="affiliate"
+        required>
+        { _affiliates.value.map((el: any) => <option set:text={ el.bio[0].title }/>) }
+    </InputSelect>
     <InputArea label="Brief" id="message" required/>
     { consent && (
         <DashedBox all={ false } top class:list="pt-6 grid grid-cols-1 gap-6">

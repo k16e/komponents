@@ -5,7 +5,7 @@ import { _affiliate, _affiliates } from '../scripts/store'
 
 const
     {
-        label, id, autocomplete, required,
+        label, id, autocomplete, required, firstOpt,
         class: classes, ...attrs
     } = Astro.props
 ---
@@ -32,8 +32,8 @@ const
                 ring-[1.5px] ring-inset ring-surface-200
                 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-accent-600
             `]}>
-            <option data-affiliate-populate/>
-            { _affiliates.value.map((el: any) => <option set:text={ el.bio[0].title }/>) }
+            <option data-first-option={ firstOpt }/>
+            <slot/>
         </select>
     </div>
 </div>
