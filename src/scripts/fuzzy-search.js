@@ -31,15 +31,9 @@ export default function _fuzzySearch() {
         action(input, entries)
     })
 
-    function show(item) {
-        g.on(item)
-        item.style.display = 'block'
-    }
-
-    function hide(item) {
-        g.off(item)
-        item.style.display = 'none'
-    }
+    function show(item) { item.style.display = 'block' }
+    function hide(item) { item.style.display = 'none' }
+    function showAll(arr) { arr.map(el => show(el)) }
 
     function search(input, list) {
         const
@@ -76,6 +70,4 @@ export default function _fuzzySearch() {
         clearTimeout(typingTimer)
         typingTimer = setTimeout(search(input, list), typeInterval)
     }
-
-    function showAll(arr) { arr.map(el => show(el)) }
 }
