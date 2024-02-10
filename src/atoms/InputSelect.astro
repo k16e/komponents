@@ -13,7 +13,7 @@ const
     class:list={[
         'group',
         classes,
-        inset && 'h-full min-w-32'
+        inset && 'h-full min-w-32 max-w-40'
     ]}
     data-label={ _slugify(label) }
     { ...attrs }>
@@ -30,10 +30,10 @@ const
         id={ id }
         name={ _capitalize(id) }
         class:list={[
-            'block w-full border-0 bg-transparent py-3 focus:z-10',
+            'block w-full border-0 bg-transparent py-3',
             showLabel && 'mt-1',
             ringed && `ring-[1.5px] ring-inset ring-surface-200 focus:ring-2 focus:ring-inset focus:ring-accent-600`,
-            inset && 'h-full'
+            inset && 'h-full pl-4 focus:ring-0 truncate'
         ]}>
         <option data-first-option={ _slugify(firstOpt) }/>
         <slot/>

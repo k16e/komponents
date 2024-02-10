@@ -1,12 +1,16 @@
 ---
 import InputSearch from '../atoms/InputSearch.astro'
 import InputSelect from '../atoms/InputSelect.astro'
+import _slugify from '../scripts/slugify'
+import { _products } from '../scripts/store'
+import _uniquefy from '../scripts/uniquefy'
 
 const
     {
         class: classes,
         ...rest
-    } = Astro.props
+    } = Astro.props,
+    oems = _uniquefy(_products.value.map(el => el.oem))
 ---
 <div
     class:list={[
@@ -23,7 +27,9 @@ const
             ringed={ false }
             inset
             class:list="absolute right-0">
-            <option value="A" class="truncate">Astro Public</option>
+            { oems.map((el: any) => (
+                <option set:text={ el } data-oem={ _slugify(el) }/>
+            )) }
         </InputSelect>
     </div>
 </div>
