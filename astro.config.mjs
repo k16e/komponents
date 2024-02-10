@@ -16,7 +16,7 @@ export default defineConfig({
         ignoreSlowConnection: true
     },
     integrations: [
-        // pages({ dir: 'routes', glob: '**.{astro}' }),
+        // pages('routes'),
         tailwind({
             nesting: true
         }),
