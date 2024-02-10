@@ -16,9 +16,9 @@ export default function _fuzzySearch() {
         input = _q('input', wrapper),
         entries = _ql(`[data-list-${wrapper.dataset.list}] > *`),
         typeInterval = 150,
-        allText = 'All OEMs',
-        firstOpt = _q('[data-first-option="all-oems"]'),
-        select = _q('#oems', wrapper)
+        allText = 'All Partners',
+        firstOpt = _q('[data-first-option="all-partners"]'),
+        select = _q('#partners', wrapper)
 
     firstOpt.textContent = allText
 
@@ -49,7 +49,7 @@ export default function _fuzzySearch() {
         list.map(el => {
             const
                 cdn1 = el.textContent.toLowerCase(),
-                cdn2 = _q('[data-oem]', el).dataset.oem
+                cdn2 = _q('[data-partner]', el).dataset.partner
 
             if (cdn1.includes(query) || cdn2.includes(query)) {
                 show(el)

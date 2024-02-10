@@ -10,7 +10,7 @@ const
         class: classes,
         ...rest
     } = Astro.props,
-    oems = _uniquefy(_products.value.map(el => el.oem))
+    partners = _uniquefy(_products.value.map(el => el.partner))
 ---
 <div
     class:list={[
@@ -20,17 +20,17 @@ const
     <div class="bg-white shadow-lg h-16 sm:h-[72px] flex items-center overflow-clip relative">
         <InputSearch/>
         <InputSelect
-            label="Filter by OEMs"
-            id="OEMs"
-            firstOpt="All OEMs"
+            label="Filter by Partners"
+            id="partners"
+            firstOpt="All Partners"
             showLabel={ false }
             ringed={ false }
             inset
-            class:list="absolute right-0">
-            { oems.map((el: any) => (
+            class:list="absolute right-0 border-l-[1.5px] border-surface-300">
+            { partners.map((el: any) => (
                 <option
                     set:text={ el }
-                    data-oem={ _slugify(el) }
+                    data-partner={ _slugify(el) }
                     value={ _slugify(el) }
                 />
             )) }
