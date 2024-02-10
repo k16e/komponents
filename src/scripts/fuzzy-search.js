@@ -2,6 +2,7 @@ import { gsap } from 'gsap'
 import { Flip } from 'gsap/all'
 import { _q, _ql } from './snips'
 import _gsap from './gsap'
+import _slugify from './slugify'
 
 gsap.registerPlugin(Flip)
 const g = _gsap()
@@ -15,18 +16,20 @@ export default function _fuzzySearch() {
         input = _q('input', wrapper),
         entries = _ql(`[data-list-${wrapper.dataset.list}] > *`),
         typeInterval = 150,
-        clear = _q('[data-clear]', wrapper),
         allText = 'All OEMs',
-        firstOpt = _q('[data-first-option="all-oems"]')
+        firstOpt = _q('[data-first-option="all-oems"]'),
+        select = _q('#oems', wrapper)
 
-    clear.addEventListener('click', () => {
-        entries.map(el => show(el))
-        input.value = ''
-        input.focus()
-    })
-    input.addEventListener('keyup', () => action(input, entries))
     firstOpt.textContent = allText
 
+    select.addEventListener('change', e => {
+        input.value = ''
+        action(e.target, entries)
+    })
+    input.addEventListener('keyup', () => {
+        select.value = select.options[0].value
+        action(input, entries)
+    })
 
     function show(item) {
         g.on(item)
@@ -44,7 +47,15 @@ export default function _fuzzySearch() {
             state = Flip.getState(list)
 
         list.map(el => {
-            if (el.textContent.toLowerCase().includes(query)) show(el)
+            const
+                cdn1 = el.textContent.toLowerCase(),
+                cdn2 = _q('[data-oem]', el).dataset.oem
+
+            if (cdn1.includes(query) || cdn2.includes(query)) {
+                show(el)
+
+            }
+            else if (query === _slugify(allText)) showAll(list)
             else hide(el)
         })
 
@@ -65,4 +76,6 @@ export default function _fuzzySearch() {
         clearTimeout(typingTimer)
         typingTimer = setTimeout(search(input, list), typeInterval)
     }
+
+    function showAll(arr) { arr.map(el => show(el)) }
 }

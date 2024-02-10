@@ -18,7 +18,7 @@ const
     data-label={ _slugify(label) }
     { ...attrs }>
     <label
-        for={ id }
+        for={ _slugify(id) }
         class:list={ showLabel ? 'flex' : 'hidden' }>
         <span
             class="block mr-0.5 group-[:focus-within]:font-medium group-[:focus-within]:text-dark-950"
@@ -27,7 +27,7 @@ const
         { required && (<span class="text-red-600">*</span>) }
     </label>
     <select
-        id={ id }
+        id={ _slugify(id) }
         name={ _capitalize(id) }
         class:list={[
             'block w-full border-0 bg-transparent py-3',
@@ -35,7 +35,10 @@ const
             ringed && `ring-[1.5px] ring-inset ring-surface-200 focus:ring-2 focus:ring-inset focus:ring-accent-600`,
             inset && 'h-full pl-4 focus:ring-0 truncate'
         ]}>
-        <option data-first-option={ _slugify(firstOpt) }/>
+        <option
+            data-first-option={ _slugify(firstOpt) }
+            value={ _slugify(firstOpt) }
+        />
         <slot/>
     </select>
 </div>

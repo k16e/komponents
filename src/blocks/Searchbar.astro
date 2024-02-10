@@ -28,7 +28,11 @@ const
             inset
             class:list="absolute right-0">
             { oems.map((el: any) => (
-                <option set:text={ el } data-oem={ _slugify(el) }/>
+                <option
+                    set:text={ el }
+                    data-oem={ _slugify(el) }
+                    value={ _slugify(el) }
+                />
             )) }
         </InputSelect>
     </div>
