@@ -2,10 +2,10 @@
 import '@fontsource-variable/plus-jakarta-sans'
 import '@fontsource-variable/kumbh-sans'
 import { SEO } from 'astro-seo'
+import _slugify from '../scripts/slugify'
 
 const
-    { title, image, description = '' }
-    = Astro.props,
+    { title, image, description = '' } = Astro.props,
     canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 <head>
@@ -34,8 +34,8 @@ const
                 type: 'website',
                 image: image,
             }
-        }}
+        }},
+        canonical={ canonicalURL }
     />
-    <link rel="canonical" href={ canonicalURL }/>
     <link rel="manifest" href="/site.webmanifest"/>
 </head>
