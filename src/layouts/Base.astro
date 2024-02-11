@@ -105,6 +105,7 @@ _addAffiliates(affiliates)
 <script>
     import Swup from 'swup'
     import SwupProgressPlugin from '@swup/progress-plugin'
+    import SwupHeadPlugin from '@swup/head-plugin'
     import _active from '../scripts/active'
     import _flipper from '../scripts/flipper'
     import _intoView from '../scripts/into-view'
@@ -122,7 +123,8 @@ _addAffiliates(affiliates)
         animationSelector: '[class*="swup-"]',
         animateHistoryBrowsing: true,
         plugins: [
-            new SwupProgressPlugin({ finishAnimation: false })
+            new SwupProgressPlugin({ finishAnimation: false }),
+            new SwupHeadPlugin()
         ],
         cache: false
     })
