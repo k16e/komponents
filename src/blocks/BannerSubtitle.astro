@@ -3,7 +3,7 @@ import Heading from '../atoms/Heading.astro'
 
 const
     {
-        title,
+        title, color = 'surface',
         class: classes, ...attrs
     } = Astro.props
 ---
@@ -16,7 +16,7 @@ const
         text={ title }
         size="3xl"
         weight="extra"
-        color="surface"
+        color={ color }
         tighten
     />
 </div>
