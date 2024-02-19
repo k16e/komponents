@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "komponents-v2.netlify.app"
+  to = "komponents-v2.k16e.co"
+  status = 301
+  force = true
