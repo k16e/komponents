@@ -17,7 +17,7 @@ import NavMobile from '../blocks/NavMobile.astro'
 
 const
     {
-        pageTitle, pageDescription, pageThumbnail, showNav, isError
+        pageTitle, pageDescription, pageThumbnail, showNav, isError, showActions,
     } = Astro.props,
     api = useStoryblokApi(),
     { data: settings } = await api.get('cdn/stories/settings', {
@@ -76,6 +76,7 @@ _addAffiliates(affiliates)
             legalLinks={ site.legalnav }
             social={ site.social }
             actions={ site.cta }
+            showActions={ showActions }
         />
         <Modal>
             { _productsNew.value.map((el: any, idx: number) => (
@@ -113,7 +114,7 @@ _addAffiliates(affiliates)
     import _modal from '../scripts/modal'
     import _backdrop from '../scripts/backdrop'
     import _carousel from '../scripts/carousel'
-    import _getAffiliate from '../scripts/get-affiliate'
+    // import _getAffiliate from '../scripts/get-affiliate'
     import _submit from '../scripts/form'
     import _prefilters from '../scripts/prefilters'
     import _flipfone from '../scripts/flipfone'
@@ -141,7 +142,7 @@ _addAffiliates(affiliates)
         _modal()
         _backdrop()
         _carousel()
-        _getAffiliate()
+        // _getAffiliate()
         _submit()
         _flipfone()
         _fuzzySearch()

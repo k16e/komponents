@@ -22,8 +22,8 @@ export default function _submit() {
 
         const
             form = e.target,
-            data = new FormData(form),
-            select = _q('#affiliate', form)
+            data = new FormData(form)
+            // select = _q('#affiliate', form)
 
         button.classList.add('disabled')
 
@@ -36,9 +36,9 @@ export default function _submit() {
             body: _encode(Object.fromEntries(data))
         }).then(res => {
             if (res.status === 200) {
-                localStorage.removeItem('affiliate')
+                // localStorage.removeItem('affiliate')
                 form.reset()
-                if (select) select.value = 'Recommend for me!'
+                // if (select) select.value = 'Recommend for me!'
                 window.scrollTo({ top: 0, left: 0 })
                 _toast.display(successMsg)
                 button.classList.remove('disabled')
