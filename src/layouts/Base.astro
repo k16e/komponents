@@ -29,8 +29,6 @@ const
     pathname = Astro.url.pathname.substring(1),
     showActions = noActions.includes(pathname)
 
-console.log(showActions, pathname)
-
 let
     { data: dataProducts } = await api.get(`cdn/stories/products`, {
         version: import.meta.env.DEV ? 'draft' : 'published',
