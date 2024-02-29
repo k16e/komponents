@@ -32,19 +32,11 @@ const
     }),
     page = data.story,
     content = page.content,
-    meta = content.meta[0],
-    noActions = ['repair-center', 'about'],
-    pathname = Astro.url.pathname
-
-let showActions = true
-
-noActions.map(e => e === pathname ? showActions = true : showActions = false)
-console.log(showActions, pathname)
+    meta = content.meta[0]
 ---
 <Base
     pageTitle={ meta.title }
     pageDescription={ meta.description }
-    pageThumbnail={ meta.image.filename }
-    showActions={ showActions }>
+    pageThumbnail={ meta.image.filename }>
     <StoryblokComponent blok={ content }/>
 </Base>

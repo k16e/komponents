@@ -17,14 +17,19 @@ import NavMobile from '../blocks/NavMobile.astro'
 
 const
     {
-        pageTitle, pageDescription, pageThumbnail, showNav, isError, showActions,
+        pageTitle, pageDescription, pageThumbnail, showNav, isError,
     } = Astro.props,
     api = useStoryblokApi(),
     { data: settings } = await api.get('cdn/stories/settings', {
         version: import.meta.env.DEV ? 'draft' : 'published',
         resolve_links: 'url'
     }),
-    site = settings.story.content
+    site = settings.story.content,
+    noActions = ['repair-center', 'about'],
+    pathname = Astro.url.pathname.substring(1),
+    showActions = noActions.includes(pathname)
+
+console.log(showActions, pathname)
 
 let
     { data: dataProducts } = await api.get(`cdn/stories/products`, {
@@ -122,6 +127,7 @@ _addAffiliates(affiliates)
 
     const swup = new Swup({
         animationSelector: '[class*="swup-"]',
+        containers: ['#swup', '#footer'],
         animateHistoryBrowsing: true,
         plugins: [
             new SwupProgressPlugin({ finishAnimation: false }),
