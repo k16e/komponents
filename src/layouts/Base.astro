@@ -17,14 +17,17 @@ import NavMobile from '../blocks/NavMobile.astro'
 
 const
     {
-        pageTitle, pageDescription, pageThumbnail, showNav, isError
+        pageTitle, pageDescription, pageThumbnail, showNav, isError,
     } = Astro.props,
     api = useStoryblokApi(),
     { data: settings } = await api.get('cdn/stories/settings', {
         version: import.meta.env.DEV ? 'draft' : 'published',
         resolve_links: 'url'
     }),
-    site = settings.story.content
+    site = settings.story.content,
+    noActions = ['repair-center', 'about'],
+    pathname = Astro.url.pathname.substring(1),
+    showActions = noActions.includes(pathname)
 
 let
     { data: dataProducts } = await api.get(`cdn/stories/products`, {
@@ -76,6 +79,7 @@ _addAffiliates(affiliates)
             legalLinks={ site.legalnav }
             social={ site.social }
             actions={ site.cta }
+            showActions={ showActions }
         />
         <Modal>
             { _productsNew.value.map((el: any, idx: number) => (
@@ -113,7 +117,7 @@ _addAffiliates(affiliates)
     import _modal from '../scripts/modal'
     import _backdrop from '../scripts/backdrop'
     import _carousel from '../scripts/carousel'
-    import _getAffiliate from '../scripts/get-affiliate'
+    // import _getAffiliate from '../scripts/get-affiliate'
     import _submit from '../scripts/form'
     import _prefilters from '../scripts/prefilters'
     import _flipfone from '../scripts/flipfone'
@@ -121,6 +125,7 @@ _addAffiliates(affiliates)
 
     const swup = new Swup({
         animationSelector: '[class*="swup-"]',
+        containers: ['#swup', '#footer'],
         animateHistoryBrowsing: true,
         plugins: [
             new SwupProgressPlugin({ finishAnimation: false }),
@@ -141,7 +146,7 @@ _addAffiliates(affiliates)
         _modal()
         _backdrop()
         _carousel()
-        _getAffiliate()
+        // _getAffiliate()
         _submit()
         _flipfone()
         _fuzzySearch()

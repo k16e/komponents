@@ -16,14 +16,14 @@ const { consent } = Astro.props
         <Input type="text" label="Last Name" placeholder="Diaz" autocomplete="Family Name" required/>
     </div>
     <Input type="email" label="Work Email" placeholder="jane@example.com" autocomplete="Email" required/>
-    <InputSelect
+    <!-- <InputSelect
         label="Select Affiliate"
         id="affiliate"
         autocomplete="Affiliate"
         firstOpt="affiliate"
         required>
         { _affiliates.value.map((el: any) => <option set:text={ el.bio[0].title }/>) }
-    </InputSelect>
+    </InputSelect> -->
     <InputArea label="Brief" id="message" required/>
     { consent && (
         <DashedBox all={ false } top class:list="pt-6 grid grid-cols-1 gap-6">
