@@ -27,7 +27,7 @@ const
     site = settings.story.content,
     noActions = ['/repair-center'],
     { pathname } = Astro.url,
-    showActions = noActions.includes(pathname)
+    showActions = noActions.includes(pathname.replace(/\.html$/, ''))
 
 let
     { data: dataProducts } = await api.get(`cdn/stories/products`, {
@@ -80,6 +80,7 @@ _addAffiliates(affiliates)
             social={ site.social }
             actions={ site.cta }
             showActions={ showActions }
+            class:list={ pathname }
         />
         <Modal>
             { _productsNew.value.map((el: any, idx: number) => (

@@ -9,9 +9,13 @@ const
     year = new Date().getFullYear(),
     {
         legalName, legalLinks, social, actions, showActions,
+        class: classes, ...props
     } = Astro.props
 ---
-<footer id="footer" class:list={[ '-space-y-0.5 mt-20 xs:mt-24 sm:mt-16 lg:mt-12' ]}>
+<footer
+    id="footer"
+    class:list={[ '-space-y-0.5 mt-20 xs:mt-24 sm:mt-16 lg:mt-12', classes ]}
+    { ...props }>
     { !showActions && <TwinActions actions={ actions }/> }
     <div class="flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/70 py-8 lg:py-0 relative z-30">
         <Wrapper class:list="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
