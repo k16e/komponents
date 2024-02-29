@@ -10,9 +10,9 @@ export async function getStaticPaths() {
         { data } = await storyblokApi.get('cdn/links', { version: import.meta.env.DEV ? 'draft' : 'published' })
 
     let links = data.links
-    links = Object.values(links).filter((link: any) => !(link.slug === 'settings'))
+    links = Object.values(links).filter(link => !(link.slug === 'settings'))
 
-    return links.map((link: any) => {
+    return links.map(link => {
         return {
             params: {
                 slug: link.slug === 'home' ? undefined : link.slug
