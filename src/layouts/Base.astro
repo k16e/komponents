@@ -27,7 +27,7 @@ const
     site = settings.story.content,
     noActions = ['/repair-center'],
     { pathname } = Astro.url,
-    showActions = noActions.includes(pathname)
+    showActions = noActions.includes(pathname.replace(/\.html$/, ''))
 
 let
     { data: dataProducts } = await api.get(`cdn/stories/products`, {
