@@ -12,8 +12,9 @@ import RichText from '../atoms/RichText.astro'
 const { consent } = Astro.props
 ---
 <form
-    enctype="multipart/form-data"
-    class="grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4">
+    class="grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4"
+    id="repair-center"
+    form-id="Mj2Ymob6y">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
         <Input type="text" label="Serial Number" placeholder="Serial Number" required/>
         <Input type="text" label="Product Number" placeholder="Product Number" required/>

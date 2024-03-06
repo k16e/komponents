@@ -10,20 +10,15 @@ import { _affiliate, _affiliates } from '../scripts/store'
 
 const { consent } = Astro.props
 ---
-<form class="grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4">
+<form
+    class="grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4"
+    id="contact-form"
+    form-id="PPuz35y0H">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
         <Input type="text" label="First Name" placeholder="Jane" autocomplete="Given Name" required/>
         <Input type="text" label="Last Name" placeholder="Diaz" autocomplete="Family Name" required/>
     </div>
     <Input type="email" label="Work Email" placeholder="jane@example.com" autocomplete="Email" required/>
-    <!-- <InputSelect
-        label="Select Affiliate"
-        id="affiliate"
-        autocomplete="Affiliate"
-        firstOpt="affiliate"
-        required>
-        { _affiliates.value.map((el: any) => <option set:text={ el.bio[0].title }/>) }
-    </InputSelect> -->
     <InputArea label="Brief" id="message" required/>
     { consent && (
         <DashedBox all={ false } top class:list="pt-6 grid grid-cols-1 gap-6">

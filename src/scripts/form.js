@@ -11,9 +11,9 @@ export default function _submit() {
 
     const
         button = _q('[data-form-submit]'),
-        endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT,
         form = button.parentNode,
-        successMsg = _q('[data-form-success-message]').textContent
+        successMsg = _q('[data-form-success-message]').textContent,
+        endpoint = form.getAttribute('form-id')
 
     form.addEventListener('submit', submit)
 
@@ -23,11 +23,10 @@ export default function _submit() {
         const
             form = e.target,
             data = new FormData(form)
-            // select = _q('#affiliate', form)
 
         button.classList.add('disabled')
 
-        await fetch(endpoint, {
+        await fetch(`https://submit-form.com/${endpoint}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -36,9 +35,7 @@ export default function _submit() {
             body: _encode(Object.fromEntries(data))
         }).then(res => {
             if (res.status === 200) {
-                // localStorage.removeItem('affiliate')
                 form.reset()
-                // if (select) select.value = 'Recommend for me!'
                 window.scrollTo({ top: 0, left: 0 })
                 _toast.display(successMsg)
                 button.classList.remove('disabled')
