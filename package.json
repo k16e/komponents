@@ -20,7 +20,7 @@
         "@swup/preload-plugin": "^3.2.10",
         "@swup/progress-plugin": "^3.1.2",
         "@swup/scroll-plugin": "^3.3.2",
-        "astro": "^4.4.11",
+        "astro": "^4.4.12",
         "astro-pages": "^0.2.0",
         "astro-seo": "^0.8.3",
         "gsap": "^3.12.5",
@@ -28,7 +28,7 @@
         "swiper": "^11.0.7",
         "swup": "^4.6.0",
         "tailwindcss": "^3.4.1",
-        "vite": "^5.1.4"
+        "vite": "^5.1.5"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.7",
