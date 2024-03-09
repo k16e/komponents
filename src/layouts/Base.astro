@@ -85,9 +85,6 @@ _addAffiliates(affiliates)
             { _productsNew.value.map((el: any, idx: number) => (
                 <ModalProduct item={ el } data-modal-display={ `product-at-${idx}` }/>
             )) }
-            { _affiliates.value.map((el: any, idx: number) => (
-                <ModalAffiliate item={ el } data-modal-display={ `affiliate-at-${idx}` }/>
-            )) }
         </Modal>
         <Toast/>
         <Sheet>
@@ -116,7 +113,6 @@ _addAffiliates(affiliates)
     import _modal from '../scripts/modal'
     import _backdrop from '../scripts/backdrop'
     import _carousel from '../scripts/carousel'
-    // import _getAffiliate from '../scripts/get-affiliate'
     import _submit from '../scripts/form'
     import _prefilters from '../scripts/prefilters'
     import _flipfone from '../scripts/flipfone'
@@ -145,7 +141,6 @@ _addAffiliates(affiliates)
         _modal()
         _backdrop()
         _carousel()
-        // _getAffiliate()
         _submit()
         _flipfone()
         _fuzzySearch()
