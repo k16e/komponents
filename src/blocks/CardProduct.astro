@@ -13,7 +13,7 @@ const
     } = Astro.props
 ---
 <a
-    href={ link }
+    href={ link || '#' }
     class:list={[
         'border-surface-200 border flex flex-col h-full p-3 gap-3 group hover:shadow-lg relative',
         _transition(),
@@ -31,10 +31,12 @@ const
             text={ name }
             class:list="line-clamp-2"
         />
-        <div class="flex items-end justify-between text-accent-600">
-            <LinkText tiny={ false } titleCase text="View Details"/>
-            <Icon name="arrow-right-up" class:list="w-5"/>
-        </div>
+        { link && (
+            <div class="flex items-end justify-between text-accent-600">
+                <LinkText tiny={ false } titleCase text="View Details"/>
+                <Icon name="arrow-right-up" class:list="w-5"/>
+            </div>
+        )}
     </div>
     { isNew && (<Chip class:list="absolute top-3 left-0 pointer-events-none"/>)}
 </a>
