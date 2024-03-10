@@ -47,7 +47,6 @@ export default function _fuzzySearch() {
 
             if (cdn1.includes(query) || cdn2.includes(query)) {
                 show(el)
-
             }
             else if (query === _slugify(allText)) showAll(list)
             else hide(el)
