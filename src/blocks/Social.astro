@@ -11,9 +11,9 @@ const {
     class:list={['flex space-x-4', classes]}
     { ...attrs }>
 	{
-		links.map((el: any) => (
+		links.map(el => (
 			<li class="group text-white/60 flex items-center">
-				<Anchor href={ _slug(el.link) } hover="white">
+				<Anchor href={ _slug(el.link) } hover="white" aria-label={ `Visit us on ${el.title}`}>
                     <Icon name={ el.icon } class="w-6"/>
 				</Anchor>
 			</li>
