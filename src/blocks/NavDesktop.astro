@@ -14,7 +14,8 @@ const { links } = Astro.props
                 href={ _slug(link.link) }
                 hover="accent"
                 class:list="relative group/anchor [&.active]:text-accent-600 group-hover/li:text-accent-600"
-                data-anchor={ _slugify(link.link.story.full_slug) }>
+                data-anchor={ _slugify(link.link.story.full_slug) }
+                aria-label={ `${link.title} Page` }>
                 <Button
                     label={ link.title }
                     color={ link.color }

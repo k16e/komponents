@@ -19,7 +19,8 @@ const
             [&.active]:border-accent-400 hover:text-accent-600
             px-4 py-5 border-b border-dashed group-[:last-child]/li:border-0
         `]}
-        data-anchor={ anchor }>
+        data-anchor={ anchor }
+        aria-label={ `${title} Page` }>
         <BannerTitle
             title={ title }
             size="md"
