@@ -1,11 +1,19 @@
 ---
 const { class: classes, ...props } = Astro.props
 ---
+
 <div
-    { ...props }
+	{...props}
 	class:list={[
-        `prose prose-h1:font-bold prose-h1:text-xl prose-a:text-accent-600 prose-headings:underline prose-p:leading-[1.55]`,
-        classes,
-    ]}>
-    <slot />
+		`
+            prose !max-w-none
+            prose-a:text-accent-600 hover:prose-a:text-accent-800
+            prose-strong:text-dark-950
+            prose-h3:text-2xl prose-h3:font-bold prose-h3:text-dark-950 prose-h3:mt-7
+            prose-h1:font-bold prose-h1:text-xl prose-headings:underline prose-p:leading-[1.55]
+            prose-headings:first-of-type:mt-0
+        `,
+		classes,
+	]}>
+	<slot />
 </div>
