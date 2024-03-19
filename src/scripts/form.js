@@ -26,10 +26,10 @@ export default function _submit() {
             data = new FormData(form),
             botpoison = new Botpoison({
                 publicKey: 'pk_91403b5a-e3db-4abd-a2af-2b1cc2056536'
-            }),
-            { solution } = await botpoison.challenge()
+            })
 
         button.classList.add('disabled')
+        const { solution } = await botpoison.challenge()
 
         await fetch(`https://submit-form.com/${endpoint}`, {
             method: 'POST',
