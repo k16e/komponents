@@ -37,8 +37,10 @@ export default function _submit() {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Accept': 'application/json'
             },
-            body: _encode(Object.fromEntries(data)),
-            _botpoison: solution
+            body: _encode({
+                ...Object.fromEntries(data),
+                _botpoison: solution
+            })
         }).then(res => {
             if (res.status === 200) {
                 form.reset()
