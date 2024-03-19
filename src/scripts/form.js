@@ -1,6 +1,7 @@
 import { _q, _ql, _encode } from './snips'
 import _runToast from './toast'
 import _gsap from './gsap'
+import Botpoison from '@botpoison/browser'
 
 const
     _toast = _runToast(),
@@ -22,7 +23,11 @@ export default function _submit() {
 
         const
             form = e.target,
-            data = new FormData(form)
+            data = new FormData(form),
+            botpoison = new Botpoison({
+                publicKey: 'pk_91403b5a-e3db-4abd-a2af-2b1cc2056536'
+            }),
+            { solution } = await botpoison.challenge()
 
         button.classList.add('disabled')
 
@@ -32,7 +37,8 @@ export default function _submit() {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Accept': 'application/json'
             },
-            body: _encode(Object.fromEntries(data))
+            body: _encode(Object.fromEntries(data)),
+            _botpoison: solution
         }).then(res => {
             if (res.status === 200) {
                 form.reset()
