@@ -9,143 +9,167 @@ import Modal from '../blocks/Modal.astro'
 import ModalProduct from '../blocks/ModalProduct.astro'
 import ModalAffiliate from '../blocks/ModalAffiliate.astro'
 import {
-    _products, _addProducts, _addProductsNew, _productsNew, _affiliates, _addAffiliates
+	_products,
+	_addProducts,
+	_addProductsNew,
+	_productsNew,
+	_affiliates,
+	_addAffiliates,
 } from '../scripts/store'
 import Toast from '../blocks/Toast.astro'
 import Sheet from '../blocks/Sheet.astro'
 import NavMobile from '../blocks/NavMobile.astro'
 
-const
-    {
-        pageTitle, pageDescription, pageThumbnail, showNav, isError,
-    } = Astro.props,
-    api = useStoryblokApi(),
-    { data: settings } = await api.get('cdn/stories/settings', {
-        version: import.meta.env.DEV ? 'draft' : 'published',
-        resolve_links: 'url'
-    }),
-    site = settings.story.content,
-    noActions = ['/repair-center'],
-    { pathname } = Astro.url,
-    showActions = noActions.includes(pathname.replace(/\.html$/, ''))
+const { pageTitle, pageDescription, pageThumbnail, showNav, isError } =
+		Astro.props,
+	api = useStoryblokApi(),
+	{ data: settings } = await api.get('cdn/stories/settings', {
+		version: import.meta.env.DEV ? 'draft' : 'published',
+		resolve_links: 'url',
+	}),
+	site = settings.story.content,
+	noActions = ['/repair-center'],
+	{ pathname } = Astro.url,
+	showActions = noActions.includes(pathname.replace(/\.html$/, ''))
 
-let
-    { data: dataProducts } = await api.get(`cdn/stories/products`, {
-        version: import.meta.env.DEV ? 'draft' : 'published',
-    }),
-    products = dataProducts.story.content.body
-        .filter((el: any) => (el.component === 'products'))[0].products
-        .filter((el: any) => el.in_stock)
-        .sort((a: any, b: any) => (b.is_new - a.is_new)),
-    { data: dataAffiliates } = await api.get(`cdn/stories/affiliates`, {
-        version: import.meta.env.DEV ? 'draft' : 'published',
-        resolve_links: 'url'
-    }),
-    affiliates = dataAffiliates.story.content.body
-        .filter((el: any) => (el.component === 'affiliates'))[0].affiliates
-        .filter((el: any) => el.available)
+let { data: dataProducts } = await api.get(`cdn/stories/products`, {
+		version: import.meta.env.DEV ? 'draft' : 'published',
+	}),
+	products = dataProducts.story.content.body
+		.filter((el: any) => el.component === 'products')[0]
+		.products.filter((el: any) => el.in_stock)
+		.sort((a: any, b: any) => b.is_new - a.is_new),
+	{ data: dataAffiliates } = await api.get(`cdn/stories/affiliates`, {
+		version: import.meta.env.DEV ? 'draft' : 'published',
+		resolve_links: 'url',
+	}),
+	affiliates = dataAffiliates.story.content.body
+		.filter((el: any) => el.component === 'affiliates')[0]
+		.affiliates.filter((el: any) => el.available)
 
 _addProducts(products)
 _addProductsNew(products.filter((el: any) => el.is_new))
 _addAffiliates(affiliates)
 ---
+
 <!doctype html>
-<html
-    lang="en"
-    class="scroll-smooth bg-white">
+<html lang='en' class='scroll-smooth bg-white'>
 	<Head
-        title={ `${ pageTitle } | ${ site.title }` }
-        description={ pageDescription || site.description }
-        image={ pageThumbnail || '/thumbnail.png' }
-    />
+		title={`${pageTitle} | ${site.title}`}
+		description={pageDescription || site.description}
+		image={pageThumbnail || '/thumbnail.png'}
+	/>
 	<body
-        class="text-surface-700 bg-white flex min-h-svh lg:min-h-dvh flex-col group/modal"
-        data-body-exit>
-        <TitleHidden title={ pageTitle }/>
-        <Header
-            title={ site.title }
-            contactActions={ site.contact_actions[0].links }
-            nav={ site.nav }
-            showNav={ showNav }
-        />
-		<main
-            class="flex-1 swup-in pt-14 lg:pt-16"
-            id="swup">
-            <slot/>
-        </main>
-        <Footer
-            legalName={ site.legalName }
-            legalLinks={ site.legalnav }
-            social={ site.social }
-            actions={ site.cta }
-            showActions={ showActions }
-        />
-        <Modal>
-            { _productsNew.value.map((el: any, idx: number) => (
-                <ModalProduct item={ el } data-modal-display={ `product-at-${idx}` }/>
-            )) }
-        </Modal>
-        <Toast/>
-        <Sheet>
-            <NavMobile data-sheet-display="nav-mobile" links={ site.nav }/>
-        </Sheet>
-        <Backdrop/>
-	</body>
+		class='text-surface-700 bg-white flex min-h-svh lg:min-h-dvh flex-col group/modal'
+		data-body-exit>
+		<TitleHidden title={pageTitle} />
+		<Header
+			title={site.title}
+			contactActions={site.contact_actions[0].links}
+			nav={site.nav}
+			showNav={showNav}
+		/>
+		<main class='flex-1 swup-in pt-14 lg:pt-16' id='swup'>
+			<slot />
+		</main>
+		<Footer
+			legalName={site.legalName}
+			legalLinks={site.legalnav}
+			social={site.social}
+			actions={site.cta}
+			showActions={showActions}
+		/>
+		<Modal>
+			{
+				_productsNew.value.map((el: any, idx: number) => (
+					<ModalProduct
+						item={el}
+						data-modal-display={`product-at-${idx}`}
+					/>
+				))
+			}
+		</Modal>
+		<Toast />
+		<Sheet>
+			<NavMobile data-sheet-display='nav-mobile' links={site.nav} />
+		</Sheet>
+		<Backdrop />
+	</body><style is:global>
+		html.is-changing .swup-in {
+			@apply opacity-100 duration-[.4s] ease-[cubic-bezier(0,0.16,0,1)];
+		}
+		html.is-animating .swup-in {
+			@apply opacity-0 scale-[.99] translate-y-10 ease-in;
+		}
+		.swup-progress-bar {
+			@apply h-1 bg-accent-600;
+		}
+		main:focus {
+			outline: none;
+		}
+		button {
+			text-align: inherit;
+		}
+		svg {
+			@apply flex-shrink-0 pointer-events-none fill-current;
+		}
+		/* For Webkit-based browsers (Chrome, Safari and Opera) */
+		.scrollbar-hide::-webkit-scrollbar {
+			display: none;
+		}
+
+		/* For IE, Edge and Firefox */
+		.scrollbar-hide {
+			-ms-overflow-style: none; /* IE and Edge */
+			scrollbar-width: none; /* Firefox */
+		}
+	</style>
+
+	<script>
+		import Swup from 'swup'
+		import SwupProgressPlugin from '@swup/progress-plugin'
+		import SwupHeadPlugin from '@swup/head-plugin'
+		import _active from '../scripts/active'
+		import _flipper from '../scripts/flipper'
+		import _intoView from '../scripts/into-view'
+		import _modal from '../scripts/modal'
+		import _backdrop from '../scripts/backdrop'
+		import _carousel from '../scripts/carousel'
+		import _submit from '../scripts/form'
+		import _prefilters from '../scripts/prefilters'
+		import _flipfone from '../scripts/flipfone'
+		import _fuzzySearch from '../scripts/fuzzy-search'
+
+		const swup = new Swup({
+			animationSelector: '[class*="swup-"]',
+			containers: ['#swup', '#footer'],
+			animateHistoryBrowsing: true,
+			plugins: [
+				new SwupProgressPlugin({ finishAnimation: false }),
+				new SwupHeadPlugin(),
+			],
+		})
+
+		document.addEventListener('DOMContentLoaded', () => {
+			once()
+			init()
+		})
+		swup.hooks.on('page:view', () => init())
+
+		function init() {
+			_active()
+			_intoView()
+			_flipper()
+			_modal()
+			_backdrop()
+			_carousel()
+			_submit()
+			_flipfone()
+			_fuzzySearch()
+		}
+
+		function once() {
+			_prefilters()
+		}
+	</script>
 </html>
-
-<style is:global>
-	html.is-changing .swup-in { @apply opacity-100 duration-[.4s] ease-[cubic-bezier(0,0.16,0,1)]; }
-	html.is-animating .swup-in { @apply opacity-0 scale-[.99] translate-y-10 ease-in; }
-	.swup-progress-bar { @apply h-1 bg-accent-600; }
-	main:focus { outline: none; }
-    button { text-align: inherit; }
-	svg { @apply flex-shrink-0 pointer-events-none fill-current; }
-</style>
-
-<script>
-    import Swup from 'swup'
-    import SwupProgressPlugin from '@swup/progress-plugin'
-    import SwupHeadPlugin from '@swup/head-plugin'
-    import _active from '../scripts/active'
-    import _flipper from '../scripts/flipper'
-    import _intoView from '../scripts/into-view'
-    import _modal from '../scripts/modal'
-    import _backdrop from '../scripts/backdrop'
-    import _carousel from '../scripts/carousel'
-    import _submit from '../scripts/form'
-    import _prefilters from '../scripts/prefilters'
-    import _flipfone from '../scripts/flipfone'
-    import _fuzzySearch from '../scripts/fuzzy-search'
-
-    const swup = new Swup({
-        animationSelector: '[class*="swup-"]',
-        containers: ['#swup', '#footer'],
-        animateHistoryBrowsing: true,
-        plugins: [
-            new SwupProgressPlugin({ finishAnimation: false }),
-            new SwupHeadPlugin()
-        ]
-    })
-
-    document.addEventListener('DOMContentLoaded', () => {
-        once()
-        init()
-    })
-    swup.hooks.on('page:view', () => init())
-
-    function init() {
-        _active()
-        _intoView()
-        _flipper()
-        _modal()
-        _backdrop()
-        _carousel()
-        _submit()
-        _flipfone()
-        _fuzzySearch()
-    }
-
-    function once() {
-        _prefilters()
-    }
-</script>

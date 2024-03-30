@@ -24,7 +24,7 @@ export default defineConfig({
             accessToken: env.STORYBLOK_TOKEN,
             components: {
                 page: 'composites/Page',
-                hero: 'composites/Hero',
+                elevatorPitch: 'composites/ElevatorPitch',
                 flipfone: 'composites/Flipfone',
                 callout: 'composites/Callout',
                 feature: 'composites/Feature',
