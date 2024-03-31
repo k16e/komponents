@@ -56,7 +56,7 @@ const { blok } = Astro.props
 			</div>
 		</Grid>
 	</Wrapper>
-	<div class:list={[_padB()]}>
+	<div class:list={[_padB(), 'flex flex-col gap-3']}>
 		<div
 			class:list={[
 				`group flex snap-x overflow-x-auto gap-3 lg:overflow-x-clip pt-4
@@ -74,6 +74,6 @@ const { blok } = Astro.props
 				))
 			}
 		</div>
-		<div class='hidden lg:flex overflow-x-clip gap-3'></div>
+		<div class='hidden lg:flex overflow-x-clip gap-3 -mt-[5.5%] xl:-mt-[4%] 2xl:-mt-[6%]'></div>
 	</div>
 </Section>
