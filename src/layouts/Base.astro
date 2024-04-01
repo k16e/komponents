@@ -123,9 +123,9 @@ _addAffiliates(affiliates)
 				-ms-overflow-style: none; /* IE and Edge */
 				scrollbar-width: none; /* Firefox */
 			}
-            .glide__slide--active {
-                z-index: 1;
-            }
+			.glide__slide--active {
+				z-index: 1;
+			}
 		</style>
 
 		<script>
@@ -141,8 +141,7 @@ _addAffiliates(affiliates)
 			import _prefilters from '@scripts/prefilters'
 			import _flipfone from '@scripts/flipfone'
 			import _fuzzySearch from '@scripts/fuzzy-search'
-			import _isMobile from '@scripts/is-mobile'
-			import Glide from '@glidejs/glide'
+			import _elevatorPitch from '@scripts/elevator-pitch'
 
 			const swup = new Swup({
 				animationSelector: '[class*="swup-"]',
@@ -153,17 +152,6 @@ _addAffiliates(affiliates)
 					new SwupHeadPlugin(),
 				],
 			})
-
-			const pitch = new Glide('[data-elevator-pitch]', {
-				type: 'carousel',
-				autoplay: 3000,
-				perView: 3,
-				breakpoints: {
-					1024: { perView: 2 },
-					576: { perView: 1 },
-				}
-			})
-			pitch.mount()
 
 			document.addEventListener('DOMContentLoaded', () => {
 				once()
@@ -180,7 +168,7 @@ _addAffiliates(affiliates)
 				_submit()
 				_flipfone()
 				_fuzzySearch()
-				_isMobile()
+				_elevatorPitch()
 			}
 
 			function once() {
