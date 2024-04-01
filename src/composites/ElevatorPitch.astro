@@ -56,10 +56,10 @@ const { blok } = Astro.props
 			</div>
 		</Grid>
 	</Wrapper>
-	<div class:list={[_padB()]} data-elevator-pitch>
+	<div class:list={[_padB(), 'relative']} data-elevator-pitch>
 		<div
 			class:list={[
-				`group gap-3 py-4 sm:py-8 scrollbar-hide glide__track relative`,
+				`group gap-3 py-4 scrollbar-hide glide__track relative`,
 			]}
 			data-glide-el='track'>
 			<div class='glide__slides'>
@@ -92,6 +92,18 @@ const { blok } = Astro.props
 					data-glide-dir='>'
 				/>
 			</div>
+		</div>
+		<div
+			class='glide__bullets absolute bottom-5 z-[2]'
+			data-glide-el='controls[nav]'>
+			{
+				blok.images.map((x, i) => (
+					<button
+						class='glide__bullet size-3 bg-accent-500 [&.glide__bullet--active]:size-5 [&.glide__bullet--active]:bg-accent-300'
+						data-glide-dir={`=${i}`}
+					/>
+				))
+			}
 		</div>
 	</div>
 </Section>
