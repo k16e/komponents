@@ -1,8 +1,8 @@
 ---
-import Section from '../layouts/Section.astro'
-import { _padY, _padB } from '../scripts/snips'
-import Cover from '../blocks/Cover.astro'
-import Button from '../atoms/Button.astro'
+import Section from '@layouts/Section.astro'
+import { _padY, _padB } from '@scripts/snips'
+import Cover from '@blocks/Cover.astro'
+import Button from '@atoms/Button.astro'
 
 const
     {
@@ -25,19 +25,5 @@ const
                 </div>
             )) }
         </div>
-        <Button
-            tag="button"
-            icon="arrow-left-fill"
-            color="accent"
-            fab
-            class:list="swiper-button-prev absolute top-1/2 -translate-y-1/2 left-4 sm:left-8 md:left-12 lg:left-16 xl:left-28 z-[2] hidden sm:flex"
-        />
-        <Button
-            tag="button"
-            icon="arrow-right-fill"
-            color="accent"
-            fab
-            class:list="swiper-button-next absolute top-1/2 -translate-y-1/2 right-4 sm:right-8 md:right-12 lg:right-16 xl:right-28 z-[2] hidden sm:flex"
-        />
     </div>
 </Section>

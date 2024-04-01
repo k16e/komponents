@@ -3,11 +3,11 @@ import Head from './Head.astro'
 import Header from './Header.astro'
 import Footer from './Footer.astro'
 import { useStoryblokApi } from '@storyblok/astro'
-import TitleHidden from '../blocks/TitleHidden.astro'
-import Backdrop from '../blocks/Backdrop.astro'
-import Modal from '../blocks/Modal.astro'
-import ModalProduct from '../blocks/ModalProduct.astro'
-import ModalAffiliate from '../blocks/ModalAffiliate.astro'
+import TitleHidden from '@blocks/TitleHidden.astro'
+import Backdrop from '@blocks/Backdrop.astro'
+import Modal from '@blocks/Modal.astro'
+import ModalProduct from '@blocks/ModalProduct.astro'
+import ModalAffiliate from '@blocks/ModalAffiliate.astro'
 import {
 	_products,
 	_addProducts,
@@ -15,10 +15,10 @@ import {
 	_productsNew,
 	_affiliates,
 	_addAffiliates,
-} from '../scripts/store'
-import Toast from '../blocks/Toast.astro'
-import Sheet from '../blocks/Sheet.astro'
-import NavMobile from '../blocks/NavMobile.astro'
+} from '@scripts/store'
+import Toast from '@blocks/Toast.astro'
+import Sheet from '@blocks/Sheet.astro'
+import NavMobile from '@blocks/NavMobile.astro'
 
 const { pageTitle, pageDescription, pageThumbnail, showNav, isError } =
 		Astro.props,
@@ -132,17 +132,16 @@ _addAffiliates(affiliates)
 			import Swup from 'swup'
 			import SwupProgressPlugin from '@swup/progress-plugin'
 			import SwupHeadPlugin from '@swup/head-plugin'
-			import _active from '../scripts/active'
-			import _flipper from '../scripts/flipper'
-			import _intoView from '../scripts/into-view'
-			import _modal from '../scripts/modal'
-			import _backdrop from '../scripts/backdrop'
-			import _carousel from '../scripts/carousel'
-			import _submit from '../scripts/form'
-			import _prefilters from '../scripts/prefilters'
-			import _flipfone from '../scripts/flipfone'
-			import _fuzzySearch from '../scripts/fuzzy-search'
-			import _elevatorPitch from '@scripts/elevator-pitch'
+			import _active from '@scripts/active'
+			import _flipper from '@scripts/flipper'
+			import _intoView from '@scripts/into-view'
+			import _modal from '@scripts/modal'
+			import _backdrop from '@scripts/backdrop'
+			import _submit from '@scripts/form'
+			import _prefilters from '@scripts/prefilters'
+			import _flipfone from '@scripts/flipfone'
+			import _fuzzySearch from '@scripts/fuzzy-search'
+			import _isMobile from '@scripts/is-mobile'
 			import Glide from '@glidejs/glide'
 
 			const swup = new Swup({
@@ -162,8 +161,7 @@ _addAffiliates(affiliates)
 				breakpoints: {
 					1024: { perView: 2 },
 					576: { perView: 1 },
-				},
-				dragThreshold: 8
+				}
 			})
 			pitch.mount()
 
@@ -179,11 +177,10 @@ _addAffiliates(affiliates)
 				_flipper()
 				_modal()
 				_backdrop()
-				_carousel()
 				_submit()
 				_flipfone()
 				_fuzzySearch()
-				// _elevatorPitch()
+				_isMobile()
 			}
 
 			function once() {
