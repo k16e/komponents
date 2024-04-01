@@ -8,7 +8,7 @@ export default function _elevatorPitch() {
 
     new Glide('[data-elevator-pitch]', {
         type: 'carousel',
-        autoplay: 6000,
+        autoplay: 5000,
         perView: 3,
         breakpoints: {
             1024: { perView: 2 },
