@@ -13,6 +13,9 @@ export default function _elevatorPitch() {
         breakpoints: {
             1024: { perView: 2 },
             576: { perView: 1 },
+        },
+        classes: {
+            nav: { active: 'active' }
         }
     }).mount()
 }

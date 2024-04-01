@@ -3,9 +3,6 @@
   width: 100%;
   box-sizing: border-box;
 }
-.glide * {
-  box-sizing: inherit;
-}
 .glide__track {
   overflow: hidden;
 }
@@ -28,7 +25,6 @@
   user-select: none;
 }
 .glide__slide {
-  width: 100%;
   flex-shrink: 0;
   white-space: normal;
   user-select: none;
