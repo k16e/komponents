@@ -140,6 +140,7 @@ _addAffiliates(affiliates)
 			import _flipfone from '../scripts/flipfone'
 			import _fuzzySearch from '../scripts/fuzzy-search'
 			import _elevatorPitch from '@scripts/elevator-pitch'
+			import Glide from '@glidejs/glide'
 
 			const swup = new Swup({
 				animationSelector: '[class*="swup-"]',
@@ -150,6 +151,18 @@ _addAffiliates(affiliates)
 					new SwupHeadPlugin(),
 				],
 			})
+
+			const pitch = new Glide('[data-elevator-pitch]', {
+				type: 'carousel',
+				autoplay: 3000,
+				perView: 3,
+				breakpoints: {
+					1024: { perView: 2 },
+					576: { perView: 1 },
+				},
+				dragThreshold: 8
+			})
+			pitch.mount()
 
 			document.addEventListener('DOMContentLoaded', () => {
 				once()
@@ -167,7 +180,7 @@ _addAffiliates(affiliates)
 				_submit()
 				_flipfone()
 				_fuzzySearch()
-				_elevatorPitch()
+				// _elevatorPitch()
 			}
 
 			function once() {
