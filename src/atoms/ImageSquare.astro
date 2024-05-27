@@ -2,25 +2,35 @@
 import { Image } from 'astro:assets'
 
 const {
-    filename, square = true, lelo, slat,
-    class: classes,
-    ...attrs
+	filename,
+	square = true,
+	lelo,
+	slat,
+	class: classes,
+	...attrs
 } = Astro.props
 ---
+
 <Image
-    src={ filename }
-    alt={ '' }
-    width="1440"
-    height="1440"
-    quality="100"
-    draggable="false"
-    class:list={[
-        'object-cover',
-        square && 'aspect-square',
-        (lelo || slat) && 'aspect-[3/4] h-[520px] sm:h-[640px]',
-        lelo && 'md:h-[720px]',
-        slat && 'clip-path-xs',
-        classes
-    ]}
-    { ...attrs }
+	src={filename}
+	alt={''}
+	widths={[576, 768, 960, 1280, 1600, 1920]}
+	sizes={`(max-width: 475px) 576px,
+        (max-width: 640px) 768px,
+        (max-width: 768px) 960px,
+        (max-width: 1024px) 1280px,
+        (max-width: 1280px) 1600px,
+        1920px`}
+	inferSize={true}
+	quality='100'
+	draggable='false'
+	class:list={[
+		'object-cover',
+		square && 'aspect-square',
+		(lelo || slat) && 'aspect-[3/4] h-[520px] sm:h-[640px]',
+		lelo && 'md:h-[720px]',
+		slat && 'clip-path-xs',
+		classes,
+	]}
+	{...attrs}
 />
