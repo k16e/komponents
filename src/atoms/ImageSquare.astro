@@ -4,8 +4,10 @@ import { Image } from 'astro:assets'
 const {
 	filename,
 	square = true,
+    loading = 'eager',
 	lelo,
 	slat,
+	cover,
 	class: classes,
 	...attrs
 } = Astro.props
@@ -23,12 +25,15 @@ const {
 	inferSize={true}
 	quality='100'
 	draggable='false'
+	loading={loading}
 	class:list={[
 		'object-cover',
 		square && 'aspect-square',
 		(lelo || slat) && 'aspect-[3/4] h-[520px] sm:h-[640px]',
 		lelo && 'md:h-[720px]',
 		slat && 'clip-path-xs',
+		cover &&
+			'min-h-[424px] max-h-[424px] sm:min-h-[480px] sm:max-h-[520px] lg:min-h-[640px] lg:max-h-[640px]',
 		classes,
 	]}
 	{...attrs}
