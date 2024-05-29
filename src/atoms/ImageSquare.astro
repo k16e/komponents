@@ -4,10 +4,11 @@ import { Image } from 'astro:assets'
 const {
 	filename,
 	square = true,
-    loading = 'eager',
+	loading = 'eager',
 	lelo,
 	slat,
 	cover,
+	clip,
 	class: classes,
 	...attrs
 } = Astro.props
@@ -22,7 +23,7 @@ const {
         (max-width: 768px) 960px,
         (max-width: 1024px) 1280px,
         (max-width: 1280px) 1600px`}
-    quality={'high'}
+	quality={'high'}
 	inferSize
 	draggable='false'
 	loading={loading}
@@ -34,6 +35,7 @@ const {
 		slat && 'clip-path-xs',
 		cover &&
 			'min-h-[376px] max-h-[376px] sm:min-h-[480px] sm:max-h-[520px] lg:min-h-[640px] lg:max-h-[640px]',
+		clip === 'y' && 'clip-path-y',
 		classes,
 	]}
 	{...attrs}
