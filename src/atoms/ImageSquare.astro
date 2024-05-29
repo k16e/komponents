@@ -9,7 +9,7 @@ const {
 	slat,
 	cover,
 	clip,
-    asArray,
+	asArray,
 	class: classes,
 	...attrs
 } = Astro.props
@@ -37,7 +37,7 @@ const {
 		cover &&
 			'aspect-video min-h-[376px] max-h-[376px] sm:min-h-[480px] sm:max-h-[520px] lg:min-h-[640px] lg:max-h-[640px]',
 		clip === 'y' && 'clip-path-y',
-        asArray && 'h-[520px] sm:h-[640px] md:h-[720px] max-h-[720px]',
+		asArray && 'h-[520px] sm:h-[640px] md:h-[720px] max-h-[720px]',
 		classes,
 	]}
 	{...attrs}
