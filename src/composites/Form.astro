@@ -8,6 +8,7 @@ import RichText from '@atoms/RichText.astro'
 import { _padY, _padT, _gradientSurface, _empty } from '@scripts/snips'
 import FormContact from '@blocks/FormContact.astro'
 import FormRepairCenter from '@blocks/FormRepairCenter.astro'
+import ImageSquare from '@atoms/ImageSquare.astro'
 
 const { blok } = Astro.props,
 	description = blok.description,
@@ -17,7 +18,10 @@ const { blok } = Astro.props,
 <Section
 	title={blok.title}
 	component={blok.component}
-	class:list={[_padY(), _gradientSurface()]}>
+	class:list={[
+		_empty(blok.context_image) ? _padY() : _padT(),
+		_gradientSurface(),
+	]}>
 	<Wrapper inner class:list={[blok.is_header && 'relative']}>
 		<Grid flipped sticky clip={false}>
 			<Inner slot='trailing'>
@@ -56,16 +60,18 @@ const { blok } = Astro.props,
 	</Wrapper>
 	{
 		!_empty(blok.context_image) && (
-			<div
-				aria-hidden='true'
-				class:list={[
-					`[grid-area:1/1/13/13] xl:[grid-column-start:2] xl:[grid-column-end:12]`,
-					_padT(),
-				]}>
-				<Wrapper
-					inner
-					class:list='h-96 clip-path-xs lg:clip-path-sm bg-accent-600 lg:px-4'
-				/>
+			<div class='grid grid-cols-12'>
+				<div
+					aria-hidden='true'
+					class:list={[
+						`[grid-area:1/1/13/13] xl:[grid-column-start:2] xl:[grid-column-end:12] translate-y-14 sm:translate-y-16 md:translate-y-20 lg:translate-y-0 lg:pt-24`,
+					]}>
+					<ImageSquare
+						slat
+						filename={blok.context_image[0].file.filename}
+						class:list={`md:h-[720px]`}
+					/>
+				</div>
 			</div>
 		)
 	}
