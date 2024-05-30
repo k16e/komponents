@@ -69,7 +69,12 @@ _addAffiliates(affiliates)
 			nav={site.nav}
 			showNav={showNav}
 		/>
-		<main class='flex-1 swup-in pt-14 lg:pt-16' id='swup'>
+		<main
+			class:list={[
+				showActions && 'overflow-y-clip',
+				'flex-1 swup-in pt-14 lg:pt-16',
+			]}
+			id='swup'>
 			<slot />
 		</main>
 		<Footer

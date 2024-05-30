@@ -20,7 +20,7 @@ const { blok } = Astro.props,
 	component={blok.component}
 	class:list={[
 		_empty(blok.context_image) ? _padY() : _padT(),
-		_gradientSurface(),
+		_gradientSurface()
 	]}>
 	<Wrapper inner class:list={[blok.is_header && 'relative']}>
 		<Grid flipped sticky clip={false}>
@@ -64,7 +64,7 @@ const { blok } = Astro.props,
 				<div
 					aria-hidden='true'
 					class:list={[
-						`[grid-area:1/1/13/13] xl:[grid-column-start:2] xl:[grid-column-end:12] translate-y-14 sm:translate-y-16 md:translate-y-20 lg:translate-y-0 lg:pt-24`,
+						`[grid-area:1/1/13/13] xl:[grid-column-start:2] xl:[grid-column-end:12] translate-y-14 sm:translate-y-16 md:translate-y-20 lg:translate-y-24 xl:translate-y-0 lg:pt-24`,
 					]}>
 					<ImageSquare
 						slat

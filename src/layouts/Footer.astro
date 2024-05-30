@@ -17,7 +17,7 @@ const year = new Date().getFullYear(),
 	} = Astro.props
 ---
 
-<footer id='footer' class:list={['-space-y-0.5', classes]} {...props}>
+<footer id='footer' class:list={['-space-y-0.5', (showActions && 'xl:mt-24'), classes]} {...props}>
 	{!showActions && <TwinActions actions={actions} />}
 	<div
 		class='flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/70 py-8 lg:py-0 relative z-30'>
