@@ -18,8 +18,7 @@ export default {
                 md: ['1.055rem', '1.675rem'],
             },
             fontFamily: {
-                sans: ['Kumbh Sans Variable, sans-serif', ...defaultTheme.fontFamily.sans],
-                display: 'Plus Jakarta Sans Variable, sans-serif'
+                sans: ['Kumbh Sans Variable, sans-serif', ...defaultTheme.fontFamily.sans]
             },
             colors: {
                 accent: {
