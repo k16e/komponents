@@ -1,5 +1,17 @@
 [[redirects]]
   from = "https://komponents-v2.netlify.app"
-  to = "https://komponents-v2.k16e.co"
+  to = "https://komponents.ng"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://komponents.com.ng"
+  to = "https://komponents.ng"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://komponents.com.ng"
+  to = "https://komponents.ng"
   status = 301
   force = true
