@@ -12,8 +12,15 @@ const { class: classes, ...props } = Astro.props
             prose-h3:text-2xl prose-h3:font-bold prose-h3:text-dark-950 prose-h3:mt-7
             prose-h1:font-bold prose-h1:text-xl prose-headings:underline prose-p:leading-[1.55]
             prose-headings:first-of-type:mt-0
+
         `,
 		classes,
 	]}>
 	<slot />
 </div>
+
+<style is:global>
+	li p {
+		@apply !my-0;
+	}
+</style>
