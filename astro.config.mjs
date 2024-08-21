@@ -22,6 +22,8 @@ export default defineConfig({
         }),
         storyblok({
             accessToken: env.STORYBLOK_TOKEN,
+            livePreview: false,
+            bridge: import.meta.env.DEV,
             components: {
                 page: 'composites/Page',
                 elevatorPitch: 'composites/ElevatorPitch',
