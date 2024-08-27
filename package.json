@@ -16,6 +16,7 @@
         "@glidejs/glide": "^3.6.2",
         "@nanostores/persistent": "^0.10.2",
         "@storyblok/astro": "^5.0.1",
+        "@storyblok/richtext": "^1.0.0",
         "@swup/a11y-plugin": "^5.0.0",
         "@swup/head-plugin": "^2.2.0",
         "@swup/preload-plugin": "^3.2.10",
