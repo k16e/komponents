@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+
+        @media (prefers-color-scheme: dark) {
+
+        }
+    }
+
+    html.is-changing .swup-in {
+        @apply opacity-100 duration-[.4s] ease-[cubic-bezier(0,0.16,0,1)];
+    }
+    html.is-animating .swup-in {
+        @apply opacity-0 scale-[.99] translate-y-10 ease-in;
+    }
+    .swup-progress-bar {
+        @apply h-1 bg-accent-600;
+    }
+    main:focus {
+        outline: none;
+    }
+    button {
+        text-align: inherit;
+    }
+
+    svg {
+        @apply flex-shrink-0 pointer-events-none fill-current;
+    }
+    br[key] {
+        display: none;
+    }
+    /* For Webkit-based browsers (Chrome, Safari and Opera) */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* For IE, Edge and Firefox */
+    .scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    .glide__slide--active {
+        z-index: 1;
+    }
+}
+
+@layer components {
+
+}
+
+@layer utilities {
+
+}

@@ -4,6 +4,7 @@ import { SEO } from 'astro-seo'
 import _slugify from '@scripts/slugify'
 import '@styles/glide.core.min.css'
 import '@styles/glide.theme.min.css'
+import '@styles/global.css'
 
 const { title, image, description = '' } = Astro.props,
 	canonicalURL = new URL(Astro.url.pathname, Astro.site),
