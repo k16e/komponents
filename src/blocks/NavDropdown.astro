@@ -1,17 +1,44 @@
 ---
+import Anchor from '@atoms/Anchor.astro'
+import Button from '@atoms/Button.astro'
 import Icon from '@atoms/Icon.astro'
+import _slugify from '@scripts/slugify'
+import { _transition } from '@scripts/snips'
+
 const { list, class: classes, ...props } = Astro.props
 ---
 
 <div
 	class:list={[
 		classes,
-		'fixed top-[var(--r-spacing-16)] left-1/2 right-1/2 -translate-x-1/2 z-50 w-[15rem] h-[23.5rem] r-shadow-100',
+		'fixed top-[var(--r-spacing-16)] left-1/2 right-1/2 -translate-x-1/2 z-50 w-[16rem] h-[25rem] r-shadow-100',
 	]}
 	{...props}>
 	<div class='size-full bg-[var(--r-color-layer-1)] r-clip-path'>
-		<ul class="px-4 py-8">
-			{list.value.list.map((el, idx) => <li class='flex items-center h-10 w-full'>{el.title}</li>)}
+		<ul class='py-10 space-y-2'>
+			{
+				list.value.list.map((el, idx) => (
+					<li class='flex items-center h-10 w-full group/anchor'>
+						<Anchor
+							href={`/partners/#${_slugify(el.title)}`}
+							hover='accent'
+							class:list='relative [&.active]:text-accent-600 group-hover/anchor:text-accent-600 size-full px-5'
+							aria-label={`${el.title} Section of Our OEM Partners`}>
+							<span
+								set:text={el.title}
+								class='font-semibold uppercase tracking-wider text-xs'
+							/>
+							<Icon
+								name='leadingbar'
+								class:list={[
+									'absolute bottom-1 left-5 w-[24px] h-[4px] text-accent-600 opacity-0 group-hover/anchor:opacity-100',
+									_transition(),
+								]}
+							/>
+						</Anchor>
+					</li>
+				))
+			}
 		</ul>
 	</div>
 </div>
