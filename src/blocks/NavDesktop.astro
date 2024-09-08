@@ -12,13 +12,14 @@ const { links, list } = Astro.props
 <ul class='hidden xl:flex text-surface-700'>
 	{
 		links.map((link) => (
-			<li class='group/li relative [transform:translateZ(0)]'>
+			<li class='group/li relative'>
 				<Anchor
 					href={_slug(link.link)}
 					hover='accent'
 					class:list='relative group/anchor [&.active]:text-accent-600 group-hover/li:text-accent-600'
 					data-anchor={_slugify(link.link.story.full_slug)}
-					aria-label={`${link.title} Page`}>
+					aria-label={`${link.title} Page`}
+					data-toggle='submenu'>
 					<Button
 						label={link.title}
 						color={link.color}
@@ -29,9 +30,9 @@ const { links, list } = Astro.props
 						class:list='absolute bottom-0 left-1/2 -translate-x-1/2 w-[24px] h-[3px] text-accent-600 hidden group-[&.active]/anchor:block'
 					/>
 				</Anchor>
-				{/* {_slugify(link.link.story.full_slug) === 'partners' && (
-					<NavDropdown list={list} />
-				)} */}
+				{_slugify(link.link.story.full_slug) === 'partners' && (
+					<NavDropdown list={list} data-menu='submenu' class:list={'translate-y-4 transition duration-300 opacity-0 invisible group-hover/li:-translate-y-6 group-hover/li:opacity-100 group-hover/li:visible'}/>
+				)}
 			</li>
 		))
 	}
