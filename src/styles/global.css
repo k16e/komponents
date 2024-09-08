@@ -4,6 +4,7 @@
 
 @layer base {
     :root {
+        --r-util-16: theme('spacing.16');
 
         @media (prefers-color-scheme: dark) {
 
