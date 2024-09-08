@@ -1,31 +1,38 @@
 ---
-import Button from '../atoms/Button.astro'
-import Anchor from '../atoms/Anchor.astro'
-import Icon from '../atoms/Icon.astro'
-import _slugify from '../scripts/slugify'
-import _slug from '../scripts/slug'
+import Button from '@atoms/Button.astro'
+import Anchor from '@atoms/Anchor.astro'
+import Icon from '@atoms/Icon.astro'
+import _slugify from '@scripts/slugify'
+import _slug from '@scripts/slug'
+import NavDropdown from '@blocks/NavDropdown.astro'
 
-const { links } = Astro.props
+const { links, list } = Astro.props
 ---
-<ul class="hidden xl:flex text-surface-700">
-	{ links.map((link: any) => (
-        <li class="group/li">
-            <Anchor
-                href={ _slug(link.link) }
-                hover="accent"
-                class:list="relative group/anchor [&.active]:text-accent-600 group-hover/li:text-accent-600"
-                data-anchor={ _slugify(link.link.story.full_slug) }
-                aria-label={ `${link.title} Page` }>
-                <Button
-                    label={ link.title }
-                    color={ link.color }
-                    underbar={ link.gets_underbar }
-                />
-                <Icon
-                    name="centerbar"
-                    class:list="absolute bottom-0 left-1/2 -translate-x-1/2 w-[24px] h-[3px] text-accent-600 hidden group-[&.active]/anchor:block"
-                />
-            </Anchor>
-        </li>
-	)) }
+
+<ul class='hidden xl:flex text-surface-700'>
+	{
+		links.map((link) => (
+			<li class='group/li'>
+				<Anchor
+					href={_slug(link.link)}
+					hover='accent'
+					class:list='relative group/anchor [&.active]:text-accent-600 group-hover/li:text-accent-600'
+					data-anchor={_slugify(link.link.story.full_slug)}
+					aria-label={`${link.title} Page`}>
+					<Button
+						label={link.title}
+						color={link.color}
+						underbar={link.gets_underbar}
+					/>
+					<Icon
+						name='centerbar'
+						class:list='absolute bottom-0 left-1/2 -translate-x-1/2 w-[24px] h-[3px] text-accent-600 hidden group-[&.active]/anchor:block'
+					/>
+				</Anchor>
+				{/* {_slugify(link.link.story.full_slug) === 'partners' && (
+					<NavDropdown list={list} class:list={'absolute'} />
+				)} */}
+			</li>
+		))
+	}
 </ul>

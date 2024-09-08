@@ -1,0 +1,17 @@
+---
+const {
+    list,
+    class: classes,
+    ...props
+} = Astro.props
+---
+
+<ul class:list={[classes]} {...props}>
+    {
+        list.value.list.map((el, idx) => (
+            <li class=''>
+                {el.title}
+            </li>
+        ))
+    }
+</ul>

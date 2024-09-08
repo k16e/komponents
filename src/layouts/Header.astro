@@ -1,10 +1,11 @@
 ---
-import Wrapper from './Wrapper.astro'
+import Wrapper from '@layouts/Wrapper.astro'
 import Icon from '@atoms/Icon.astro'
 import ContactActions from '@blocks/ContactActions.astro'
 import NavDesktop from '@blocks/NavDesktop.astro'
 import { _transition } from '@scripts/snips'
 import TitleHidden from '@blocks/TitleHidden.astro'
+import { _partners } from '@scripts/store'
 
 const {
 	title,
@@ -35,7 +36,7 @@ const {
 				showNav && (
 					<nav>
 						<TitleHidden tag='h2' title='Navigation for Desktop' />
-						<NavDesktop links={nav} />
+						<NavDesktop links={nav} list={_partners} />
 					</nav>
 				)
 			}

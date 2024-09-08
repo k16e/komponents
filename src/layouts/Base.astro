@@ -1,7 +1,7 @@
 ---
-import Head from './Head.astro'
-import Header from './Header.astro'
-import Footer from './Footer.astro'
+import Head from '@layouts/Head.astro'
+import Header from '@layouts/Header.astro'
+import Footer from '@layouts/Footer.astro'
 import { useStoryblokApi } from '@storyblok/astro'
 import TitleHidden from '@blocks/TitleHidden.astro'
 import Backdrop from '@blocks/Backdrop.astro'
@@ -15,6 +15,8 @@ import {
 	_productsNew,
 	_affiliates,
 	_addAffiliates,
+	_partners,
+    _addPartners,
 } from '@scripts/store'
 import Toast from '@blocks/Toast.astro'
 import Sheet from '@blocks/Sheet.astro'
@@ -36,20 +38,26 @@ let { data: dataProducts } = await api.get(`cdn/stories/products`, {
 		version: import.meta.env.DEV ? 'draft' : 'published',
 	}),
 	products = dataProducts.story.content.body
-		.filter((el: any) => el.component === 'products')[0]
-		.products.filter((el: any) => el.in_stock)
+		.filter((el) => el.component === 'products')[0]
+		.products.filter((el) => el.in_stock)
 		.sort((a: any, b: any) => b.is_new - a.is_new),
 	{ data: dataAffiliates } = await api.get(`cdn/stories/affiliates`, {
 		version: import.meta.env.DEV ? 'draft' : 'published',
 		resolve_links: 'url',
 	}),
 	affiliates = dataAffiliates.story.content.body
-		.filter((el: any) => el.component === 'affiliates')[0]
-		.affiliates.filter((el: any) => el.available)
+		.filter((el) => el.component === 'affiliates')[0]
+		.affiliates.filter((el) => el.available),
+	{ data: dataPartners } = await api.get(`cdn/stories/partners`, {
+		version: import.meta.env.DEV ? 'draft' : 'published',
+	}),
+	partners = dataPartners.story.content.body
+		.filter((el) => el.component === 'solar_array')[0]
 
 _addProducts(products)
-_addProductsNew(products.filter((el: any) => el.is_new))
+_addProductsNew(products.filter((el) => el.is_new))
 _addAffiliates(affiliates)
+_addPartners(partners)
 ---
 
 <!doctype html>
