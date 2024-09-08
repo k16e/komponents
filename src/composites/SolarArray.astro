@@ -9,6 +9,7 @@ import { _padY, _padB, _even, _odd } from '@scripts/snips'
 import _slug from '@scripts/slug'
 import Anchor from '@atoms/Anchor.astro'
 import Button from '@atoms/Button.astro'
+import _slugify from '@scripts/slugify'
 
 const { blok } = Astro.props
 ---
@@ -24,7 +25,11 @@ const { blok } = Astro.props
 		class:list='space-y-[-92px] lg:space-y-[-74px]'>
 		{
 			blok.list.map((el: any, idx: number) => (
-				<Split tag='li' gap alternateLg={_even(idx) ? false : true}>
+				<Split
+					tag='li'
+					gap
+					alternateLg={_even(idx) ? false : true}
+					id={_slugify(el.title)}>
 					<div
 						slot='leading'
 						class:list={[
@@ -64,7 +69,7 @@ const { blok } = Astro.props
 					<ImageSquare
 						slot='trailing'
 						filename={el.image.filename}
-                        asArray
+						asArray
 						class:list={[
 							'group-[&.order-2]:clip-path-b group-[&.order-1]:clip-path-t lg:!clip-path-y',
 						]}
