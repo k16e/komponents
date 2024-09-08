@@ -30,7 +30,9 @@ const { blok } = Astro.props
 					gap
 					alternateLg={_even(idx) ? false : true}
 					id={_slugify(el.title)}
-					class:list={'scroll-mt-[var(--r-util-16)]'}>
+					class:list={
+						'scroll-mt-[var(--r-spacing-16)] lg:scroll-mt-[var(--r-spacing-20)]'
+					}>
 					<div
 						slot='leading'
 						class:list={[
