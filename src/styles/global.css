@@ -6,6 +6,8 @@
     :root {
         --r-spacing-16: theme('spacing.16');
         --r-spacing-20: theme('spacing.20');
+        --r-color-layer-1: #ffffff;
+        --r-color-primary: #de3d31;
 
         @media (prefers-color-scheme: dark) {
 
@@ -54,5 +56,11 @@
 }
 
 @layer utilities {
+    .r-clip-path {
+        clip-path: polygon(0 8%, 100% 0, 100% 92%, 0% 100%);
+    }
 
+    .r-shadow-100 {
+        filter: drop-shadow(0 2px 4px rgb(222 61 49 / 0.12)) drop-shadow(0 4px 4px rgb(222 61 49 / 0.08));
+    }
 }

@@ -12,7 +12,7 @@ const { links, list } = Astro.props
 <ul class='hidden xl:flex text-surface-700'>
 	{
 		links.map((link) => (
-			<li class='group/li'>
+			<li class='group/li relative [transform:translateZ(0)]'>
 				<Anchor
 					href={_slug(link.link)}
 					hover='accent'
@@ -30,7 +30,7 @@ const { links, list } = Astro.props
 					/>
 				</Anchor>
 				{/* {_slugify(link.link.story.full_slug) === 'partners' && (
-					<NavDropdown list={list} class:list={'absolute'} />
+					<NavDropdown list={list} />
 				)} */}
 			</li>
 		))

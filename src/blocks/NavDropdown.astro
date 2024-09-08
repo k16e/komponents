@@ -1,17 +1,17 @@
 ---
-const {
-    list,
-    class: classes,
-    ...props
-} = Astro.props
+import Icon from '@atoms/Icon.astro'
+const { list, class: classes, ...props } = Astro.props
 ---
 
-<ul class:list={[classes]} {...props}>
-    {
-        list.value.list.map((el, idx) => (
-            <li class=''>
-                {el.title}
-            </li>
-        ))
-    }
-</ul>
+<div
+	class:list={[
+		classes,
+		'fixed top-[var(--r-spacing-16)] left-1/2 right-1/2 -translate-x-1/2 z-50 w-[15rem] h-[23.5rem] r-shadow-100',
+	]}
+	{...props}>
+	<div class='size-full bg-[var(--r-color-layer-1)] r-clip-path'>
+		<ul class="px-4 py-8">
+			{list.value.list.map((el, idx) => <li class='flex items-center h-10 w-full'>{el.title}</li>)}
+		</ul>
+	</div>
+</div>
