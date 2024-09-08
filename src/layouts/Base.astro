@@ -16,7 +16,7 @@ import {
 	_affiliates,
 	_addAffiliates,
 	_partners,
-    _addPartners,
+	_addPartners,
 } from '@scripts/store'
 import Toast from '@blocks/Toast.astro'
 import Sheet from '@blocks/Sheet.astro'
@@ -51,8 +51,9 @@ let { data: dataProducts } = await api.get(`cdn/stories/products`, {
 	{ data: dataPartners } = await api.get(`cdn/stories/partners`, {
 		version: import.meta.env.DEV ? 'draft' : 'published',
 	}),
-	partners = dataPartners.story.content.body
-		.filter((el) => el.component === 'solar_array')[0]
+	partners = dataPartners.story.content.body.filter(
+		(el) => el.component === 'solar_array',
+	)[0]
 
 _addProducts(products)
 _addProductsNew(products.filter((el) => el.is_new))
@@ -128,7 +129,11 @@ _addPartners(partners)
 				containers: ['#swup', '#footer'],
 				animateHistoryBrowsing: true,
 				plugins: [
-					new SwupProgressPlugin({ finishAnimation: false }),
+					new SwupProgressPlugin({
+						className: 'swup-progress-bar',
+						delay: 150,
+						finishAnimation: false,
+					}),
 					new SwupHeadPlugin(),
 				],
 			})
