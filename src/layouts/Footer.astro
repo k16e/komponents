@@ -17,7 +17,10 @@ const year = new Date().getFullYear(),
 	} = Astro.props
 ---
 
-<footer id='footer' class:list={['-space-y-0.5', (showActions && 'xl:mt-24'), classes]} {...props}>
+<footer
+	id='footer'
+	class:list={['-space-y-0.5', showActions && 'xl:mt-24', classes]}
+	{...props}>
 	{!showActions && <TwinActions actions={actions} />}
 	<div
 		class='flex items-center lg:h-[72px] bg-surface-950 border-t border-surface-900/70 py-8 lg:py-0 relative z-30'>
@@ -27,7 +30,9 @@ const year = new Date().getFullYear(),
 				<div class='flex items-center space-x-4'>
 					<Icon name='icon' class='w-8 text-white' />
 					<small class='text-sm text-white/65'>
-						Copyright {year}
+                        Copyright
+						<span set:html='©' class="text-base"/>
+						{year}
 						{legalName}
 					</small>
 				</div>
