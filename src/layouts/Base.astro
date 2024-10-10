@@ -17,6 +17,9 @@ import {
 	_addAffiliates,
 	_partners,
 	_addPartners,
+    // TO-DO revert to fetching dynamic
+    _productsByd,
+    _addProductsByd
 } from '@scripts/store'
 import Toast from '@blocks/Toast.astro'
 import Sheet from '@blocks/Sheet.astro'
@@ -53,12 +56,19 @@ let { data: dataProducts } = await api.get(`cdn/stories/products`, {
 	}),
 	partners = dataPartners.story.content.body.filter(
 		(el) => el.component === 'solar_array',
-	)[0]
+	)[0],
+	{ data: productsByd } = await api.get(`cdn/stories`, {
+		is_startpage: false,
+		starts_with: 'products/byd/',
+		version: import.meta.env.DEV ? 'draft' : 'published',
+	})
 
 _addProducts(products)
 _addProductsNew(products.filter((el) => el.is_new))
 _addAffiliates(affiliates)
 _addPartners(partners)
+// TO-DO Revert to fetching dynamic
+_addProductsByd(productsByd)
 ---
 
 <!doctype html>

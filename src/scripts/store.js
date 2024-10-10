@@ -8,7 +8,8 @@ export const
     _productsNew = atom([]),
     _affiliates = atom([]),
     _affiliate = persistentAtom('affiliate', ''),
-    _partners = atom([])
+    _partners = atom([]),
+    _productsByd = atom([])
 
 export function _setOverlay() { _overlay.set(true) }
 export function _setSheet() { _sheet.set(true) }
@@ -17,6 +18,7 @@ export function _addProductsNew(item) { _productsNew.set(item) }
 export function _addAffiliates(item) { _affiliates.set(item) }
 export function _addAffiliate(item) { _affiliate.set(item) }
 export function _addProducts(item) { _products.set(item) }
+export function _addProductsByd(item) { _productsByd.set(item) }
 export function _addPartners(item) { _partners.set(item) }
 
 export function _unsetOverlay() { _overlay.set(false) }
