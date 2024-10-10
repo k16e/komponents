@@ -25,7 +25,7 @@ const {
         { showTitle && (
             <div
                 class:list={['flex',
-                    centered ? 'flex-col items-center gap-y-4 sm:gap-y-6 lg:gap-y-7' : 'space-x-3 lg:space-x-4 items-end'
+                    centered ? 'flex-col items-center gap-y-4' : 'space-x-3 lg:space-x-4 items-end'
                 ]}>
                 { showSlat &&
                     <Icon
@@ -50,7 +50,7 @@ const {
         ) }
     </div>
     { ((copy || showCopy) || !_empty(links) || link) && (
-        <div class:list={[ centered && 'text-center', 'space-y-8 md:space-y-12' ]}>
+        <div class:list={[ centered && 'text-center', 'space-y-6' ]}>
             {(copy || showCopy) && ( <Copy content={ copy } color={ color } Tag="p"/>)}
             { !_empty(links) && (
                 <ul class:list={[
