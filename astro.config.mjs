@@ -26,6 +26,8 @@ export default defineConfig({
             bridge: import.meta.env.DEV,
             components: {
                 page: 'composites/Page',
+                product: 'composites/Product',
+                partner: 'composites/Partner',
                 elevatorPitch: 'composites/ElevatorPitch',
                 flipfone: 'composites/Flipfone',
                 callout: 'composites/Callout',
