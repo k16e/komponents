@@ -1,8 +1,37 @@
 ---
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
+import Section from '@layouts/Section.astro'
+import Wrapper from '@layouts/Wrapper.astro'
+import CardProduct from '@blocks/CardProduct.astro'
+import _slug from '@scripts/slug'
+import _slugify from '@scripts/slugify'
 
-const { blok } = Astro.props
+const { blok } = Astro.props,
+	{ pathname } = Astro.url,
+	pathArr = pathname.split('/'),
+	isPartner = pathArr.length === 3,
+	partner = (pathArr[2] ??= 'fronius')
 ---
-{ blok.body.map(blok => {
-    return <StoryblokComponent blok={ blok }/>
-}) }
+
+{
+	blok.body.map((blok) => {
+		return <StoryblokComponent blok={blok} />
+	})
+}
+
+{
+	isPartner && (
+		<Section
+			title={'Products'}
+			component={'products'}
+			class:list='pt-8 xs:pt-12 lg:pt-8'>
+			<Wrapper
+				inner
+				tag='ul'
+				padB='b'
+				class:list='w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3'>
+				{ partner }
+			</Wrapper>
+		</Section>
+	)
+}
