@@ -6,7 +6,6 @@ import tailwind from '@astrojs/tailwind'
 const env = loadEnv('', process.cwd(), 'STORYBLOK')
 
 export default defineConfig({
-    // output: 'hybrid',
     site: 'https://komponents.ng',
     prefetch: {
         prefetchAll: true,
