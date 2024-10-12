@@ -9,7 +9,7 @@ const
     redirectHome = { status: 301, destination: '/' }
 
 export default defineConfig({
-    site: 'https://komponents.ng',
+    site: 'https://www.komponents.ng',
     prefetch: {
         prefetchAll: true,
         defaultStrategy: 'viewport',
