@@ -9,9 +9,3 @@
   to = "https://komponents.ng"
   status = 301
   force = true
-
-[[redirects]]
-  from = "https://komponents.com.ng"
-  to = "https://komponents.ng"
-  status = 301
-  force = true

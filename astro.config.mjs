@@ -2,13 +2,13 @@ import { defineConfig } from 'astro/config'
 import { loadEnv } from 'vite'
 import storyblok from '@storyblok/astro'
 import tailwind from '@astrojs/tailwind'
-import pages from 'astro-pages'
 
 const
     env = loadEnv('', process.cwd(), 'STORYBLOK'),
     redirectHome = { status: 301, destination: '/' }
 
 export default defineConfig({
+    // output: 'hybrid',
     site: 'https://komponents.ng',
     prefetch: {
         prefetchAll: true,
@@ -16,7 +16,6 @@ export default defineConfig({
         ignoreSlowConnection: true
     },
     integrations: [
-        pages('routes'),
         tailwind({
             nesting: true
         }),
@@ -25,9 +24,9 @@ export default defineConfig({
             livePreview: false,
             bridge: import.meta.env.DEV,
             components: {
-                page: 'composites/Page',
-                product: 'composites/Product',
-                partner: 'composites/Partner',
+                page: 'templates/Page',
+                product: 'templates/Product',
+                partner: 'templates/Partner',
                 elevatorPitch: 'composites/ElevatorPitch',
                 flipfone: 'composites/Flipfone',
                 callout: 'composites/Callout',
