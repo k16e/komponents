@@ -6,18 +6,18 @@ import Base from '@layouts/Base.astro'
 // Let Astro know what routes to build
 export async function getStaticPaths() {
 	const storyblokApi = useStoryblokApi(),
-		{ data } = await storyblokApi.get('cdn/links', {
+		{ data } = await storyblokApi.get('cdn/links/', {
 			version: import.meta.env.DEV ? 'draft' : 'published',
 		})
 
 	console.log('Data', data)
 
 	let links = data.links
-	links = Object.values(links).filter((link) => !(link.slug === 'settings'))
+	links = Object.values(links).filter(link => !(link.slug === 'settings'))
 
 	console.log('Links', links)
 
-	return links.map((link) => {
+	return links.map(link => {
 		return {
 			params: {
 				slug: link.slug === 'home' ? undefined : link.slug,
