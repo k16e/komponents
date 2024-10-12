@@ -17,9 +17,9 @@ import {
 	_addAffiliates,
 	_partners,
 	_addPartners,
-    // TO-DO revert to fetching dynamic
-    _productsByd,
-    _addProductsByd
+	// TO-DO revert to fetching dynamic
+	_productsByd,
+	_addProductsByd,
 } from '@scripts/store'
 import Toast from '@blocks/Toast.astro'
 import Sheet from '@blocks/Sheet.astro'
@@ -59,7 +59,8 @@ let { data: dataProducts } = await api.get(`cdn/stories/products`, {
 	)[0],
 	{ data: productsByd } = await api.get(`cdn/stories`, {
 		is_startpage: false,
-		starts_with: 'products/byd/',
+		starts_with: 'products/',
+        resolve_relations: 'product.partner',
 		version: import.meta.env.DEV ? 'draft' : 'published',
 	})
 
