@@ -3,9 +3,7 @@ import { loadEnv } from 'vite'
 import storyblok from '@storyblok/astro'
 import tailwind from '@astrojs/tailwind'
 
-const
-    env = loadEnv('', process.cwd(), 'STORYBLOK'),
-    redirectHome = { status: 301, destination: '/' }
+const env = loadEnv('', process.cwd(), 'STORYBLOK')
 
 export default defineConfig({
     // output: 'hybrid',
@@ -50,12 +48,6 @@ export default defineConfig({
             }
         })
     ],
-    redirects: {
-        '/pages': redirectHome,
-        '/pages/': redirectHome,
-        '/home': redirectHome,
-        '/home/': redirectHome,
-    },
     image: {
         domains: ['a.storyblok.com']
     },
