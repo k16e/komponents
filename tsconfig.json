@@ -11,6 +11,7 @@
             "@blocks/*": ["src/blocks/*"],
             "@layouts/*": ["src/layouts/*"],
             "@composites/*": ["src/composites/*"],
+            "@templates/*": ["src/templates/*"],
             "@content/*": ["src/content/*"],
             "@scripts/*": ["src/scripts/*"],
             "@styles/*": ["src/styles/*"],
