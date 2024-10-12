@@ -17,8 +17,6 @@ const { blok } = Astro.props,
 	productsByPartner = products.filter(
 		(el) => el.content.partner.slug === partner,
 	)
-
-    console.log(Astro.url)
 ---
 
 {
@@ -37,12 +35,16 @@ const { blok } = Astro.props,
 				inner
 				tag='ul'
 				padB='b'
-				class:list='w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3'>
+				class:list='w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3'
+				data-list-products>
 				{productsByPartner.map((el, idx) => (
 					<li>
 						<CardProduct
 							filename={el.content.image[0].file.filename}
-							link={!_empty(el.content.link) && _slug(el.content.link[0].link)}
+							link={
+								!_empty(el.content.link) &&
+								_slug(el.content.link[0].link)
+							}
 							name={el.content.name}
 							isNew={el.content.is_new}
 							data-modal-trigger={el.content.is_new}

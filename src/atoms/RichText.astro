@@ -1,5 +1,5 @@
 ---
-import { richTextResolver } from '@storyblok/richtext'
+import { renderRichText } from '@storyblok/astro'
 import Prose from '@atoms/Prose.astro'
 
 const {
@@ -8,9 +8,7 @@ const {
 		color = 'surface',
 		class: classes,
 		...rest
-	} = Astro.props,
-	{ render } = richTextResolver(),
-	html = render(text)
+	} = Astro.props
 ---
 
 <Prose
@@ -21,5 +19,5 @@ const {
 		classes,
 	]}
 	{...rest}>
-	<Fragment set:html={html} />
+	<Fragment set:html={ renderRichText(text) } />
 </Prose>
