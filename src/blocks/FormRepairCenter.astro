@@ -8,6 +8,7 @@ import InputCheck from '@atoms/InputCheck.astro'
 import InputFile from '@atoms/InputFile.astro'
 import Icon from '@atoms/Icon.astro'
 import RichText from '@atoms/RichText.astro'
+import { FORM_REPAIR_CENTER } from '@scripts/constants'
 
 const { consent } = Astro.props
 ---
@@ -15,7 +16,7 @@ const { consent } = Astro.props
 <form
 	class='grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4'
 	id='repair-center'
-	form-id='Mj2Ymob6y'>
+	form-id={FORM_REPAIR_CENTER}>
 	<div class='grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3'>
 		<Input
 			type='text'

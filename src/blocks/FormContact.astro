@@ -7,6 +7,7 @@ import DashedBox from '@layouts/DashedBox.astro'
 import InputCheck from '@atoms/InputCheck.astro'
 import RichText from '@atoms/RichText.astro'
 import { _affiliate, _affiliates } from '@scripts/store'
+import { FORM_CONTACT } from '@scripts/constants'
 
 const { consent } = Astro.props
 ---
@@ -14,7 +15,7 @@ const { consent } = Astro.props
 <form
 	class='grid grid-cols-1 gap-6 [&>:nth-last-child(2)]:mb-4'
 	id='contact-form'
-	form-id='PPuz35y0H'>
+	form-id={FORM_CONTACT}>
 	<div class='grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3'>
 		<Input
 			type='text'

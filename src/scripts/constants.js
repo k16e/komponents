@@ -1,0 +1,6 @@
+const FORM_CONTACT = 'mB9D4ynIB'
+const FORM_REPAIR_CENTER = 'btz2qs5IC'
+
+export {
+    FORM_CONTACT, FORM_REPAIR_CENTER
+}
