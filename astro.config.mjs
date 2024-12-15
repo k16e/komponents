@@ -8,9 +8,7 @@ const env = loadEnv('', process.cwd(), 'STORYBLOK')
 export default defineConfig({
     site: 'https://komponents.ng',
     prefetch: {
-        prefetchAll: true,
-        defaultStrategy: 'viewport',
-        ignoreSlowConnection: true
+        prefetchAll: true
     },
     integrations: [
         tailwind({

@@ -5,7 +5,15 @@
   force = true
 
 [[redirects]]
-  from = "https://komponents.com.ng"
-  to = "https://komponents.ng"
+  from = "https://komponents.com.ng/*"
+  to = "https://komponents.ng/:splat"
   status = 301
   force = true
+
+[build]
+    command = "npm cache clean --force && npm i --force && npm run build"
+    publish = "dist"
+
+[build.environment]
+    NODE_VERSION = "18"
+    NPM_VERSION = "7"
