@@ -2,8 +2,8 @@
 import { useStoryblokApi } from '@storyblok/astro'
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import Base from '@layouts/Base.astro'
+import { _getPageData } from '@scripts/storyblok'
 
-// Let Astro know what routes to build
 export async function getStaticPaths() {
 	const storyblokApi = useStoryblokApi(),
 		{ data } = await storyblokApi.get('cdn/links/', {
@@ -11,31 +11,19 @@ export async function getStaticPaths() {
 		})
 
 	let links = data.links
-	links = Object.values(links).filter(link => !(link.slug === 'settings'))
+	links = Object.values(links).filter((link) => !(link.slug === 'settings'))
 
-	return links.map(link => {
+	return links.map((link) => {
 		return {
 			params: {
-				slug: link.slug === 'home' ? undefined : link.slug
-			}
+				slug: link.slug === 'home' ? undefined : link.slug,
+			},
 		}
 	})
 }
 
-// Pull slug from the routes and corresponding content/blocks from Storyblok
-const { slug } = Astro.params,
-	storyblokApi = useStoryblokApi(),
-	{ data } = await storyblokApi.get(
-		`cdn/stories/${slug === undefined ? 'home' : slug}`,
-		{
-			version: import.meta.env.DEV ? 'draft' : 'published',
-			resolve_links: 'url',
-			resolve_relations: 'feature.entry'
-		}
-	),
-	page = data.story,
-	content = page.content,
-	meta = content.meta[0]
+const { slug } = Astro.params
+const { page, content, meta } = await _getPageData(slug)
 ---
 
 <Base

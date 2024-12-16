@@ -1,0 +1,16 @@
+---
+import { useStoryblokApi } from '@storyblok/astro'
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
+import Base from '@layouts/Base.astro'
+import { _getPageData } from '@scripts/storyblok'
+
+const slug = Astro.url.pathname.slice(1)
+const { page, content, meta } = await _getPageData(slug)
+---
+
+<Base
+	pageTitle={meta.title}
+	pageDescription={meta.description}
+	pageThumbnail={meta.image.filename}>
+	<StoryblokComponent blok={content} />
+</Base>

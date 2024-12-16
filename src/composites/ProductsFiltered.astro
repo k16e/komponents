@@ -1,0 +1,24 @@
+---
+import Section from '@layouts/Section.astro'
+import Wrapper from '@layouts/Wrapper.astro'
+import CardProduct from '@blocks/CardProduct.astro'
+import { _padY, _padB, _empty } from '@scripts/snips'
+import _slug from '@scripts/slug'
+import _slugify from '@scripts/slugify'
+
+const { blok } = Astro.props
+---
+
+<Section
+	title={'All Products (Filtered)'}
+	component={'products-filtered'}
+	class:list='pt-8 xs:pt-12 lg:pt-8'>
+	<Wrapper
+		inner
+		tag='ul'
+		padB='b'
+		class:list='w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3'
+		data-all-products>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum saepe a quisquam inventore perferendis incidunt magnam sed amet! Minus numquam iure, nisi iusto rem maiores perspiciatis voluptatibus? Odio, quia mollitia?
+	</Wrapper>
+</Section>
