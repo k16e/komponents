@@ -7,7 +7,11 @@ import _slug from '@scripts/slug'
 import _slugify from '@scripts/slugify'
 import StoryblokClient from 'storyblok-js-client'
 import { PERPAGE } from '@scripts/constants'
+import { _getVisibleItems } from '@scripts/get-visible-items'
+import Pagination from '@blocks/Pagination.astro'
 
+const perPage = PERPAGE
+const page = Astro.url.searchParams.get('page') || '1'
 const { blok } = Astro.props
 const Storyblok = new StoryblokClient({
 	accessToken: import.meta.env.STORYBLOK_TOKEN,
@@ -16,19 +20,21 @@ const Storyblok = new StoryblokClient({
 		type: 'memory',
 	},
 })
-
-let params = {
+const params = {
 	starts_with: 'products/',
 	version: 'published',
-	per_page: PERPAGE,
-	page: 1,
+	is_startpage: false,
 }
-let firstResponse = await Storyblok.get('cdn/stories', params)
-let lastPage = firstResponse.total
-	? Math.ceil(firstResponse.total / PERPAGE)
-	: 1
+const products = await Storyblok.getAll('cdn/stories', params)
 
-console.log(firstResponse)
+const search = Astro.url.searchParams.get('s')
+const current = parseInt(page, 10)
+const { filteredItems, visibleItems } = _getVisibleItems(
+	products,
+	search,
+	current,
+	perPage,
+)
 ---
 
 <Section
@@ -41,9 +47,17 @@ console.log(firstResponse)
 		padB='b'
 		class:list='w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3'
 		data-all-products>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum saepe a
-		quisquam inventore perferendis incidunt magnam sed amet! Minus numquam
-		iure, nisi iusto rem maiores perspiciatis voluptatibus? Odio, quia
-		mollitia?
+		{
+			visibleItems.length > 0 ? (
+				visibleItems.map((i) => <p>{i.content.name}</p>)
+			) : (
+				<p class='text-2xl text-center'>No results found</p>
+			)
+		}
+		<Pagination
+			total={filteredItems.length}
+			size={perPage}
+			current={current}
+		/>
 	</Wrapper>
 </Section>

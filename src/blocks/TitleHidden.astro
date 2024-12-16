@@ -1,8 +1,6 @@
 ---
-const
-    { title, tag = 'h1' }
-    = Astro.props,
-    Tag = tag
+const { title, tag } = Astro.props
+const Tag = tag || 'h1'
 ---
 <Tag
     class='sr-only'

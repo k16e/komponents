@@ -1,0 +1,65 @@
+---
+import { _paginateLink, _truncatesPagination } from '@scripts/pagination'
+import TitleHidden from '@blocks/TitleHidden.astro'
+
+const { ariaLabel = 'Pagination', ...attrs } = Astro.props
+const { total, size, current } = Astro.props,
+	numberOfPages = Math.ceil(total / size)
+const { href } = Astro.url
+const truncatedPagination = _truncatesPagination(numberOfPages, current)
+---
+
+{
+	numberOfPages > 1 && (
+		<nav
+			aria-label={ariaLabel}
+			{...attrs}
+			class:list={['flex items-center w-full']}>
+			<TitleHidden tag='h2' title={ariaLabel} />
+			<ul class='flex items-center w-full justify-center lg:justify-start gap-0.5 sm:gap-3'>
+				{current > 1 && (
+					<li>
+						<a
+							href={_paginateLink(href, current - 1)}
+							aria-label={`Go to page ${current - 1} of ${numberOfPages}`}>
+							{`Go to page ${current - 1} of ${numberOfPages}`}
+						</a>
+					</li>
+				)}
+
+				<li>
+					<ul class='flex items-center gap-1.5 sm:gap-3'>
+						{truncatedPagination.map((number, index) => (
+							<li class='page [&>a[aria-current="page"]]:bg-[var(--color-emphasis)] [&>a]:rounded-full [&>a[aria-current="page"]]:text-white [&>a:not([aria-current="page"])]:hover:bg-[var(--color-bg-default-elevated)]'>
+								{typeof number === 'object' ? (
+									<p>{number.text}</p>
+								) : (
+									<a
+										href={_paginateLink(href, number)}
+										aria-current={
+											number === current
+												? 'page'
+												: undefined
+										}
+										class='flex h-10 w-10 items-center justify-center relative'>
+										{number}
+									</a>
+								)}
+							</li>
+						))}
+					</ul>
+				</li>
+
+				{current < numberOfPages && (
+					<li>
+						<a
+							href={_paginateLink(href, current + 1)}
+							aria-label={`Go to page ${current + 1} of ${numberOfPages}`}>
+							{`Go to page ${current + 1} of ${numberOfPages}`}
+						</a>
+					</li>
+				)}
+			</ul>
+		</nav>
+	)
+}
