@@ -49,7 +49,17 @@ const { filteredItems, visibleItems } = _getVisibleItems(
 		data-all-products>
 		{
 			visibleItems.length > 0 ? (
-				visibleItems.map((i) => <p>{i.content.name}</p>)
+				visibleItems.map(({content},x) => (
+					<CardProduct
+						filename={content.image[0].file.filename}
+						link={!_empty(content.link) && _slug(content.link[0].link)}
+						name={content.name}
+						isNew={content.is_new}
+						data-modal-trigger={content.is_new}
+						data-display={`product-at-${x}`}
+						data-partner={_slugify(content.partner)}
+					/>
+				))
 			) : (
 				<p class='text-2xl text-center'>No results found</p>
 			)

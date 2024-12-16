@@ -6,7 +6,7 @@ export function _paginateLink(baseURL, current) {
 }
 
 export function _truncatesPagination(totalPages, currentPage) {
-    const max = 5
+    const max = 7
 
     if (totalPages <= max) {
         return Array.from({ length: totalPages }, (_, i) => i + 1)
@@ -19,13 +19,13 @@ export function _truncatesPagination(totalPages, currentPage) {
         return [
             1,
             { text: '...' },
-            ...Array.from({ length: 3 }, (_, i) => totalPages - 3 + i),
+            ...Array.from({ length: 5 }, (_, i) => totalPages - 5 + i),
         ]
     }
 
     if (!hasStartEllipsis && hasEndEllipsis) {
         return [
-            ...Array.from({ length: 3 }, (_, i) => i + 1),
+            ...Array.from({ length: 5 }, (_, i) => i + 1),
             { text: '...' },
             totalPages,
         ]
@@ -34,7 +34,7 @@ export function _truncatesPagination(totalPages, currentPage) {
     return [
         1,
         { text: '...' },
-        ...Array.from({ length: 3 }, (_, i) => currentPage - 1 + i),
+        ...Array.from({ length: 5 }, (_, i) => currentPage - 1 + i),
         { text: '...' },
         totalPages,
     ]
