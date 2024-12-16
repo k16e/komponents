@@ -5,8 +5,30 @@ import CardProduct from '@blocks/CardProduct.astro'
 import { _padY, _padB, _empty } from '@scripts/snips'
 import _slug from '@scripts/slug'
 import _slugify from '@scripts/slugify'
+import StoryblokClient from 'storyblok-js-client'
+import { PERPAGE } from '@scripts/constants'
 
 const { blok } = Astro.props
+const Storyblok = new StoryblokClient({
+	accessToken: import.meta.env.STORYBLOK_TOKEN,
+	cache: {
+		clear: 'auto',
+		type: 'memory',
+	},
+})
+
+let params = {
+	starts_with: 'products/',
+	version: 'published',
+	per_page: PERPAGE,
+	page: 1,
+}
+let firstResponse = await Storyblok.get('cdn/stories', params)
+let lastPage = firstResponse.total
+	? Math.ceil(firstResponse.total / PERPAGE)
+	: 1
+
+console.log(firstResponse)
 ---
 
 <Section
@@ -19,6 +41,9 @@ const { blok } = Astro.props
 		padB='b'
 		class:list='w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3'
 		data-all-products>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum saepe a quisquam inventore perferendis incidunt magnam sed amet! Minus numquam iure, nisi iusto rem maiores perspiciatis voluptatibus? Odio, quia mollitia?
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum saepe a
+		quisquam inventore perferendis incidunt magnam sed amet! Minus numquam
+		iure, nisi iusto rem maiores perspiciatis voluptatibus? Odio, quia
+		mollitia?
 	</Wrapper>
 </Section>
