@@ -6,7 +6,7 @@ import { _getPageData } from '@scripts/storyblok'
 
 export async function getStaticPaths() {
 	const storyblokApi = useStoryblokApi()
-	const ssrRoutes = ['products-filtered/']
+	const ssrRoutes = ['products-filtered']
 	const { data } = await storyblokApi.get('cdn/links/', {
 		version: import.meta.env.DEV ? 'draft' : 'published',
 	})
