@@ -26,11 +26,13 @@ const params = {
 	is_startpage: false,
 }
 const products = await Storyblok.getAll('cdn/stories', params)
-
+const filteredProducts = products
+        .filter(i => i.content.in_stock)
+		.sort((a, b) => b.content.is_new - a.content.is_new)
 const search = Astro.url.searchParams.get('s')
 const current = parseInt(page, 10)
 const { filteredItems, visibleItems } = _getVisibleItems(
-	products,
+	filteredProducts,
 	search,
 	current,
 	perPage,
