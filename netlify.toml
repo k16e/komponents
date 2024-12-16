@@ -1,14 +1,18 @@
 [[redirects]]
-  from = "https://komponents-v2.netlify.app"
-  to = "https://komponents.ng"
-  status = 301
-  force = true
+    from = "https://komponents-v2.netlify.app"
+    to = "https://komponents.ng"
+    status = 301
+    force = true
 
 [[redirects]]
-  from = "https://komponents.com.ng/*"
-  to = "https://komponents.ng/:splat"
-  status = 301
-  force = true
+    from = "https://komponents.com.ng/*"
+    to = "https://komponents.ng/:splat"
+    status = 301
+    force = true
+
+[dev]
+   command = "npm run dev"
+   framework = "astro"
 
 [build]
     command = "npm cache clean --force && npm i --force && npm run build"
