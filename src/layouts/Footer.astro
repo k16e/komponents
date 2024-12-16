@@ -5,16 +5,16 @@ import Legal from '@blocks/Legal.astro'
 import Social from '@blocks/Social.astro'
 import TwinActions from '@blocks/TwinActions.astro'
 
-const year = new Date().getFullYear(),
-	{
-		legalName,
-		legalLinks,
-		social,
-		actions,
-		showActions,
-		class: classes,
-		...props
-	} = Astro.props
+const year = new Date().getFullYear()
+const {
+	legalName,
+	legalLinks,
+	social,
+	actions,
+	showActions,
+	class: classes,
+	...props
+} = Astro.props
 ---
 
 <footer
@@ -30,8 +30,8 @@ const year = new Date().getFullYear(),
 				<div class='flex items-center space-x-4'>
 					<Icon name='icon' class='w-8 text-white' />
 					<small class='text-sm text-white/65'>
-                        Copyright
-						<span set:html='©' class="text-base"/>
+						Copyright
+						<span set:html='©' class='text-base' />
 						{year}
 						{legalName}
 					</small>

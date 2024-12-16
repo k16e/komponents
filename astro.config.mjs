@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config'
 import { loadEnv } from 'vite'
 import storyblok from '@storyblok/astro'
 import tailwind from '@astrojs/tailwind'
+import netlify from '@astrojs/netlify'
 
 const env = loadEnv('', process.cwd(), 'STORYBLOK')
 
@@ -9,6 +10,13 @@ export default defineConfig({
     site: 'https://komponents.ng',
     prefetch: {
         prefetchAll: true
+    },
+    adapter: netlify({
+        imageCDN: false,
+        cacheOnDemandPages: true,
+    }),
+    image: {
+        domains: ['a.storyblok.com']
     },
     integrations: [
         tailwind({
@@ -45,9 +53,6 @@ export default defineConfig({
             }
         })
     ],
-    image: {
-        domains: ['a.storyblok.com']
-    },
     build: {
         format: 'preserve'
     }
