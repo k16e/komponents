@@ -1,0 +1,20 @@
+---
+import Copy from '@atoms/Copy.astro'
+import Icon from '@atoms/Icon.astro'
+
+const { id, label, class: classes, ...props } = Astro.props
+---
+
+<label
+	for={id}
+	class:list={[
+		`
+            relative flex items-center justify-center px-2.5 py-1.5 border-[0.09375rem] border-dark-200 rounded-md cursor-pointer
+            group
+        `,
+		classes,
+	]}
+	{...props}>
+	<input type='submit' id={id} class='hidden' />
+	<Copy tag='span' content={label} size='sm' class='block text-inherit' />
+</label>

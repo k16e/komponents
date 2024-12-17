@@ -11,6 +11,7 @@ import { _getVisibleItems } from '@scripts/get-visible-items'
 import Pagination from '@blocks/Pagination.astro'
 import TitleHidden from '@blocks/TitleHidden.astro'
 import InputCheckboxChip from '@atoms/InputCheckboxChip.astro'
+import InputButtonChip from '@atoms/InputButtonChip.astro'
 
 const perPage = PERPAGE
 const page = Astro.url.searchParams.get('page') || '1'
@@ -68,6 +69,9 @@ const partners = [
 					</li>
 				))
 			}
+            <li>
+                <InputButtonChip id={'apply-filters'} label={'Apply'}/>
+            </li>
 		</ul>
 	</Wrapper>
 	<Wrapper
