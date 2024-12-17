@@ -9,6 +9,7 @@ import StoryblokClient from 'storyblok-js-client'
 import { PERPAGE } from '@scripts/constants'
 import { _getVisibleItems } from '@scripts/get-visible-items'
 import Pagination from '@blocks/Pagination.astro'
+import TitleHidden from '@blocks/TitleHidden.astro'
 
 const perPage = PERPAGE
 const page = Astro.url.searchParams.get('page') || '1'
@@ -27,8 +28,8 @@ const params = {
 }
 const products = await Storyblok.getAll('cdn/stories', params)
 const filteredProducts = products
-        .filter(i => i.content.in_stock)
-		.sort((a, b) => b.content.is_new - a.content.is_new)
+	.filter((i) => i.content.in_stock)
+	.sort((a, b) => b.content.is_new - a.content.is_new)
 const search = Astro.url.searchParams.get('s')
 const current = parseInt(page, 10)
 const { filteredItems, visibleItems } = _getVisibleItems(
@@ -43,22 +44,26 @@ const { filteredItems, visibleItems } = _getVisibleItems(
 	title={'All Products (Filtered)'}
 	component={'products-filtered'}
 	class:list='pt-8 xs:pt-12 lg:pt-8'>
+	<!-- Product Filters -->
+	<nav class="py-8 xs:py-12">
+		<TitleHidden tag="h3" title={'Filter Products by OEM Partner'} />
+        
+	</nav>
 	<Wrapper
 		inner
 		tag='ul'
-		padY='y'
+		padB='b'
 		class:list='w-full relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3'
 		data-all-products>
-        <!-- Product Filters -->
-        
-
-        <!-- Products Cards -->
+		<!-- Products Cards -->
 		{
 			visibleItems.length > 0 ? (
-				visibleItems.map(({content},x) => (
+				visibleItems.map(({ content }, x) => (
 					<CardProduct
 						filename={content.image[0].file.filename}
-						link={!_empty(content.link) && _slug(content.link[0].link)}
+						link={
+							!_empty(content.link) && _slug(content.link[0].link)
+						}
 						name={content.name}
 						isNew={content.is_new}
 						data-modal-trigger={content.is_new}
@@ -71,7 +76,7 @@ const { filteredItems, visibleItems } = _getVisibleItems(
 			)
 		}
 
-        <!-- Pagination -->
+		<!-- Pagination -->
 		<Pagination
 			total={filteredItems.length}
 			size={perPage}
