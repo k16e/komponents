@@ -10,6 +10,7 @@ import { PERPAGE } from '@scripts/constants'
 import { _getVisibleItems } from '@scripts/get-visible-items'
 import Pagination from '@blocks/Pagination.astro'
 import TitleHidden from '@blocks/TitleHidden.astro'
+import InputCheckboxChip from '@atoms/InputCheckboxChip.astro'
 
 const perPage = PERPAGE
 const page = Astro.url.searchParams.get('page') || '1'
@@ -40,27 +41,33 @@ const { filteredItems, visibleItems } = _getVisibleItems(
 	perPage,
 )
 const partners = [
-	...new Set(filteredProducts.map(i => i.content.partner.name)),
+	...new Set(filteredProducts.map((i) => i.content.partner.name)),
 ]
 ---
 
-<Section
-	title={'All Products (Filtered)'}
-	component={'products-filtered'}>
+<Section title={'All Products (Filtered)'} component={'products-filtered'}>
 	<!-- Product Filters -->
-	<Wrapper tag="nav" inner class='py-8 xs:py-12'>
+	<Wrapper tag='form' inner class='py-8 xs:py-12'>
 		<TitleHidden tag='h3' title={'Filter Products by OEM Partner'} />
-		<ul class='flex flex-wrap gap-4'>
+		<ul class='flex flex-wrap gap-3'>
 			<li>
-                All
-            </li>
-            {
-                partners.map(i => (
-                    <li>
-                        { i }
-                    </li>
-                ))
-            }
+				<InputCheckboxChip
+					id={'all-partners'}
+					label={'All Partners'}
+					name={'all-partners'}
+				/>
+			</li>
+			{
+				partners.map((i) => (
+					<li>
+						<InputCheckboxChip
+							id={_slugify(i)}
+							label={i}
+							name={_slugify(i)}
+						/>
+					</li>
+				))
+			}
 		</ul>
 	</Wrapper>
 	<Wrapper

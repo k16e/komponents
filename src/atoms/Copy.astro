@@ -4,14 +4,17 @@ const
         content,
         color = 'surface',
         growText = true,
-        Tag = 'div',
+        size,
+        tag,
         class: classes,
         ...attrs
     } = Astro.props
+const Tag = tag || 'div'
 ---
 <Tag
     class:list={[
-        growText ? 'text-base sm:text-md font-sans' : 'text-base',
+        growText && !size ? 'text-base sm:text-md font-sans' : 'text-base',
+        size === 'sm' && 'text-sm',
         color === 'surface' && 'text-surface-800',
         color === 'white' && 'text-white/80',
         classes
