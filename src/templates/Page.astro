@@ -15,7 +15,7 @@ const { blok } = Astro.props,
 	partner = (pathArr[2] ??= 'fronius'),
 	products = _productsByd.value.stories,
 	productsByPartner = products.filter(
-		(el) => el.content.partner.slug === partner,
+		(el) => el.content.partner?.slug === partner,
 	)
 ---
 
