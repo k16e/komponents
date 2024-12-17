@@ -25,6 +25,7 @@ const params = {
 	starts_with: 'products/',
 	version: 'published',
 	is_startpage: false,
+	resolve_relations: 'product.partner',
 }
 const products = await Storyblok.getAll('cdn/stories', params)
 const filteredProducts = products
@@ -38,17 +39,30 @@ const { filteredItems, visibleItems } = _getVisibleItems(
 	current,
 	perPage,
 )
+const partners = [
+	...new Set(filteredProducts.map(i => i.content.partner.name)),
+]
 ---
 
 <Section
 	title={'All Products (Filtered)'}
-	component={'products-filtered'}
-	class:list='pt-8 xs:pt-12 lg:pt-8'>
+	component={'products-filtered'}>
 	<!-- Product Filters -->
-	<nav class="py-8 xs:py-12">
-		<TitleHidden tag="h3" title={'Filter Products by OEM Partner'} />
-        
-	</nav>
+	<Wrapper tag="nav" inner class='py-8 xs:py-12'>
+		<TitleHidden tag='h3' title={'Filter Products by OEM Partner'} />
+		<ul class='flex flex-wrap gap-4'>
+			<li>
+                All
+            </li>
+            {
+                partners.map(i => (
+                    <li>
+                        { i }
+                    </li>
+                ))
+            }
+		</ul>
+	</Wrapper>
 	<Wrapper
 		inner
 		tag='ul'
@@ -68,7 +82,7 @@ const { filteredItems, visibleItems } = _getVisibleItems(
 						isNew={content.is_new}
 						data-modal-trigger={content.is_new}
 						data-display={`product-at-${x}`}
-						data-partner={_slugify(content.partner)}
+						data-partner={_slugify(content.partner.name)}
 					/>
 				))
 			) : (
