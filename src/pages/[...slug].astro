@@ -6,7 +6,7 @@ import { _getPageData } from '@scripts/storyblok'
 
 export async function getStaticPaths() {
 	const storyblokApi = useStoryblokApi()
-	const ssrRoutes = ['products-filtered']
+	const ssrRoutes = ['products-filtered/']
 	let links = await storyblokApi.getAll('cdn/links', {
 		version: import.meta.env.DEV ? 'draft' : 'published',
 	})
@@ -15,13 +15,15 @@ export async function getStaticPaths() {
 		(link) => !(link.slug === 'settings') && !ssrRoutes.includes(link.slug),
 	)
 
-	return links.map((link) => {
-		return {
-			params: {
-				slug: link.slug === 'home' ? undefined : link.slug,
-			},
-		}
-	})
+	return links
+		.filter((link) => !link.is_folder)
+		.map((link) => {
+			return {
+				params: {
+					slug: link.slug === 'home' ? undefined : link.slug,
+				},
+			}
+		})
 }
 
 const { slug } = Astro.params

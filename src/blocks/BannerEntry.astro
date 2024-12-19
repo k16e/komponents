@@ -57,14 +57,14 @@ const {
                         'flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3',
                         centered && 'justify-center'
                     ]}>
-                    { links.map((link: any) => (
+                    { links.map(i => (
                         <li class="group flex justify-center">
-                            <Anchor href={ _slug(link.link) } hover="shadow">
+                            <Anchor href={ _slug(i.link) } hover="shadow">
                                 <Button
-                                    icon={ link.icon }
-                                    label={ link.title }
-                                    iconPosition={ link.icon_position }
-                                    color={ link.color }
+                                    icon={ i.icon }
+                                    label={ i.title }
+                                    iconPosition={ i.icon_position }
+                                    color={ i.color }
                                 />
                             </Anchor>
                         </li>
