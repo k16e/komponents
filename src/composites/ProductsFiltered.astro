@@ -32,9 +32,13 @@ let filteredProducts = products
 	.filter((i) => i.content.in_stock)
 	.sort((a, b) => b.content.is_new - a.content.is_new)
 
-if (partner) {
-	filteredProducts = filteredProducts.filter(
-		(product) => product.content.partner === partner,
+console.log(filteredProducts[0].content.partner)
+
+const partners = [...new Set(products.map((i) => i.content.partner.name))]
+
+if (partners.length > 0) {
+	filteredProducts = filteredProducts.filter((product) =>
+		partners.includes(product.content.partner.name),
 	)
 }
 
@@ -55,10 +59,6 @@ const paginatedProducts = filteredProducts.slice(
 	currentPage * pageSize,
 )
 
-const partners = [
-	...new Set(filteredProducts.map((i) => i.content.partner.name)),
-]
-
 function getFilterUrl(updates) {
 	const newParams = new URLSearchParams(searchParams)
 	Object.entries(updates).forEach(([key, value]) => {
@@ -70,6 +70,8 @@ function getFilterUrl(updates) {
 	})
 	return `/products-filtered?${newParams.toString()}`
 }
+
+const isFiltered = partners.length > 0 || search !== ''
 ---
 
 <Section title={'All Products (Filtered)'} component={'products-filtered'}>
@@ -85,7 +87,7 @@ function getFilterUrl(updates) {
 							label={i}
 							name={'partner'}
 							value={i}
-							checked={partner.includes(i)}
+							checked={partners.includes(i)}
 						/>
 					</li>
 				))
@@ -162,18 +164,44 @@ function getFilterUrl(updates) {
 </Section>
 
 <script>
-	document
-		.getElementById('filter-form')
-		.addEventListener('submit', function (e) {
-			e.preventDefault()
-			const formData = new FormData(this)
-			const searchParams = new URLSearchParams()
+	const form = document.getElementById('filter-form')
+	const applyButton = document.getElementById('apply-filters')
+	// const resetButton = document.getElementById('reset-filters')
+	const checkboxes = form.querySelectorAll('input[type="checkbox"]')
+	// const searchInput = form.querySelector('input[name="s"]')
 
-			for (const [key, value] of formData.entries()) {
-				if (key === 'partner' && value === 'on') continue
-				searchParams.append(key, value)
-			}
+	function updateButtonVisibility() {
+		const isAnyChecked = Array.from(checkboxes).some((cb) => cb.checked)
+		applyButton.style.display = isAnyChecked ? 'inline-block' : 'none'
+		// resetButton.style.display =
+		// 	isAnyChecked || searchInput.value !== '' ? 'inline-block' : 'none'
+	}
 
-			window.location.href = `/products-filtered?${searchParams.toString()}`
-		})
+	checkboxes.forEach((cb) =>
+		cb.addEventListener('change', updateButtonVisibility),
+	)
+	// searchInput.addEventListener('input', updateButtonVisibility)
+
+	form.addEventListener('submit', function (e) {
+		e.preventDefault()
+		const formData = new FormData(this)
+		const searchParams = new URLSearchParams()
+
+		for (const [key, value] of formData.entries()) {
+			if (key === 'partner' && value === 'on') continue
+			searchParams.append(key, value)
+		}
+
+		window.location.href = `/products-filtered?${searchParams.toString()}`
+	})
+
+	// resetButton.addEventListener('click', function () {
+	// 	checkboxes.forEach((cb) => (cb.checked = false))
+	// 	searchInput.value = ''
+	// 	updateButtonVisibility()
+	// 	window.location.href = '/products-filtered'
+	// })
+
+	// Initial button visibility update
+	// updateButtonVisibility()
 </script>
