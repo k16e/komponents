@@ -77,7 +77,7 @@ const isFiltered = partners.length > 0 || search !== ''
 	<!-- Product Filters -->
 	<Wrapper tag='form' inner class='py-8 xs:py-12' id='filter-form'>
 		<TitleHidden tag='h3' title={'Filter Products by OEM Partner'} />
-		<div class='flex items-center justify-center pb-4'>
+		<div class='flex items-center justify-center pb-5'>
 			<InputSearch name='s' value={search} />
 		</div>
 		<div class='flex flex-wrap gap-3'>
@@ -196,6 +196,7 @@ const isFiltered = partners.length > 0 || search !== ''
 			const searchParams = new URLSearchParams()
 
 			for (const [key, value] of formData.entries()) {
+				console.log(`Key: ${key}, Value: ${value}`) // Debug log
 				if (key === 'partner' && value !== 'on') {
 					searchParams.append(key, value)
 				} else if (key === 's' && value) {
@@ -203,8 +204,11 @@ const isFiltered = partners.length > 0 || search !== ''
 				}
 			}
 
-			window.location.href = `/products-filtered?${searchParams.toString()}`
+			const url = `/products-filtered?${searchParams.toString()}`
+			console.log('Redirecting to:', url) // Debug log
+			window.location.href = url
 		})
+
 		resetButton.addEventListener('click', function (e) {
 			e.preventDefault()
 			checkboxes.forEach((cb) => (cb.checked = false))
