@@ -13,6 +13,7 @@ import TitleHidden from '@blocks/TitleHidden.astro'
 import InputCheckboxChip from '@atoms/InputCheckboxChip.astro'
 import InputButtonChip from '@atoms/InputButtonChip.astro'
 import { useStoryblokApi } from '@storyblok/astro'
+import InputSearch from '@atoms/InputSearch.astro'
 
 const storyblokApi = useStoryblokApi()
 
@@ -31,8 +32,6 @@ let products = await storyblokApi.getAll('cdn/stories', {
 let filteredProducts = products
 	.filter((i) => i.content.in_stock)
 	.sort((a, b) => b.content.is_new - a.content.is_new)
-
-console.log(filteredProducts[0].content.partner)
 
 const partners = [...new Set(products.map((i) => i.content.partner.name))]
 
@@ -78,24 +77,24 @@ const isFiltered = partners.length > 0 || search !== ''
 	<!-- Product Filters -->
 	<Wrapper tag='form' inner class='py-8 xs:py-12' id='filter-form'>
 		<TitleHidden tag='h3' title={'Filter Products by OEM Partner'} />
-		<ul class='flex flex-wrap gap-3'>
+		<InputSearch name='s' value={search} />
+		<div class='flex flex-wrap gap-3'>
 			{
 				partners.map((i) => (
-					<li>
-						<InputCheckboxChip
-							id={_slugify(i)}
-							label={i}
-							name={'partner'}
-							value={i}
-							checked={partners.includes(i)}
-						/>
-					</li>
+					<InputCheckboxChip
+						id={_slugify(i)}
+						label={i}
+						name={'partner'}
+						value={i}
+						checked={partners.includes(i)}
+					/>
 				))
 			}
-			<li>
+			<div class='flex gap-3'>
 				<InputButtonChip id={'apply-filters'} label={'Apply'} />
-			</li>
-		</ul>
+				<InputButtonChip id={'reset-filters'} label={'Reset'} />
+			</div>
+		</div>
 	</Wrapper>
 	<Wrapper
 		inner
@@ -164,44 +163,50 @@ const isFiltered = partners.length > 0 || search !== ''
 </Section>
 
 <script>
-	const form = document.getElementById('filter-form')
-	const applyButton = document.getElementById('apply-filters')
-	// const resetButton = document.getElementById('reset-filters')
-	const checkboxes = form.querySelectorAll('input[type="checkbox"]')
-	// const searchInput = form.querySelector('input[name="s"]')
+	document.addEventListener('DOMContentLoaded', function () {
+		const form = document.getElementById('filter-form')
+		const applyButton = document.getElementById('apply-filters')
+		const resetButton = document.getElementById('reset-filters')
+		const checkboxes = form.querySelectorAll('input[type="checkbox"]')
+		const searchInput = form.querySelector('input[name="s"]')
 
-	function updateButtonVisibility() {
-		const isAnyChecked = Array.from(checkboxes).some((cb) => cb.checked)
-		applyButton.style.display = isAnyChecked ? 'inline-block' : 'none'
-		// resetButton.style.display =
-		// 	isAnyChecked || searchInput.value !== '' ? 'inline-block' : 'none'
-	}
-
-	checkboxes.forEach((cb) =>
-		cb.addEventListener('change', updateButtonVisibility),
-	)
-	// searchInput.addEventListener('input', updateButtonVisibility)
-
-	form.addEventListener('submit', function (e) {
-		e.preventDefault()
-		const formData = new FormData(this)
-		const searchParams = new URLSearchParams()
-
-		for (const [key, value] of formData.entries()) {
-			if (key === 'partner' && value === 'on') continue
-			searchParams.append(key, value)
+		function updateButtonVisibility() {
+			const isAnyChecked = Array.from(checkboxes).some((cb) => cb.checked)
+			applyButton.style.display = isAnyChecked ? 'inline-block' : 'none'
+			resetButton.style.display =
+				isAnyChecked || searchInput.value !== ''
+					? 'inline-block'
+					: 'none'
 		}
 
-		window.location.href = `/products-filtered?${searchParams.toString()}`
+		checkboxes.forEach((cb) =>
+			cb.addEventListener('change', updateButtonVisibility),
+		)
+		searchInput.addEventListener('input', updateButtonVisibility)
+
+		form.addEventListener('submit', function (e) {
+			e.preventDefault()
+			const formData = new FormData(this)
+			const searchParams = new URLSearchParams()
+
+			for (const [key, value] of formData.entries()) {
+				if (key === 'partner' && value === 'on') continue
+				searchParams.append(key, value)
+			}
+
+			window.location.href = `/products-filtered?${searchParams.toString()}`
+		})
+
+		if (resetButton) {
+			resetButton.addEventListener('click', function () {
+				checkboxes.forEach((cb) => (cb.checked = false))
+				searchInput.value = ''
+				updateButtonVisibility()
+				window.location.href = '/products-filtered'
+			})
+		}
+
+		// Initial button visibility update
+		updateButtonVisibility()
 	})
-
-	// resetButton.addEventListener('click', function () {
-	// 	checkboxes.forEach((cb) => (cb.checked = false))
-	// 	searchInput.value = ''
-	// 	updateButtonVisibility()
-	// 	window.location.href = '/products-filtered'
-	// })
-
-	// Initial button visibility update
-	// updateButtonVisibility()
 </script>
