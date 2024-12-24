@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config'
 import { loadEnv } from 'vite'
 import storyblok from '@storyblok/astro'
 import tailwind from '@astrojs/tailwind'
+import mdx from '@astrojs/mdx'
 import netlify from '@astrojs/netlify'
 
 const env = loadEnv('', process.cwd(), 'STORYBLOK')
@@ -21,6 +22,9 @@ export default defineConfig({
     integrations: [
         tailwind({
             nesting: true
+        }),
+        mdx({
+            ignoreIndentation: true
         }),
         storyblok({
             accessToken: env.STORYBLOK_TOKEN,
@@ -55,5 +59,16 @@ export default defineConfig({
     ],
     build: {
         format: 'preserve'
+    },
+    assets: {
+        baseAssetUrl: '/content/images',
+        fileAssetUrl: '/content/images',
+    },
+    vite: {
+        resolve: {
+            alias: {
+                '@images': '/content/images'
+            }
+        }
     }
 })

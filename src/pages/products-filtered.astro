@@ -6,9 +6,13 @@ import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import Base from '@layouts/Base.astro'
 import { _getPageData } from '@scripts/storyblok'
 import ProductsFiltered from '@composites/ProductsFiltered.astro'
+import { getCollection } from 'astro:content'
 
 const slug = Astro.url.pathname.slice(1)
 const { page, content, meta } = await _getPageData(slug)
+const partners = await getCollection('partners')
+
+console.log(partners)
 ---
 
 <Base
@@ -16,5 +20,4 @@ const { page, content, meta } = await _getPageData(slug)
 	pageDescription={meta.description}
 	pageThumbnail={meta.image.filename}>
 	<StoryblokComponent blok={content} />
-	
 </Base>
