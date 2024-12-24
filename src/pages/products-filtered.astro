@@ -12,7 +12,7 @@ const slug = Astro.url.pathname.slice(1)
 const { page, content, meta } = await _getPageData(slug)
 const partners = await getCollection('partner')
 
-console.log(partners)
+console.log(partners[0].data.image)
 ---
 
 <Base

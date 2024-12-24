@@ -30,7 +30,7 @@ const partner = defineCollection({
         }).optional(),
         seo: z.object({
             title: z.string(),
-            description: z.string().max(155, 'Description must not exceed 155 characters'),
+            description: z.string().max(200, 'Description must not exceed 200 characters'),
             thumbnail: z.object({
                 file: image().transform(imageTransform),
                 alt: z.string(),
@@ -66,7 +66,7 @@ const product = defineCollection({
         is_in_stock: z.boolean(),
         seo: z.object({
             title: z.string(),
-            description: z.string(),
+            description: z.string().max(200, 'Description must not exceed 200 characters'),
             thumbnail: z.object({
                 file: image().transform(imageTransform),
                 alt: z.string(),
