@@ -2,23 +2,30 @@
 import { Image } from 'astro:assets'
 
 const {
-    filename, small = true, medium, large,
-    class: classes,
-    ...attrs
+	filename,
+	small = true,
+	medium,
+	large,
+	width,
+	height,
+	class: classes,
+	...attrs
 } = Astro.props
 ---
+
 <Image
-    src={ filename }
-    alt={ '' }
-    width="576"
-    height="576"
-    quality="100"
-    draggable="false"
-    class:list={[
-        'object-contain aspect-square',
-        small && 'max-w-52',
-        large && 'max-w-80',
-        classes
-    ]}
-    { ...attrs }
+	src={filename}
+	alt={''}
+	width={width || 576}
+	height={height || 576}
+	quality={100}
+	draggable={false}
+	inferSize={true}
+	class:list={[
+		'object-contain aspect-square',
+		small && 'max-w-52',
+		large && 'max-w-80',
+		classes,
+	]}
+	{...attrs}
 />

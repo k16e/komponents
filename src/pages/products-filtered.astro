@@ -1,18 +1,13 @@
 ---
 export const prerender = false
 
-import { useStoryblokApi } from '@storyblok/astro'
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import Base from '@layouts/Base.astro'
 import { _getPageData } from '@scripts/storyblok'
 import ProductsFiltered from '@composites/ProductsFiltered.astro'
-import { getCollection } from 'astro:content'
 
 const slug = Astro.url.pathname.slice(1)
 const { page, content, meta } = await _getPageData(slug)
-const partners = await getCollection('partner')
-
-console.log(partners[0].data.image)
 ---
 
 <Base
@@ -20,4 +15,5 @@ console.log(partners[0].data.image)
 	pageDescription={meta.description}
 	pageThumbnail={meta.image.filename}>
 	<StoryblokComponent blok={content} />
+	<ProductsFiltered />
 </Base>

@@ -5,72 +5,89 @@ import CardProduct from '@blocks/CardProduct.astro'
 import { _padY, _padB, _empty } from '@scripts/snips'
 import _slug from '@scripts/slug'
 import _slugify from '@scripts/slugify'
-import StoryblokClient from 'storyblok-js-client'
 import { PERPAGE } from '@scripts/constants'
 import { _getVisibleItems } from '@scripts/get-visible-items'
 import Pagination from '@blocks/Pagination.astro'
 import TitleHidden from '@blocks/TitleHidden.astro'
 import InputCheckboxChip from '@atoms/InputCheckboxChip.astro'
 import InputButtonChip from '@atoms/InputButtonChip.astro'
-import { useStoryblokApi } from '@storyblok/astro'
 import InputSearch from '@atoms/InputSearch.astro'
+import { getCollection, getEntry } from 'astro:content'
 
-const storyblokApi = useStoryblokApi()
+// Get all products and partners
+const allProducts = await getCollection('products')
+const allPartners = await getCollection('partners')
 
-const { searchParams } = Astro.url
-const partner = searchParams.get('partner') || ''
-const search = searchParams.get('s') || ''
-const currentPage = parseInt(searchParams.get('page') || '1', 10)
-const pageSize = PERPAGE
+// Get query parameters
+const {
+	s: searchQuery,
+	partner: partnerFilter,
+	page: pageParam,
+	in_stock: inStockFilter,
+} = Astro.url.searchParams
 
-let products = await storyblokApi.getAll('cdn/stories', {
-	version: 'published',
-	starts_with: 'products/',
-	is_startpage: false,
-	resolve_relations: 'product.partner',
-})
-let filteredProducts = products
-	.filter((i) => i.content.in_stock)
-	.sort((a, b) => b.content.is_new - a.content.is_new)
-
-const partners = [...new Set(products.map((i) => i.content.partner.name))]
-
-if (partners.length > 0) {
-	filteredProducts = filteredProducts.filter((product) =>
-		partners.includes(product.content.partner.name),
-	)
-}
-
-if (search) {
-	const searchLower = search.toLowerCase()
-	filteredProducts = filteredProducts.filter(
-		(product) =>
-			product.content.name.toLowerCase().includes(searchLower) ||
-			product.content.description.toLowerCase().includes(searchLower),
-	)
-}
-
-const totalProducts = filteredProducts.length
-const totalPages = Math.ceil(totalProducts / pageSize)
-
-const paginatedProducts = filteredProducts.slice(
-	(currentPage - 1) * pageSize,
-	currentPage * pageSize,
+// Resolve partner references for all products
+const productsWithResolvedPartners = await Promise.all(
+	allProducts.map(async (product) => {
+		const resolvedPartner = await getEntry(product.data.partner)
+		return { ...product, resolvedPartner }
+	}),
 )
 
-function getFilterUrl(updates) {
-	const newParams = new URLSearchParams(searchParams)
-	Object.entries(updates).forEach(([key, value]) => {
-		if (value === null) {
-			newParams.delete(key)
-		} else {
-			newParams.set(key, value)
-		}
-	})
-	return `/products-filtered?${newParams.toString()}`
+// Filter products based on search query, partner filter, and in_stock
+let filteredProducts = productsWithResolvedPartners
+
+if (searchQuery) {
+	filteredProducts = filteredProducts.filter(
+		(product) =>
+			product.data.title
+				.toLowerCase()
+				.includes(searchQuery.toLowerCase()) ||
+			product.data.description
+				.toLowerCase()
+				.includes(searchQuery.toLowerCase()),
+	)
 }
 
-const isFiltered = partners.length > 0 || search !== ''
+if (partnerFilter) {
+	filteredProducts = filteredProducts.filter(
+		(product) => product.resolvedPartner.id === partnerFilter,
+	)
+}
+
+if (inStockFilter === 'true') {
+	filteredProducts = filteredProducts.filter(
+		(product) => product.data.is_in_stock,
+	)
+}
+
+// Sort products by is_new (new products first)
+filteredProducts.sort((a, b) =>
+	b.data.is_new === a.data.is_new ? 0 : b.data.is_new ? 1 : -1,
+)
+
+// Pagination
+const productsPerPage = PERPAGE
+const currentPage = pageParam ? parseInt(pageParam) : 1
+const totalPages = Math.ceil(filteredProducts.length / productsPerPage)
+const paginatedProducts = await Promise.all(
+	filteredProducts
+		.slice(
+			(currentPage - 1) * productsPerPage,
+			currentPage * productsPerPage,
+		)
+		.map(async (product) => {
+			const partnerEntry = await getEntry(product.data.partner)
+			return { ...product, resolvedPartner: partnerEntry }
+		}),
+)
+
+// Generate pagination URLs
+const generatePageUrl = (page) => {
+	const url = new URL(Astro.url)
+	url.searchParams.set('page', page.toString())
+	return url.toString()
+}
 ---
 
 <Section title={'All Products (Filtered)'} component={'products-filtered'}>
@@ -78,10 +95,10 @@ const isFiltered = partners.length > 0 || search !== ''
 	<Wrapper tag='form' inner class='py-8 xs:py-12' id='filter-form'>
 		<TitleHidden tag='h3' title={'Filter Products by OEM Partner'} />
 		<div class='flex items-center justify-center pb-5'>
-			<InputSearch name='s' value={search} />
+			<!-- <InputSearch name='s' value={search} /> -->
 		</div>
 		<div class='flex flex-wrap gap-3'>
-			{
+			<!-- {
 				partners.map((i) => (
 					<InputCheckboxChip
 						id={_slugify(i)}
@@ -91,11 +108,11 @@ const isFiltered = partners.length > 0 || search !== ''
 						checked={partners.includes(i)}
 					/>
 				))
-			}
-			<div class='flex gap-3'>
+			} -->
+			<!-- <div class='flex gap-3'>
 				<InputButtonChip id={'apply-filters'} label={'Apply'} />
 				<InputButtonChip id={'reset-filters'} label={'Reset'} />
-			</div>
+			</div> -->
 		</div>
 	</Wrapper>
 	<Wrapper
@@ -107,117 +124,20 @@ const isFiltered = partners.length > 0 || search !== ''
 		<!-- Products Cards -->
 		{
 			paginatedProducts.length > 0 ? (
-				paginatedProducts.map(({ content }, x) => (
+				paginatedProducts.map(({ data, resolvedPartner }, x) => (
 					<CardProduct
-						filename={content.image[0].file.filename}
-						link={
-							!_empty(content.link) && _slug(content.link[0].link)
-						}
-						name={content.name}
-						isNew={content.is_new}
-						data-modal-trigger={content.is_new}
+						filename={data.image.src}
+						link={data.links[0].slug}
+						name={data.title}
+						isNew={data.is_new}
+						data-modal-trigger={data.is_new}
 						data-display={`product-at-${x}`}
-						data-partner={_slugify(content.partner.name)}
+						data-partner={_slugify(resolvedPartner.data.title)}
 					/>
 				))
 			) : (
 				<p class='text-2xl text-center'>No results found</p>
 			)
 		}
-
-		<!-- Pagination -->
-		<nav aria-label='Pagination'>
-			{
-				currentPage > 1 && (
-					<a
-						href={getFilterUrl({
-							page: (currentPage - 1).toString(),
-						})}>
-						Previous
-					</a>
-				)
-			}
-			{
-				Array.from({ length: totalPages }, (_, i) => i + 1).map(
-					(pageNum) => (
-						<a
-							href={getFilterUrl({ page: pageNum.toString() })}
-							aria-current={
-								currentPage === pageNum ? 'page' : undefined
-							}>
-							{pageNum}
-						</a>
-					),
-				)
-			}
-			{
-				currentPage < totalPages && (
-					<a
-						href={getFilterUrl({
-							page: (currentPage + 1).toString(),
-						})}>
-						Next
-					</a>
-				)
-			}
-		</nav>
 	</Wrapper>
 </Section>
-
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		const form = document.getElementById('filter-form')
-		const applyButton = form.querySelector(
-			'input[type="submit"][id^="apply"]',
-		)
-		const resetButton = form.querySelector(
-			'input[type="submit"][id^="reset"]',
-		)
-		const checkboxes = form.querySelectorAll('input[type="checkbox"]')
-		const searchInput = form.querySelector('input[name="s"]')
-
-		function updateButtonVisibility() {
-			const isAnyChecked = Array.from(checkboxes).some((cb) => cb.checked)
-			applyButton.closest('label').style.display = isAnyChecked
-				? 'flex'
-				: 'none'
-			resetButton.closest('label').style.display =
-				isAnyChecked || searchInput.value !== '' ? 'flex' : 'none'
-		}
-
-		checkboxes.forEach((cb) =>
-			cb.addEventListener('change', updateButtonVisibility),
-		)
-		searchInput.addEventListener('input', updateButtonVisibility)
-
-		form.addEventListener('submit', function (e) {
-			e.preventDefault()
-			const formData = new FormData(this)
-			const searchParams = new URLSearchParams()
-
-			for (const [key, value] of formData.entries()) {
-				console.log(`Key: ${key}, Value: ${value}`) // Debug log
-				if (key === 'partner' && value !== 'on') {
-					searchParams.append(key, value)
-				} else if (key === 's' && value) {
-					searchParams.set(key, value)
-				}
-			}
-
-			const url = `/products-filtered?${searchParams.toString()}`
-			console.log('Redirecting to:', url) // Debug log
-			window.location.href = url
-		})
-
-		resetButton.addEventListener('click', function (e) {
-			e.preventDefault()
-			checkboxes.forEach((cb) => (cb.checked = false))
-			searchInput.value = ''
-			updateButtonVisibility()
-			window.location.href = '/products-filtered'
-		})
-
-		// Initial button visibility update
-		updateButtonVisibility()
-	})
-</script>
