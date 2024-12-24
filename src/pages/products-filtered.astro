@@ -10,7 +10,7 @@ import { getCollection } from 'astro:content'
 
 const slug = Astro.url.pathname.slice(1)
 const { page, content, meta } = await _getPageData(slug)
-const partners = await getCollection('partners')
+const partners = await getCollection('partner')
 
 console.log(partners)
 ---

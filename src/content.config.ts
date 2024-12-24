@@ -11,7 +11,7 @@ async function imageTransform(src) {
     return src;
 }
 
-const partners = defineCollection({
+const partner = defineCollection({
     loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './content/partners' }),
     schema: ({ image }) => z.object({
         title: z.string().max(55, 'Title must not exceed 55 characters'),
@@ -39,7 +39,7 @@ const partners = defineCollection({
     })
 })
 
-const products = defineCollection({
+const product = defineCollection({
     loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './content/products' }),
     schema: ({ image }) => z.object({
         title: z.string().max(55, 'Title must not exceed 55 characters'),
@@ -75,4 +75,4 @@ const products = defineCollection({
     })
 })
 
-export const collections = { partners, products, }
+export const collections = { partner, product, }
