@@ -37,7 +37,7 @@ const partners = [...new Set(products.map((i) => i.content.partner.name))]
 
 if (partners.length > 0) {
 	filteredProducts = filteredProducts.filter((product) =>
-		partners.includes(product.content.partner?.name),
+		partners.includes(product.content.partner.name),
 	)
 }
 

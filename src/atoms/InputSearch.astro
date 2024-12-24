@@ -5,8 +5,7 @@ import { _transition } from '../scripts/snips'
 const { class: classes, ...props } = Astro.props
 ---
 
-<div
-	class='relative w-full h-12 flex items-center'>
+<div class='relative size-full flex items-center'>
 	<div class='absolute left-2 sm:left-3'>
 		<Icon name='search' class:list='w-6 text-surface-400' />
 	</div>
@@ -19,7 +18,6 @@ const { class: classes, ...props } = Astro.props
                 border-0 border-b-2 border-surface-300 focus:border-accent-600
                 placeholder:text-surface-600
                 search-cancel:appearance-none
-                focus:outline focus:outline-0
             `,
 			_transition(),
 			classes,
