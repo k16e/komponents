@@ -13,6 +13,7 @@ import InputCheckboxChip from '@atoms/InputCheckboxChip.astro'
 import InputButtonChip from '@atoms/InputButtonChip.astro'
 import InputSearch from '@atoms/InputSearch.astro'
 import { getCollection, getEntry } from 'astro:content'
+import { date } from 'astro:schema'
 
 // Get all products and partners
 const allProducts = await getCollection('products')
@@ -133,6 +134,7 @@ const generatePageUrl = (page) => {
 						data-modal-trigger={data.is_new ? '' : null}
 						data-display={data.is_new ? `product-at-${x}` : null}
 						data-partner={_slugify(resolvedPartner.data.title)}
+                        target={data.is_new ? null : '_blank'}
 					/>
 				))
 			) : (
