@@ -127,11 +127,11 @@ const generatePageUrl = (page) => {
 				paginatedProducts.map(({ data, resolvedPartner }, x) => (
 					<CardProduct
 						filename={data.image.src}
-						link={data.links[0].slug}
+						link={data.link.slug}
 						name={data.title}
 						isNew={data.is_new}
-						data-modal-trigger={data.is_new}
-						data-display={`product-at-${x}`}
+						data-modal-trigger={data.is_new ? '' : null}
+						data-display={data.is_new ? `product-at-${x}` : null}
 						data-partner={_slugify(resolvedPartner.data.title)}
 					/>
 				))
@@ -141,6 +141,5 @@ const generatePageUrl = (page) => {
 		}
 
 		<!-- Pagination -->
-		
 	</Wrapper>
 </Section>
