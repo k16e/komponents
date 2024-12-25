@@ -63,7 +63,6 @@ const products = defineCollection({
     schema: ({ image }) => z.object({
         title: z.string().max(55, 'Title must not exceed 55 characters'),
         description: z.string().max(200, 'Description must not exceed 200 characters'),
-        long_description: z.string().optional(),
         image: z.object({
             src: z.string(),
             alt: z.string(),
