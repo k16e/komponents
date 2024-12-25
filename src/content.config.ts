@@ -61,7 +61,7 @@ const partners = defineCollection({
 const products = defineCollection({
     loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './content/products' }),
     schema: ({ image }) => z.object({
-        title: z.string().max(55, 'Title must not exceed 55 characters'),
+        title: z.string().max(70, 'Title must not exceed 70 characters'),
         description: z.string().max(200, 'Description must not exceed 200 characters'),
         image: z.object({
             src: z.string(),

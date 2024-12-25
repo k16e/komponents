@@ -149,29 +149,27 @@ const generatePageUrl = (page) => {
 		}
 
 		<!-- Pagination -->
-		<nav aria-label='Pagination'>
-			<TitleHidden tag='h3' title={'Pagination'} />
-			{
-				currentPage > 1 && (
-					<a href={generatePageUrl(currentPage - 1)}>Previous</a>
-				)
-			}
-			{
-				Array.from({ length: totalPages }, (_, i) => i + 1).map(
-					(page) => (
-						<a
-							href={generatePageUrl(page)}
-							class={page === currentPage ? 'active' : ''}>
-							{page}
-						</a>
-					),
-				)
-			}
-			{
-				currentPage < totalPages && (
-					<a href={generatePageUrl(currentPage + 1)}>Next</a>
-				)
-			}
-		</nav>
+		{
+			totalPages > productsPerPage && (
+				<nav aria-label='Pagination'>
+					<TitleHidden tag='h3' title={'Pagination'} />
+					{currentPage > 1 && (
+						<a href={generatePageUrl(currentPage - 1)}>Previous</a>
+					)}
+					{Array.from({ length: totalPages }, (_, i) => i + 1).map(
+						(page) => (
+							<a
+								href={generatePageUrl(page)}
+								class={page === currentPage ? 'active' : ''}>
+								{page}
+							</a>
+						),
+					)}
+					{currentPage < totalPages && (
+						<a href={generatePageUrl(currentPage + 1)}>Next</a>
+					)}
+				</nav>
+			)
+		}
 	</Wrapper>
 </Section>
