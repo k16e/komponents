@@ -2,7 +2,7 @@
 import Copy from '@atoms/Copy.astro'
 import Icon from '@atoms/Icon.astro'
 
-const { id, label, class: classes, ...props } = Astro.props
+const { id, label, size = 'sm', class: classes, ...props } = Astro.props
 ---
 
 <label
@@ -16,5 +16,5 @@ const { id, label, class: classes, ...props } = Astro.props
 	]}
 	{...props}>
 	<input type='submit' id={id} class='hidden' />
-	<Copy tag='span' content={label} class='block text-inherit' />
+	<Copy tag='span' content={label} size={size} class='block text-inherit' />
 </label>
