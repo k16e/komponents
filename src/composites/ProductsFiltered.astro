@@ -12,83 +12,8 @@ import TitleHidden from '@blocks/TitleHidden.astro'
 import InputCheckboxChip from '@atoms/InputCheckboxChip.astro'
 import InputButtonChip from '@atoms/InputButtonChip.astro'
 import InputSearch from '@atoms/InputSearch.astro'
-import { getCollection, getEntry } from 'astro:content'
-import { date } from 'astro:schema'
 
-// Get all products and partners
-const allProducts = await getCollection('products')
-const allPartners = await getCollection('partners')
-
-// Get query parameters
-const {
-	s: searchQuery,
-	partner: partnerFilter,
-	page: pageParam,
-	in_stock: inStockFilter,
-} = Astro.url.searchParams
-
-// Resolve partner references for all products
-const productsWithResolvedPartners = await Promise.all(
-	allProducts.map(async (product) => {
-		const resolvedPartner = await getEntry(product.data.partner)
-		return { ...product, resolvedPartner }
-	}),
-)
-
-// Filter products based on search query, partner filter, and in_stock
-let filteredProducts = productsWithResolvedPartners
-
-if (searchQuery) {
-	filteredProducts = filteredProducts.filter(
-		(product) =>
-			product.data.title
-				.toLowerCase()
-				.includes(searchQuery.toLowerCase()) ||
-			product.data.description
-				.toLowerCase()
-				.includes(searchQuery.toLowerCase()),
-	)
-}
-
-if (partnerFilter) {
-	filteredProducts = filteredProducts.filter(
-		(product) => product.resolvedPartner.id === partnerFilter,
-	)
-}
-
-if (inStockFilter === 'true') {
-	filteredProducts = filteredProducts.filter(
-		(product) => product.data.is_in_stock,
-	)
-}
-
-// Sort products by is_new (new products first)
-filteredProducts.sort((a, b) =>
-	b.data.is_new === a.data.is_new ? 0 : b.data.is_new ? 1 : -1,
-)
-
-// Pagination
-const productsPerPage = PERPAGE
-const currentPage = pageParam ? parseInt(pageParam) : 1
-const totalPages = Math.ceil(filteredProducts.length / productsPerPage)
-const paginatedProducts = await Promise.all(
-	filteredProducts
-		.slice(
-			(currentPage - 1) * productsPerPage,
-			currentPage * productsPerPage,
-		)
-		.map(async (product) => {
-			const partnerEntry = await getEntry(product.data.partner)
-			return { ...product, resolvedPartner: partnerEntry }
-		}),
-)
-
-// Generate pagination URLs
-const generatePageUrl = (page) => {
-	const url = new URL(Astro.url)
-	url.searchParams.set('page', page.toString())
-	return url.toString()
-}
+const { paginatedProducts, searchQuery, partners, partnerFilter } = Astro.props
 ---
 
 <Section title={'All Products (Filtered)'} component={'products-filtered'}>
@@ -99,21 +24,21 @@ const generatePageUrl = (page) => {
 			<InputSearch name='s' value={searchQuery || ''} />
 		</div>
 		<div class='flex flex-wrap gap-3'>
-			<!-- {
+			{
 				partners.map((i) => (
 					<InputCheckboxChip
-						id={_slugify(i)}
-						label={i}
+						id={i.id}
+						label={i.data.title}
 						name={'partner'}
-						value={i}
-						checked={partners.includes(i)}
+						value={i.id}
+						checked={partnerFilter === i.id}
 					/>
 				))
-			} -->
-			<!-- <div class='flex gap-3'>
+			}
+			<div class='flex gap-3'>
 				<InputButtonChip id={'apply-filters'} label={'Apply'} />
 				<InputButtonChip id={'reset-filters'} label={'Reset'} />
-			</div> -->
+			</div>
 		</div>
 	</Wrapper>
 	<Wrapper
@@ -149,27 +74,5 @@ const generatePageUrl = (page) => {
 		}
 
 		<!-- Pagination -->
-		{
-			totalPages > productsPerPage && (
-				<nav aria-label='Pagination'>
-					<TitleHidden tag='h3' title={'Pagination'} />
-					{currentPage > 1 && (
-						<a href={generatePageUrl(currentPage - 1)}>Previous</a>
-					)}
-					{Array.from({ length: totalPages }, (_, i) => i + 1).map(
-						(page) => (
-							<a
-								href={generatePageUrl(page)}
-								class={page === currentPage ? 'active' : ''}>
-								{page}
-							</a>
-						),
-					)}
-					{currentPage < totalPages && (
-						<a href={generatePageUrl(currentPage + 1)}>Next</a>
-					)}
-				</nav>
-			)
-		}
 	</Wrapper>
 </Section>

@@ -4,10 +4,80 @@ export const prerender = false
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import Base from '@layouts/Base.astro'
 import { _getPageData } from '@scripts/storyblok'
+import { PERPAGE } from '@scripts/constants'
+import { getCollection, getEntry } from 'astro:content'
 import ProductsFiltered from '@composites/ProductsFiltered.astro'
 
 const slug = Astro.url.pathname.slice(1)
 const { page, content, meta } = await _getPageData(slug)
+
+// Get all products and partners
+const products = await getCollection('products')
+const partners = await getCollection('partners')
+
+// Get query parameters
+const {
+	s: searchQuery,
+	partner: partnerFilter,
+	page: pageParam,
+} = Astro.url.searchParams
+
+// Resolve partner references for all products
+const productsWithResolvedPartners = await Promise.all(
+	products.map(async (product) => {
+		const resolvedPartner = await getEntry(product.data.partner)
+		return { ...product, resolvedPartner }
+	}),
+)
+
+// Filter products based on search query and partner filter
+let filteredProducts = productsWithResolvedPartners
+
+if (searchQuery) {
+	filteredProducts = filteredProducts.filter(
+		(product) =>
+			product.data.title
+				.toLowerCase()
+				.includes(searchQuery.toLowerCase()) ||
+			product.data.description
+				.toLowerCase()
+				.includes(searchQuery.toLowerCase()),
+	)
+}
+
+if (partnerFilter) {
+	filteredProducts = filteredProducts.filter(
+		(product) => product.resolvedPartner.id === partnerFilter,
+	)
+}
+
+// Sort products by is_new (new products first)
+filteredProducts.sort((a, b) =>
+	b.data.is_new === a.data.is_new ? 0 : b.data.is_new ? 1 : -1,
+)
+
+// Pagination
+const productsPerPage = PERPAGE
+const currentPage = pageParam ? parseInt(pageParam) : 1
+const totalPages = Math.ceil(filteredProducts.length / productsPerPage)
+const paginatedProducts = await Promise.all(
+	filteredProducts
+		.slice(
+			(currentPage - 1) * productsPerPage,
+			currentPage * productsPerPage,
+		)
+		.map(async (product) => {
+			const partnerEntry = await getEntry(product.data.partner)
+			return { ...product, resolvedPartner: partnerEntry }
+		}),
+)
+
+// Generate pagination URLs
+const generatePageUrl = (page) => {
+	const url = new URL(Astro.url)
+	url.searchParams.set('page', page.toString())
+	return url.toString()
+}
 ---
 
 <Base
@@ -15,5 +85,10 @@ const { page, content, meta } = await _getPageData(slug)
 	pageDescription={meta.description}
 	pageThumbnail={meta.image.filename}>
 	<StoryblokComponent blok={content} />
-	<ProductsFiltered />
+	<ProductsFiltered
+		paginatedProducts={paginatedProducts}
+		searchQuery={searchQuery}
+		partners={partners}
+		partnerFilter={partnerFilter}
+	/>
 </Base>
