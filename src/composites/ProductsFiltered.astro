@@ -126,19 +126,25 @@ const generatePageUrl = (page) => {
 		{
 			paginatedProducts.length > 0 ? (
 				paginatedProducts.map(({ data, resolvedPartner }, x) => (
-					<CardProduct
-						filename={data.image.src}
-						link={data.link.slug}
-						name={data.title}
-						isNew={data.is_new}
-						data-modal-trigger={data.is_new ? '' : null}
-						data-display={data.is_new ? `product-at-${x}` : null}
-						data-partner={_slugify(resolvedPartner.data.title)}
-                        target={data.is_new ? null : '_blank'}
-					/>
+					<li class='group'>
+						<CardProduct
+							filename={data.image.src}
+							link={data.link.slug}
+							name={data.title}
+							isNew={data.is_new}
+							data-modal-trigger={data.is_new ? '' : null}
+							data-display={
+								data.is_new ? `product-at-${x}` : null
+							}
+							data-partner={_slugify(resolvedPartner.data.title)}
+							target={data.is_new ? null : '_blank'}
+						/>
+					</li>
 				))
 			) : (
-				<p class='text-2xl text-center'>No results found</p>
+				<li>
+					<p class='text-2xl text-center'>No results found</p>
+				</li>
 			)
 		}
 
