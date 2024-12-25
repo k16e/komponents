@@ -12,6 +12,8 @@ import _flipfone from '@scripts/flipfone'
 import _fuzzySearch from '@scripts/fuzzy-search'
 import _elevatorPitch from '@scripts/elevator-pitch'
 import _gtag from '@scripts/gtag'
+import { _productSearch } from './product-search'
+import { _q } from './snips'
 
 const swup = new Swup({
     animationSelector: '[class*="swup-"]',
@@ -44,6 +46,7 @@ function init() {
     _fuzzySearch()
     _elevatorPitch()
     _gtag()
+    if (_q('#filter-form'))  _productSearch()
 }
 
 function once() {

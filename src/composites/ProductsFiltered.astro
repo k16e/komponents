@@ -96,7 +96,7 @@ const generatePageUrl = (page) => {
 	<Wrapper tag='form' inner class='py-8 xs:py-12' id='filter-form'>
 		<TitleHidden tag='h3' title={'Filter Products by OEM Partner'} />
 		<div class='flex items-center justify-center pb-5'>
-			<!-- <InputSearch name='s' value={search} /> -->
+			<InputSearch name='s' value={searchQuery || ''} />
 		</div>
 		<div class='flex flex-wrap gap-3'>
 			<!-- {
