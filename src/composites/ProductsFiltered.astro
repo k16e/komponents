@@ -5,7 +5,6 @@ import CardProduct from '@blocks/CardProduct.astro'
 import { _padY, _padB, _empty } from '@scripts/snips'
 import _slug from '@scripts/slug'
 import _slugify from '@scripts/slugify'
-import { PERPAGE } from '@scripts/constants'
 import { _getVisibleItems } from '@scripts/get-visible-items'
 import Pagination from '@blocks/Pagination.astro'
 import TitleHidden from '@blocks/TitleHidden.astro'
@@ -13,7 +12,16 @@ import InputCheckboxChip from '@atoms/InputCheckboxChip.astro'
 import InputButtonChip from '@atoms/InputButtonChip.astro'
 import InputSearch from '@atoms/InputSearch.astro'
 
-const { paginatedProducts, searchQuery, partners, partnerFilter } = Astro.props
+const {
+	paginatedProducts,
+	searchQuery,
+	partners,
+	partnerFilter,
+	currentPage,
+	totalPages,
+	prevPage,
+	nextPage,
+} = Astro.props
 ---
 
 <Section title={'All Products (Filtered)'} component={'products-filtered'}>
@@ -74,5 +82,10 @@ const { paginatedProducts, searchQuery, partners, partnerFilter } = Astro.props
 		}
 
 		<!-- Pagination -->
+		<nav aria-label='Pagination'>
+			{prevPage && <a href={prevPage}>Previous</a>}
+			<span>Page {currentPage} of {totalPages}</span>
+			{nextPage && <a href={nextPage}>Next</a>}
+		</nav>
 	</Wrapper>
 </Section>
