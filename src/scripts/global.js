@@ -47,7 +47,7 @@ function init() {
     _fuzzySearch()
     _elevatorPitch()
     _gtag()
-    if (_q('#filter-form')) _productSearch()
+    // if (_q('#filter-form')) _productSearch()
     _allHeaderFunctions()
 }
 
