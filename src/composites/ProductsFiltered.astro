@@ -17,6 +17,7 @@ const {
 	searchQuery,
 	partners,
 	partnerFilter,
+	partnerFilters,
 	currentPage,
 	totalPages,
 	prevPage,
@@ -24,7 +25,10 @@ const {
 } = Astro.props
 ---
 
-<Section title={'All Products (Filtered)'} component={'products-filtered'}>
+<Section
+	title={'All Products (Filtered)'}
+	component={'products-filtered'}
+	id='products-filtered'>
 	<!-- Product Filters -->
 	<Wrapper tag='form' inner class='py-8 xs:py-12' id='filter-form'>
 		<TitleHidden tag='h3' title={'Filter Products by OEM Partner'} />
@@ -33,15 +37,19 @@ const {
 		</div>
 		<div class='flex flex-wrap gap-3'>
 			{
-				partners.map((i) => (
-					<InputCheckboxChip
-						id={i.id}
-						label={i.data.title}
-						name={'partner'}
-						value={i.id}
-						checked={partnerFilter === i.id}
-					/>
-				))
+				partners.map((i) => {
+					const isChecked =
+						partnerFilters.includes(i.id) || partnerFilter === i.id
+					return (
+						<InputCheckboxChip
+							id={i.id}
+							label={i.data.title}
+							name='partner'
+							value={i.id}
+							checked={isChecked}
+						/>
+					)
+				})
 			}
 			<div class='flex gap-3'>
 				<InputButtonChip id={'apply-filters'} label={'Apply'} />

@@ -24,6 +24,7 @@ const allProducts = await Promise.all(
 const pageParam = Astro.url.searchParams.get('page')
 const searchQuery = Astro.url.searchParams.get('s')
 const partnerFilter = Astro.url.searchParams.get('partner')
+const partnerFilters = Astro.url.searchParams.getAll('partner')
 
 let filteredProducts = allProducts
 
@@ -39,7 +40,11 @@ if (searchQuery) {
 	)
 }
 
-if (partnerFilter) {
+if (partnerFilters.length > 0) {
+	filteredProducts = filteredProducts.filter((product) =>
+		partnerFilters.includes(product.resolvedPartner.id),
+	)
+} else if (partnerFilter) {
 	filteredProducts = filteredProducts.filter(
 		(product) => product.resolvedPartner.id === partnerFilter,
 	)
@@ -77,6 +82,7 @@ const nextPage =
 		searchQuery={searchQuery}
 		partners={partners}
 		partnerFilter={partnerFilter}
+		partnerFilters={partnerFilters}
 		currentPage={currentPage}
 		totalPages={totalPages}
 		prevPage={prevPage}

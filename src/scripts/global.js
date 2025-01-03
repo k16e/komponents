@@ -12,9 +12,9 @@ import _flipfone from '@scripts/flipfone'
 import _fuzzySearch from '@scripts/fuzzy-search'
 import _elevatorPitch from '@scripts/elevator-pitch'
 import _gtag from '@scripts/gtag'
-import { _productSearch } from './product-search'
 import { _q } from './snips'
 import _allHeaderFunctions from './header-fns'
+import { _filterProducts } from './filter-products'
 
 const swup = new Swup({
     animationSelector: '[class*="swup-"]',
@@ -47,8 +47,8 @@ function init() {
     _fuzzySearch()
     _elevatorPitch()
     _gtag()
-    // if (_q('#filter-form')) _productSearch()
     _allHeaderFunctions()
+    _q('#products-filtered') && _filterProducts()
 }
 
 function once() {
