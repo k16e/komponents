@@ -2,7 +2,7 @@
 import Copy from '@atoms/Copy.astro'
 import Icon from '@atoms/Icon.astro'
 
-const { id, name, label, size = 'sm', class: classes, ...props } = Astro.props
+const { id, name, value, label, size = 'sm', class: classes, ...props } = Astro.props
 ---
 
 <label
@@ -16,7 +16,7 @@ const { id, name, label, size = 'sm', class: classes, ...props } = Astro.props
 		classes,
 	]}
 	{...props}>
-	<input type='checkbox' id={id} class='hidden' name={name} />
+	<input type='checkbox' id={id} class='hidden' name={name} value={value} />
 	<span
 		class='flex items-center shrink-0 size-0 opacity-0 group-has-[:checked]:size-5 group-has-[:checked]:mr-0.5 group-has-[:checked]:opacity-100 -translate-x-0.5 transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)]'>
 		<Icon name='checkbox-circle-fill' class='size-5 text-inherit' />
