@@ -80,12 +80,12 @@ const {
 				</li>
 			)
 		}
+	</Wrapper>
 
-		<!-- Pagination -->
-		<nav aria-label='Pagination'>
-			{prevPage && <a href={prevPage}>Previous</a>}
-			<span>Page {currentPage} of {totalPages}</span>
-			{nextPage && <a href={nextPage}>Next</a>}
-		</nav>
+	<!-- Pagination -->
+	<Wrapper inner tag='ul' padB='b' aria-label='Pagination'>
+		{prevPage && <a href={prevPage}>Previous</a>}
+		<span>Page {currentPage} of {totalPages}</span>
+		{nextPage && <a href={nextPage}>Next</a>}
 	</Wrapper>
 </Section>
