@@ -14,6 +14,7 @@ import _elevatorPitch from '@scripts/elevator-pitch'
 import _gtag from '@scripts/gtag'
 import { _productSearch } from './product-search'
 import { _q } from './snips'
+import _allHeaderFunctions from './header-fns'
 
 const swup = new Swup({
     animationSelector: '[class*="swup-"]',
@@ -47,6 +48,7 @@ function init() {
     _elevatorPitch()
     _gtag()
     if (_q('#filter-form')) _productSearch()
+    _allHeaderFunctions()
 }
 
 function once() {
