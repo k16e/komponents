@@ -2,18 +2,24 @@ import { z, defineCollection, reference } from 'astro:content'
 import { glob } from 'astro/loaders'
 import { getImage } from 'astro:assets'
 
-async function imageTransform(src, width = 1024, height = 768) {
-    if (src.startsWith('@images/')) {
-        const imagePath = src.replace('@images/', '/content/images/');
-        const { src: optimizedSrc } = await getImage({
-            src: imagePath,
-            width,
-            height
-        });
-        return { src: optimizedSrc, width, height };
-    }
-    return src;
-}
+   async function imageTransform(src, width = 1024, height = 768) {
+       if (src.startsWith('@images/')) {
+           try {
+               const imagePath = src.replace('@images/', '/content/images/')
+               const { src: optimizedSrc } = await getImage({
+                   src: imagePath,
+                   width,
+                   height
+               });
+               return { src: optimizedSrc, width, height };
+           } catch (error) {
+               console.error('Error transforming image:', error)
+               return { src, width, height };
+           }
+       }
+       return src;
+   }
+
 
 const partners = defineCollection({
     loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './content/partners' }),
