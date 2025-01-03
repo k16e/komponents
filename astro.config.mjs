@@ -60,6 +60,7 @@ export default defineConfig({
     build: {
         format: 'preserve'
     },
+    trailingSlash: 'never',
     assets: {
         baseAssetUrl: '/content/images',
         fileAssetUrl: '/content/images',
