@@ -46,7 +46,13 @@ export function _filterProducts() {
         searchInput.value = ''
         initialState.clear()
         updateButtonVisibility()
-        window.location.href = '/products-filtered'
+
+        // Get the current URL and remove all query parameters
+        const url = new URL(window.location.href)
+        url.search = ''
+
+        // Redirect to the current page without any parameters
+        window.location.href = url.toString()
     })
 
     applyButton.addEventListener('click', e => {
@@ -65,6 +71,7 @@ export function _filterProducts() {
             url.searchParams.delete('s')
         }
 
+        // Redirect to the current page without any parameters
         window.location.href = url.toString()
     })
 }
