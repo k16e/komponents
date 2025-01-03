@@ -11,6 +11,7 @@ const {
 		titleCase = false,
 		responsive,
 		fab,
+		chip,
 		eventsNone,
 		tag = 'div',
 		left,
@@ -18,9 +19,10 @@ const {
 		...attrs
 	} = Astro.props,
 	Tag = tag,
-	dimensions = (responsive: any, fab: any, left: any) => {
+	dimensions = (responsive, fab, chip, left) => {
 		if (responsive) return 'h-11 px-3'
 		else if (fab) return 'h-16 w-16 rounded-full'
+		else if (chip) return 'px-2.5 py-1.5'
 		else if (left) return 'h-[52px] pr-5'
 		else return 'h-[52px] px-5'
 	}
@@ -40,8 +42,9 @@ const {
 		color === 'depth' && 'bg-surface-950 text-white',
 		color === 'transparent' && 'bg-transparent',
 		color === 'light_a' && 'bg-accent-50 text-accent-600',
+		color === 'chip-default' && 'border-[0.09375rem] border-dark-200 hover:border-accent-600 hover:text-accent-600',
 		eventsNone && 'pointer-events-none',
-		dimensions(responsive, fab, left),
+		dimensions(responsive, fab, chip, left),
 		_transition(),
 		classes,
 	]}

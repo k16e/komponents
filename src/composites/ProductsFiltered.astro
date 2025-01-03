@@ -11,6 +11,7 @@ import TitleHidden from '@blocks/TitleHidden.astro'
 import InputCheckboxChip from '@atoms/InputCheckboxChip.astro'
 import InputButtonChip from '@atoms/InputButtonChip.astro'
 import InputSearch from '@atoms/InputSearch.astro'
+import Button from '@atoms/Button.astro'
 
 const {
 	paginatedProducts,
@@ -53,8 +54,16 @@ const {
 			}
 		</div>
 		<div class='flex gap-3 pt-3 w-full'>
-			<InputButtonChip id={'apply-filters'} label={'Apply'} class='w-1/2 md:w-auto'/>
-			<InputButtonChip id={'reset-filters'} label={'Reset'} class='w-1/2 md:w-auto'/>
+			<InputButtonChip
+				id={'apply-filters'}
+				label={'Apply'}
+				class='w-1/2 md:w-auto'
+			/>
+			<InputButtonChip
+				id={'reset-filters'}
+				label={'Reset'}
+				class='w-1/2 md:w-auto'
+			/>
 		</div>
 	</Wrapper>
 	<Wrapper
@@ -91,9 +100,30 @@ const {
 	</Wrapper>
 
 	<!-- Pagination -->
-	<Wrapper inner tag='ul' padB='b' aria-label='Pagination'>
-		{prevPage && <a href={prevPage}>Previous</a>}
+	<Wrapper inner tag='nav' padB='b' aria-label='Pagination' class='flex justify-between items-center'>
+		<TitleHidden tag='h3' title={'Pagination'} />
+		{
+			prevPage && (
+				<Button
+					tag='a'
+					href={prevPage}
+					label='Previous'
+					chip
+					color='chip-default'
+				/>
+			)
+		}
 		<span>Page {currentPage} of {totalPages}</span>
-		{nextPage && <a href={nextPage}>Next</a>}
+		{
+			nextPage && (
+				<Button
+					tag='a'
+					href={nextPage}
+					label='Next'
+					chip
+					color='chip-default'
+				/>
+			)
+		}
 	</Wrapper>
 </Section>
