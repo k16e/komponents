@@ -14,7 +14,6 @@ export default defineConfig({
     },
     adapter: netlify({
         imageCDN: false,
-        cacheOnDemandPages: true,
     }),
     image: {
         domains: ['a.storyblok.com']
