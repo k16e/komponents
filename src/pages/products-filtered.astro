@@ -9,7 +9,7 @@ import { getCollection, getEntry } from 'astro:content'
 import ProductsFiltered from '@composites/ProductsFiltered.astro'
 
 const slug = Astro.url.pathname.slice(1)
-const { content, meta } = await _getPageData(slug)
+const { page, content, meta } = await _getPageData(slug)
 
 const products = await getCollection('products')
 const partners = await getCollection('partners')
@@ -21,7 +21,7 @@ const allProducts = await Promise.all(
 	}),
 )
 
-const page = Astro.url.searchParams.get('page')
+const pageParam = Astro.url.searchParams.get('page')
 const searchQuery = Astro.url.searchParams.get('s')
 const partnerFilter = Astro.url.searchParams.get('partner')
 
@@ -50,7 +50,7 @@ filteredProducts.sort((a, b) =>
 )
 
 const productsPerPage = PERPAGE
-const currentPage = page ? parseInt(page) : 1
+const currentPage = pageParam ? parseInt(pageParam) : 1
 const totalPages = Math.ceil(filteredProducts.length / productsPerPage)
 const paginatedProducts = filteredProducts.slice(
 	(currentPage - 1) * productsPerPage,
