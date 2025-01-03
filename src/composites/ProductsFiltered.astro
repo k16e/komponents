@@ -54,7 +54,7 @@ const { paginatedProducts, searchQuery, partners, partnerFilter } = Astro.props
 					<li class='group'>
 						<CardProduct
 							filename={data.image.src}
-							link={data.link.slug}
+							link={data.link?.slug || null}
 							name={data.title}
 							isNew={data.is_new}
 							data-modal-trigger={data.is_new ? '' : null}

@@ -82,7 +82,7 @@ const products = defineCollection({
         link: z.object({
             label: z.string(),
             slug: z.string(),
-        }),
+        }).optional(),
         is_new: z.boolean(),
         is_in_stock: z.boolean(),
         seo: z.object({
